@@ -21,7 +21,7 @@ jobs:
           server: ${{ vars.FTP_SERVER }}
           username: ${{ vars.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ vars.FTP_DIRECTORY }}/
+          server-dir: ./
           local-dir: ./
           dangerous-clean-slate: false
           exclude: |
