@@ -1,0 +1,35 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite executar manualmente
+
+jobs:
+  deploy:
+    name: Deploy to FTP Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ vars.FTP_SERVER }}
+          username: ${{ vars.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ vars.FTP_DIRECTORY }}/
+          local-dir: ./
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.env*
+            **/.github/**
+            **/.vscode*
+            **/.vscode*/**
+            setup-ftp-secrets.sh
+            README.md
