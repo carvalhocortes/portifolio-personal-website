@@ -1,0 +1,12 @@
+.shared-input {
+  background: transparent;
+  border: none;
+  color: #abb2bf;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+}
+
+.shared-input:focus {
+  outline: none;
+}

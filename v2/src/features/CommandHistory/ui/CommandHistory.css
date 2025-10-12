@@ -1,0 +1,14 @@
+.prompt-history {
+  display: flex;
+}
+
+.prompt-history .prompt {
+  color: #c678dd;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.output {
+  white-space: pre-wrap;
+  color: #98c379;
+}

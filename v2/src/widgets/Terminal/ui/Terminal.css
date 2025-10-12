@@ -1,0 +1,10 @@
+.terminal-widget {
+  background-color: #282c34;
+  color: #abb2bf;
+  font-family: "Fira Code", Menlo, Monaco, "Courier New", monospace;
+  padding: 1rem;
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  cursor: text;
+}
