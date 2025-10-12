@@ -1,17 +1,24 @@
-import { ajuda } from './ajuda';
-import { sobre } from './sobre';
-import { data } from './data';
-import { bemVindo } from './bem-vindo';
-import { limpar } from './limpar';
+import { about } from './about';
+import { clear } from './clear';
+import { hobbies } from './hobbies';
+import { volunteer } from './volunteer';
+import { welcome } from './welcome';
 
 type CommandFn = () => string;
 
+export const help = (): string => {
+  return `Comandos disponíveis: ${Object.keys(commandsMap).join(', ')}`;
+};
+
 const commandsMap: Record<string, CommandFn> = {
-  'ajuda': ajuda,
-  'sobre': sobre,
-  'data': data,
-  'bem-vindo': bemVindo,
-  'limpar': limpar,
+  'ajuda': help,
+  'bem-vindo': welcome,
+  'sobre': about,
+  'hobbies': hobbies,
+  'trabalho-voluntario': volunteer,
+  // 'fale-comigo': emailMe,
+  'limpar': clear,
+  // 'mudar-idioma': language
 };
 
 export const executeCommand = (command: string): string => {
