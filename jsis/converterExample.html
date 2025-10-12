@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCII Video Converter - Uso Programático</title>
+    <style>
+      body {
+        font-family: monospace;
+        padding: 20px;
+        background: #0a0a0a;
+        color: #00ff00;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      button {
+        background: #00ff00;
+        color: #0a0a0a;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        font-family: monospace;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      button:hover {
+        background: #00cc00;
+      }
+      .preview {
+        background: #000;
+        padding: 15px;
+        border-radius: 5px;
+        overflow: auto;
+        font-size: 8px;
+        line-height: 1;
+        white-space: pre;
+        margin: 20px 0;
+      }
+      .info {
+        background: #1a1a1a;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .controls {
+        background: #1a1a1a;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      input[type="number"] {
+        background: #000;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 5px;
+        font-family: monospace;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #00ff00;
+      }
+      .status {
+        color: #ffaa00;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎬 ASCII Video Converter - Modo Programático</h1>
+
+      <div class="info">
+        <h3>
+          📊 Status: <span class="status" id="status">Aguardando...</span>
+        </h3>
+        <p>Frames capturados: <span id="frameCount">0</span></p>
+      </div>
+
+      <div class="controls">
+        <h3>⚙️ Configurações:</h3>
+        <label>
+          Número de frames:
+          <input type="number" id="maxFrames" value="50" min="1" max="1000" />
+        </label>
+        <br /><br />
+        <label>
+          Largura:
+          <input type="number" id="width" value="60" min="10" max="200" />
+        </label>
+        <label>
+          Altura:
+          <input type="number" id="height" value="50" min="10" max="200" />
+        </label>
+        <br /><br />
+        <button onclick="startConversion()">▶️ Iniciar Conversão</button>
+        <button onclick="playAnimation()">🎬 Reproduzir Animação</button>
+        <button onclick="stopAnimation()">⏸️ Parar</button>
+        <button onclick="exportJSON()">💾 Exportar JSON</button>
+        <button onclick="logToConsole()">📋 Ver no Console</button>
+      </div>
+
+      <div class="info">
+        <h3>🖥️ Preview:</h3>
+        <div class="preview" id="preview">Aguardando conversão...</div>
+      </div>
+
+      <div class="info">
+        <h3>💡 Como usar os dados em outro lugar:</h3>
+        <pre><code>// Exemplo 1: Acessar frames
+const data = converter.getFrames();
+console.log(data[0]); // Primeiro frame (array de arrays)
+
+// Exemplo 2: Frame específico
+const frame10 = converter.getFrame(10);
+
+// Exemplo 3: Exportar tudo
+const exportData = converter.exportData();
+// Estrutura: { width, height, totalFrames, density, frames }
+
+// Exemplo 4: Usar em animação
+function animate() {
+    const frames = converter.getFrames();
+    let currentFrame = 0;
+
+    setInterval(() => {
+        displayFrame(frames[currentFrame]);
+        currentFrame = (currentFrame + 1) % frames.length;
+    }, 1000 / 30); // 30 FPS
+}
+</code></pre>
+      </div>
+    </div>
+
+    <!-- p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="AsciiVideoConverter.js"></script>
+
+    <script>
+      let converter;
+      let animationInterval;
+
+      function setup() {
+        noCanvas();
+        updateStatus("Pronto para converter");
+      }
+
+      function updateStatus(message) {
+        document.getElementById("status").textContent = message;
+      }
+
+      function updateFrameCount(count) {
+        document.getElementById("frameCount").textContent = count;
+      }
+
+      async function startConversion() {
+        const maxFrames = parseInt(document.getElementById("maxFrames").value);
+        const width = parseInt(document.getElementById("width").value);
+        const height = parseInt(document.getElementById("height").value);
+
+        updateStatus("Inicializando...");
+
+        try {
+          converter = new AsciiVideoConverter("../video.mp4", width, height);
+          await converter.init();
+
+          updateStatus("Convertendo frames...");
+
+          await converter.captureFrames(maxFrames, (frameNumber, frame) => {
+            updateFrameCount(frameNumber);
+            updateStatus(`Convertendo frame ${frameNumber}/${maxFrames}`);
+          });
+
+          updateStatus(`Conversão completa! ${maxFrames} frames capturados.`);
+
+          // Mostra o primeiro frame
+          const firstFrame = converter.getFrame(0);
+          if (firstFrame) {
+            document.getElementById("preview").textContent =
+              converter.frameToString(firstFrame);
+          }
+
+          console.log("Conversão completa!");
+          console.log("Dados disponíveis em: converter.getFrames()");
+        } catch (error) {
+          updateStatus("Erro: " + error.message);
+          console.error(error);
+        }
+      }
+
+      function playAnimation() {
+        if (!converter || converter.getFrames().length === 0) {
+          alert("Execute a conversão primeiro!");
+          return;
+        }
+
+        stopAnimation(); // Para animação anterior se existir
+
+        const frames = converter.getFrames();
+        let currentFrame = 0;
+
+        updateStatus("Reproduzindo animação...");
+
+        animationInterval = setInterval(() => {
+          const frame = frames[currentFrame];
+          document.getElementById("preview").textContent =
+            converter.frameToString(frame);
+          currentFrame = (currentFrame + 1) % frames.length;
+          updateFrameCount(currentFrame + 1);
+        }, 1000 / 30); // 30 FPS
+      }
+
+      function stopAnimation() {
+        if (animationInterval) {
+          clearInterval(animationInterval);
+          animationInterval = null;
+          updateStatus("Animação pausada");
+        }
+      }
+
+      function exportJSON() {
+        if (!converter || converter.getFrames().length === 0) {
+          alert("Execute a conversão primeiro!");
+          return;
+        }
+
+        const data = converter.exportData();
+        const dataStr = JSON.stringify(data, null, 2);
+        const dataBlob = new Blob([dataStr], { type: "application/json" });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "asciiVideoData.json";
+        link.click();
+
+        updateStatus("JSON exportado!");
+        console.log("Dados exportados como JSON");
+      }
+
+      function logToConsole() {
+        if (!converter || converter.getFrames().length === 0) {
+          alert("Execute a conversão primeiro!");
+          return;
+        }
+
+        console.clear();
+        console.log("=== ASCII VIDEO DATA ===");
+        console.log("Total de frames:", converter.getFrames().length);
+        console.log("\nPrimeiro frame:");
+        converter.displayFrame(converter.getFrame(0));
+        console.log("\nDados completos:");
+        console.log(converter.exportData());
+        console.log("\nAcesse os dados usando:");
+        console.log("- converter.getFrames() // todos os frames");
+        console.log("- converter.getFrame(n) // frame específico");
+        console.log("- converter.exportData() // objeto completo");
+
+        updateStatus("Dados exibidos no console");
+      }
+
+      // Disponibiliza o converter globalmente para uso no console
+      window.converter = null;
+    </script>
+  </body>
+</html>
