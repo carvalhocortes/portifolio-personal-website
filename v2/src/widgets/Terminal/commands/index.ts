@@ -20,5 +20,3 @@ export const executeCommand = (command: string): string => {
   if (fn) return fn();
   return `zsh: comando não encontrado: ${command}`;
 };
-
-export type { CommandFn };
