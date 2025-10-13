@@ -1,0 +1,53 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches:
+      - "**"
+      - "!main"
+  workflow_dispatch: # Permite executar manualmente
+
+jobs:
+  deploy:
+    name: Deploy to FTP Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: v2/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./v2
+        run: npm ci
+
+      - name: Build React project
+        working-directory: ./v2
+        run: npm run build
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ vars.FTP_SERVER }}
+          username: ${{ vars.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ./rev2
+          local-dir: ./dist
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.env*
+            **/.github/**
+            **/.vscode*
+            **/.vscode*/**
+            v2/**
+            **/node_modules/**
+            setup-ftp-secrets.sh
+            README.md
