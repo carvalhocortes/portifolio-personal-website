@@ -37,8 +37,8 @@ jobs:
           server: ${{ vars.FTP_SERVER }}
           username: ${{ vars.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./rev2
-          local-dir: ./dist
+          server-dir: ./rev2/
+          local-dir: ./dist/
           dangerous-clean-slate: false
           exclude: |
             **/.git*
