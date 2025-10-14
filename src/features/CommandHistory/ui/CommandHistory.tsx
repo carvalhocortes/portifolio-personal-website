@@ -1,6 +1,7 @@
-import React from 'react';
-import type { Command } from '../../../entities/Command/model/types';
-import './CommandHistory.css';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import type { Command } from "../../../entities/Command/model/types";
+import "./CommandHistory.css";
 
 interface CommandHistoryProps {
   commands: Command[];
@@ -15,7 +16,8 @@ export const CommandHistory: React.FC<CommandHistoryProps> = ({ commands }) => {
             <span className="prompt">❯</span>
             <span>{cmd.text}</span>
           </div>
-          <div className="output">{cmd.output}</div>
+          <ReactMarkdown>{cmd.output}</ReactMarkdown>
+          {/* <div className="output">{cmd.output}</div> */}
         </div>
       ))}
     </div>
