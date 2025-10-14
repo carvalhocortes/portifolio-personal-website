@@ -24,11 +24,9 @@ jobs:
           cache-dependency-path: v2/package-lock.json
 
       - name: Install dependencies
-        working-directory: ./v2
         run: npm ci
 
       - name: Build React project
-        working-directory: ./v2
         run: npm run build
 
       - name: Deploy to FTP
