@@ -12,3 +12,29 @@
   white-space: pre-wrap;
   color: #98c379;
 }
+
+.output table {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.output table th,
+.output table td {
+  text-align: center;
+  padding: 0.5em;
+}
+
+.output img {
+  max-width: 95%;
+  border-radius: 1em;
+}
+
+.output a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.output a:hover {
+  opacity: 0.8;
+}
