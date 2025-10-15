@@ -1,5 +1,3 @@
-
-
 export const hobbies = (): string => {
   return hobbiesPtBr;
 };
@@ -8,25 +6,25 @@ export const hobbies = (): string => {
 const marcenariaInfo1 = 'Banco do hall do apartamento';
 const marcenariaInfo2 = 'Porta chaves e bolsas no hall do apartamento';
 const marcenariaInfo3 = 'Escrivaninha para duas pessoas';
-const marcenariaImg1 = `![${marcenariaInfo1}](./src/resources/banco.png)`;
-const marcenariaImg2 = `![${marcenariaInfo2}](./src/resources/guarda-bolsa.png)`;
-const marcenariaImg3 = `![${marcenariaInfo3}](./src/resources/mesa-madeira.png)`;
+const marcenariaImg1 = `![${marcenariaInfo1}](/resources/banco.png)`;
+const marcenariaImg2 = `![${marcenariaInfo2}](/resources/guarda-bolsa.png)`;
+const marcenariaImg3 = `![${marcenariaInfo3}](/resources/mesa-madeira.png)`;
 
 const fotografiaInfo1 = 'Arara Azul - Nobres - MT';
 const fotografiaInfo2 = 'Casal de Araras Vermelhas - Belem - PA';
 const fotografiaInfo3 = 'Pássaro Preto - São Paulo - SP';
 const fotografiaInfo4 = 'Lagoa - Rio de Janeiro - RJ';
-const fotografiaImg1 = `![${fotografiaInfo1}](./src/resources/arara-azul.png)`;
-const fotografiaImg2 = `![${fotografiaInfo2}](./src/resources/araras-vermelhas.png)`;
-const fotografiaImg3 = `![${fotografiaInfo3}](./src/resources/passaro-preto.png)`;
-const fotografiaImg4 = `![${fotografiaInfo4}](./src/resources/rio-lagoa.png)`;
+const fotografiaImg1 = `![${fotografiaInfo1}](/resources/arara-azul.png)`;
+const fotografiaImg2 = `![${fotografiaInfo2}](/resources/araras-vermelhas.png)`;
+const fotografiaImg3 = `![${fotografiaInfo3}](/resources/passaro-preto.png)`;
+const fotografiaImg4 = `![${fotografiaInfo4}](/resources/rio-lagoa.png)`;
 
 const diyInfo1 = 'Cranio em estilo voronoy. Impresso em PLA';
 const diyInfo2 = 'Mesa de jantar com oito lugares';
 const diyInfo3 = 'Luminária inteligente';
-const diyImg1 = `![${diyInfo1}](./src/resources/voronai.png)`;
-const diyImg2 = `![${diyInfo2}](./src/resources/mesa.png)`;
-const diyImg3 = `![${diyInfo3}](./src/resources/luminaria.png)`;
+const diyImg1 = `![${diyInfo1}](/resources/voronai.png)`;
+const diyImg2 = `![${diyInfo2}](/resources/mesa.png)`;
+const diyImg3 = `![${diyInfo3}](/resources/luminaria.png)`;
 
 
 const hobbiesPtBr = `### Marcenaria
