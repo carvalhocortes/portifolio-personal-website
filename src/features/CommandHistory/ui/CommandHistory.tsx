@@ -1,5 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { Command } from "../../../entities/Command/model/types";
 import "./CommandHistory.css";
 
@@ -16,8 +17,11 @@ export const CommandHistory: React.FC<CommandHistoryProps> = ({ commands }) => {
             <span className="prompt">❯</span>
             <span>{cmd.text}</span>
           </div>
-          <ReactMarkdown>{cmd.output}</ReactMarkdown>
-          {/* <div className="output">{cmd.output}</div> */}
+          <div className="output">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {cmd.output}
+            </ReactMarkdown>
+          </div>
         </div>
       ))}
     </div>
