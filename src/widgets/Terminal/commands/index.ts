@@ -1,5 +1,4 @@
 import { about } from './about';
-import { clear } from './clear';
 import { hobbies } from './hobbies';
 import { volunteer } from './volunteer';
 import { welcome } from './welcome';
@@ -16,8 +15,8 @@ const commandsMap: Record<string, CommandFn> = {
   'sobre': about,
   'hobbies': hobbies,
   'trabalho-voluntario': volunteer,
-  // 'fale-comigo': emailMe,
-  'limpar': clear,
+  // 'fale-comigo': contact,
+  'limpar': () => 'limpando...',
   // 'mudar-idioma': language
 };
 
