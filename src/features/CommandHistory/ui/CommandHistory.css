@@ -14,8 +14,8 @@
 }
 
 .output table {
-  max-width: 100%;
-  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
   border-collapse: collapse;
 }
 
@@ -27,6 +27,8 @@
 
 .output img {
   max-width: 95%;
+  max-height: 350px;
+  height: 300px;
   border-radius: 1em;
 }
 
