@@ -1,0 +1,41 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  padding: var(--spacing-md);
+  cursor: text;
+  user-select: text;
+}
+
+.scrollAnchor {
+  height: var(--border-width-thin);
+  width: var(--border-width-thin);
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  .terminal {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .terminal {
+    padding: var(--spacing-xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal {
+    scroll-behavior: auto;
+  }
+}

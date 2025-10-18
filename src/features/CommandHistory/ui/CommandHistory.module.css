@@ -1,0 +1,244 @@
+.commandHistory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.commandItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.promptHistory {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  color: var(--color-text-accent);
+}
+
+.commandText {
+  color: var(--color-text-accent);
+  word-break: break-word;
+}
+
+.output {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-accent);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.output h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  color: inherit;
+}
+
+.output h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  color: inherit;
+}
+
+.output h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: inherit;
+}
+
+.output h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  color: inherit;
+}
+
+.output h5 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  color: inherit;
+}
+
+.output h6 {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+  color: inherit;
+}
+
+.output p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.output ul,
+.output ol {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding-left: 2.5em;
+}
+
+.output li {
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.output a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.output a:hover {
+  opacity: 0.8;
+}
+
+.output pre {
+  font-family: inherit;
+  margin: var(--spacing-md) 0;
+  padding: 0;
+  background: none;
+  white-space: pre-wrap;
+}
+
+.output code {
+  font-family: inherit;
+  background: none;
+  padding: 0;
+}
+
+.output blockquote {
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-md);
+  border-left: 3px solid var(--color-border);
+}
+
+.output hr {
+  margin: var(--spacing-md) 0;
+  border: none;
+  border-top: var(--border-width-thin) solid var(--color-border);
+}
+
+.output strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.output em {
+  font-style: italic;
+}
+
+.output img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  border-radius: var(--radius-xl);
+  margin: var(--spacing-sm) 0;
+  min-width: 80;
+  min-height: 80;
+  object-fit: contain;
+  display: block;
+}
+
+.output table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.output thead,
+.output tbody,
+.output tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.output th,
+.output td {
+  text-align: center;
+  padding: var(--spacing-sm);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.output th {
+  font-weight: var(--font-weight-bold);
+  color: inherit;
+  background: none;
+}
+
+.output tr:hover {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .output img {
+    width: auto;
+    max-width: 95%;
+    max-height: 400px;
+  }
+
+  .output table img {
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .output table {
+    max-width: 80%;
+    margin: 0 auto;
+    display: table;
+  }
+
+  .output thead,
+  .output tbody,
+  .output tr {
+    display: table-row-group;
+  }
+
+  .output tr {
+    display: table-row;
+  }
+
+  .output th,
+  .output td {
+    display: table-cell;
+  }
+}
+
+@media (min-width: 1024px) {
+  .output img {
+    max-width: 95%;
+    max-height: 500px;
+  }
+
+  .output table img {
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .output a {
+    transition: none;
+  }
+}
