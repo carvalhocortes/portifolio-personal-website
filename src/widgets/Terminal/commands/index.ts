@@ -5,20 +5,95 @@ import { welcome } from './welcome';
 
 type CommandFn = () => string;
 
-export const help = (): string => {
-  return `Comandos disponíveis: ${Object.keys(commandsMap).join(', ')}`;
-};
+interface Command {
+  classification: string;
+  AcceptedCommands: string[];
+  description: string;
+  fn: CommandFn;
+}
 
-const commandsMap: Record<string, CommandFn> = {
-  'ajuda': help,
-  'bem-vindo': welcome,
-  'sobre': about,
-  'hobbies': hobbies,
-  'trabalho-voluntario': volunteer,
-  // 'fale-comigo': contact,
-  'limpar': () => 'limpando...',
-  // 'mudar-idioma': language
-};
+const commands: Command[] = [
+  {
+    classification: 'Navegação e utilidades',
+    AcceptedCommands: ['bem-vindo', 'welcome', 'inicio', 'start'],
+    description: 'Mostra a mensagem de boas-vindas',
+    fn: welcome,
+  },
+  {
+    classification: 'Informações pessoais',
+    AcceptedCommands: ['sobre', 'about', 'info'],
+    description: 'Exibe informações sobre mim',
+    fn: about,
+  },
+  {
+    classification: 'Informações pessoais',
+    AcceptedCommands: ['hobbies', 'interesses', 'interests'],
+    description: 'Lista meus hobbies e interesses',
+    fn: hobbies,
+  },
+  {
+    classification: 'Informações pessoais',
+    AcceptedCommands: ['trabalho-voluntario', 'voluntario', 'volunteer', 'tv'],
+    description: 'Mostra meu trabalho voluntário',
+    fn: volunteer,
+  },
+  {
+    classification: 'Navegação e utilidades',
+    AcceptedCommands: ['ajuda', 'help', 'h'],
+    description: 'Mostra esta mensagem de ajuda',
+    fn: help,
+  },
+  {
+    classification: 'Navegação e utilidades',
+    AcceptedCommands: ['limpar', 'clear', 'cls'],
+    description: 'Limpa o terminal',
+    fn: () => 'limpando...',
+  },
+];
+
+export function help(): string {
+  const grouped = commands.reduce((acc, cmd) => {
+    if (!acc[cmd.classification]) {
+      acc[cmd.classification] = [];
+    }
+    acc[cmd.classification].push(cmd);
+    return acc;
+  }, {} as Record<string, Command[]>);
+
+  let output = 'Comandos disponíveis:\n\n';
+
+  Object.keys(grouped).sort().forEach(classification => {
+    output += `${classification}:\n`;
+    grouped[classification].forEach(cmd => {
+      output += `  - ${cmd.AcceptedCommands[0]},\n`;
+
+      for (let i = 1; i < cmd.AcceptedCommands.length - 1; i++) {
+        output += `    ${cmd.AcceptedCommands[i]},\n`;
+      }
+
+      if (cmd.AcceptedCommands.length > 1) {
+        output += `    ${cmd.AcceptedCommands[cmd.AcceptedCommands.length - 1]} - ${cmd.description}\n`;
+      } else {
+        output = output.slice(0, -2);
+        output += ` - ${cmd.description}\n`;
+      }
+    });
+    output += '\n';
+  });
+
+  output += 'Digite o nome do comando para executá-lo.';
+
+  return `\`\`\`\n${output}\n\`\`\``;
+}
+
+// Gerar commandsMap a partir de todos os AcceptedCommands
+const commandsMap: Record<string, CommandFn> = commands.reduce((acc, cmd) => {
+  cmd.AcceptedCommands.forEach(acceptedCmd => {
+    acc[acceptedCmd] = cmd.fn;
+  });
+
+  return acc;
+}, {} as Record<string, CommandFn>);
 
 export const executeCommand = (command: string): string => {
   const cmd = command.toLowerCase().trim();

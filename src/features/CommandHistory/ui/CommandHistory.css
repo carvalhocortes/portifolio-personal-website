@@ -1,14 +1,17 @@
 .prompt-history {
+  color: #98c379;
   display: flex;
 }
 
 .prompt-history .prompt {
-  color: #c678dd;
+  color: #c71616;
   margin-right: 0.5rem;
   font-weight: bold;
 }
 
 .output {
+  font-size: 1em;
+  line-height: 1.25em;
   color: #98c379;
 }
 
@@ -37,4 +40,12 @@
 
 .output a:hover {
   opacity: 0.8;
+}
+
+.output pre {
+  font-family: inherit;
+}
+
+.output code {
+  font-family: inherit;
 }
