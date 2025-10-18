@@ -1,21 +1,12 @@
 import { useEffect, useState } from 'react';
+import { BREAKPOINTS } from '../config/constants';
 
 export type ScreenSize = 'small' | 'medium' | 'large' | 'xlarge';
 
-/**
- * Breakpoints em consonância com as variáveis CSS
- * - CSS variables: --container-md: 768px, --container-lg: 1024px, --container-xl: 1280px
- */
-const BREAKPOINTS = {
-  medium: 768, // Tablets e acima
-  large: 1024, // Desktops e acima
-  xlarge: 1280, // Desktops grandes e acima
-} as const;
-
 const getScreenSize = (width: number): ScreenSize => {
-  if (width < BREAKPOINTS.medium) return 'small';
-  if (width < BREAKPOINTS.large) return 'medium';
-  if (width < BREAKPOINTS.xlarge) return 'large';
+  if (width < BREAKPOINTS.TABLET) return 'small';
+  if (width < BREAKPOINTS.DESKTOP) return 'medium';
+  if (width < BREAKPOINTS.WIDE) return 'large';
   return 'xlarge';
 };
 
