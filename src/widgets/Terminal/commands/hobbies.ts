@@ -2,7 +2,6 @@ export const hobbies = (): string => {
   return hobbiesPtBr;
 };
 
-
 const marcenariaInfo1 = 'Banco do hall do apartamento';
 const marcenariaInfo2 = 'Porta chaves e bolsas no hall do apartamento';
 const marcenariaInfo3 = 'Escrivaninha para duas pessoas';
@@ -25,7 +24,6 @@ const diyInfo3 = 'Luminária inteligente';
 const diyImg1 = `![${diyInfo1} ](./resources/voronai.png)`;
 const diyImg2 = `![${diyInfo2} ](./resources/mesa.png)`;
 const diyImg3 = `![${diyInfo3} ](./resources/luminaria.png)`;
-
 
 const hobbiesPtBr = `### Marcenaria
   Meu avô materno era incrivelmente habilidoso. Lembro dele consertando gavetas e criando brinquedos como carrinhos e casinhas de boneca. O cheiro da madeira e seu armário de ferramentas ainda são vívidos na minha memória.
@@ -56,4 +54,4 @@ const hobbiesPtBr = `### Marcenaria
 
   | ${diyInfo1} | ${diyInfo2} | ${diyInfo3} |
   | --- | --- | --- |
-  | ${diyImg1} | ${diyImg2} | ${diyImg3} |`
+  | ${diyImg1} | ${diyImg2} | ${diyImg3} |`;
