@@ -1,11 +1,11 @@
-export const contact = (): string => {
-  return contactInfo;
-};
+import i18n from '../../../shared/i18n';
 
-const contactInfo = `
-| Entre em contato comigo: |
+export const contact = (): string => {
+  return `
+| ${i18n.t('contact.title')} |
 |:---|
-| **Email:** [fernando@carvalhocortes.com.br](mailto:fernando@carvalhocortes.com.br) |
-| **LinkedIn:** [linkedin.com/in/carvalhocortes](https://www.linkedin.com/in/carvalhocortes/) |
-| **Instagram:** [@carvalhocortes](https://www.instagram.com/carvalhocortes/) |
+| **${i18n.t('contact.email')}** [fernando@carvalhocortes.com.br](mailto:fernando@carvalhocortes.com.br) |
+| **${i18n.t('contact.linkedin')}** [linkedin.com/in/carvalhocortes](https://www.linkedin.com/in/carvalhocortes/) |
+| **${i18n.t('contact.instagram')}** [@carvalhocortes](https://www.instagram.com/carvalhocortes/) |
 `;
+};

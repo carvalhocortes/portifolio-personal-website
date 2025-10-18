@@ -1,47 +1,18 @@
+import i18n from '../../../shared/i18n';
 import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 
 export const welcome = (screenSize: ScreenSize = 'xlarge'): string => {
+  const title = i18n.t('welcome.title');
+  const helpText = i18n.t('welcome.helpText');
+  
   switch (screenSize) {
     case 'small':
-      return welcomePtBrSm;
+      return `${title}\n\n"${helpText}"`;
     case 'medium':
-      return welcomePtBrMd;
+      return `## ${title}\n\n\`\`\`${i18n.t('welcome.ascii.medium')}\n\`\`\`\n\n"${helpText}"`;
     case 'large':
     case 'xlarge':
     default:
-      return welcomePtBr;
+      return `## ${title}\n\n\`\`\`${i18n.t('welcome.ascii.xlarge')}\n\`\`\`\n\n"${helpText}"`;
   }
 };
-
-const welcomePtBr = `
-  ## Bem vindo a minha pagina! \n
-  \n\`\`\`
-   █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
-  ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
-  ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
-  ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
-  ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀
-   ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█
-  \n\`\`\`
-
-  "Digite 'ajuda' para ver os comandos."`;
-
-const welcomePtBrMd = `
-  ## Bem vindo a minha pagina! \n
-  \n\`\`\`
-   █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
-  ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
-  ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
-  ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
-  ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝
-   ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝
-   █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀
-   █▄▄ █▄█ █▀▄  █  ██▄ ▄█
-  \n\`\`\`
-
-  "Digite 'ajuda' para ver os comandos."`;
-
-const welcomePtBrSm = `
-  Bem vindo a minha pagina! \n
-
-  "Digite 'ajuda' para ver os comandos."`;
