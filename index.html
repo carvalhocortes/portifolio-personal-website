@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Meta tags -->
@@ -16,12 +16,28 @@
 
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
 
+    <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font loading com display=swap para evitar FOIT -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <title>Carvalho Cortes - Bem Vindo!</title>
   </head>
