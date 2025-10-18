@@ -4,7 +4,7 @@ import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 export const welcome = (screenSize: ScreenSize = 'xlarge'): string => {
   const title = i18n.t('welcome.title');
   const helpText = i18n.t('welcome.helpText');
-  
+
   switch (screenSize) {
     case 'small':
       return `${title}\n\n"${helpText}"`;
