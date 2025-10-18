@@ -7,6 +7,7 @@ import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 import { about } from './about';
 import { contact } from './contact';
 import { hobbies } from './hobbies';
+import { language } from './language';
 import { volunteer } from './volunteer';
 import { welcome } from './welcome';
 
@@ -46,6 +47,12 @@ const COMMAND_DEFINITIONS: CommandDefinition[] = [
     acceptedCommands: ['ajuda', 'help', 'h'],
     description: 'Mostra esta mensagem de ajuda',
     fn: help,
+  },
+  {
+    classification: 'Navegação e utilidades',
+    acceptedCommands: ['idioma', 'language', 'lang'],
+    description: 'Alterna entre português e inglês',
+    fn: language,
   },
   {
     classification: 'Navegação e utilidades',
