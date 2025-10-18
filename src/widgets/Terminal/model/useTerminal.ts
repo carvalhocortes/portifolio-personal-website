@@ -1,17 +1,25 @@
 import { useState } from 'react';
 import type { Command } from '../../../entities/Command/model/types';
-import { executeCommand } from '../commands';
+import { executeCommand, getClearCommands, getWelcomeCommands } from '../commands';
 
 export const useTerminal = () => {
+  const welcomeCommands = getWelcomeCommands();
+  const clearCommands = getClearCommands();
+
   const [commands, setCommands] = useState<Command[]>([{
     id: 0,
-    text: 'bem-vindo',
-    output: executeCommand('bem-vindo'),
+    text: welcomeCommands[0],
+    output: executeCommand(welcomeCommands[0]),
   }]);
 
   const handleCommand = (text: string) => {
-    if (text.toLowerCase().trim() === 'limpar') {
-      setCommands([]);
+    const normalizedText = text.toLowerCase().trim();
+    if (clearCommands.includes(normalizedText)) {
+      setCommands([{
+        id: 0,
+        text: welcomeCommands[0],
+        output: executeCommand(welcomeCommands[0]),
+      }]);
     } else {
       const newCommand: Command = {
         id: commands.length + 1,

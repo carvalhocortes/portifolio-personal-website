@@ -86,7 +86,6 @@ export function help(): string {
   return `\`\`\`\n${output}\n\`\`\``;
 }
 
-// Gerar commandsMap a partir de todos os AcceptedCommands
 const commandsMap: Record<string, CommandFn> = commands.reduce((acc, cmd) => {
   cmd.AcceptedCommands.forEach(acceptedCmd => {
     acc[acceptedCmd] = cmd.fn;
@@ -99,5 +98,15 @@ export const executeCommand = (command: string): string => {
   const cmd = command.toLowerCase().trim();
   const fn = commandsMap[cmd];
   if (fn) return fn();
-  return `zsh: comando não encontrado: ${command}`;
+  return `Comando não encontrado: ${command}`;
+};
+
+export const getClearCommands = (): string[] => {
+  const clearCommand = commands.find(cmd => cmd.description.includes('Limpa o terminal'));
+  return clearCommand ? clearCommand.AcceptedCommands : [];
+};
+
+export const getWelcomeCommands = (): string[] => {
+  const welcomeCommand = commands.find(cmd => cmd.description.includes('boas-vindas'));
+  return welcomeCommand ? welcomeCommand.AcceptedCommands : [];
 };
