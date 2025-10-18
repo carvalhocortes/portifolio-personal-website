@@ -497,3 +497,5 @@ Engenheiro Eletricista | Desenvolvedor Full Stack | Entusiasta de Cloud Computin
 **"A engenharia me ensinou que posso construir qualquer coisa."**
 
 </div>
+
+### ⭐ Se este projeto foi útil para você, considere dar uma estrela!
