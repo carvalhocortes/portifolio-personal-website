@@ -8,6 +8,7 @@
 <img src="https://img.shields.io/badge/i18next-25.6.0-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="i18next" />
 <img src="https://img.shields.io/badge/Vitest-3.2.4-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
 <img src="https://img.shields.io/badge/Coverage-95%25-brightgreen?style=for-the-badge" alt="Coverage" />
+[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=d00000">](https://github.com/SamKirkland/FTP-Deploy-Action)
 
 **Um portfólio interativo inspirado em terminal Unix/Linux, construído com React e TypeScript**
 
