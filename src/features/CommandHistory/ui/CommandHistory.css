@@ -29,6 +29,7 @@
 
 .output img {
   max-width: 95%;
+  min-width: 150px;
   max-height: 300px;
   border-radius: 1em;
 }
