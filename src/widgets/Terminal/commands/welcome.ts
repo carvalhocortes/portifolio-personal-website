@@ -42,8 +42,6 @@ const welcomePtBrMd = `
   "Digite 'ajuda' para ver os comandos."`;
 
 const welcomePtBrSm = `
-  ## Bem vindo a minha pagina! \n
-
-  CARVALHO CORTES
+  Bem vindo a minha pagina! \n
 
   "Digite 'ajuda' para ver os comandos."`;
