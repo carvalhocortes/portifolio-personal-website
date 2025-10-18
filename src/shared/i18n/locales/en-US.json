@@ -1,0 +1,10 @@
+{
+  "translation": {
+    "terminal": {
+      "commandNotFound": "Command not found: {{command}}",
+      "clearing": "clearing...",
+      "helpHeader": "Available commands:",
+      "helpFooter": "Type the command name to execute it."
+    }
+  }
+}
