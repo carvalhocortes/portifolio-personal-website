@@ -1,6 +1,6 @@
 import i18n from '../../../shared/i18n';
 
-export const language = (args?: string): string => {
+export const language = (): string => {
   const currentLang = i18n.language;
 
   const newLang = currentLang === 'pt-BR' ? 'en-US' : 'pt-BR';
