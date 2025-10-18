@@ -25,14 +25,14 @@ const volunteerPtBr = `## Trabalho Voluntário
 ### [Ordem DeMolay](https://www.demolay.org.br/)
 
 |     |   |
-| --- | --- |
+| --- | :--- |
 | ${vImg1} | ${vText1} |
 
 
 ### [Fundação Telefonica VIVO](https://www.fundacaotelefonicavivo.org.br/)
 
-|     |   |   |
-| --- | --- | --- |
+|     |   |
+| --- | :--- |
 | ${vImg2_1} | ${vText2} |
 | ${vImg2_2} | |
 | ${vLabel2_2} |  |
@@ -40,7 +40,7 @@ const volunteerPtBr = `## Trabalho Voluntário
 ## [Minha Cena](https://www.instagram.com/projetominhacena/)
 
 |     |   |
-| --- | --- |
+| --- | :--- |
 | ${vImg3} | ${vText3} |
 `
 
