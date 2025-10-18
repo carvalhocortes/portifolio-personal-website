@@ -1,9 +1,0 @@
-.command-input-container {
-  display: flex;
-}
-
-.prompt {
-  color: #61afef;
-  margin-right: 0.5rem;
-  font-weight: bold;
-}
