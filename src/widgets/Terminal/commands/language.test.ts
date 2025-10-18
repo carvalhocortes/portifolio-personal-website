@@ -7,16 +7,13 @@ vi.mock('../../../shared/i18n', () => ({
   default: {
     changeLanguage: vi.fn(),
     language: 'pt-BR',
-    t: vi.fn((key: string, options?: { lang?: string }) => {
+    t: vi.fn((key: string, options?: { language?: string }) => {
       const translations: Record<string, string> = {
-        'language.current': 'Idioma atual: {{lang}}',
-        'language.changed': 'Idioma alterado para: {{lang}}',
-        'language.available': 'Idiomas disponíveis: pt-br, en-us',
-        'language.usage': 'Uso: language <pt-br|en-us>',
+        'language.changed': 'Idioma alterado para: {{language}}',
       };
       let text = translations[key] || key;
-      if (options?.lang) {
-        text = text.replace('{{lang}}', options.lang);
+      if (options?.language) {
+        text = text.replace('{{language}}', options.language);
       }
       return text;
     }),
@@ -28,52 +25,36 @@ describe('language command', () => {
     vi.clearAllMocks();
   });
 
-  it('should show current language when called without arguments', () => {
+  it('should switch from pt-BR to en-US', () => {
+    // Mock current language as pt-BR
+    vi.mocked(i18n).language = 'pt-BR';
+
     const result = language();
-    expect(result).toContain('Idioma atual:');
-    expect(result).toContain('Idiomas disponíveis:');
-  });
 
-  it('should change to pt-br when "pt-br" is provided', () => {
-    const result = language('pt-br');
-    expect(i18n.changeLanguage).toHaveBeenCalledWith('pt-br');
+    expect(i18n.changeLanguage).toHaveBeenCalledWith('en-US');
     expect(result).toContain('Idioma alterado para:');
+    expect(result).toContain('en-US');
   });
 
-  it('should change to en-us when "en-us" is provided', () => {
-    const result = language('en-us');
-    expect(i18n.changeLanguage).toHaveBeenCalledWith('en-us');
+  it('should switch from en-US to pt-BR', () => {
+    // Mock current language as en-US
+    vi.mocked(i18n).language = 'en-US';
+
+    const result = language();
+
+    expect(i18n.changeLanguage).toHaveBeenCalledWith('pt-BR');
     expect(result).toContain('Idioma alterado para:');
+    expect(result).toContain('pt-BR');
   });
 
-  it('should be case-insensitive for pt-br', () => {
-    const result = language('PT-BR');
-    expect(i18n.changeLanguage).toHaveBeenCalledWith('pt-br');
+  it('should default to pt-BR when current language is not recognized', () => {
+    // Mock current language as something else
+    vi.mocked(i18n).language = 'fr-FR';
+
+    const result = language();
+
+    expect(i18n.changeLanguage).toHaveBeenCalledWith('pt-BR');
     expect(result).toContain('Idioma alterado para:');
-  });
-
-  it('should be case-insensitive for en-us', () => {
-    const result = language('EN-US');
-    expect(i18n.changeLanguage).toHaveBeenCalledWith('en-us');
-    expect(result).toContain('Idioma alterado para:');
-  });
-
-  it('should show error message for invalid language', () => {
-    const result = language('fr');
-    expect(i18n.changeLanguage).not.toHaveBeenCalled();
-    expect(result).toContain('Idiomas disponíveis:');
-    expect(result).toContain('Uso:');
-  });
-
-  it('should show error message for empty string', () => {
-    const result = language('');
-    expect(result).toContain('Idioma atual:');
-    expect(result).toContain('Idiomas disponíveis:');
-  });
-
-  it('should handle multiple spaces', () => {
-    const result = language('   ');
-    expect(result).toContain('Idioma atual:');
-    expect(result).toContain('Idiomas disponíveis:');
+    expect(result).toContain('pt-BR');
   });
 });
