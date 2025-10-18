@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <!-- JAVASCRIPT -->
-  <script src="./jsis/typeWriter.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="./jsis/bootstrap.bundle.min.js"></script>
-  <script src="./jsis/asciiVideo.js"></script>
-
+<!doctype html>
+<html lang="en">
   <head>
     <!-- Meta tags -->
     <meta charset="utf-8" />
@@ -17,89 +11,38 @@
     />
     <meta
       name="description"
-      content="Olá, meu nome é Fernando e estou bem busca de uma oportunidade para trabalhar como programador. Aqui estou fazendo um pequeno portfólio."
+      content="Sou Fernando, programador desde 2022. Este é meu portfólio desenvolvido em React, onde compartilho meus projetos e experiências."
     />
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" type="text/css" href="cssis/bootstrap-grid.css" />
-    <link rel="stylesheet" type="text/css" href="cssis/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="cssis/fontis.css" />
-    <link rel="stylesheet" type="text/css" href="cssis/formatis.css" />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Preconnect para Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font loading com display=swap para evitar FOIT -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <title>Carvalho Cortes - Bem Vindo!</title>
   </head>
-
-  <body class="container div-100" style="overflow: hidden">
-    <div class="row div-100 justify-content-center">
-      <header class="align-self-start p-2">
-        <nav class="navbar navbar-expand-lg navbar-dark p-0">
-          <div class="container-fluid p-0 justify-content-end">
-            <button
-              class="navbar-toggler p0"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="col-12 navbar-nav justify-content-between">
-                <a class="p-2 link-primary" href="./cv-br.html"
-                  >Curriculum vit&aelig;</a
-                >
-                <a class="p-2 link-primary" href="./hobbies-br.html">Hobbies</a>
-                <a class="p-2 link-primary" href="./voluntario-br.html"
-                  >Trabalho Voluntário</a
-                >
-                <a class="p-2 link-primary" href="./fale-br.html"
-                  >Fale Comigo</a
-                >
-                <a class="p-2 link-primary" href="./index-en.html">EN-US</a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      <main class="row align-self-center" style="height: 75%">
-        <div class="row text-justify">
-          <div
-            class="col-md-12 col-lg-5 col-xl-6 col-xxl-7 pixeledis align-self-center"
-          >
-            <div class="container">
-              <h4>
-                <span
-                  class="txt-type"
-                  data-wait="3000"
-                  data-words='[
-								"Olá, ",
-								"me chamo Fernando Cortes e tenho 38 anos. Nasci e cresci em uma pequena cidade do interior de Minas Gerais e em 2003 mudei para São Paulo para fazer faculdade.",
-								"Me formei no Mackenzie em 2008 como Engenheiro Eletricista. Também sou pós-graduado em gerenciamento de projetos pela FGV-SP e certificado pelo SCRUM.ORG como SCRUM MASTER.",
-								"Por quase uma década trabalhei no ramo de telecomunicações o que me proporcionou uma sólida experiência em gerenciamento de equipes descentralizadas e interação com clientes (internos e externos). ",
-								"Atualmente, estou trabalhando em projetos de programação e me aprimorando em linguagens voltadas para soluções em Cloud.",
-								"Conheço diversas linguagens de programação, entre elas o C#, .NET, CSS, JAVA Script, Phyton, PHP entre outros e estou buscando oportunidades de trabalho nesta profissão que amo."]'
-                >
-                </span>
-              </h4>
-            </div>
-          </div>
-          <div class="col-lg-7 col-xl-6 col-xxl-5">
-            <div class="asciiVideo hiddenis font-monospace"></div>
-          </div>
-        </div>
-      </main>
-      <footer class="col-12 align-self-end">
-        <div class="container p-2">
-          <p class="text-sm-center f-branquim about">
-            Fonts made from
-            <a href="http://www.onlinewebfonts.com">onlinewebfonts.com</a> is
-            licensed by CC by 3.0 . This site use bootstrap 5.1. Licensed under
-            the MIT license and is copyright 2021 Twitter
-          </p>
-        </div>
-      </footer>
-    </div>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

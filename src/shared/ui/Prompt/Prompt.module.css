@@ -1,0 +1,21 @@
+.prompt {
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  user-select: none;
+  margin-right: var(--spacing-sm);
+}
+
+.current {
+  color: var(--color-prompt-current);
+}
+
+.history {
+  color: var(--color-prompt-history);
+}
+
+@media (prefers-contrast: high) {
+  .prompt {
+    font-weight: var(--font-weight-bold);
+    text-shadow: 0 0 1px currentColor;
+  }
+}

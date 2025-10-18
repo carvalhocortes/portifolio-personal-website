@@ -1,0 +1,127 @@
+{
+  "translation": {
+    "terminal": {
+      "commandNotFound": "Comando não encontrado: {{command}}",
+      "clearing": "limpando...",
+      "helpHeader": "Comandos disponíveis:",
+      "helpFooter": "Digite o nome do comando para executá-lo."
+    },
+    "welcome": {
+      "title": "Bem vindo a minha pagina!",
+      "helpText": "Digite 'ajuda' para ver os comandos.",
+      "ascii": {
+        "xlarge": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█",
+        "medium": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝\n  █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  █▄▄ █▄█ █▀▄  █  ██▄ ▄█"
+      }
+    },
+    "about": {
+      "greeting": "Olá,",
+      "intro": "meu nome é **Fernando Cortes**, tenho {{age}} anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.",
+      "education": "Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.",
+      "telecoms": "Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos.",
+      "career": "Em 2022, decidi redirecionar minha carreira para a área de desenvolvimento de software, onde encontrei minha verdadeira paixão. Desde então, atuei como desenvolvedor em empresas como Ewally (fintech), Hospital Israelita Albert Einstein e, atualmente, Banco XP.",
+      "skills": "Tenho experiência prática com Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, além de bancos de dados SQL e NoSQL e soluções de cache. Sou entusiasta de boas práticas de engenharia de software, aplicando princípios como SOLID, DRY, KISS, CQRS e Clean Code em todos os meus projetos.",
+      "goal": "Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida base técnica, mentalidade colaborativa e visão sistêmica para contribuir com times e produtos de alta performance.",
+      "contactTitle": "Contato:"
+    },
+    "contact": {
+      "title": "Entre em contato comigo:",
+      "email": "Email:",
+      "linkedin": "LinkedIn:",
+      "instagram": "Instagram:"
+    },
+    "hobbies": {
+      "woodworking": {
+        "title": "Marcenaria",
+        "intro": "Meu avô materno era incrivelmente habilidoso. Lembro dele consertando gavetas e criando brinquedos como carrinhos e casinhas de boneca. O cheiro da madeira e seu armário de ferramentas ainda são vívidos na minha memória.",
+        "mentor": "Outro mentor foi o Taboca, amigo marceneiro do meu pai. Juntos, criaram alguns dos brinquedos mais legais da minha infância.",
+        "projects": "Nas fotos abaixo, algumas peças que já construí: um banco para o hall de entrada feito com madeira recuperada dos batentes das portas na reforma do apartamento; um porta-chaves e bolsas também para a entrada; e uma escrivaninha de mais de 2 metros onde minha esposa e eu trabalhamos frente a frente.",
+        "bench": "Banco do hall do apartamento",
+        "keyholder": "Porta chaves e bolsas no hall do apartamento",
+        "desk": "Escrivaninha para duas pessoas"
+      },
+      "photography": {
+        "title": "Fotografia",
+        "intro": "Só se vive uma vez, certo? Adoro viajar e conhecer lugares, pessoas e culturas novas. Mas as lembranças se desvanecem com o tempo.",
+        "passion": "Comecei a fotografar incentivado por um colega de trabalho para participar de concursos fotográficos. O que era um hobby virou paixão. Hoje fotografo para guardar as memórias dos lugares incríveis que visitei.",
+        "macaw1": "Arara Azul - Nobres - MT",
+        "macaw2": "Casal de Araras Vermelhas - Belem - PA",
+        "bird": "Pássaro Preto - São Paulo - SP",
+        "lake": "Lagoa - Rio de Janeiro - RJ",
+        "funFact": "Curiosidade:",
+        "macawFact": "Você sabia que as araras formam casais para a vida toda? Quando uma morre, a outra permanece solitária até o fim.",
+        "learnMore": "Saiba mais aqui"
+      },
+      "diy": {
+        "title": "DIY e Impressão 3D",
+        "intro": "Muitas pessoas me perguntam por que gosto tanto de engenharia. A resposta é simples: ela me ensinou que posso construir qualquer coisa.",
+        "passion": "Minha cabeça fervilha de ideias. Estou sempre inventando algo — para casa ou só por diversão. Sou apaixonado por criar. Já fiz mesas, facas, luminárias, esculturas em 3D e arte com sucata. Também me divirto programando bots e criando filtros para fotos e vídeos. Coisa de maluco mesmo!",
+        "skull": "Cranio em estilo voronoy. Impressão 3D",
+        "table": "Mesa de jantar com oito lugares",
+        "lamp": "Luminária inteligente"
+      }
+    },
+    "volunteer": {
+      "title": "Trabalho Voluntário",
+      "demolay": {
+        "name": "Ordem DeMolay",
+        "description": "A Ordem DeMolay é um grupo de jovens apoiado pela maçonaria desde 1919, criado nos Estados Unidos com o objetivo de formar bons cidadãos que respeitam as leis e contribuem positivamente para a sociedade. Faço parte desde os 13 anos e lá tive a oportunidade de organizar e participar ativamente de campanhas de doação de alimentos e roupas, jantares beneficentes e distribuição de cestas básicas para famílias em situação de vulnerabilidade.",
+        "logoAlt": "Logo da Ordem DeMolay"
+      },
+      "vivo": {
+        "name": "Fundação Telefonica VIVO",
+        "description": "A Fundação Telefônica VIVO tem a educação como pilar de transformação social, contribuindo com o desenvolvimento e inclusão digital de estudantes e educadores. O \"Dia dos Voluntários\" é um projeto global que reúne colaboradores de todas as empresas do Grupo Telefônica para reformar sedes de instituições educacionais, enquanto outro time promove atividades de lazer com os beneficiados. Participei ativamente deste projeto entre 2008 e 2010, contribuindo com reformas e interação com jovens.",
+        "logoAlt": "Logo Fundação Telefônica Vivo"
+      },
+      "minhacena": {
+        "name": "Minha Cena",
+        "description": "O MinhaCena.Org é uma plataforma de impacto social e educacional que estimula a melhora na escrita e leitura através da produção de ilustrações personalizadas para redações de alunos de escolas públicas, privadas e ONGs. Trabalhei como voluntário no time de desenvolvimento back-end, ajudando a criar a plataforma online que conecta estudantes e ilustradores voluntários para transformar textos em arte.",
+        "logoAlt": "Logo Minha Cena Org"
+      }
+    },
+    "language": {
+      "changed": "Idioma alterado para: {{language}}",
+      "current": "Idioma atual: {{language}}",
+      "available": "Idiomas disponíveis: pt-BR, en-US",
+      "usage": "Use: idioma <pt-BR|en-US>"
+    },
+    "commands": {
+      "classifications": {
+        "navigation": "Navegação e utilidades",
+        "personal": "Informações pessoais"
+      },
+      "welcome": {
+        "aliases": ["start", "bem-vindo", "inicio"],
+        "description": "Mostra a mensagem de boas-vindas"
+      },
+      "about": {
+        "aliases": ["sobre", "info"],
+        "description": "Exibe informações sobre mim"
+      },
+      "hobbies": {
+        "aliases": ["hobbies", "interesses"],
+        "description": "Lista meus hobbies e interesses"
+      },
+      "volunteer": {
+        "aliases": ["trabalho-voluntario", "voluntario", "tv"],
+        "description": "Mostra meu trabalho voluntário"
+      },
+      "contact": {
+        "aliases": ["contato", "email"],
+        "description": "Exibe informações de contato"
+      },
+      "help": {
+        "aliases": ["ajuda", "help", "h"],
+        "description": "Mostra esta mensagem de ajuda"
+      },
+      "language": {
+        "aliases": ["idioma", "language", "lang"],
+        "description": "Alterna entre português e inglês / Switches between Portuguese and English"
+      },
+      "clear": {
+        "aliases": ["limpar", "cls"],
+        "description": "Limpa o terminal"
+      }
+    }
+  }
+}

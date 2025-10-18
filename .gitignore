@@ -8,7 +8,10 @@ node_modules/
 
 # Production
 /build
-/dist
+dist/
+**/dist/
+dist-ssr
+rev*/
 
 # Misc
 .DS_Store
@@ -19,11 +22,13 @@ node_modules/
 .env.production.local
 
 # Logs
+logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+*.log
 
 # Editor directories and files
 .vscode/*
@@ -56,3 +61,4 @@ Thumbs.db
 
 # GitHub Secrets & FTP Credentials
 .env.ghsecrets
+

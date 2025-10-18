@@ -1,0 +1,127 @@
+{
+  "translation": {
+    "terminal": {
+      "commandNotFound": "Command not found: {{command}}",
+      "clearing": "clearing...",
+      "helpHeader": "Available commands:",
+      "helpFooter": "Type the command name to execute it."
+    },
+    "welcome": {
+      "title": "Welcome to my page!",
+      "helpText": "Type 'help' to see the commands.",
+      "ascii": {
+        "xlarge": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█",
+        "medium": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝\n  █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  █▄▄ █▄█ █▀▄  █  ██▄ ▄█"
+      }
+    },
+    "about": {
+      "greeting": "Hello,",
+      "intro": "my name is **Fernando Cortes**, I'm {{age}} years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.",
+      "education": "I hold a postgraduate degree in Software Systems Architecture from FIAP and specializations in Clinical Engineering from Albert Einstein Institute of Higher Education and an MBA in Project Management from FGV-SP.",
+      "telecoms": "For nearly a decade, I worked in the telecommunications sector, gaining extensive experience in managing decentralized teams, coordinating projects, and building relationships with internal and external clients.",
+      "career": "In 2022, I decided to redirect my career to software development, where I found my true passion. Since then, I've worked as a developer at companies such as Ewally (fintech), Albert Einstein Israeli Hospital, and currently at XP Bank.",
+      "skills": "I have hands-on experience with Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, as well as SQL and NoSQL databases and caching solutions. I'm an enthusiast of software engineering best practices, applying principles such as SOLID, DRY, KISS, CQRS, and Clean Code in all my projects.",
+      "goal": "My goal is to continue evolving as a software engineer, combining a solid technical foundation, collaborative mindset, and systemic vision to contribute to high-performance teams and products.",
+      "contactTitle": "Contact:"
+    },
+    "contact": {
+      "title": "Get in touch with me:",
+      "email": "Email:",
+      "linkedin": "LinkedIn:",
+      "instagram": "Instagram:"
+    },
+    "hobbies": {
+      "woodworking": {
+        "title": "Woodworking",
+        "intro": "My maternal grandfather was incredibly skilled. I remember him fixing drawers and creating toys like little cars and dollhouses. The smell of wood and his tool cabinet are still vivid in my memory.",
+        "mentor": "Another mentor was Taboca, my father's carpenter friend. Together, they created some of the coolest toys of my childhood.",
+        "projects": "In the photos below, some pieces I've built: a bench for the entrance hall made from reclaimed wood from door frames during the apartment renovation; a key and bag holder also for the entrance; and a desk over 2 meters long where my wife and I work facing each other.",
+        "bench": "Apartment hall bench",
+        "keyholder": "Key and bag holder in the apartment hall",
+        "desk": "Desk for two people"
+      },
+      "photography": {
+        "title": "Photography",
+        "intro": "You only live once, right? I love traveling and discovering new places, people, and cultures. But memories fade over time.",
+        "passion": "I started photographing encouraged by a coworker to participate in photography contests. What was a hobby became a passion. Today I photograph to preserve memories of the incredible places I've visited.",
+        "macaw1": "Blue Macaw - Nobres - MT",
+        "macaw2": "Pair of Red Macaws - Belem - PA",
+        "bird": "Black Bird - São Paulo - SP",
+        "lake": "Lagoon - Rio de Janeiro - RJ",
+        "funFact": "Fun fact:",
+        "macawFact": "Did you know that macaws form lifelong pairs? When one dies, the other remains solitary until the end.",
+        "learnMore": "Learn more here"
+      },
+      "diy": {
+        "title": "DIY and 3D Printing",
+        "intro": "Many people ask me why I love engineering so much. The answer is simple: it taught me that I can build anything.",
+        "passion": "My mind is always buzzing with ideas. I'm constantly inventing something — for home or just for fun. I'm passionate about creating. I've made tables, knives, lamps, 3D sculptures, and art from scrap. I also enjoy programming bots and creating filters for photos and videos. Crazy stuff indeed!",
+        "skull": "Voronoi-style skull. 3D printing",
+        "table": "Dining table for eight",
+        "lamp": "Smart lamp"
+      }
+    },
+    "volunteer": {
+      "title": "Volunteer Work",
+      "demolay": {
+        "name": "DeMolay Order",
+        "description": "The DeMolay Order is a youth group supported by Freemasonry since 1919, created in the United States with the goal of forming good citizens who respect laws and contribute positively to society. I've been part of it since I was 13 and there I had the opportunity to organize and actively participate in food and clothing donation campaigns, charity dinners, and distribution of basic food baskets to families in vulnerable situations.",
+        "logoAlt": "DeMolay Order Logo"
+      },
+      "vivo": {
+        "name": "Telefonica VIVO Foundation",
+        "description": "The Telefônica VIVO Foundation has education as a pillar of social transformation, contributing to the development and digital inclusion of students and educators. The \"Volunteers Day\" is a global project that brings together employees from all Telefonica Group companies to renovate educational institution facilities, while another team promotes leisure activities with beneficiaries. I actively participated in this project between 2008 and 2010, contributing to renovations and interaction with young people.",
+        "logoAlt": "Telefonica VIVO Foundation Logo"
+      },
+      "minhacena": {
+        "name": "Minha Cena",
+        "description": "MinhaCena.Org is a social and educational impact platform that encourages improvement in writing and reading through the production of personalized illustrations for essays by students from public schools, private schools, and NGOs. I worked as a volunteer on the back-end development team, helping to create the online platform that connects students and volunteer illustrators to transform texts into art.",
+        "logoAlt": "Minha Cena Org Logo"
+      }
+    },
+    "language": {
+      "changed": "Language changed to: {{language}}",
+      "current": "Current language: {{language}}",
+      "available": "Available languages: pt-BR, en-US",
+      "usage": "Use: language <pt-BR|en-US>"
+    },
+    "commands": {
+      "classifications": {
+        "navigation": "Navigation and utilities",
+        "personal": "Personal information"
+      },
+      "welcome": {
+        "aliases": ["start", "welcome"],
+        "description": "Shows the welcome message"
+      },
+      "about": {
+        "aliases": ["about", "info"],
+        "description": "Displays information about me"
+      },
+      "hobbies": {
+        "aliases": ["hobbies", "interests"],
+        "description": "Lists my hobbies and interests"
+      },
+      "volunteer": {
+        "aliases": ["volunteer", "v"],
+        "description": "Shows my volunteer work"
+      },
+      "contact": {
+        "aliases": ["contact", "email"],
+        "description": "Displays contact information"
+      },
+      "help": {
+        "aliases": ["help", "h"],
+        "description": "Shows this help message"
+      },
+      "language": {
+        "aliases": ["language", "lang"],
+        "description": "Switches between Portuguese and English / Alterna entre português e inglês"
+      },
+      "clear": {
+        "aliases": ["clear", "cls"],
+        "description": "Clears the terminal"
+      }
+    }
+  }
+}

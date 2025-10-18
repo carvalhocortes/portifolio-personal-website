@@ -3,7 +3,8 @@ name: Deploy to FTP
 on:
   push:
     branches:
-      - main
+      - "**"
+      - "!main"
   workflow_dispatch: # Permite executar manualmente
 
 jobs:
@@ -20,14 +21,12 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: v2/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: ./v2
         run: npm ci
 
       - name: Build React project
-        working-directory: ./v2
         run: npm run build
 
       - name: Deploy to FTP
@@ -36,9 +35,9 @@ jobs:
           server: ${{ vars.FTP_SERVER }}
           username: ${{ vars.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
+          server-dir: ./newrev/
           local-dir: ./dist/
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
@@ -46,7 +45,6 @@ jobs:
             **/.github/**
             **/.vscode*
             **/.vscode*/**
-            v2/**
             **/node_modules/**
             setup-ftp-secrets.sh
             README.md

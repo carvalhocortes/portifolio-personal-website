@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+dist
+build
+
+# Generated files
+*.min.js
+*.min.css
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
