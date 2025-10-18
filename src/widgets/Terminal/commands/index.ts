@@ -63,8 +63,11 @@ export function help(): string {
   let output = 'Comandos disponíveis:\n\n';
 
   Object.keys(grouped).sort().forEach(classification => {
+
     output += `${classification}:\n`;
     grouped[classification].forEach(cmd => {
+      if (cmd.description === 'Mostra a mensagem de boas-vindas') return;
+
       output += `  - ${cmd.AcceptedCommands[0]},\n`;
 
       for (let i = 1; i < cmd.AcceptedCommands.length - 1; i++) {
