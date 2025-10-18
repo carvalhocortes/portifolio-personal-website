@@ -1,11 +1,13 @@
-import "./app/styles/global.css";
-import TerminalPage from "./pages/TerminalPage/ui/TerminalPage";
+import { lazy, Suspense } from 'react';
+import './app/styles/index.css';
+
+const TerminalPage = lazy(() => import('./pages/TerminalPage/ui/TerminalPage'));
 
 function App() {
   return (
-    <main>
+    <Suspense fallback={<div className="loading-screen">Loading...</div>}>
       <TerminalPage />
-    </main>
+    </Suspense>
   );
 }
 
