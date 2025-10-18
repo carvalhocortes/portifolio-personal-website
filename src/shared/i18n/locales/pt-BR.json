@@ -91,7 +91,7 @@
         "personal": "Informações pessoais"
       },
       "welcome": {
-        "aliases": ["bem-vindo", "inicio"],
+        "aliases": ["start", "bem-vindo", "inicio"],
         "description": "Mostra a mensagem de boas-vindas"
       },
       "about": {
