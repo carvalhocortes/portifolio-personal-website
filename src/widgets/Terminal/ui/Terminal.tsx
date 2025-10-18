@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { CommandHistory } from "../../../features/CommandHistory/ui/CommandHistory";
-import { CommandInput } from "../../../features/CommandInput/ui/CommandInput";
-import { useTerminal } from "../model/useTerminal";
-import "./Terminal.css";
+import React, { useEffect, useRef } from 'react';
+import { CommandHistory } from '../../../features/CommandHistory/ui/CommandHistory';
+import { CommandInput } from '../../../features/CommandInput/ui/CommandInput';
+import { useTerminal } from '../model/useTerminal';
+import styles from './Terminal.module.css';
 
 export const Terminal = () => {
   const { commands, handleCommand } = useTerminal();
@@ -11,8 +11,8 @@ export const Terminal = () => {
 
   const focusInput = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
-    if (target.tagName !== "INPUT") {
-      const input = e.currentTarget.querySelector("input");
+    if (target.tagName !== 'INPUT') {
+      const input = e.currentTarget.querySelector('input');
       if (input) {
         input.focus();
       }
@@ -25,7 +25,7 @@ export const Terminal = () => {
     requestAnimationFrame(() => {
       if (lastCommandRef.current) {
         const commandElement = lastCommandRef.current;
-        const terminalWidget = commandElement.closest(".terminal-widget");
+        const terminalWidget = commandElement.closest(`.${styles.terminal}`);
 
         if (terminalWidget) {
           const commandHeight = commandElement.offsetHeight;
@@ -33,11 +33,11 @@ export const Terminal = () => {
 
           if (commandHeight > viewportHeight) {
             commandElement.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
+              behavior: 'smooth',
+              block: 'start',
             });
           } else {
-            terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
+            terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
           }
         }
       }
@@ -45,10 +45,21 @@ export const Terminal = () => {
   }, [commands]);
 
   return (
-    <div className="terminal-widget" onClick={focusInput}>
-      <CommandHistory commands={commands} lastCommandRef={lastCommandRef} />
+    <main
+      className={styles.terminal}
+      onClick={focusInput}
+      role="application"
+      aria-label="Interactive terminal interface"
+    >
+      <section aria-label="Command history output">
+        <CommandHistory commands={commands} lastCommandRef={lastCommandRef} />
+      </section>
       <CommandInput onEnter={handleCommand} />
-      <div ref={terminalEndRef} />
-    </div>
+      <div
+        ref={terminalEndRef}
+        className={styles.scrollAnchor}
+        aria-hidden="true"
+      />
+    </main>
   );
 };
