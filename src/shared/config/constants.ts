@@ -1,3 +1,5 @@
+import i18n from '../i18n';
+
 export const TERMINAL_COLORS = {
   PROMPT_CURRENT: '#61afef',
   PROMPT_HISTORY: '#c71616',
@@ -20,8 +22,9 @@ export const BREAKPOINTS = {
 } as const;
 
 export const TERMINAL_MESSAGES = {
-  COMMAND_NOT_FOUND: (command: string) => `Comando não encontrado: ${command}`,
-  CLEARING: 'limpando...',
-  HELP_HEADER: 'Comandos disponíveis:',
-  HELP_FOOTER: 'Digite o nome do comando para executá-lo.',
-} as const;
+  COMMAND_NOT_FOUND: (command: string) =>
+    i18n.t('terminal.commandNotFound', { command }),
+  CLEARING: () => i18n.t('terminal.clearing'),
+  HELP_HEADER: () => i18n.t('terminal.helpHeader'),
+  HELP_FOOTER: () => i18n.t('terminal.helpFooter'),
+};

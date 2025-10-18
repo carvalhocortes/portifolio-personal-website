@@ -51,7 +51,7 @@ const COMMAND_DEFINITIONS: CommandDefinition[] = [
     classification: 'Navegação e utilidades',
     acceptedCommands: ['limpar', 'clear', 'cls'],
     description: 'Limpa o terminal',
-    fn: () => TERMINAL_MESSAGES.CLEARING,
+    fn: () => TERMINAL_MESSAGES.CLEARING(),
   },
 ];
 
@@ -67,7 +67,7 @@ export function help(): string {
     {} as Record<string, CommandDefinition[]>
   );
 
-  let output = `${TERMINAL_MESSAGES.HELP_HEADER}\n\n`;
+  let output = `${TERMINAL_MESSAGES.HELP_HEADER()}\n\n`;
 
   Object.keys(groupedCommands)
     .sort()
@@ -91,7 +91,7 @@ export function help(): string {
       output += '\n';
     });
 
-  output += TERMINAL_MESSAGES.HELP_FOOTER;
+  output += TERMINAL_MESSAGES.HELP_FOOTER();
 
   return `\`\`\`\n${output}\n\`\`\``;
 }
