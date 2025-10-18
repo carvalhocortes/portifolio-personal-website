@@ -6,13 +6,20 @@ import "./CommandHistory.css";
 
 interface CommandHistoryProps {
   commands: Command[];
+  lastCommandRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export const CommandHistory: React.FC<CommandHistoryProps> = ({ commands }) => {
+export const CommandHistory: React.FC<CommandHistoryProps> = ({
+  commands,
+  lastCommandRef,
+}) => {
   return (
     <div className="command-history">
-      {commands.map((cmd) => (
-        <div key={cmd.id}>
+      {commands.map((cmd, index) => (
+        <div
+          key={cmd.id}
+          ref={index === commands.length - 1 ? lastCommandRef : null}
+        >
           <div className="prompt-history">
             <span className="prompt">❯</span>
             <span>{cmd.text}</span>
