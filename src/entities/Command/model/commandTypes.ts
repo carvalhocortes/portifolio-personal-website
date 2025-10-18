@@ -13,6 +13,7 @@ export interface CommandDefinition {
   acceptedCommands: string[];
   description: string;
   fn: CommandFn;
+  shouldShowInHelp?: boolean;
 }
 
 export type CommandsMap = Record<string, CommandFn>;

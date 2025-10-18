@@ -3,6 +3,7 @@ import type {
   CommandsMap,
 } from '../../../entities/Command/model/commandTypes';
 import { TERMINAL_MESSAGES } from '../../../shared/config/constants';
+import i18n from '../../../shared/i18n';
 import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 import { about } from './about';
 import { contact } from './contact';
@@ -11,60 +12,64 @@ import { language } from './language';
 import { volunteer } from './volunteer';
 import { welcome } from './welcome';
 
-const COMMAND_DEFINITIONS: CommandDefinition[] = [
+const getCommandDefinitions = (): CommandDefinition[] => [
   {
-    classification: 'Navegação e utilidades',
-    acceptedCommands: ['bem-vindo', 'welcome', 'inicio', 'start'],
-    description: 'Mostra a mensagem de boas-vindas',
+    classification: i18n.t('commands.classifications.navigation'),
+    acceptedCommands: i18n.t('commands.welcome.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.welcome.description'),
     fn: welcome,
+    shouldShowInHelp: false,
   },
   {
-    classification: 'Informações pessoais',
-    acceptedCommands: ['sobre', 'about', 'info'],
-    description: 'Exibe informações sobre mim',
+    classification: i18n.t('commands.classifications.personal'),
+    acceptedCommands: i18n.t('commands.about.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.about.description'),
     fn: about,
   },
   {
-    classification: 'Informações pessoais',
-    acceptedCommands: ['hobbies', 'interesses', 'interests'],
-    description: 'Lista meus hobbies e interesses',
+    classification: i18n.t('commands.classifications.personal'),
+    acceptedCommands: i18n.t('commands.hobbies.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.hobbies.description'),
     fn: hobbies,
   },
   {
-    classification: 'Informações pessoais',
-    acceptedCommands: ['trabalho-voluntario', 'voluntario', 'volunteer', 'tv'],
-    description: 'Mostra meu trabalho voluntário',
+    classification: i18n.t('commands.classifications.personal'),
+    acceptedCommands: i18n.t('commands.volunteer.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.volunteer.description'),
     fn: volunteer,
   },
   {
-    classification: 'Informações pessoais',
-    acceptedCommands: ['contato', 'contact', 'email'],
-    description: 'Exibe informações de contato',
+    classification: i18n.t('commands.classifications.personal'),
+    acceptedCommands: i18n.t('commands.contact.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.contact.description'),
     fn: contact,
   },
   {
-    classification: 'Navegação e utilidades',
-    acceptedCommands: ['ajuda', 'help', 'h'],
-    description: 'Mostra esta mensagem de ajuda',
+    classification: i18n.t('commands.classifications.navigation'),
+    acceptedCommands: i18n.t('commands.help.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.help.description'),
     fn: help,
   },
   {
-    classification: 'Navegação e utilidades',
-    acceptedCommands: ['idioma', 'language', 'lang'],
-    description: 'Alterna entre português e inglês',
+    classification: i18n.t('commands.classifications.navigation'),
+    acceptedCommands: i18n.t('commands.language.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.language.description'),
     fn: language,
   },
   {
-    classification: 'Navegação e utilidades',
-    acceptedCommands: ['limpar', 'clear', 'cls'],
-    description: 'Limpa o terminal',
+    classification: i18n.t('commands.classifications.navigation'),
+    acceptedCommands: i18n.t('commands.clear.aliases', { returnObjects: true }) as string[],
+    description: i18n.t('commands.clear.description'),
     fn: () => TERMINAL_MESSAGES.CLEARING(),
   },
 ];
 
 export function help(): string {
+  const COMMAND_DEFINITIONS = getCommandDefinitions();
   const groupedCommands = COMMAND_DEFINITIONS.reduce(
     (acc, cmd) => {
+      if (cmd.shouldShowInHelp === false) return acc;
+      
       if (!acc[cmd.classification]) {
         acc[cmd.classification] = [];
       }
@@ -81,8 +86,6 @@ export function help(): string {
     .forEach((classification) => {
       output += `${classification}:\n`;
       groupedCommands[classification].forEach((cmd) => {
-        if (cmd.description === 'Mostra a mensagem de boas-vindas') return;
-
         output += `  - ${cmd.acceptedCommands[0]}`;
 
         for (let i = 1; i < cmd.acceptedCommands.length - 1; i++) {
@@ -103,18 +106,22 @@ export function help(): string {
   return `\`\`\`\n${output}\n\`\`\``;
 }
 
-const commandsMap: CommandsMap = COMMAND_DEFINITIONS.reduce((acc, cmd) => {
-  cmd.acceptedCommands.forEach((acceptedCmd) => {
-    acc[acceptedCmd] = cmd.fn;
-  });
-  return acc;
-}, {} as CommandsMap);
+const getCommandsMap = (): CommandsMap => {
+  const COMMAND_DEFINITIONS = getCommandDefinitions();
+  return COMMAND_DEFINITIONS.reduce((acc, cmd) => {
+    cmd.acceptedCommands.forEach((acceptedCmd) => {
+      acc[acceptedCmd] = cmd.fn;
+    });
+    return acc;
+  }, {} as CommandsMap);
+};
 
 export const executeCommand = (
   command: string,
   screenSize?: ScreenSize
 ): string => {
   const normalizedCommand = command.toLowerCase().trim();
+  const commandsMap = getCommandsMap();
   const commandFn = commandsMap[normalizedCommand];
 
   if (commandFn) {
@@ -125,15 +132,17 @@ export const executeCommand = (
 };
 
 export const getClearCommands = (): string[] => {
+  const COMMAND_DEFINITIONS = getCommandDefinitions();
   const clearCommand = COMMAND_DEFINITIONS.find((cmd) =>
-    cmd.description.includes('Limpa o terminal')
+    cmd.acceptedCommands.includes('clear') || cmd.acceptedCommands.includes('limpar')
   );
   return clearCommand ? clearCommand.acceptedCommands : [];
 };
 
 export const getWelcomeCommands = (): string[] => {
+  const COMMAND_DEFINITIONS = getCommandDefinitions();
   const welcomeCommand = COMMAND_DEFINITIONS.find((cmd) =>
-    cmd.description.includes('boas-vindas')
+    cmd.acceptedCommands.includes('welcome') || cmd.acceptedCommands.includes('bem-vindo')
   );
   return welcomeCommand ? welcomeCommand.acceptedCommands : [];
 };

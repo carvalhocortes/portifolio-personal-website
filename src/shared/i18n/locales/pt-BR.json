@@ -84,6 +84,44 @@
       "current": "Idioma atual: {{language}}",
       "available": "Idiomas disponíveis: pt-BR, en-US",
       "usage": "Use: idioma <pt-BR|en-US>"
+    },
+    "commands": {
+      "classifications": {
+        "navigation": "Navegação e utilidades",
+        "personal": "Informações pessoais"
+      },
+      "welcome": {
+        "aliases": ["bem-vindo", "welcome", "inicio", "start"],
+        "description": "Mostra a mensagem de boas-vindas"
+      },
+      "about": {
+        "aliases": ["sobre", "about", "info"],
+        "description": "Exibe informações sobre mim"
+      },
+      "hobbies": {
+        "aliases": ["hobbies", "interesses", "interests"],
+        "description": "Lista meus hobbies e interesses"
+      },
+      "volunteer": {
+        "aliases": ["trabalho-voluntario", "voluntario", "volunteer", "tv"],
+        "description": "Mostra meu trabalho voluntário"
+      },
+      "contact": {
+        "aliases": ["contato", "contact", "email"],
+        "description": "Exibe informações de contato"
+      },
+      "help": {
+        "aliases": ["ajuda", "help", "h"],
+        "description": "Mostra esta mensagem de ajuda"
+      },
+      "language": {
+        "aliases": ["idioma", "language", "lang"],
+        "description": "Alterna entre português e inglês"
+      },
+      "clear": {
+        "aliases": ["limpar", "clear", "cls"],
+        "description": "Limpa o terminal"
+      }
     }
   }
 }

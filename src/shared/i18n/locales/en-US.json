@@ -84,6 +84,44 @@
       "current": "Current language: {{language}}",
       "available": "Available languages: pt-BR, en-US",
       "usage": "Use: language <pt-BR|en-US>"
+    },
+    "commands": {
+      "classifications": {
+        "navigation": "Navigation and utilities",
+        "personal": "Personal information"
+      },
+      "welcome": {
+        "aliases": ["bem-vindo", "welcome", "inicio", "start"],
+        "description": "Shows the welcome message"
+      },
+      "about": {
+        "aliases": ["sobre", "about", "info"],
+        "description": "Displays information about me"
+      },
+      "hobbies": {
+        "aliases": ["hobbies", "interesses", "interests"],
+        "description": "Lists my hobbies and interests"
+      },
+      "volunteer": {
+        "aliases": ["trabalho-voluntario", "voluntario", "volunteer", "tv"],
+        "description": "Shows my volunteer work"
+      },
+      "contact": {
+        "aliases": ["contato", "contact", "email"],
+        "description": "Displays contact information"
+      },
+      "help": {
+        "aliases": ["ajuda", "help", "h"],
+        "description": "Shows this help message"
+      },
+      "language": {
+        "aliases": ["idioma", "language", "lang"],
+        "description": "Switches between Portuguese and English"
+      },
+      "clear": {
+        "aliases": ["limpar", "clear", "cls"],
+        "description": "Clears the terminal"
+      }
     }
   }
 }
