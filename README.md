@@ -1,16 +1,3 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
 <div align="center">
 
 # 💻 Terminal Portfolio - Fernando Cortes
@@ -24,7 +11,7 @@ If you are developing a production application, we recommend updating the config
 
 **Um portfólio interativo inspirado em terminal Unix/Linux, construído com React e TypeScript**
 
-[📱 Demo ao Vivo](#) • [🐛 Reportar Bug](https://github.com/carvalhocortes/portifolio-personal-website/issues) • [✨ Solicitar Feature](https://github.com/carvalhocortes/portifolio-personal-website/issues)
+[🐛 Reportar Bug / ✨ Solicitar Feature](https://github.com/carvalhocortes/portifolio-personal-website/issues)
 
 </div>
 
@@ -89,46 +76,6 @@ Este é um **portfólio pessoal interativo** que simula um terminal de linha de 
 - ✅ Testes unitários com >95% de cobertura
 - ✅ CI/CD com GitHub Actions
 - ✅ Deploy automatizado via FTP
-
----
-
-## 🎬 Demonstração
-
-### Interface Principal
-
-```bash
-█████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
-██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
-██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
-██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
-╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝
- ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝
-
-Bem vindo a minha página!
-Digite 'ajuda' para ver os comandos.
-
-guest@fernando-cortes:~$
-```
-
-### Exemplo de Uso
-
-```bash
-guest@fernando-cortes:~$ ajuda
-Comandos disponíveis:
-
-Informações pessoais:
-  - sobre, info - Exibe informações sobre mim
-  - hobbies, interesses - Lista meus hobbies e interesses
-  - trabalho-voluntario, voluntario, tv - Mostra meu trabalho voluntário
-  - contato, email - Exibe informações de contato
-
-Navegação e utilidades:
-  - ajuda, help, h - Mostra esta mensagem de ajuda
-  - idioma, language, lang - Alterna entre português e inglês
-  - limpar, cls - Limpa o terminal
-
-Digite o nome do comando para executá-lo.
-```
 
 ---
 
@@ -241,34 +188,10 @@ A aplicação estará disponível em `http://localhost:5173`
 2. Você verá uma tela de boas-vindas com o logo ASCII
 3. Digite `ajuda` ou `help` para ver todos os comandos disponíveis
 
-### Navegação por Comandos
-
-```bash
-# Ver informações sobre mim
-guest@fernando-cortes:~$ sobre
-
-# Listar hobbies
-guest@fernando-cortes:~$ hobbies
-
-# Ver trabalhos voluntários
-guest@fernando-cortes:~$ voluntario
-
-# Exibir informações de contato
-guest@fernando-cortes:~$ contato
-
-# Alternar idioma
-guest@fernando-cortes:~$ idioma
-
-# Limpar terminal
-guest@fernando-cortes:~$ limpar
-```
-
 ### Atalhos de Teclado
 
 - `↑` / `↓` - Navegar pelo histórico de comandos
-- `Tab` - Auto-completar comando (em desenvolvimento)
 - `Enter` - Executar comando
-- `Ctrl + L` - Limpar terminal (em desenvolvimento)
 
 ---
 
@@ -574,62 +497,3 @@ Engenheiro Eletricista | Desenvolvedor Full Stack | Entusiasta de Cloud Computin
 **"A engenharia me ensinou que posso construir qualquer coisa."**
 
 </div>
-
-### Sobre Mim
-
-Sou **Engenheiro Eletricista** formado pela Universidade Presbiteriana Mackenzie, com pós-graduação em Arquitetura de Sistemas de Software pela FIAP e MBA em Gerenciamento de Projetos pela FGV-SP.
-
-Atuei por quase uma década no setor de telecomunicações e, em 2022, redirecionei minha carreira para desenvolvimento de software, onde encontrei minha verdadeira paixão. Atualmente trabalho como desenvolvedor no **Banco XP**.
-
-**Stack principal**: Node.js, .NET, React.js, AWS, Azure, TypeScript, SQL/NoSQL
-
----
-
-## 🙏 Agradecimentos
-
-- **[Vite](https://vite.dev/)** - Pela ferramenta de build incrível
-- **[React](https://react.dev/)** - Pela biblioteca que revolucionou o desenvolvimento web
-- **[i18next](https://www.i18next.com/)** - Pelo framework de internacionalização robusto
-- **[Vitest](https://vitest.dev/)** - Pelo framework de testes rápido e moderno
-- **[TypeScript](https://www.typescriptlang.org/)** - Por tornar JavaScript mais seguro e produtivo
-- **Comunidade Open Source** - Por todas as ferramentas e conhecimento compartilhados
-
-### Inspirações
-
-Este projeto foi inspirado por:
-
-- Interfaces de terminal clássicas Unix/Linux
-- Portfolios interativos modernos
-- Comunidade de desenvolvedores no GitHub
-
----
-
-<div align="center">
-
-### ⭐ Se este projeto foi útil para você, considere dar uma estrela!
-
-**Feito com ❤️ por [Fernando Cortes](https://github.com/carvalhocortes)**
-
-</div>
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
