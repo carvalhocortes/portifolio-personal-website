@@ -17,10 +17,64 @@ const myAge = (() => {
   return age;
 })();
 
-const aboutPtBr = `## Olá,
-meu nome é **Fernando Cortes**, tenho ${myAge} anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
-Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.
-Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos.
-Em 2022, decidi redirecionar minha carreira para a área de desenvolvimento de software, onde encontrei minha verdadeira paixão. Desde então, atuei como desenvolvedor em empresas como Ewally (fintech), Hospital Israelita Albert Einstein e, atualmente, Banco XP.
-Tenho experiência prática com Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, além de bancos de dados SQL e NoSQL e soluções de cache. Sou entusiasta de boas práticas de engenharia de software, aplicando princípios como SOLID, DRY, KISS, CQRS e Clean Code em todos os meus projetos.
-Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida base técnica, mentalidade colaborativa e visão sistêmica para contribuir com times e produtos de alta performance.`;
+const aboutPtBr = `
+| Olá, |
+|:---|
+| meu nome é ** Fernando Cortes **, tenho ${myAge} anos e sou natural do interior de Minas Gerais.Em 2003, mudei - me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008. |
+| Sou pós - graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV - SP. |
+| Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos. |
+| Em 2022, decidi redirecionar minha carreira para a área de desenvolvimento de software, onde encontrei minha verdadeira paixão.Desde então, atuei como desenvolvedor em empresas como Ewally(fintech), Hospital Israelita Albert Einstein e, atualmente, Banco XP. |
+| Tenho experiência prática com Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, além de bancos de dados SQL e NoSQL e soluções de cache.Sou entusiasta de boas práticas de engenharia de software, aplicando princípios como SOLID, DRY, KISS, CQRS e Clean Code em todos os meus projetos. |
+| Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida base técnica, mentalidade colaborativa e visão sistêmica para contribuir com times e produtos de alta performance. |
+ `;
+
+const ascIIArt = `
+
+                              :::
+i |= +%%%%% +++ i
+                       |=|=% O#OOOOOO#O %=
+                     :|==|% #OOO####@@@@#Oi
+                    |+=+=+% ++====% O#@@@@@#-
+                   |%%| ii | ii------i|=+% O#@#i
+i +=:::::::::::::: --i||==OO
+  =|.........::::::: --i ||||%|
+                 :|..............::: --ii |||=O
+i -...........::::::: --ii |||%|
+  i -...........:::::: --- ii||=% +
+    -:...........:::::: --- i |||=% +
+                 ::......:.:..:::::: -i - i||==++.
+                 :...:|=+++| -:.:.-i=%% ++=|==++.
+                 ...i || iiii -:..:: i |== +O## %==% +.
+                 : .:....--:...:||:::: -i=%+=% +.
+                 - ...i |% @| i:..-=+|| +@OO ===| ++
+                 -.  ::: i | ii:.:-=+=|=O =%%| i|=O
+  .i...:...:::...i ==| i--ii || i|=O |
+                .-.....:.......-|==i--: --i||=%%
+                .:......::..:..: i += i -::: -i ||| +%
+                 :......:::... : i |=|:::: -i|=|%=
+                .:.......::.=+.-#=i =:..: -i|==O =
+                .:.......:::::.i =+=| -..: -i === O=
+                .i......:.:: i ||=% #O +| i:: -|==+% -
+                :i......: -| +#OO %#@@@#O=: -|==%%
+                :|.....-=%% +O +|| i %##@@@=-|=+OO.
+                 =-....+% i:: ----|=++%=# + i=+% #i
+                 =-:::.| +:.:::: i -|=+| i %| +OOO@:
+                 =i - ii: -|.:...:: -ii |||==O###@.
+                 == i=iii |....: i ==| ii|=+O@@@@O
+i +===|=| -...: i =| iii | +O@@@@@#
+                 : O % ++++=i:..:::: -||%##@@@@i
+                  O#O % OO+=i -:::::-=+##@@@@
+                  +#@### ===|| -i-- | +#@#@@@+
+  i#@@@#=%% OO %% ++#@@@#@@@O:
+                   % @@@# %%#@@@@@@@@@@@@@@@O @
+                   =##@#%%#@@@@@@@@@@@@@O+@@=
+                  % -.|%% O % @@@@@@@@@@@O+=@@=:
+@=   .i +#@@@@@@@@@@#O%==+@@+ O
+  %#.- i+=+###O +||| ii |% @@%% i
+                 : +%|        .: -| iiiii--i |% @@@%
+                 =| +|=.       ..: ---:: --i | O@% @+ -
+              |# -%:% +|%:       ..:..:: -i - +@@++OO# -
+  i=i-- == i +-=% -.      ....: ---| O@% @@@@+ @#O@% +
+          =| +@-:%:%: ++: +Oi:........: ---.+ @# + @% @O=@O+@#@+ O:
+       =-+% i# %= -+i++.%=: +#=|| ii -..: --i:|#@=@@% @== @O + @| @@+#=|."
+  `;
