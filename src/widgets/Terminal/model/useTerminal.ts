@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import type { Command } from '../../../entities/Command/model/types';
+import { useScreenSize } from '../../../shared/lib/useScreenSize';
 import {
   executeCommand,
   getClearCommands,
@@ -10,13 +11,18 @@ const INITIAL_COMMAND_ID = 0;
 const WELCOME_COMMANDS = getWelcomeCommands();
 const CLEAR_COMMANDS = getClearCommands();
 
-const createWelcomeCommand = (): Command => ({
-  id: INITIAL_COMMAND_ID,
-  text: WELCOME_COMMANDS[0],
-  output: executeCommand(WELCOME_COMMANDS[0]),
-});
-
 export const useTerminal = () => {
+  const screenSize = useScreenSize();
+
+  const createWelcomeCommand = useCallback(
+    (): Command => ({
+      id: INITIAL_COMMAND_ID,
+      text: WELCOME_COMMANDS[0],
+      output: executeCommand(WELCOME_COMMANDS[0], screenSize),
+    }),
+    [screenSize]
+  );
+
   const [commands, setCommands] = useState<Command[]>([createWelcomeCommand()]);
 
   const handleCommand = useCallback(
@@ -31,12 +37,12 @@ export const useTerminal = () => {
       const newCommand: Command = {
         id: commands.length,
         text,
-        output: executeCommand(text),
+        output: executeCommand(text, screenSize),
       };
 
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     },
-    [commands.length]
+    [commands.length, screenSize, createWelcomeCommand]
   );
 
   return { commands, handleCommand };

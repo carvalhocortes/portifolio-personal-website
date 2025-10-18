@@ -3,6 +3,7 @@ import type {
   CommandsMap,
 } from '../../../entities/Command/model/commandTypes';
 import { TERMINAL_MESSAGES } from '../../../shared/config/constants';
+import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 import { about } from './about';
 import { hobbies } from './hobbies';
 import { volunteer } from './volunteer';
@@ -95,12 +96,15 @@ const commandsMap: CommandsMap = COMMAND_DEFINITIONS.reduce((acc, cmd) => {
   return acc;
 }, {} as CommandsMap);
 
-export const executeCommand = (command: string): string => {
+export const executeCommand = (
+  command: string,
+  screenSize?: ScreenSize
+): string => {
   const normalizedCommand = command.toLowerCase().trim();
   const commandFn = commandsMap[normalizedCommand];
 
   if (commandFn) {
-    return commandFn();
+    return commandFn(screenSize);
   }
 
   return TERMINAL_MESSAGES.COMMAND_NOT_FOUND(command);

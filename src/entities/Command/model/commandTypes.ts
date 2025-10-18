@@ -1,10 +1,12 @@
+import type { ScreenSize } from '../../../shared/lib/useScreenSize';
+
 export interface Command {
   id: number;
   text: string;
   output: string;
 }
 
-export type CommandFn = () => string;
+export type CommandFn = (screenSize?: ScreenSize) => string;
 
 export interface CommandDefinition {
   classification: string;
