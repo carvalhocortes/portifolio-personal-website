@@ -69,7 +69,7 @@ export function help(): string {
   const groupedCommands = COMMAND_DEFINITIONS.reduce(
     (acc, cmd) => {
       if (cmd.shouldShowInHelp === false) return acc;
-      
+
       if (!acc[cmd.classification]) {
         acc[cmd.classification] = [];
       }
@@ -134,7 +134,7 @@ export const executeCommand = (
 export const getClearCommands = (): string[] => {
   const COMMAND_DEFINITIONS = getCommandDefinitions();
   const clearCommand = COMMAND_DEFINITIONS.find((cmd) =>
-    cmd.acceptedCommands.includes('clear') || cmd.acceptedCommands.includes('limpar')
+    cmd.acceptedCommands.includes('cls')
   );
   return clearCommand ? clearCommand.acceptedCommands : [];
 };
@@ -142,7 +142,7 @@ export const getClearCommands = (): string[] => {
 export const getWelcomeCommands = (): string[] => {
   const COMMAND_DEFINITIONS = getCommandDefinitions();
   const welcomeCommand = COMMAND_DEFINITIONS.find((cmd) =>
-    cmd.acceptedCommands.includes('welcome') || cmd.acceptedCommands.includes('bem-vindo')
+    cmd.acceptedCommands.includes('start')
   );
   return welcomeCommand ? welcomeCommand.acceptedCommands : [];
 };

@@ -91,23 +91,23 @@
         "personal": "Informações pessoais"
       },
       "welcome": {
-        "aliases": ["bem-vindo", "welcome", "inicio", "start"],
+        "aliases": ["bem-vindo", "inicio"],
         "description": "Mostra a mensagem de boas-vindas"
       },
       "about": {
-        "aliases": ["sobre", "about", "info"],
+        "aliases": ["sobre", "info"],
         "description": "Exibe informações sobre mim"
       },
       "hobbies": {
-        "aliases": ["hobbies", "interesses", "interests"],
+        "aliases": ["hobbies", "interesses"],
         "description": "Lista meus hobbies e interesses"
       },
       "volunteer": {
-        "aliases": ["trabalho-voluntario", "voluntario", "volunteer", "tv"],
+        "aliases": ["trabalho-voluntario", "voluntario", "tv"],
         "description": "Mostra meu trabalho voluntário"
       },
       "contact": {
-        "aliases": ["contato", "contact", "email"],
+        "aliases": ["contato", "email"],
         "description": "Exibe informações de contato"
       },
       "help": {
@@ -116,10 +116,10 @@
       },
       "language": {
         "aliases": ["idioma", "language", "lang"],
-        "description": "Alterna entre português e inglês"
+        "description": "Alterna entre português e inglês / Switches between Portuguese and English"
       },
       "clear": {
-        "aliases": ["limpar", "clear", "cls"],
+        "aliases": ["limpar", "cls"],
         "description": "Limpa o terminal"
       }
     }
