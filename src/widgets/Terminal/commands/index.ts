@@ -5,6 +5,7 @@ import type {
 import { TERMINAL_MESSAGES } from '../../../shared/config/constants';
 import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 import { about } from './about';
+import { contact } from './contact';
 import { hobbies } from './hobbies';
 import { volunteer } from './volunteer';
 import { welcome } from './welcome';
@@ -33,6 +34,12 @@ const COMMAND_DEFINITIONS: CommandDefinition[] = [
     acceptedCommands: ['trabalho-voluntario', 'voluntario', 'volunteer', 'tv'],
     description: 'Mostra meu trabalho voluntário',
     fn: volunteer,
+  },
+  {
+    classification: 'Informações pessoais',
+    acceptedCommands: ['contato', 'contact', 'email'],
+    description: 'Exibe informações de contato',
+    fn: contact,
   },
   {
     classification: 'Navegação e utilidades',
