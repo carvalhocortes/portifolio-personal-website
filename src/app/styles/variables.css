@@ -1,16 +1,25 @@
+@font-face {
+  font-family: 'Px437 IBM VGA 8x16';
+  src: url('/fonts/WebPlus_IBM_VGA_8x16.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --color-bg-primary: #282c34;
-  --color-bg-secondary: #21252b;
-  --color-bg-tertiary: #2c313c;
-  --color-text-primary: #abb2bf;
-  --color-text-secondary: #5c6370;
-  --color-text-accent: #98c379;
-  --color-prompt-current: #61afef;
-  --color-prompt-history: #c71616;
-  --color-link: #61afef;
-  --color-link-hover: #528bff;
-  --color-border: #3e4451;
-  --color-selection: rgba(97, 175, 239, 0.2);
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #000000;
+  --color-bg-tertiary: #555555;
+  --color-text-primary: #aaaaaa;
+  --color-text-secondary: #888888;
+  --color-text-accent: #aaaaaa;
+  --color-prompt-current: #aaaaaa;
+  --color-prompt-history: #aaaaaa;
+  --color-link: #aaaaaa;
+  --color-link-hover: #ffffff;
+  --color-border: #aaaaaa;
+  --color-selection: #aaaaaa;
+  --color-text-strong: #ffffff;
   --color-syntax-keyword: #c678dd;
   --color-syntax-function: #61afef;
   --color-syntax-string: #98c379;
@@ -19,7 +28,7 @@
   --color-syntax-error: #e06c75;
   --color-syntax-warning: #e5c07b;
 
-  --font-family-mono: 'Fira Code', 'Menlo', 'Monaco', 'Courier New', monospace;
+  --font-family-mono: 'Px437 IBM VGA 8x16', 'Courier New', monospace;
   --font-family-sans:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -34,8 +43,8 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
+  --line-height-tight: 1;
+  --line-height-normal: 1;
   --line-height-relaxed: 1.75;
 
   --spacing-xs: 0.25rem;
@@ -49,11 +58,11 @@
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
-  --radius-sm: 0.125rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-full: 0;
   --border-width-thin: 1px;
   --border-width-medium: 2px;
   --border-width-thick: 4px;
@@ -73,7 +82,6 @@
 
 @media (min-width: 768px) {
   :root {
-    --font-size-base: 1.125rem;
     --spacing-md: 1.25rem;
     --spacing-lg: 2rem;
     --spacing-xl: 2.5rem;

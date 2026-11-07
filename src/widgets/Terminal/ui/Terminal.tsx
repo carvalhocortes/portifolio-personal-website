@@ -1,13 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { CommandHistory } from '../../../features/CommandHistory/ui/CommandHistory';
 import { CommandInput } from '../../../features/CommandInput/ui/CommandInput';
 import { useTerminal } from '../model/useTerminal';
 import styles from './Terminal.module.css';
 
 export const Terminal = () => {
-  const { commands, handleCommand } = useTerminal();
+  const { commands, handleCommand, inputHistory } = useTerminal();
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const lastCommandRef = useRef<HTMLDivElement | null>(null);
+  const terminalRef = useRef<HTMLElement>(null);
+
+  // Clicked commands run like typed ones; with a mouse, typing can continue
+  // right away. On touch screens we skip this so the keyboard stays closed.
+  const runClickedCommand = useCallback(
+    (command: string) => {
+      handleCommand(command);
+      if (window.matchMedia?.('(pointer: fine)').matches) {
+        terminalRef.current?.querySelector('input')?.focus();
+      }
+    },
+    [handleCommand]
+  );
 
   const focusInput = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
@@ -46,15 +59,20 @@ export const Terminal = () => {
 
   return (
     <main
+      ref={terminalRef}
       className={styles.terminal}
       onClick={focusInput}
       role="application"
       aria-label="Interactive terminal interface"
     >
       <section aria-label="Command history output">
-        <CommandHistory commands={commands} lastCommandRef={lastCommandRef} />
+        <CommandHistory
+          commands={commands}
+          lastCommandRef={lastCommandRef}
+          onCommand={runClickedCommand}
+        />
       </section>
-      <CommandInput onEnter={handleCommand} />
+      <CommandInput onEnter={handleCommand} history={inputHistory} />
       <div
         ref={terminalEndRef}
         className={styles.scrollAnchor}

@@ -9,6 +9,7 @@ vi.mock('../model/useTerminal', () => ({
   useTerminal: vi.fn(() => ({
     commands: [{ id: 0, text: 'welcome', output: 'Welcome to terminal!' }],
     handleCommand: vi.fn(),
+    inputHistory: [],
   })),
 }));
 
@@ -116,6 +117,7 @@ describe('Terminal Component', () => {
         { id: 1, text: 'cmd2', output: 'output2' },
       ],
       handleCommand: vi.fn(),
+      inputHistory: [],
     });
 
     render(<Terminal />);
@@ -132,6 +134,7 @@ describe('Terminal Component', () => {
     mockUseTerminal.mockReturnValue({
       commands: [{ id: 0, text: 'welcome', output: 'Welcome!' }],
       handleCommand: mockHandleCommand,
+      inputHistory: [],
     });
 
     const user = userEvent.setup();
@@ -151,6 +154,7 @@ describe('Terminal Component', () => {
     mockUseTerminal.mockReturnValue({
       commands: [],
       handleCommand: vi.fn(),
+      inputHistory: [],
     });
 
     render(<Terminal />);
@@ -185,6 +189,7 @@ describe('Terminal Component', () => {
         { id: 1, text: 'cmd2', output: 'output2' },
       ],
       handleCommand: vi.fn(),
+      inputHistory: [],
     });
 
     render(<Terminal />);
@@ -205,6 +210,7 @@ describe('Terminal Component', () => {
     mockUseTerminal.mockReturnValue({
       commands: [],
       handleCommand: vi.fn(),
+      inputHistory: [],
     });
 
     render(<Terminal />);

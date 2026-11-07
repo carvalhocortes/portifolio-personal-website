@@ -1,14 +1,14 @@
 {
   "translation": {
     "terminal": {
-      "commandNotFound": "Command not found: {{command}}",
+      "commandNotFound": "Bad command or file name",
       "clearing": "clearing...",
       "helpHeader": "Available commands:",
-      "helpFooter": "Type the command name to execute it."
+      "helpFooter": "Click a command, or type its name and press Enter."
     },
     "welcome": {
       "title": "Welcome to my page!",
-      "helpText": "Type 'help' to see the commands.",
+      "helpText": "Type {{help}} and press Enter to see the commands, or click an option:",
       "ascii": {
         "xlarge": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█",
         "medium": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝\n  █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  █▄▄ █▄█ █▀▄  █  ██▄ ▄█"
@@ -120,7 +120,31 @@
       "clear": {
         "aliases": ["clear", "cls"],
         "description": "Clears the terminal"
+      },
+      "dir": {
+        "aliases": ["dir", "ls"],
+        "description": "Lists the files in the current folder"
+      },
+      "ver": {
+        "aliases": ["ver", "version"],
+        "description": "Shows the system version"
       }
+    },
+    "dir": {
+      "folder": "Directory of C:\\CARVALHO-CORTES",
+      "summary": "{{count}} file(s)",
+      "date": "02-07-84",
+      "files": {
+        "about": "ABOUT.TXT",
+        "hobbies": "HOBBIES.TXT",
+        "volunteer": "VOLUNTER.TXT",
+        "contact": "CONTACT.TXT",
+        "help": "HELP.EXE",
+        "language": "LANGUAGE.EXE"
+      }
+    },
+    "ver": {
+      "text": "CARVALHO-CORTES Version {{version}}"
     }
   }
 }

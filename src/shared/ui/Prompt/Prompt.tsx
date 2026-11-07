@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { DOS_PROMPT } from '../../config/constants';
 import styles from './Prompt.module.css';
 
 export type PromptVariant = 'current' | 'history';
@@ -20,8 +21,9 @@ export const Prompt: React.FC<PromptProps> = memo(
         className={`${styles.prompt} ${variantClass} ${className || ''}`}
         aria-label={ariaLabel}
         role="img"
+        translate="no"
       >
-        ❯
+        {DOS_PROMPT}
       </span>
     );
   }

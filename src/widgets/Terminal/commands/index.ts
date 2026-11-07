@@ -3,62 +3,88 @@ import type {
   CommandsMap,
 } from '../../../entities/Command/model/commandTypes';
 import { TERMINAL_MESSAGES } from '../../../shared/config/constants';
+import { commandLink } from '../../../shared/lib/commandLink';
 import i18n from '../../../shared/i18n';
 import type { ScreenSize } from '../../../shared/lib/useScreenSize';
 import { about } from './about';
+import { getAliases, getAllAliases } from './aliases';
 import { contact } from './contact';
+import { dir } from './dir';
 import { hobbies } from './hobbies';
 import { language } from './language';
+import { ver } from './ver';
 import { volunteer } from './volunteer';
 import { welcome } from './welcome';
 
 const getCommandDefinitions = (): CommandDefinition[] => [
   {
+    key: 'welcome',
     classification: i18n.t('commands.classifications.navigation'),
-    acceptedCommands: i18n.t('commands.welcome.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('welcome'),
     description: i18n.t('commands.welcome.description'),
     fn: welcome,
     shouldShowInHelp: false,
   },
   {
+    key: 'about',
     classification: i18n.t('commands.classifications.personal'),
-    acceptedCommands: i18n.t('commands.about.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('about'),
     description: i18n.t('commands.about.description'),
     fn: about,
   },
   {
+    key: 'hobbies',
     classification: i18n.t('commands.classifications.personal'),
-    acceptedCommands: i18n.t('commands.hobbies.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('hobbies'),
     description: i18n.t('commands.hobbies.description'),
     fn: hobbies,
   },
   {
+    key: 'volunteer',
     classification: i18n.t('commands.classifications.personal'),
-    acceptedCommands: i18n.t('commands.volunteer.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('volunteer'),
     description: i18n.t('commands.volunteer.description'),
     fn: volunteer,
   },
   {
+    key: 'contact',
     classification: i18n.t('commands.classifications.personal'),
-    acceptedCommands: i18n.t('commands.contact.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('contact'),
     description: i18n.t('commands.contact.description'),
     fn: contact,
   },
   {
+    key: 'help',
     classification: i18n.t('commands.classifications.navigation'),
-    acceptedCommands: i18n.t('commands.help.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('help'),
     description: i18n.t('commands.help.description'),
     fn: help,
   },
   {
+    key: 'dir',
     classification: i18n.t('commands.classifications.navigation'),
-    acceptedCommands: i18n.t('commands.language.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('dir'),
+    description: i18n.t('commands.dir.description'),
+    fn: dir,
+  },
+  {
+    key: 'ver',
+    classification: i18n.t('commands.classifications.navigation'),
+    acceptedCommands: getAliases('ver'),
+    description: i18n.t('commands.ver.description'),
+    fn: ver,
+  },
+  {
+    key: 'language',
+    classification: i18n.t('commands.classifications.navigation'),
+    acceptedCommands: getAliases('language'),
     description: i18n.t('commands.language.description'),
     fn: language,
   },
   {
+    key: 'clear',
     classification: i18n.t('commands.classifications.navigation'),
-    acceptedCommands: i18n.t('commands.clear.aliases', { returnObjects: true }) as string[],
+    acceptedCommands: getAliases('clear'),
     description: i18n.t('commands.clear.description'),
     fn: () => TERMINAL_MESSAGES.CLEARING(),
   },
@@ -79,41 +105,40 @@ export function help(): string {
     {} as Record<string, CommandDefinition[]>
   );
 
-  let output = `${TERMINAL_MESSAGES.HELP_HEADER()}\n\n`;
-
-  Object.keys(groupedCommands)
+  const sections = Object.keys(groupedCommands)
     .sort()
-    .forEach((classification) => {
-      output += `${classification}:\n`;
-      groupedCommands[classification].forEach((cmd) => {
-        output += `  - ${cmd.acceptedCommands[0]}`;
-
-        for (let i = 1; i < cmd.acceptedCommands.length - 1; i++) {
-          output += `,\n    ${cmd.acceptedCommands[i]}`;
-        }
-
-        if (cmd.acceptedCommands.length > 1) {
-          output += `,\n    ${cmd.acceptedCommands[cmd.acceptedCommands.length - 1]} - ${cmd.description}\n`;
-        } else {
-          output += ` - ${cmd.description}\n`;
-        }
+    .map((classification) => {
+      const items = groupedCommands[classification].map((cmd) => {
+        const [main, ...aliases] = cmd.acceptedCommands;
+        const aliasText = aliases.length ? ` (${aliases.join(', ')})` : '';
+        return `- ${commandLink(main)}${aliasText} — ${cmd.description}`;
       });
-      output += '\n';
+      return `**${classification}**\n\n${items.join('\n')}`;
     });
 
-  output += TERMINAL_MESSAGES.HELP_FOOTER();
-
-  return `\`\`\`\n${output}\n\`\`\``;
+  return [
+    TERMINAL_MESSAGES.HELP_HEADER(),
+    ...sections,
+    TERMINAL_MESSAGES.HELP_FOOTER(),
+  ].join('\n\n');
 }
 
 const getCommandsMap = (): CommandsMap => {
   const COMMAND_DEFINITIONS = getCommandDefinitions();
-  return COMMAND_DEFINITIONS.reduce((acc, cmd) => {
-    cmd.acceptedCommands.forEach((acceptedCmd) => {
-      acc[acceptedCmd] = cmd.fn;
+  const map: CommandsMap = {};
+  // Current language first, then the other languages, so links already on
+  // screen keep working after `idioma` without overriding current aliases.
+  COMMAND_DEFINITIONS.forEach((cmd) => {
+    cmd.acceptedCommands.forEach((alias) => {
+      map[alias] = cmd.fn;
     });
-    return acc;
-  }, {} as CommandsMap);
+  });
+  COMMAND_DEFINITIONS.forEach((cmd) => {
+    getAllAliases(cmd.key).forEach((alias) => {
+      map[alias] ??= cmd.fn;
+    });
+  });
+  return map;
 };
 
 export const executeCommand = (
@@ -131,18 +156,6 @@ export const executeCommand = (
   return TERMINAL_MESSAGES.COMMAND_NOT_FOUND(command);
 };
 
-export const getClearCommands = (): string[] => {
-  const COMMAND_DEFINITIONS = getCommandDefinitions();
-  const clearCommand = COMMAND_DEFINITIONS.find((cmd) =>
-    cmd.acceptedCommands.includes('cls')
-  );
-  return clearCommand ? clearCommand.acceptedCommands : [];
-};
+export const getClearCommands = (): string[] => getAllAliases('clear');
 
-export const getWelcomeCommands = (): string[] => {
-  const COMMAND_DEFINITIONS = getCommandDefinitions();
-  const welcomeCommand = COMMAND_DEFINITIONS.find((cmd) =>
-    cmd.acceptedCommands.includes('start')
-  );
-  return welcomeCommand ? welcomeCommand.acceptedCommands : [];
-};
+export const getWelcomeCommands = (): string[] => getAliases('welcome');
