@@ -9,8 +9,9 @@
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
+  /* The 8x16 bitmap font is only crisp at multiples of 16px. */
+  font-size: 16px;
+  line-height: 1;
   padding: var(--spacing-md);
   cursor: text;
   user-select: text;

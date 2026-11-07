@@ -1,24 +1,52 @@
-import React, { useState, type KeyboardEvent } from 'react';
+import React, {
+  useState,
+  type ChangeEvent,
+  type KeyboardEvent,
+  type SyntheticEvent,
+} from 'react';
 import { isEmptyOrWhitespace } from '../../../shared/lib/terminalUtils';
-import { Input } from '../../../shared/ui/Input/Input';
 import { Prompt } from '../../../shared/ui/Prompt';
 import styles from './CommandInput.module.css';
 
 interface CommandInputProps {
   onEnter: (command: string) => void;
+  /** Commands available to ArrowUp/ArrowDown, oldest first. */
+  history: string[];
 }
 
-export const CommandInput: React.FC<CommandInputProps> = ({ onEnter }) => {
+// A command is a single line: pasted line breaks become spaces.
+const toSingleLine = (text: string) => text.replace(/\r?\n/g, ' ');
+
+export const CommandInput: React.FC<CommandInputProps> = ({
+  onEnter,
+  history,
+}) => {
   const [value, setValue] = useState('');
-  const [history, setHistory] = useState<string[]>([]);
+  const [caret, setCaret] = useState(0);
   const [historyIndex, setHistoryIndex] = useState(-1);
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !isEmptyOrWhitespace(value)) {
+  const updateValue = (nextValue: string) => {
+    setValue(nextValue);
+    setCaret(nextValue.length);
+  };
+
+  const syncCaret = (e: SyntheticEvent<HTMLTextAreaElement>) => {
+    setCaret(e.currentTarget.selectionStart ?? e.currentTarget.value.length);
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(toSingleLine(e.target.value));
+    setCaret(e.target.selectionStart ?? e.target.value.length);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      // Never insert a line break; Enter only runs the command.
+      e.preventDefault();
+      if (isEmptyOrWhitespace(value)) return;
       onEnter(value);
-      setHistory((prev) => [...prev, value]);
       setHistoryIndex(-1);
-      setValue('');
+      updateValue('');
       return;
     }
 
@@ -32,7 +60,7 @@ export const CommandInput: React.FC<CommandInputProps> = ({ onEnter }) => {
           : Math.max(0, historyIndex - 1);
 
       setHistoryIndex(newIndex);
-      setValue(history[newIndex]);
+      updateValue(history[newIndex]);
     }
 
     if (e.key === 'ArrowDown') {
@@ -43,24 +71,48 @@ export const CommandInput: React.FC<CommandInputProps> = ({ onEnter }) => {
 
       if (newIndex >= history.length) {
         setHistoryIndex(-1);
-        setValue('');
+        updateValue('');
       } else {
         setHistoryIndex(newIndex);
-        setValue(history[newIndex]);
+        updateValue(history[newIndex]);
       }
     }
   };
 
+  const position = Math.min(caret, value.length);
+
   return (
     <div className={styles.container}>
       <Prompt variant="current" />
-      <Input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-        autoFocus
-        aria-label="Terminal command input"
-      />
+      <div className={styles.field}>
+        {/* What is seen: the text plus the DOS cursor at the caret. */}
+        <span className={styles.mirror} aria-hidden="true">
+          {value.slice(0, position)}
+          <span className={styles.cursor} data-testid="dos-cursor" />
+          {value.slice(position)}
+        </span>
+        {/* What is typed into: a transparent textarea laid over the mirror.
+            It wraps exactly like the mirror, so a click lands on the
+            character shown under the pointer. */}
+        <textarea
+          value={value}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          onKeyUp={syncCaret}
+          onSelect={syncCaret}
+          onClick={syncCaret}
+          rows={1}
+          autoFocus
+          name="command"
+          autoComplete="off"
+          autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck={false}
+          enterKeyHint="go"
+          className={styles.input}
+          aria-label="Terminal command input"
+        />
+      </div>
     </div>
   );
 };
