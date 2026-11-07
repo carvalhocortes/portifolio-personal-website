@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/badge/i18next-25.6.0-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="i18next" />
 <img src="https://img.shields.io/badge/Vitest-3.2.4-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
 <img src="https://img.shields.io/badge/Coverage-95%25-brightgreen?style=for-the-badge" alt="Coverage" />
-[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=d00000">](https://github.com/SamKirkland/FTP-Deploy-Action)
+[<img alt="Deployed on GitHub Pages" src="https://img.shields.io/badge/Deployed on-GitHub Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white">](https://carvalhocortes.com.br)
 
 **Um portfólio interativo inspirado em terminal Unix/Linux, construído com React e TypeScript**
 
@@ -76,7 +76,7 @@ Este é um **portfólio pessoal interativo** que simula um terminal de linha de 
 - ✅ Responsividade completa
 - ✅ Testes unitários com >95% de cobertura
 - ✅ CI/CD com GitHub Actions
-- ✅ Deploy automatizado via FTP
+- ✅ Deploy automatizado no GitHub Pages
 
 ---
 
@@ -134,7 +134,7 @@ Este é um **portfólio pessoal interativo** que simula um terminal de linha de 
 ### DevOps
 
 - **GitHub Actions** - CI/CD pipeline
-- **FTP Deploy** - Deploy automatizado
+- **GitHub Pages** - Hospedagem com domínio próprio (carvalhocortes.com.br)
 
 ---
 
@@ -379,41 +379,16 @@ src/
 
 ## 🚀 Deploy
 
-O projeto utiliza **GitHub Actions** para CI/CD automatizado com deploy via FTP.
-
-### Configuração do Deploy
-
-1. **Configure os secrets no GitHub**:
-   - `FTP_SERVER` - Endereço do servidor FTP
-   - `FTP_USERNAME` - Usuário FTP
-   - `FTP_PASSWORD` - Senha FTP
-
-2. **Script auxiliar** (opcional):
-   ```bash
-   # Crie um arquivo .env.ghsecrets com suas credenciais
-   ./setup-ftp-secrets.sh
-   ```
+O site é publicado no **GitHub Pages**, no domínio **[carvalhocortes.com.br](https://carvalhocortes.com.br)**.
 
 ### Workflow de Deploy
 
-O deploy é acionado automaticamente ao fazer push na branch `main`:
+A cada push na branch `main`, o workflow `.github/workflows/deploy-pages.yml` roda os testes, gera o build (`dist/`) e publica no GitHub Pages. Também dá para rodar manualmente pela aba **Actions** (`workflow_dispatch`).
 
-```yaml
-# .github/workflows/deploy.yml
-on:
-  push:
-    branches: [main]
-```
+### Domínio
 
-### Deploy Manual
-
-```bash
-# Build local
-npm run build
-
-# Os arquivos estarão em dist/
-# Faça upload manual via FTP client
-```
+- O arquivo `public/CNAME` contém `carvalhocortes.com.br` e vai junto no build.
+- DNS no Registro.br: quatro registros `A` no domínio raiz (185.199.108.153, 185.199.109.153, 185.199.110.153 e 185.199.111.153) e um `CNAME` de `www` para `carvalhocortes.github.io`.
 
 ---
 
