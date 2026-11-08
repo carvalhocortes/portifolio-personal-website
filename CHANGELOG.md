@@ -7,18 +7,22 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Added
-- Programa **Chrome** no desktop, com ícone próprio: uma janela de navegador que mostra a landing page. A
+- Programa **Navegador** no desktop, com ícone próprio: uma janela de navegador que mostra a landing page. A
   barra de endereço é decorativa e mostra o título da página.
 - Endereços diretos: `/landing` abre só a landing page e `/terminal` só o Terminal.
 
 ### Changed
-- O desktop volta a ser a página principal e abre com o Chrome e o Terminal minimizados na barra de
+- O desktop volta a ser a página principal e abre com o Navegador e o Terminal minimizados na barra de
   tarefas.
 - No celular, a página principal mostra a landing page direto.
-- A landing page se ajusta à largura da janela do Chrome; a foto ampliada cobre só a janela.
+- A landing page se ajusta à largura da janela do Navegador; a foto ampliada cobre só a janela.
 
 ### Removed
 - O endereço `/desktop`.
+
+### Fixed
+- Os botões da barra de tarefas ficam na ordem em que os programas foram abertos; clicar num deles só
+  marca como pressionado o que está em foco.
 
 ## 2026-11-08 (formulário de contato)
 
