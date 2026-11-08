@@ -33,6 +33,8 @@ export const Taskbar: React.FC<TaskbarProps> = ({
     if (returnFocus) startRef.current?.focus();
   }, []);
 
+  const clockProgram = programs.find((program) => program.id === 'clock');
+
   const toggleLanguage = () =>
     i18n.changeLanguage(i18n.language === 'pt-BR' ? 'en-US' : 'pt-BR');
 
@@ -97,7 +99,20 @@ export const Taskbar: React.FC<TaskbarProps> = ({
         >
           {t('taskbar.languageCode')}
         </button>
-        <Clock className={styles.clock} />
+        {clockProgram ? (
+          // Like Windows: the time in the tray opens the Clock program.
+          <button
+            type="button"
+            className={`${styles.trayButton} ${styles.clock}`}
+            aria-label={t('taskbar.openClock')}
+            title={t('taskbar.openClock')}
+            onClick={() => onOpenProgram(clockProgram)}
+          >
+            <Clock />
+          </button>
+        ) : (
+          <Clock className={styles.clock} />
+        )}
       </div>
     </footer>
   );

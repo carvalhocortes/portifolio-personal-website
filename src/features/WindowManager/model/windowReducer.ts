@@ -17,6 +17,9 @@ export interface WindowState {
   openOrder: number;
 }
 
+/** Where a window first appears on the desktop. */
+export type Placement = 'cascade' | 'center' | 'top-right';
+
 export interface WindowManagerState {
   /** Stacking order: the last window is on top. */
   windows: WindowState[];
@@ -30,8 +33,8 @@ export type WindowAction =
       id: ProgramId;
       size: Size;
       viewport: Size;
-      /** Middle of the desktop instead of the cascade. */
-      centered?: boolean;
+      /** Where it first appears; the cascade if not set. */
+      placement?: Placement;
     }
   | { type: 'focus'; id: ProgramId }
   | { type: 'minimize'; id: ProgramId }
@@ -113,11 +116,15 @@ export const windowReducer = (
       if (state.windows.some((w) => w.id === action.id)) {
         return { ...state, windows: bringToFront(state.windows, action.id) };
       }
-      if (action.centered) {
+      if (action.placement === 'center' || action.placement === 'top-right') {
         const size = fitSize(action.size, action.viewport);
         const position = clampPosition(
-          Math.round((action.viewport.width - size.width) / 2),
-          Math.round((action.viewport.height - size.height) / 2),
+          action.placement === 'center'
+            ? Math.round((action.viewport.width - size.width) / 2)
+            : action.viewport.width - size.width - MARGIN,
+          action.placement === 'center'
+            ? Math.round((action.viewport.height - size.height) / 2)
+            : MARGIN,
           size,
           action.viewport
         );

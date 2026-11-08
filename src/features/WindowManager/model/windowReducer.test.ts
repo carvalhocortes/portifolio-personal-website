@@ -40,7 +40,7 @@ describe('windowReducer', () => {
       id: 'notepad',
       size: { width: 560, height: 440 },
       viewport: VIEWPORT,
-      centered: true,
+      placement: 'center',
     });
     expect(state.windows[0]).toMatchObject({
       x: (VIEWPORT.width - 560) / 2,
@@ -54,11 +54,27 @@ describe('windowReducer', () => {
       id: 'notepad',
       size: { width: 2000, height: 2000 },
       viewport: VIEWPORT,
-      centered: true,
+      placement: 'center',
     });
     expect(small.windows[0].x).toBeGreaterThanOrEqual(0);
     expect(small.windows[0].width).toBeLessThan(VIEWPORT.width);
     expect(small.windows[0].height).toBeLessThan(VIEWPORT.height);
+  });
+
+  it('opens a window in the top-right corner, inside the desktop', () => {
+    const state = windowReducer(initialWindowState, {
+      type: 'open',
+      id: 'clock',
+      size: { width: 320, height: 340 },
+      viewport: VIEWPORT,
+      placement: 'top-right',
+    });
+    expect(state.windows[0]).toMatchObject({
+      x: VIEWPORT.width - 320 - 8,
+      y: 8,
+      width: 320,
+      height: 340,
+    });
   });
 
   it('keeps the taskbar in opening order when the focus changes', () => {

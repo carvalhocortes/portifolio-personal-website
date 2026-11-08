@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
-import { Window, useWindowManager } from '../../../features/WindowManager';
+import {
+  Window,
+  getTaskbarWindows,
+  useWindowManager,
+} from '../../../features/WindowManager';
 import { Taskbar } from '../../Taskbar/ui/Taskbar';
 import styles from './Desktop.module.css';
 
@@ -16,18 +20,21 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
   const { state, activeId, open, minimize, desktopRef } = useWindowManager();
 
   const openProgram = (program: ProgramDefinition) =>
-    open(program.id, program.defaultSize, { centered: program.centered });
+    open(program.id, program.defaultSize, {
+      placement: program.placement,
+    });
 
-  // Each program says how it starts. Minimized ones open first, so the ones
-  // that start open end up in front, and the last of them is active.
+  // Each program says how it starts. Minimized ones open first, then the open
+  // ones, and last the 'front' one, which ends up on top and active.
   useEffect(() => {
-    const minimized = programs.filter((p) => p.startup === 'minimized');
-    const opened = programs.filter((p) => p.startup === 'open');
-    minimized.forEach((program) => {
+    const starting = (startup: ProgramDefinition['startup']) =>
+      programs.filter((p) => p.startup === startup);
+    starting('minimized').forEach((program) => {
       openProgram(program);
       minimize(program.id);
     });
-    opened.forEach(openProgram);
+    starting('open').forEach(openProgram);
+    starting('front').forEach(openProgram);
     // Only on first mount: later opens come from the visitor.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -55,7 +62,10 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
           ))}
         </ul>
 
-        {state.windows.map((win) => {
+        {/* Windows stay in opening order in the page and stack by z-index:
+            moving a window in the page mid-click (to bring it to the front)
+            would make the browser drop that first click. */}
+        {getTaskbarWindows(state).map((win) => {
           const program = programs.find((p) => p.id === win.id);
           if (!program) return null;
           const isActive = activeId === win.id;
@@ -66,6 +76,7 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
               title={windowTitleOf(program)}
               icon={<program.Icon size={16} />}
               isActive={isActive}
+              layer={state.windows.indexOf(win) + 1}
             >
               <program.Component isActive={isActive} />
             </Window>

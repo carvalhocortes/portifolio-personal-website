@@ -4,13 +4,18 @@ import type {
   Bounds,
   ResizeEdges,
   Size,
+  Placement,
   WindowManagerState,
 } from './windowReducer';
 
 export interface WindowManagerApi {
   state: WindowManagerState;
   activeId: ProgramId | null;
-  open: (id: ProgramId, size: Size, options?: { centered?: boolean }) => void;
+  open: (
+    id: ProgramId,
+    size: Size,
+    options?: { placement?: Placement }
+  ) => void;
   focus: (id: ProgramId) => void;
   minimize: (id: ProgramId) => void;
   toggleMaximize: (id: ProgramId) => void;
