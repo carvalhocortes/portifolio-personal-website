@@ -199,3 +199,67 @@ voluntario:
       descricao:
         pt: O MinhaCena.Org é uma plataforma de impacto social e educacional que estimula a melhora na escrita e leitura através da produção de ilustrações personalizadas para redações de alunos de escolas públicas, privadas e ONGs. Trabalhei como voluntário no time de desenvolvimento back-end, ajudando a criar a plataforma online que conecta estudantes e ilustradores voluntários para transformar textos em arte.
         en: MinhaCena.Org is a social and educational impact platform that encourages improvement in writing and reading through the production of personalized illustrations for essays by students from public schools, private schools, and NGOs. I worked as a volunteer on the back-end development team, helping to create the online platform that connects students and volunteer illustrators to transform texts into art.
+
+# Bloco de Notas "Leia-me.txt" do desktop. Texto puro (sem Markdown), com as
+# quebras de linha como aparecem na janela.
+leiame:
+  nome:
+    pt: Leia-me.txt
+    en: Readme.txt
+  texto:
+    pt: |
+      LEIA-ME
+      =======
+
+      PT/EN: o botão ao lado do relógio troca o idioma.
+             The button next to the clock switches the language.
+
+      Olá! Este é o site do Fernando Côrtes, engenheiro de software.
+
+      Ele imita um computador dos anos 90, mas funciona como um site
+      de hoje: tudo abre com um clique.
+
+        Navegador   Quem eu sou, meus hobbies, o trabalho voluntário
+                    e um formulário para falar comigo.
+        Terminal    O mesmo conteúdo em modo texto, no estilo MS-DOS.
+                    Clique nos comandos ou digite "ajuda".
+
+      Os programas ficam na barra de tarefas, lá embaixo. As janelas
+      podem ser arrastadas, redimensionadas, minimizadas e maximizadas.
+
+      Há alguns segredos (easter eggs) escondidos por aqui.
+      Fuce, clique, digite... e veja o que acontece. Boa caçada!
+
+      Atalhos diretos:
+        carvalhocortes.com.br/landing    só a página
+        carvalhocortes.com.br/terminal   só o Terminal
+
+      Pode digitar aqui à vontade: nada é salvo.
+    en: |
+      README
+      ======
+
+      PT/EN: the button next to the clock switches the language.
+             O botão ao lado do relógio troca o idioma.
+
+      Hi! This is the website of Fernando Côrtes, software engineer.
+
+      It looks like a computer from the 90s, but it works like a
+      website of today: everything opens with one click.
+
+        Browser     Who I am, my hobbies, volunteer work and a form
+                    to get in touch.
+        Terminal    The same content as text, MS-DOS style.
+                    Click the commands or type "help".
+
+      The programs live on the taskbar, at the bottom. Windows can be
+      dragged, resized, minimized and maximized.
+
+      There are a few secrets (easter eggs) hidden around here.
+      Poke around, click, type... and see what happens. Happy hunting!
+
+      Direct links:
+        carvalhocortes.com.br/landing    just the page
+        carvalhocortes.com.br/terminal   just the Terminal
+
+      Feel free to type here: nothing is saved.

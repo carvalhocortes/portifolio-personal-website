@@ -1,0 +1,53 @@
+.notepad {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--w95-face);
+  color: var(--w95-dark);
+}
+
+/* Decorative menu bar: nothing here opens. */
+.menu {
+  display: flex;
+  gap: 2px;
+  padding: 1px 2px 3px;
+  user-select: none;
+}
+
+.menu span {
+  padding: 1px 6px;
+}
+
+.text {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin: 0;
+  padding: 4px 6px;
+  border: none;
+  background: var(--w95-light);
+  box-shadow:
+    inset -1px -1px var(--w95-light),
+    inset 1px 1px var(--w95-shadow),
+    inset -2px -2px var(--w95-highlight-edge),
+    inset 2px 2px var(--w95-dark);
+  color: var(--w95-dark);
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  line-height: 1.25;
+  resize: none;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: none;
+}
+
+/* The text cursor already shows the focus. */
+.text:focus-visible {
+  outline: none;
+}
+
+.text::selection {
+  background: var(--w95-selection);
+  color: var(--w95-light);
+}

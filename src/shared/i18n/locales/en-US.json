@@ -91,7 +91,8 @@
     },
     "programs": {
       "terminal": "Terminal",
-      "browser": "Browser"
+      "browser": "Browser",
+      "notepadWindow": "{{name}} - Notepad"
     },
     "desktop": {
       "label": "Desktop",
@@ -145,13 +146,21 @@
       },
       "pausePhotos": "Pause the photos",
       "playPhotos": "Play the photos",
-      "pageTitle": "Fernando Cortes - Software engineer"
+      "pageTitle": "{{name}} - Software engineer"
     },
     "browser": {
       "back": "Back",
       "forward": "Forward",
       "reload": "Reload",
       "address": "Address"
+    },
+    "notepad": {
+      "menu": {
+        "file": "File",
+        "edit": "Edit",
+        "search": "Search",
+        "help": "Help"
+      }
     }
   }
 }

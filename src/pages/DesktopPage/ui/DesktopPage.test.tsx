@@ -1,6 +1,7 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 import DesktopPage from './DesktopPage';
 
@@ -27,7 +28,7 @@ describe('DesktopPage', () => {
 
   afterEach(() => setWidth(1024));
 
-  it('opens with the browser and the Terminal minimized on the taskbar', () => {
+  it('opens with the Leia-me.txt in front and the others minimized', () => {
     setWidth(1280);
     render(<DesktopPage />);
     const icons = screen.getByRole('list', { name: 'Programas' });
@@ -47,6 +48,16 @@ describe('DesktopPage', () => {
         'false'
       );
     }
+    // The Leia-me.txt is the open, active window.
+    expect(
+      screen.getByRole('region', { name: 'Leia-me.txt - Bloco de Notas' })
+    ).toBeInTheDocument();
+    expect(
+      within(tasks).getByRole('button', { name: 'Leia-me.txt' })
+    ).toHaveAttribute('aria-pressed', 'true');
+    expect(
+      within(icons).getByRole('button', { name: 'Leia-me.txt' })
+    ).toBeInTheDocument();
     // The landing page loads only when the browser shows up.
     expect(document.querySelector('.lp-root')).toBeNull();
     expect(document.documentElement.dataset.route).toBe('desktop');
@@ -64,7 +75,7 @@ describe('DesktopPage', () => {
     await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
     await user.click(within(tasks).getByRole('button', { name: 'Navegador' }));
     await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
-    expect(order()).toEqual(['Navegador', 'Terminal']);
+    expect(order()).toEqual(['Navegador', 'Terminal', 'Leia-me.txt']);
     expect(
       within(tasks).getByRole('button', { name: 'Terminal' })
     ).toHaveAttribute('aria-pressed', 'true');
@@ -89,7 +100,9 @@ describe('DesktopPage', () => {
     setWidth(1280);
     const { browser } = await openBrowser();
     const address = within(browser).getByRole('textbox', { name: 'Endereço' });
-    expect(address).toHaveValue('Fernando Cortes - Engenheiro de software');
+    expect(address).toHaveValue(
+      `${content.pessoa.nome} - Engenheiro de software`
+    );
     expect(address).toHaveAttribute('readonly');
     for (const name of ['Voltar', 'Avançar', 'Recarregar']) {
       expect(within(browser).getByRole('button', { name })).toBeDisabled();
@@ -97,7 +110,7 @@ describe('DesktopPage', () => {
     expect(
       await within(browser).findByRole('heading', {
         level: 1,
-        name: 'Fernando Cortes',
+        name: content.pessoa.nome,
       })
     ).toBeInTheDocument();
   });
@@ -122,7 +135,7 @@ describe('DesktopPage', () => {
     );
     expect(
       within(browser).getByRole('textbox', { name: 'Address' })
-    ).toHaveValue('Fernando Cortes - Software engineer');
+    ).toHaveValue(`${content.pessoa.nome} - Software engineer`);
     expect(screen.getByRole('button', { name: /Start/ })).toBeInTheDocument();
   });
 
@@ -130,7 +143,10 @@ describe('DesktopPage', () => {
     setWidth(375);
     render(<DesktopPage />);
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Fernando Cortes' })
+      await screen.findByRole('heading', {
+        level: 1,
+        name: content.pessoa.nome,
+      })
     ).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Iniciar/ })).toBeNull();
     expect(screen.queryByRole('list', { name: 'Programas' })).toBeNull();

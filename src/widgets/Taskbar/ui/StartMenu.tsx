@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
+import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
 import styles from './Taskbar.module.css';
 
 interface StartMenuProps {
@@ -22,6 +23,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
   ignoreRef,
 }) => {
   const { t } = useTranslation();
+  const { nameOf } = useProgramTitles();
   const menuRef = useRef<HTMLDivElement>(null);
 
   const items = () =>
@@ -95,7 +97,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
             }}
           >
             <program.Icon size={32} />
-            <span>{t(program.titleKey)}</span>
+            <span>{nameOf(program)}</span>
           </button>
         ))}
         <div className={styles.separator} role="separator" />

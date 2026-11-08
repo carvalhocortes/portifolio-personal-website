@@ -72,10 +72,19 @@
   justify-content: flex-start;
 }
 
+/* The icon keeps its 16px, so it never runs into the label. */
+.task svg {
+  flex: none;
+}
+
 .taskLabel {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  /* The label can start at a fractional x (the Start button's width follows
+     its text). Without smoothing, the first letter's stem (N, L) snaps to the
+     pixel on the left, outside the clip, and gets cut. 1px of room fixes it. */
+  padding-left: 1px;
 }
 
 .tray {
