@@ -161,6 +161,9 @@
         "search": "Search",
         "help": "Help"
       }
+    },
+    "boot": {
+      "skip": "Press any key to skip"
     }
   }
 }
