@@ -6,6 +6,22 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Added
+- **Relógio** no desktop, aberto no canto superior direito quando o site carrega: analógico (no estilo do relógio
+  dos anos 90) ou digital com a data por extenso, escolhidos por dois botões embaixo. A escolha fica guardada.
+  Clicar nas horas da barra de tarefas também abre o Relógio.
+- **Lixeira** no desktop, com uma pasta por projeto antigo: abre as pastas, as fotos ampliadas e os textos. Por
+  enquanto, só uma pasta de exemplo.
+
+### Fixed
+- O primeiro clique num botão de uma janela que estava atrás de outra agora funciona (antes, só trazia a janela
+  para a frente).
+
+### Changed
+- README novo, com capturas de tela, os programas e a lista do que está no ar e do que vem depois.
+
+## 2026-11-08 (textos no i18n)
+
 ### Fixed
 - O site abre no idioma do navegador (inglês para quem usa o navegador em inglês) e lembra a escolha feita no botão
   PT/EN depois de recarregar. Antes, sempre abria em português.
