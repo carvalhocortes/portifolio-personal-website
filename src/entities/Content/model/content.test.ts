@@ -5,7 +5,7 @@ import enUS from '../../../shared/i18n/locales/en-US.yaml';
 import ptBR from '../../../shared/i18n/locales/pt-BR.yaml';
 import i18n from '../../../shared/i18n';
 import { ageOn } from '../../../shared/lib/age';
-import { content, resource, textList } from './content';
+import { content, resource, textList, thumbnail } from './content';
 
 const PUBLIC_DIR = resolve(__dirname, '../../../../public');
 
@@ -120,6 +120,15 @@ describe('content/site.yaml', () => {
       .filter(({ file }) => !existsSync(resolve(PUBLIC_DIR, 'resources', file)))
       .map(({ path, file }) => `${path}: ${file}`);
     expect(all.length).toBeGreaterThan(10);
+    expect(missing).toEqual([]);
+  });
+
+  it('has a small version of every hobby photo', () => {
+    const missing = content.hobbies.itens
+      .flatMap((hobby) => hobby.fotos)
+      .map((photo) => thumbnail(photo.arquivo))
+      .filter((url) => !existsSync(resolve(PUBLIC_DIR, url.slice(1))));
+    expect(thumbnail('banco.webp')).toBe('/resources/thumbs/banco.jpg');
     expect(missing).toEqual([]);
   });
 

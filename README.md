@@ -53,7 +53,8 @@ Textos e dados ficam separados, com um arquivo de textos por idioma:
   [`content/site.yaml`](content/site.yaml).
 
 O texto fica no mesmo caminho do dado: o título do hobby `marcenaria` é `hobbies.itens.marcenaria.titulo`, e o
-nome da pasta `exemplo` da Lixeira é `lixeira.pastas.exemplo.nome`. As imagens ficam em `public/resources/`.
+nome da pasta `exemplo` da Lixeira é `lixeira.pastas.exemplo.nome`. As imagens ficam em `public/resources/`; cada foto de hobby também tem uma versão pequena (320 px, JPEG) em
+`public/resources/thumbs/`, com o mesmo nome, usada na faixa de fotos do topo da landing.
 
 > [!TIP]
 > Os testes falham se uma chave faltar num idioma, se um texto ficar vazio, se faltar o texto de algum item dos
