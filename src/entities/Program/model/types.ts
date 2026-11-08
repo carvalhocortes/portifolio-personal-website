@@ -10,6 +10,8 @@ export type ProgramId =
 export interface ProgramProps {
   /** True while this program's window is the active (front) one. */
   isActive: boolean;
+  /** Closes this program's window (on the desktop only). */
+  onClose?: () => void;
 }
 
 export interface ProgramDefinition {

@@ -11,6 +11,8 @@ vi.mock('../commands', () => ({
   executeCommand: vi.fn((command: string) => `Output for: ${command}`),
   getClearCommands: vi.fn(() => ['limpar', 'clear', 'cls']),
   getWelcomeCommands: vi.fn(() => ['bem-vindo', 'welcome', 'inicio', 'start']),
+  getEffect: vi.fn(() => null),
+  isExitCommand: vi.fn(() => false),
 }));
 
 describe('useTerminal Hook', () => {

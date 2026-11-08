@@ -5,11 +5,15 @@ import {
   useScreenSize,
   type ScreenSize,
 } from '../../../shared/lib/useScreenSize';
+import { prefersReducedMotion } from '../../../shared/lib/reducedMotion';
 import {
   executeCommand,
   getClearCommands,
+  getEffect,
   getWelcomeCommands,
+  isExitCommand,
 } from '../commands';
+import type { TerminalEffect } from '../commands/secrets';
 
 const INITIAL_COMMAND_ID = 0;
 const WELCOME_COMMANDS = getWelcomeCommands();
@@ -18,7 +22,13 @@ const WELCOME_COMMANDS = getWelcomeCommands();
  * @param size Size class for responsive output (the welcome banner). Defaults
  * to the screen size; the terminal passes its own size when it lives in a window.
  */
-export const useTerminal = (size?: ScreenSize) => {
+export const useTerminal = (
+  size?: ScreenSize,
+  options: { onExit?: () => void } = {}
+) => {
+  const { onExit } = options;
+  // An effect playing over the terminal (`matrix`, `hackear`), if any.
+  const [effect, setEffect] = useState<TerminalEffect | null>(null);
   const screenSizeFallback = useScreenSize();
   const screenSize = size ?? screenSizeFallback;
   // Re-render on language change so the welcome can be redrawn in it.
@@ -63,6 +73,17 @@ export const useTerminal = (size?: ScreenSize) => {
         return;
       }
 
+      // `sair` closes the window, when there is one to close.
+      if (onExit && isExitCommand(normalizedText)) {
+        onExit();
+        return;
+      }
+
+      // The output (the effect's last line) goes to the history right away;
+      // the effect plays over it, unless the visitor asked for less motion.
+      const nextEffect = getEffect(normalizedText);
+      if (nextEffect && !prefersReducedMotion()) setEffect(nextEffect);
+
       const newCommand: Command = {
         id: nextIdRef.current++,
         text,
@@ -71,8 +92,10 @@ export const useTerminal = (size?: ScreenSize) => {
 
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     },
-    [screenSize, createWelcomeCommand]
+    [screenSize, createWelcomeCommand, onExit]
   );
 
-  return { commands, handleCommand, inputHistory };
+  const endEffect = useCallback(() => setEffect(null), []);
+
+  return { commands, handleCommand, inputHistory, effect, endEffect };
 };

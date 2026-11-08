@@ -147,6 +147,12 @@
   color: var(--w95-light);
 }
 
+/* The 10-clicks easter egg. */
+.plus {
+  font-weight: bold;
+  color: #ffff55;
+}
+
 /* "CarvalhoCortes" bold and "84" light, like the old banner. */
 .banner b {
   font-weight: bold;
@@ -177,6 +183,16 @@
   background: var(--w95-selection);
   color: var(--w95-light);
   outline: none;
+}
+
+/* Smaller icons (Restart, Shut Down) keep the 32px column, so the labels line up. */
+.menuIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
 }
 
 .menuGlyph {

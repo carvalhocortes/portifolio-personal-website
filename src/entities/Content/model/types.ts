@@ -41,5 +41,6 @@ export interface SiteContent {
   hobbies: { itens: Hobby[] };
   voluntario: { itens: VolunteerWork[] };
   abertura: { imagem: { arquivo: string } };
-  lixeira: { pastas: TrashFolder[] };
+  /** Loose files at the top of the Recycle Bin, then one folder per project. */
+  lixeira: { arquivos: TrashFile[]; pastas: TrashFolder[] };
 }

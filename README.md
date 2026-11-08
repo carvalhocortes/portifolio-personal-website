@@ -36,9 +36,10 @@ abre com um clique, com links e rolagem normais. No celular, o site abre direto 
 - [x] Abertura com BIOS, DOS e tela com logo (uma vez por aba, dá para pular)
 - [x] **Relógio** analógico ou digital e **Lixeira** com pastas de projetos antigos
 - [x] Celular abre direto na landing page
+- [x] Easter eggs espalhados pelo desktop e pelo Terminal (o Leia-me dá a primeira pista)
+- [x] Reiniciar e Desligar no menu Iniciar
 
 **Próximos passos**
-- [ ] Easter eggs espalhados pelo desktop
 - [ ] Fotos e anotações dos projetos antigos na Lixeira
 - [ ] Carregamento mais rápido no celular
 - [ ] Foto nova no lugar do avatar provisório
