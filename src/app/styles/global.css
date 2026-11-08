@@ -1,11 +1,10 @@
-@import './variables.css';
-@import './reset.css';
-
-html {
+/* Desktop (Windows 95 + DOS) globals. They only apply on /desktop: the landing
+   page brings its own look (pages/LandingPage). main.tsx sets data-route. */
+html[data-route='desktop'] {
   color-scheme: dark;
 }
 
-body {
+html[data-route='desktop'] body {
   margin: 0;
   font-family: var(--font-family-ui);
   -webkit-font-smoothing: none;
@@ -15,30 +14,30 @@ body {
   overflow: hidden;
 }
 
-::selection {
+html[data-route='desktop'] ::selection {
   background-color: var(--color-selection);
   color: var(--color-bg-primary);
 }
 
-::-webkit-scrollbar {
+html[data-route='desktop'] ::-webkit-scrollbar {
   width: var(--spacing-sm);
   height: var(--spacing-sm);
 }
 
-::-webkit-scrollbar-track {
+html[data-route='desktop'] ::-webkit-scrollbar-track {
   background: var(--color-bg-secondary);
 }
 
-::-webkit-scrollbar-thumb {
+html[data-route='desktop'] ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: var(--radius-md);
 }
 
-::-webkit-scrollbar-thumb:hover {
+html[data-route='desktop'] ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-secondary);
 }
 
-*:focus-visible {
+html[data-route='desktop'] *:focus-visible {
   outline: 1px dotted var(--color-text-strong);
   outline-offset: 1px;
 }
@@ -53,12 +52,6 @@ pre {
 }
 
 .loading-screen {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-accent);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-xl);
+  min-height: 100dvh;
 }

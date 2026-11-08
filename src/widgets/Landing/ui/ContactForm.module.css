@@ -1,0 +1,159 @@
+/* Lives on the dark contact panel, so colours are fixed light-on-dark. */
+.form {
+  display: grid;
+  gap: 1.125rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.125rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 550;
+  color: #d4d4d8;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.9375rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.06);
+  color: #f4f4f5;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition:
+    border-color 160ms var(--lp-ease),
+    background-color 160ms var(--lp-ease);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.field input:hover,
+.field textarea:hover {
+  border-color: rgb(255 255 255 / 0.35);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 1px;
+  border-color: transparent;
+  background: rgb(255 255 255 / 0.09);
+}
+
+.field [aria-invalid='true'] {
+  border-color: #fca5a5;
+}
+
+.error {
+  color: #fca5a5;
+  font-size: 0.875rem;
+}
+
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.captcha {
+  display: grid;
+  gap: 0.5rem;
+  min-height: 78px;
+}
+
+.failure {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  color: #fca5a5;
+}
+
+.failure svg {
+  flex: none;
+  margin-top: 2px;
+}
+
+.submit {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 48px;
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: #2dd4bf;
+  color: #042f2e;
+  font-weight: 650;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--lp-ease),
+    transform 160ms var(--lp-ease);
+}
+
+.submit:hover {
+  background: #5eead4;
+}
+
+.submit:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.success,
+.note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.06);
+  color: #e4e4e7;
+  line-height: 1.6;
+}
+
+.success svg {
+  flex: none;
+  color: #5eead4;
+}
+
+@media (max-width: 599px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.failure a,
+.note a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -1,0 +1,15 @@
+/* Shared fade-in for sections (see useReveal). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--lp-ease),
+      transform 700ms var(--lp-ease);
+  }
+
+  .reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}

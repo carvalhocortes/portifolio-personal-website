@@ -1,40 +1,24 @@
+import { content, pick } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 
-export const about = (): string => {
-  const myAge = (() => {
-    const today = new Date();
-    const birthDate = new Date(1984, 1, 7); // Month is 0-indexed (1 = February)
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    // Verifica se o aniversário ainda não aconteceu este ano para corrigir a idade
-    // Se o mês de nascimento ainda não chegou OU se estamos no mês do aniversário mas o dia ainda não chegou
-    if (
-      monthDiff < 0 ||
-      (monthDiff === 0 && today.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
+const badge = (label: string, color: string, logo: string) =>
+  `https://img.shields.io/badge/${encodeURIComponent(label).replace(/-/g, '--')}-${color}?style=for-the-badge&logo=${logo}&logoColor=white`;
 
-    return age;
-  })();
+export const about = (): string => {
+  const lang = i18n.language;
+  const { sobre, contato } = content;
+  const linkedinLabel = contato.linkedin
+    .replace(/^https?:\/\/(www\.)?/, '')
+    .replace(/\/$/, '');
+  const paragraphs = sobre.paragrafos.map((p) => pick(p, lang)).join('\n\n');
 
   return `
-## ${i18n.t('about.greeting')}
+## ${pick(sobre.saudacao, lang)}
 
-${i18n.t('about.intro', { age: myAge })}
-
-${i18n.t('about.education')}
-
-${i18n.t('about.telecoms')}
-
-${i18n.t('about.career')}
-
-${i18n.t('about.skills')}
-
-${i18n.t('about.goal')}
+${paragraphs}
 
 ### ${i18n.t('about.contactTitle')}
-[![carvalhocortes@gmail.com](https://img.shields.io/badge/carvalhocortes%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:carvalhocortes@gmail.com)
-[![linkedin.com/in/carvalhocortes](https://img.shields.io/badge/linkedin.com%2Fin%2Fcarvalhocortes-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carvalhocortes/)
+[![${contato.email}](${badge(contato.email, 'D14836', 'gmail')})](mailto:${contato.email})
+[![${linkedinLabel}](${badge(linkedinLabel, '0077B5', 'linkedin')})](${contato.linkedin})
 `;
 };

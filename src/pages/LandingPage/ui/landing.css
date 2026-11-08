@@ -1,0 +1,75 @@
+/* Landing page tokens and globals. Scoped to html[data-route='landing'] so the
+   /desktop page keeps its Windows 95 look.
+   Shape rule: buttons and chips are pills; photos and panels use --lp-radius. */
+@import '@fontsource-variable/geist/wght.css';
+
+html[data-route='landing'] {
+  color-scheme: light dark;
+  --lp-font:
+    'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+  --lp-bg: #fafafa;
+  --lp-surface: #ffffff;
+  --lp-text: #18181b;
+  --lp-muted: #52525b;
+  --lp-border: #e4e4e7;
+  --lp-accent: #0f766e;
+  --lp-accent-hover: #115e59;
+  --lp-accent-soft: #ccfbf1;
+  --lp-on-accent: #ffffff;
+  --lp-shadow:
+    0 1px 2px rgb(24 24 27 / 0.06), 0 12px 32px -12px rgb(24 24 27 / 0.12);
+  --lp-radius: 16px;
+  --lp-header-height: 64px;
+  --lp-max: 1120px;
+  --lp-gutter: clamp(1rem, 4vw, 2rem);
+  --lp-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  scroll-padding-top: calc(var(--lp-header-height) + 16px);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-route='landing'] {
+    --lp-bg: #0c0c0e;
+    --lp-surface: #161619;
+    --lp-text: #f4f4f5;
+    --lp-muted: #a1a1aa;
+    --lp-border: #27272a;
+    --lp-accent: #2dd4bf;
+    --lp-accent-hover: #5eead4;
+    --lp-accent-soft: rgb(45 212 191 / 0.12);
+    --lp-on-accent: #042f2e;
+    --lp-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  }
+}
+
+html[data-route='landing'] body {
+  background: var(--lp-bg);
+  color: var(--lp-text);
+  font-family: var(--lp-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html[data-route='landing'] ::selection {
+  background: var(--lp-accent);
+  color: var(--lp-on-accent);
+}
+
+html[data-route='landing'] :focus-visible {
+  outline: 2px solid var(--lp-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+html[data-route='landing'] :is(a, button, input, textarea, label) {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-route='landing'] {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,201 @@
+# Conteúdo do site: fonte única para a landing page e o Terminal.
+#
+# Como editar:
+# - Todo texto tem as duas línguas lado a lado: `pt` (português) e `en` (inglês).
+#   Os testes falham se faltar uma delas.
+# - Os textos aceitam Markdown: **negrito**, *itálico* e [links](https://…).
+# - `{idade}` é trocado pela idade calculada a partir de `nascimento`.
+# - As fotos ficam em `public/resources/`; aqui vai só o nome do arquivo.
+#   Os testes falham se o arquivo não existir.
+# - Para mudar a ordem, basta mudar a ordem dos itens nas listas.
+
+pessoa:
+  nome: Fernando Cortes
+  # Assinatura do topo da landing page (PNG/WebP com fundo transparente).
+  assinatura:
+    arquivo: assinatura.webp
+  nascimento: 1984-02-07
+  titulo:
+    pt: Engenheiro de software
+    en: Software engineer
+  # Frase curta da abertura da landing page (até ~20 palavras).
+  resumo:
+    pt: Engenheiro eletricista que virou desenvolvedor. Gosto de construir coisas, seja em código, em madeira ou numa impressora 3D.
+    en: An electrical engineer turned developer. I like building things, whether in code, in wood or on a 3D printer.
+  avatar:
+    arquivo: avatar-480.webp
+    arquivo2x: avatar-960.webp
+    alt:
+      pt: Foto de Fernando Cortes
+      en: Photo of Fernando Cortes
+
+contato:
+  # Nome curto, usado no menu e no botão da abertura.
+  menu:
+    pt: Contato
+    en: Contact
+  titulo:
+    pt: 'Entre em contato comigo:'
+    en: 'Get in touch with me:'
+  email: carvalhocortes@gmail.com
+  linkedin: https://www.linkedin.com/in/carvalhocortes/
+
+sobre:
+  titulo:
+    pt: Sobre
+    en: About
+  saudacao:
+    pt: Olá,
+    en: Hello,
+  paragrafos:
+    - pt: meu nome é **Fernando Cortes**, tenho {idade} anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
+      en: my name is **Fernando Cortes**, I'm {idade} years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
+    - pt: Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.
+      en: I hold a postgraduate degree in Software Systems Architecture from FIAP and specializations in Clinical Engineering from Albert Einstein Institute of Higher Education and an MBA in Project Management from FGV-SP.
+    - pt: Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos.
+      en: For nearly a decade, I worked in the telecommunications sector, gaining extensive experience in managing decentralized teams, coordinating projects, and building relationships with internal and external clients.
+    - pt: Em 2022, decidi redirecionar minha carreira para a área de desenvolvimento de software, onde encontrei minha verdadeira paixão. Desde então, atuei como desenvolvedor em empresas como Ewally (fintech), Hospital Israelita Albert Einstein e, atualmente, Banco XP.
+      en: In 2022, I decided to redirect my career to software development, where I found my true passion. Since then, I've worked as a developer at companies such as Ewally (fintech), Albert Einstein Israeli Hospital, and currently at XP Bank.
+    - pt: Tenho experiência prática com Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, além de bancos de dados SQL e NoSQL e soluções de cache. Sou entusiasta de boas práticas de engenharia de software, aplicando princípios como SOLID, DRY, KISS, CQRS e Clean Code em todos os meus projetos.
+      en: I have hands-on experience with Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, as well as SQL and NoSQL databases and caching solutions. I'm an enthusiast of software engineering best practices, applying principles such as SOLID, DRY, KISS, CQRS, and Clean Code in all my projects.
+    - pt: Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida base técnica, mentalidade colaborativa e visão sistêmica para contribuir com times e produtos de alta performance.
+      en: My goal is to continue evolving as a software engineer, combining a solid technical foundation, collaborative mindset, and systemic vision to contribute to high-performance teams and products.
+
+hobbies:
+  titulo:
+    pt: Hobbies
+    en: Hobbies
+  itens:
+    - id: marcenaria
+      titulo:
+        pt: Marcenaria
+        en: Woodworking
+      paragrafos:
+        - pt: Meu avô materno era incrivelmente habilidoso. Lembro dele consertando gavetas e criando brinquedos como carrinhos e casinhas de boneca. O cheiro da madeira e seu armário de ferramentas ainda são vívidos na minha memória.
+          en: My maternal grandfather was incredibly skilled. I remember him fixing drawers and creating toys like little cars and dollhouses. The smell of wood and his tool cabinet are still vivid in my memory.
+        - pt: Outro mentor foi o Taboca, amigo marceneiro do meu pai. Juntos, criaram alguns dos brinquedos mais legais da minha infância.
+          en: Another mentor was Taboca, my father's carpenter friend. Together, they created some of the coolest toys of my childhood.
+        - pt: 'Nas fotos abaixo, algumas peças que já construí: um banco para o hall de entrada feito com madeira recuperada dos batentes das portas na reforma do apartamento; um porta-chaves e bolsas também para a entrada; e uma escrivaninha de mais de 2 metros onde minha esposa e eu trabalhamos frente a frente.'
+          en: "In the photos below, some pieces I've built: a bench for the entrance hall made from reclaimed wood from door frames during the apartment renovation; a key and bag holder also for the entrance; and a desk over 2 meters long where my wife and I work facing each other."
+      fotos:
+        - arquivo: banco.webp
+          legenda:
+            pt: Banco do hall do apartamento
+            en: Apartment hall bench
+        - arquivo: guarda-bolsa.webp
+          legenda:
+            pt: Porta chaves e bolsas no hall do apartamento
+            en: Key and bag holder in the apartment hall
+        - arquivo: mesa-madeira.webp
+          legenda:
+            pt: Escrivaninha para duas pessoas
+            en: Desk for two people
+
+    - id: fotografia
+      titulo:
+        pt: Fotografia
+        en: Photography
+      paragrafos:
+        - pt: Só se vive uma vez, certo? Adoro viajar e conhecer lugares, pessoas e culturas novas. Mas as lembranças se desvanecem com o tempo.
+          en: You only live once, right? I love traveling and discovering new places, people, and cultures. But memories fade over time.
+        - pt: Comecei a fotografar incentivado por um colega de trabalho para participar de concursos fotográficos. O que era um hobby virou paixão. Hoje fotografo para guardar as memórias dos lugares incríveis que visitei.
+          en: I started photographing encouraged by a coworker to participate in photography contests. What was a hobby became a passion. Today I photograph to preserve memories of the incredible places I've visited.
+      fotos:
+        - arquivo: arara-azul.webp
+          legenda:
+            pt: Arara Azul - Nobres - MT
+            en: Blue Macaw - Nobres - MT
+        - arquivo: araras-vermelhas.webp
+          legenda:
+            pt: Casal de Araras Vermelhas - Belem - PA
+            en: Pair of Red Macaws - Belem - PA
+        - arquivo: passaro-preto.webp
+          legenda:
+            pt: Pássaro Preto - São Paulo - SP
+            en: Black Bird - São Paulo - SP
+        - arquivo: rio-lagoa.webp
+          legenda:
+            pt: Lagoa - Rio de Janeiro - RJ
+            en: Lagoon - Rio de Janeiro - RJ
+      curiosidade:
+        rotulo:
+          pt: 'Curiosidade:'
+          en: 'Fun fact:'
+        texto:
+          pt: Você sabia que as araras formam casais para a vida toda? Quando uma morre, a outra permanece solitária até o fim.
+          en: Did you know that macaws form lifelong pairs? When one dies, the other remains solitary until the end.
+        link:
+          texto:
+            pt: Saiba mais aqui
+            en: Learn more here
+          url: https://g1.globo.com/sp/itapetininga-regiao/noticia/2019/06/12/biologa-do-interior-de-sp-explica-sobre-relacionamento-entre-araras-sem-traicao.ghtml
+
+    - id: diy
+      titulo:
+        pt: DIY e Impressão 3D
+        en: DIY and 3D Printing
+      paragrafos:
+        - pt: 'Muitas pessoas me perguntam por que gosto tanto de engenharia. A resposta é simples: ela me ensinou que posso construir qualquer coisa.'
+          en: 'Many people ask me why I love engineering so much. The answer is simple: it taught me that I can build anything.'
+        - pt: Minha cabeça fervilha de ideias. Estou sempre inventando algo — para casa ou só por diversão. Sou apaixonado por criar. Já fiz mesas, facas, luminárias, esculturas em 3D e arte com sucata. Também me divirto programando bots e criando filtros para fotos e vídeos. Coisa de maluco mesmo!
+          en: My mind is always buzzing with ideas. I'm constantly inventing something — for home or just for fun. I'm passionate about creating. I've made tables, knives, lamps, 3D sculptures, and art from scrap. I also enjoy programming bots and creating filters for photos and videos. Crazy stuff indeed!
+      fotos:
+        - arquivo: voronai.webp
+          legenda:
+            pt: Cranio em estilo voronoy. Impressão 3D
+            en: Voronoi-style skull. 3D printing
+        - arquivo: mesa.webp
+          legenda:
+            pt: Mesa de jantar com oito lugares
+            en: Dining table for eight
+        - arquivo: luminaria.webp
+          legenda:
+            pt: Luminária inteligente
+            en: Smart lamp
+
+voluntario:
+  titulo:
+    pt: Trabalho Voluntário
+    en: Volunteer Work
+  itens:
+    - id: demolay
+      nome:
+        pt: Ordem DeMolay
+        en: DeMolay Order
+      url: https://www.demolay.org.br/
+      logo:
+        arquivo: demolay.webp
+        alt:
+          pt: Logo da Ordem DeMolay
+          en: DeMolay Order Logo
+      descricao:
+        pt: A Ordem DeMolay é um grupo de jovens apoiado pela maçonaria desde 1919, criado nos Estados Unidos com o objetivo de formar bons cidadãos que respeitam as leis e contribuem positivamente para a sociedade. Faço parte desde os 13 anos e lá tive a oportunidade de organizar e participar ativamente de campanhas de doação de alimentos e roupas, jantares beneficentes e distribuição de cestas básicas para famílias em situação de vulnerabilidade.
+        en: The DeMolay Order is a youth group supported by Freemasonry since 1919, created in the United States with the goal of forming good citizens who respect laws and contribute positively to society. I've been part of it since I was 13 and there I had the opportunity to organize and actively participate in food and clothing donation campaigns, charity dinners, and distribution of basic food baskets to families in vulnerable situations.
+
+    - id: vivo
+      nome:
+        pt: Fundação Telefonica VIVO
+        en: Telefonica VIVO Foundation
+      url: https://www.fundacaotelefonicavivo.org.br/
+      logo:
+        arquivo: fundacao-telefonica-vivo.png
+        alt:
+          pt: Logo Fundação Telefônica Vivo
+          en: Telefonica VIVO Foundation Logo
+      descricao:
+        pt: A Fundação Telefônica VIVO tem a educação como pilar de transformação social, contribuindo com o desenvolvimento e inclusão digital de estudantes e educadores. O "Dia dos Voluntários" é um projeto global que reúne colaboradores de todas as empresas do Grupo Telefônica para reformar sedes de instituições educacionais, enquanto outro time promove atividades de lazer com os beneficiados. Participei ativamente deste projeto entre 2008 e 2010, contribuindo com reformas e interação com jovens.
+        en: The Telefônica VIVO Foundation has education as a pillar of social transformation, contributing to the development and digital inclusion of students and educators. The "Volunteers Day" is a global project that brings together employees from all Telefonica Group companies to renovate educational institution facilities, while another team promotes leisure activities with beneficiaries. I actively participated in this project between 2008 and 2010, contributing to renovations and interaction with young people.
+
+    - id: minhacena
+      nome:
+        pt: Minha Cena
+        en: Minha Cena
+      url: https://www.instagram.com/projetominhacena/
+      logo:
+        arquivo: minha-cena.jpeg
+        alt:
+          pt: Logo Minha Cena Org
+          en: Minha Cena Org Logo
+      descricao:
+        pt: O MinhaCena.Org é uma plataforma de impacto social e educacional que estimula a melhora na escrita e leitura através da produção de ilustrações personalizadas para redações de alunos de escolas públicas, privadas e ONGs. Trabalhei como voluntário no time de desenvolvimento back-end, ajudando a criar a plataforma online que conecta estudantes e ilustradores voluntários para transformar textos em arte.
+        en: MinhaCena.Org is a social and educational impact platform that encourages improvement in writing and reading through the production of personalized illustrations for essays by students from public schools, private schools, and NGOs. I worked as a volunteer on the back-end development team, helping to create the online platform that connects students and volunteer illustrators to transform texts into art.

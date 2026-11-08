@@ -1,0 +1,110 @@
+.dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: clamp(1rem, 4vw, 3rem);
+  border: 0;
+  background: transparent;
+  color: #f4f4f5;
+  overscroll-behavior: contain;
+}
+
+.dialog:not([open]) {
+  display: none;
+}
+
+.dialog[open] {
+  display: grid;
+  place-items: center;
+}
+
+.dialog::backdrop {
+  background: rgb(9 9 11 / 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.figure {
+  display: grid;
+  gap: 0.875rem;
+  max-width: min(100%, 860px);
+}
+
+.figure img {
+  width: 100%;
+  max-height: calc(100dvh - 9rem);
+  object-fit: contain;
+  border-radius: var(--lp-radius);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9375rem;
+}
+
+.count {
+  color: #a1a1aa;
+  white-space: nowrap;
+}
+
+.button {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 999px;
+  background: rgb(24 24 27 / 0.7);
+  color: #f4f4f5;
+  cursor: pointer;
+  transition: background-color 160ms var(--lp-ease);
+}
+
+.button:hover {
+  background: rgb(63 63 70 / 0.9);
+}
+
+.close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.prev,
+.next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 1rem;
+}
+
+.next {
+  right: 1rem;
+}
+
+@media (max-width: 767px) {
+  .prev,
+  .next {
+    top: auto;
+    bottom: 1rem;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dialog[open] .figure {
+    animation: zoom 260ms var(--lp-ease);
+  }
+}
+
+@keyframes zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}

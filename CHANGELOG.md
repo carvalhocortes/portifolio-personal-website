@@ -7,6 +7,20 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Added
+- Landing page na página principal: abertura com avatar e faixa de fotos, Sobre, Hobbies com galeria
+  ampliável, Voluntário e Contato. Modo claro e escuro, PT/EN e layout para celular.
+- Formulário de contato que envia a mensagem por e-mail, protegido por captcha (hCaptcha).
+- Assinatura "Carvalho Cortes" no topo da landing page.
+
+### Changed
+- O desktop com o Terminal passa para `/desktop`.
+- Todo o conteúdo vem de um só arquivo, `content/site.yaml`, usado pela landing page e pelo Terminal.
+- Fotos em WebP, bem mais leves.
+- O e-mail não aparece na landing page; o contato é pelo formulário ou pelo LinkedIn.
+
+## 2026-11-08 (desktop)
+
+### Added
 - Desktop no estilo Windows 95 no computador: fundo verde-azulado, ícone do Terminal e barra de
   tarefas com o botão Iniciar, um botão por janela, seletor PT/EN e relógio.
 - Menu Iniciar com a faixa "CC 84", que funciona com o mouse e com o teclado.
