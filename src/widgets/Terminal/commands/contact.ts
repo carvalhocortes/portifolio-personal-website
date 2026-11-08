@@ -1,4 +1,4 @@
-import { content, pick } from '../../../entities/Content';
+import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 
 export const contact = (): string => {
@@ -8,7 +8,7 @@ export const contact = (): string => {
     .replace(/\/$/, '');
 
   return `
-| ${pick(contato.titulo, i18n.language)} |
+| ${i18n.t('contato.titulo')} |
 |:---|
 | **${i18n.t('contact.email')}** [${contato.email}](mailto:${contato.email}) |
 | **${i18n.t('contact.linkedin')}** [${linkedinLabel}](${contato.linkedin}) |

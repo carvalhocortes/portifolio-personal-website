@@ -1,4 +1,3 @@
-import { content } from '../../../entities/Content';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { BrowserIcon, MsDosIcon, NotepadIcon } from '../../../shared/ui/icons';
 import { Browser } from '../../../widgets/Browser/ui/Browser';
@@ -31,7 +30,7 @@ export const PROGRAMS: ProgramDefinition[] = [
   },
   {
     id: 'notepad',
-    name: content.leiame.nome,
+    titleKey: 'leiame.nome',
     windowTitleKey: 'programs.notepadWindow',
     Icon: NotepadIcon,
     Component: Notepad,

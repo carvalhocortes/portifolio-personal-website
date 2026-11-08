@@ -1,0 +1,305 @@
+# Site texts in English (en-US). pt-BR.yaml has the same keys in Portuguese;
+# the tests fail if a key is missing from either file or left empty.
+#
+# - Content (first part): about me, hobbies, volunteer work, Readme and the boot
+#   screen. It sits at the same path as its data in content/site.yaml (photos,
+#   links, dates), which doesn't change with the language.
+# - Content texts accept Markdown: **bold**, *italic*, [links](https://…).
+# - {{idade}} becomes the age computed from pessoa.nascimento; {{memoria}}, the
+#   boot screen memory count.
+# - Interface (second part): buttons, menus, Terminal and desktop messages.
+
+# Conteúdo / Content
+
+pessoa:
+  titulo: Software engineer
+  resumo: An electrical engineer turned developer. I like building things, whether in code, in wood or on a 3D printer.
+  avatar:
+    alt: Photo of Fernando Côrtes
+contato:
+  menu: Contact
+  titulo: 'Get in touch:'
+sobre:
+  titulo: About
+  saudacao: Hello,
+  paragrafos:
+    - my name is **Fernando Côrtes**, I'm {{idade}} years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
+    - I hold a postgraduate degree in Software Systems Architecture from FIAP and specializations in Clinical Engineering from Albert Einstein Institute of Higher Education and an MBA in Project Management from FGV-SP.
+    - For nearly a decade, I worked in the telecommunications sector, gaining extensive experience in managing decentralized teams, coordinating projects, and building relationships with internal and external clients.
+    - In 2022, I decided to redirect my career to software development, where I found my true passion. Since then, I've worked as a developer at companies such as Ewally (fintech), Albert Einstein Israeli Hospital, and currently at XP Bank.
+    - I have hands-on experience with Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, as well as SQL and NoSQL databases and caching solutions. I'm an enthusiast of software engineering best practices, applying principles such as SOLID, DRY, KISS, CQRS, and Clean Code in all my projects.
+    - My goal is to continue evolving as a software engineer, combining a solid technical foundation, collaborative mindset, and systemic vision to contribute to high-performance teams and products.
+hobbies:
+  titulo: Hobbies
+  itens:
+    marcenaria:
+      titulo: Woodworking
+      paragrafos:
+        - My maternal grandfather was incredibly skilled. I remember him fixing drawers and creating toys like little cars and dollhouses. The smell of wood and his tool cabinet are still vivid in my memory.
+        - Another mentor was Taboca, my father's carpenter friend. Together, they created some of the coolest toys of my childhood.
+        - "In the photos below, some pieces I've built: a bench for the entrance hall made from reclaimed wood from door frames during the apartment renovation; a key and bag holder also for the entrance; and a desk over 2 meters long where my wife and I work facing each other."
+      fotos:
+        - legenda: Apartment hall bench
+        - legenda: Key and bag holder in the apartment hall
+        - legenda: Desk for two people
+    fotografia:
+      titulo: Photography
+      paragrafos:
+        - You only live once, right? I love traveling and discovering new places, people, and cultures. But memories fade over time.
+        - I started photographing encouraged by a coworker to participate in photography contests. What was a hobby became a passion. Today I photograph to preserve memories of the incredible places I've visited.
+      fotos:
+        - legenda: Blue Macaw - Nobres - MT
+        - legenda: Pair of Red Macaws - Belem - PA
+        - legenda: Black Bird - São Paulo - SP
+        - legenda: Lagoon - Rio de Janeiro - RJ
+      curiosidade:
+        rotulo: 'Fun fact:'
+        texto: Did you know that macaws form lifelong pairs? When one dies, the other remains solitary until the end.
+        link:
+          texto: Learn more here
+    diy:
+      titulo: DIY and 3D Printing
+      paragrafos:
+        - 'Many people ask me why I love engineering so much. The answer is simple: it taught me that I can build anything.'
+        - My mind is always buzzing with ideas. I'm constantly inventing something — for home or just for fun. I'm passionate about creating. I've made tables, knives, lamps, 3D sculptures, and art from scrap. I also enjoy programming bots and creating filters for photos and videos. Crazy stuff indeed!
+      fotos:
+        - legenda: Voronoi-style skull. 3D printing
+        - legenda: Dining table for eight
+        - legenda: Smart lamp
+voluntario:
+  titulo: Volunteer Work
+  itens:
+    demolay:
+      nome: DeMolay Order
+      logo:
+        alt: DeMolay Order Logo
+      descricao: The DeMolay Order is a youth group supported by Freemasonry since 1919, created in the United States with the goal of forming good citizens who respect laws and contribute positively to society. I've been part of it since I was 13 and there I had the opportunity to organize and actively participate in food and clothing donation campaigns, charity dinners, and distribution of basic food baskets to families in vulnerable situations.
+    vivo:
+      nome: Telefonica VIVO Foundation
+      logo:
+        alt: Telefonica VIVO Foundation Logo
+      descricao: The Telefônica VIVO Foundation has education as a pillar of social transformation, contributing to the development and digital inclusion of students and educators. The "Volunteers Day" is a global project that brings together employees from all Telefonica Group companies to renovate educational institution facilities, while another team promotes leisure activities with beneficiaries. I actively participated in this project between 2008 and 2010, contributing to renovations and interaction with young people.
+    minhacena:
+      nome: Minha Cena
+      logo:
+        alt: Minha Cena Org Logo
+      descricao: MinhaCena.Org is a social and educational impact platform that encourages improvement in writing and reading through the production of personalized illustrations for essays by students from public schools, private schools, and NGOs. I worked as a volunteer on the back-end development team, helping to create the online platform that connects students and volunteer illustrators to transform texts into art.
+leiame:
+  nome: Readme.txt
+  texto: |
+    README
+    ======
+
+    PT/EN: the button next to the clock switches the language.
+           O botão ao lado do relógio troca o idioma.
+
+    Hi! This is the website of Fernando Côrtes, software engineer.
+
+    It looks like a computer from the 90s, but it works like a
+    website of today: everything opens with one click.
+
+      Browser     Who I am, my hobbies, volunteer work and a form
+                  to get in touch.
+      Terminal    The same content as text, MS-DOS style.
+                  Click the commands or type "help".
+
+    The programs live on the taskbar, at the bottom. Windows can be
+    dragged, resized, minimized and maximized.
+
+    There are a few secrets (easter eggs) hidden around here.
+    Poke around, click, type... and see what happens. Happy hunting!
+
+    Direct links:
+      carvalhocortes.com.br/landing    just the page
+      carvalhocortes.com.br/terminal   just the Terminal
+
+    Feel free to type here: nothing is saved.
+abertura:
+  bios: |
+    Processor: Brain 486 DX @ 66 MHz (with coffee)
+    Memory: {{memoria}} OK
+
+    Detecting drives...  C: 540 MB  OK
+    Detecting keyboard...  OK
+    Detecting mouse...  OK (ball included)
+
+    Press DEL to enter SETUP (it won't help)
+  dos: |
+    Starting CC 84...
+
+    Brewing coffee............... ok
+    Untangling cables............ ok
+    Looking for bugs............. 3 found, ignoring
+
+# Interface
+
+terminal:
+  commandNotFound: Bad command or file name
+  clearing: clearing...
+  helpHeader: 'Available commands:'
+  helpFooter: Click a command, or type its name and press Enter.
+welcome:
+  title: Welcome to my page!
+  helpText: 'Type {{help}} and press Enter to see the commands, or click an option:'
+  ascii:
+    xlarge: |2-
+      
+        █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
+       ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
+       ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
+       ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
+       ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀
+        ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█
+    medium: |2-
+      
+        █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
+       ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
+       ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
+       ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
+       ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝
+        ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝
+        █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀
+        █▄▄ █▄█ █▀▄  █  ██▄ ▄█
+about:
+  contactTitle: 'Contact:'
+contact:
+  email: 'Email:'
+  linkedin: 'LinkedIn:'
+language:
+  changed: 'Language changed to: {{language}}'
+  current: 'Current language: {{language}}'
+  available: 'Available languages: pt-BR, en-US'
+  usage: 'Use: language <pt-BR|en-US>'
+commands:
+  classifications:
+    navigation: Navigation and utilities
+    personal: Personal information
+  welcome:
+    aliases:
+      - start
+      - welcome
+    description: Shows the welcome message
+  about:
+    aliases:
+      - about
+      - info
+    description: Displays information about me
+  hobbies:
+    aliases:
+      - hobbies
+      - interests
+    description: Lists my hobbies and interests
+  volunteer:
+    aliases:
+      - volunteer
+      - v
+    description: Shows my volunteer work
+  contact:
+    aliases:
+      - contact
+      - email
+    description: Displays contact information
+  help:
+    aliases:
+      - help
+      - h
+    description: Shows this help message
+  language:
+    aliases:
+      - language
+      - lang
+    description: Switches between Portuguese and English / Alterna entre português e inglês
+  clear:
+    aliases:
+      - clear
+      - cls
+    description: Clears the terminal
+  dir:
+    aliases:
+      - dir
+      - ls
+    description: Lists the files in the current folder
+  ver:
+    aliases:
+      - ver
+      - version
+    description: Shows the system version
+dir:
+  folder: Directory of C:\CARVALHO-CORTES
+  summary: '{{count}} file(s)'
+  date: 02-07-84
+  files:
+    about: ABOUT.TXT
+    hobbies: HOBBIES.TXT
+    volunteer: VOLUNTER.TXT
+    contact: CONTACT.TXT
+    help: HELP.EXE
+    language: LANGUAGE.EXE
+ver:
+  text: CARVALHO-CORTES Version {{version}}
+programs:
+  terminal: Terminal
+  browser: Browser
+  notepadWindow: '{{name}} - Notepad'
+desktop:
+  label: Desktop
+  programs: Programs
+window:
+  minimize: Minimize
+  maximize: Maximize
+  restore: Restore
+  close: Close
+taskbar:
+  start: Start
+  startMenu: Start menu
+  openWindows: Open windows
+  switchLanguage: EN, switch language to Português
+  languageCode: EN
+  languageItem: 'Language: Português'
+landing:
+  skipToContent: Skip to content
+  menu: Menu
+  closeMenu: Close menu
+  mainNav: Sections
+  switchLanguage: PT, switch the language to Português
+  languageShort: PT
+  linkedin: LinkedIn
+  sendEmail: Send email
+  photoGallery: '{{title}} photos'
+  openPhoto: 'Enlarge photo: {{caption}}'
+  closePhoto: Close
+  previousPhoto: Previous photo
+  nextPhoto: Next photo
+  photoCount: Photo {{current}} of {{total}}
+  visitSite: '{{name}} (opens in a new tab)'
+  footer: © {{year}} {{name}}
+  form:
+    title: Or send a message
+    name: Name
+    email: Your email
+    message: Message
+    send: Send message
+    sending: Sending…
+    success: Message sent. Thank you! I'll reply as soon as I can.
+    error: Couldn't send it right now. Try again or reach me on
+    required: Please fill in this field.
+    invalidEmail: Enter a valid email, like name@example.com.
+    captcha: Please confirm you're not a robot.
+    notConfigured: The form isn't active yet. Reach me on
+    subject: Message from {{name}} via the website
+  pausePhotos: Pause the photos
+  playPhotos: Play the photos
+  pageTitle: '{{name}} - Software engineer'
+browser:
+  back: Back
+  forward: Forward
+  reload: Reload
+  address: Address
+notepad:
+  menu:
+    file: File
+    edit: Edit
+    search: Search
+    help: Help
+boot:
+  skip: Press any key to skip
