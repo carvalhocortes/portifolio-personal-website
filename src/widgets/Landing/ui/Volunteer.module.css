@@ -1,0 +1,78 @@
+.list {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.25rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--lp-border);
+  border-radius: var(--lp-radius);
+  background: var(--lp-surface);
+  transition:
+    border-color 200ms var(--lp-ease),
+    transform 200ms var(--lp-ease),
+    box-shadow 200ms var(--lp-ease);
+}
+
+.item:hover {
+  border-color: color-mix(in srgb, var(--lp-accent) 45%, var(--lp-border));
+  box-shadow: var(--lp-shadow);
+  transform: translateY(-2px);
+}
+
+/* Every logo fills the same square tile, cropped to the centre. No frame or
+   background, so a transparent logo (DeMolay's circle) keeps its own shape. */
+.logo {
+  width: 112px;
+  height: 112px;
+  overflow: hidden;
+  border-radius: calc(var(--lp-radius) - 2px);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.name a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--lp-text);
+  text-decoration: none;
+}
+
+.name a:hover {
+  color: var(--lp-accent);
+}
+
+.description {
+  max-width: 70ch;
+  margin-top: 0.5rem;
+  color: var(--lp-muted);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+@media (max-width: 599px) {
+  .item {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+}

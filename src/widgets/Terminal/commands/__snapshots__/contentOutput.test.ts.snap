@@ -1,0 +1,179 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`content commands output > about in en-US prints the same Markdown 1`] = `
+"
+## Hello,
+
+my name is **Fernando Cortes**, I'm 42 years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
+
+I hold a postgraduate degree in Software Systems Architecture from FIAP and specializations in Clinical Engineering from Albert Einstein Institute of Higher Education and an MBA in Project Management from FGV-SP.
+
+For nearly a decade, I worked in the telecommunications sector, gaining extensive experience in managing decentralized teams, coordinating projects, and building relationships with internal and external clients.
+
+In 2022, I decided to redirect my career to software development, where I found my true passion. Since then, I've worked as a developer at companies such as Ewally (fintech), Albert Einstein Israeli Hospital, and currently at XP Bank.
+
+I have hands-on experience with Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, as well as SQL and NoSQL databases and caching solutions. I'm an enthusiast of software engineering best practices, applying principles such as SOLID, DRY, KISS, CQRS, and Clean Code in all my projects.
+
+My goal is to continue evolving as a software engineer, combining a solid technical foundation, collaborative mindset, and systemic vision to contribute to high-performance teams and products.
+
+### Contact:
+[![carvalhocortes@gmail.com](https://img.shields.io/badge/carvalhocortes%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:carvalhocortes@gmail.com)
+[![linkedin.com/in/carvalhocortes](https://img.shields.io/badge/linkedin.com%2Fin%2Fcarvalhocortes-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carvalhocortes/)
+"
+`;
+
+exports[`content commands output > about in pt-BR prints the same Markdown 1`] = `
+"
+## Olá,
+
+meu nome é **Fernando Cortes**, tenho 42 anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
+
+Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.
+
+Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos.
+
+Em 2022, decidi redirecionar minha carreira para a área de desenvolvimento de software, onde encontrei minha verdadeira paixão. Desde então, atuei como desenvolvedor em empresas como Ewally (fintech), Hospital Israelita Albert Einstein e, atualmente, Banco XP.
+
+Tenho experiência prática com Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, além de bancos de dados SQL e NoSQL e soluções de cache. Sou entusiasta de boas práticas de engenharia de software, aplicando princípios como SOLID, DRY, KISS, CQRS e Clean Code em todos os meus projetos.
+
+Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida base técnica, mentalidade colaborativa e visão sistêmica para contribuir com times e produtos de alta performance.
+
+### Contato:
+[![carvalhocortes@gmail.com](https://img.shields.io/badge/carvalhocortes%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:carvalhocortes@gmail.com)
+[![linkedin.com/in/carvalhocortes](https://img.shields.io/badge/linkedin.com%2Fin%2Fcarvalhocortes-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carvalhocortes/)
+"
+`;
+
+exports[`content commands output > contact in en-US prints the same Markdown 1`] = `
+"
+| Get in touch with me: |
+|:---|
+| **Email:** [carvalhocortes@gmail.com](mailto:carvalhocortes@gmail.com) |
+| **LinkedIn:** [linkedin.com/in/carvalhocortes](https://www.linkedin.com/in/carvalhocortes/) |
+"
+`;
+
+exports[`content commands output > contact in pt-BR prints the same Markdown 1`] = `
+"
+| Entre em contato comigo: |
+|:---|
+| **Email:** [carvalhocortes@gmail.com](mailto:carvalhocortes@gmail.com) |
+| **LinkedIn:** [linkedin.com/in/carvalhocortes](https://www.linkedin.com/in/carvalhocortes/) |
+"
+`;
+
+exports[`content commands output > hobbies in en-US prints the same Markdown 1`] = `
+"### Woodworking
+  My maternal grandfather was incredibly skilled. I remember him fixing drawers and creating toys like little cars and dollhouses. The smell of wood and his tool cabinet are still vivid in my memory.
+
+  Another mentor was Taboca, my father's carpenter friend. Together, they created some of the coolest toys of my childhood.
+
+  In the photos below, some pieces I've built: a bench for the entrance hall made from reclaimed wood from door frames during the apartment renovation; a key and bag holder also for the entrance; and a desk over 2 meters long where my wife and I work facing each other.
+
+  | Apartment hall bench | Key and bag holder in the apartment hall | Desk for two people |
+  | --- | --- | --- |
+  | ![Apartment hall bench](resources/banco.img) | ![Key and bag holder in the apartment hall](resources/guarda-bolsa.img) | ![Desk for two people](resources/mesa-madeira.img) |
+
+  ### Photography
+  You only live once, right? I love traveling and discovering new places, people, and cultures. But memories fade over time.
+
+  I started photographing encouraged by a coworker to participate in photography contests. What was a hobby became a passion. Today I photograph to preserve memories of the incredible places I've visited.
+
+  | Blue Macaw - Nobres - MT | Pair of Red Macaws - Belem - PA | Black Bird - São Paulo - SP | Lagoon - Rio de Janeiro - RJ |
+  | --- | --- | --- | --- |
+  | ![Blue Macaw - Nobres - MT](resources/arara-azul.img) | ![Pair of Red Macaws - Belem - PA](resources/araras-vermelhas.img) | ![Black Bird - São Paulo - SP](resources/passaro-preto.img) | ![Lagoon - Rio de Janeiro - RJ](resources/rio-lagoa.img) |
+
+  **Fun fact:** Did you know that macaws form lifelong pairs? When one dies, the other remains solitary until the end. [Learn more here](https://g1.globo.com/sp/itapetininga-regiao/noticia/2019/06/12/biologa-do-interior-de-sp-explica-sobre-relacionamento-entre-araras-sem-traicao.ghtml).
+
+  ### DIY and 3D Printing
+  Many people ask me why I love engineering so much. The answer is simple: it taught me that I can build anything.
+
+  My mind is always buzzing with ideas. I'm constantly inventing something — for home or just for fun. I'm passionate about creating. I've made tables, knives, lamps, 3D sculptures, and art from scrap. I also enjoy programming bots and creating filters for photos and videos. Crazy stuff indeed!
+
+  | Voronoi-style skull. 3D printing | Dining table for eight | Smart lamp |
+  | --- | --- | --- |
+  | ![Voronoi-style skull. 3D printing](resources/voronai.img) | ![Dining table for eight](resources/mesa.img) | ![Smart lamp](resources/luminaria.img) |"
+`;
+
+exports[`content commands output > hobbies in pt-BR prints the same Markdown 1`] = `
+"### Marcenaria
+  Meu avô materno era incrivelmente habilidoso. Lembro dele consertando gavetas e criando brinquedos como carrinhos e casinhas de boneca. O cheiro da madeira e seu armário de ferramentas ainda são vívidos na minha memória.
+
+  Outro mentor foi o Taboca, amigo marceneiro do meu pai. Juntos, criaram alguns dos brinquedos mais legais da minha infância.
+
+  Nas fotos abaixo, algumas peças que já construí: um banco para o hall de entrada feito com madeira recuperada dos batentes das portas na reforma do apartamento; um porta-chaves e bolsas também para a entrada; e uma escrivaninha de mais de 2 metros onde minha esposa e eu trabalhamos frente a frente.
+
+  | Banco do hall do apartamento | Porta chaves e bolsas no hall do apartamento | Escrivaninha para duas pessoas |
+  | --- | --- | --- |
+  | ![Banco do hall do apartamento](resources/banco.img) | ![Porta chaves e bolsas no hall do apartamento](resources/guarda-bolsa.img) | ![Escrivaninha para duas pessoas](resources/mesa-madeira.img) |
+
+  ### Fotografia
+  Só se vive uma vez, certo? Adoro viajar e conhecer lugares, pessoas e culturas novas. Mas as lembranças se desvanecem com o tempo.
+
+  Comecei a fotografar incentivado por um colega de trabalho para participar de concursos fotográficos. O que era um hobby virou paixão. Hoje fotografo para guardar as memórias dos lugares incríveis que visitei.
+
+  | Arara Azul - Nobres - MT | Casal de Araras Vermelhas - Belem - PA | Pássaro Preto - São Paulo - SP | Lagoa - Rio de Janeiro - RJ |
+  | --- | --- | --- | --- |
+  | ![Arara Azul - Nobres - MT](resources/arara-azul.img) | ![Casal de Araras Vermelhas - Belem - PA](resources/araras-vermelhas.img) | ![Pássaro Preto - São Paulo - SP](resources/passaro-preto.img) | ![Lagoa - Rio de Janeiro - RJ](resources/rio-lagoa.img) |
+
+  **Curiosidade:** Você sabia que as araras formam casais para a vida toda? Quando uma morre, a outra permanece solitária até o fim. [Saiba mais aqui](https://g1.globo.com/sp/itapetininga-regiao/noticia/2019/06/12/biologa-do-interior-de-sp-explica-sobre-relacionamento-entre-araras-sem-traicao.ghtml).
+
+  ### DIY e Impressão 3D
+  Muitas pessoas me perguntam por que gosto tanto de engenharia. A resposta é simples: ela me ensinou que posso construir qualquer coisa.
+
+  Minha cabeça fervilha de ideias. Estou sempre inventando algo — para casa ou só por diversão. Sou apaixonado por criar. Já fiz mesas, facas, luminárias, esculturas em 3D e arte com sucata. Também me divirto programando bots e criando filtros para fotos e vídeos. Coisa de maluco mesmo!
+
+  | Cranio em estilo voronoy. Impressão 3D | Mesa de jantar com oito lugares | Luminária inteligente |
+  | --- | --- | --- |
+  | ![Cranio em estilo voronoy. Impressão 3D](resources/voronai.img) | ![Mesa de jantar com oito lugares](resources/mesa.img) | ![Luminária inteligente](resources/luminaria.img) |"
+`;
+
+exports[`content commands output > volunteer in en-US prints the same Markdown 1`] = `
+"## Volunteer Work
+
+### [DeMolay Order](https://www.demolay.org.br/)
+
+|     |   |
+| --- | :--- |
+| ![DeMolay Order Logo](resources/demolay.img "small") | The DeMolay Order is a youth group supported by Freemasonry since 1919, created in the United States with the goal of forming good citizens who respect laws and contribute positively to society. I've been part of it since I was 13 and there I had the opportunity to organize and actively participate in food and clothing donation campaigns, charity dinners, and distribution of basic food baskets to families in vulnerable situations. |
+
+
+### [Telefonica VIVO Foundation](https://www.fundacaotelefonicavivo.org.br/)
+
+|     |   |
+| --- | :--- |
+| ![Telefonica VIVO Foundation Logo](resources/fundacao-telefonica-vivo.img "small") | The Telefônica VIVO Foundation has education as a pillar of social transformation, contributing to the development and digital inclusion of students and educators. The "Volunteers Day" is a global project that brings together employees from all Telefonica Group companies to renovate educational institution facilities, while another team promotes leisure activities with beneficiaries. I actively participated in this project between 2008 and 2010, contributing to renovations and interaction with young people. |
+
+
+### [Minha Cena](https://www.instagram.com/projetominhacena/)
+
+|     |   |
+| --- | :--- |
+| ![Minha Cena Org Logo](resources/minha-cena.jpeg "small") | MinhaCena.Org is a social and educational impact platform that encourages improvement in writing and reading through the production of personalized illustrations for essays by students from public schools, private schools, and NGOs. I worked as a volunteer on the back-end development team, helping to create the online platform that connects students and volunteer illustrators to transform texts into art. |
+"
+`;
+
+exports[`content commands output > volunteer in pt-BR prints the same Markdown 1`] = `
+"## Trabalho Voluntário
+
+### [Ordem DeMolay](https://www.demolay.org.br/)
+
+|     |   |
+| --- | :--- |
+| ![Logo da Ordem DeMolay](resources/demolay.img "small") | A Ordem DeMolay é um grupo de jovens apoiado pela maçonaria desde 1919, criado nos Estados Unidos com o objetivo de formar bons cidadãos que respeitam as leis e contribuem positivamente para a sociedade. Faço parte desde os 13 anos e lá tive a oportunidade de organizar e participar ativamente de campanhas de doação de alimentos e roupas, jantares beneficentes e distribuição de cestas básicas para famílias em situação de vulnerabilidade. |
+
+
+### [Fundação Telefonica VIVO](https://www.fundacaotelefonicavivo.org.br/)
+
+|     |   |
+| --- | :--- |
+| ![Logo Fundação Telefônica Vivo](resources/fundacao-telefonica-vivo.img "small") | A Fundação Telefônica VIVO tem a educação como pilar de transformação social, contribuindo com o desenvolvimento e inclusão digital de estudantes e educadores. O "Dia dos Voluntários" é um projeto global que reúne colaboradores de todas as empresas do Grupo Telefônica para reformar sedes de instituições educacionais, enquanto outro time promove atividades de lazer com os beneficiados. Participei ativamente deste projeto entre 2008 e 2010, contribuindo com reformas e interação com jovens. |
+
+
+### [Minha Cena](https://www.instagram.com/projetominhacena/)
+
+|     |   |
+| --- | :--- |
+| ![Logo Minha Cena Org](resources/minha-cena.jpeg "small") | O MinhaCena.Org é uma plataforma de impacto social e educacional que estimula a melhora na escrita e leitura através da produção de ilustrações personalizadas para redações de alunos de escolas públicas, privadas e ONGs. Trabalhei como voluntário no time de desenvolvimento back-end, ajudando a criar a plataforma online que conecta estudantes e ilustradores voluntários para transformar textos em arte. |
+"
+`;

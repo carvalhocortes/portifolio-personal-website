@@ -11,7 +11,7 @@ import { volunteer } from './volunteer';
 import { welcome } from './welcome';
 
 const PUBLIC_DIR = resolve(__dirname, '../../../../public');
-const IMAGE_PATTERN = /!\[([^\]]+)\]\(\.\/(resources\/[^)\s]+)(?: "[^"]*")?\)/g;
+const IMAGE_PATTERN = /!\[([^\]]+)\]\(\/(resources\/[^)\s]+)(?: "[^"]*")?\)/g;
 
 const images = (markdown: string) =>
   [...markdown.matchAll(IMAGE_PATTERN)].map(([, alt, path]) => ({ alt, path }));
