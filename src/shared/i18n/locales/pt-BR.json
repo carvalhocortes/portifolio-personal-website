@@ -91,7 +91,8 @@
     },
     "programs": {
       "terminal": "Terminal",
-      "browser": "Navegador"
+      "browser": "Navegador",
+      "notepadWindow": "{{name}} - Bloco de Notas"
     },
     "desktop": {
       "label": "Área de trabalho",
@@ -145,13 +146,21 @@
       },
       "pausePhotos": "Pausar as fotos",
       "playPhotos": "Continuar as fotos",
-      "pageTitle": "Fernando Cortes - Engenheiro de software"
+      "pageTitle": "{{name}} - Engenheiro de software"
     },
     "browser": {
       "back": "Voltar",
       "forward": "Avançar",
       "reload": "Recarregar",
       "address": "Endereço"
+    },
+    "notepad": {
+      "menu": {
+        "file": "Arquivo",
+        "edit": "Editar",
+        "search": "Pesquisar",
+        "help": "Ajuda"
+      }
     }
   }
 }

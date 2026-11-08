@@ -7,6 +7,17 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Added
+- Bloco de Notas **Leia-me.txt** no desktop, aberto na frente quando o site carrega: explica o que é o site e
+  como usar. Dá para digitar nele, mas nada é salvo; o texto fica no `content/site.yaml`, em PT e EN.
+
+### Fixed
+- A primeira letra dos nomes na barra de tarefas e no título das janelas (o N de Navegador, o L de
+  Leia-me) não aparece mais cortada.
+- O título da página e a barra de endereço do Navegador usam o nome escrito no conteúdo (Fernando Côrtes).
+
+## 2026-11-08 (navegador)
+
+### Added
 - Programa **Navegador** no desktop, com ícone próprio: uma janela de navegador que mostra a landing page. A
   barra de endereço é decorativa e mostra o título da página.
 - Endereços diretos: `/landing` abre só a landing page e `/terminal` só o Terminal.

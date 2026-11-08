@@ -46,8 +46,14 @@ export const WindowManagerProvider: React.FC<{
       state,
       activeId: getActiveWindowId(state),
       desktopRef,
-      open: (id, size) =>
-        dispatch({ type: 'open', id, size, viewport: viewport() }),
+      open: (id, size, options) =>
+        dispatch({
+          type: 'open',
+          id,
+          size,
+          viewport: viewport(),
+          centered: options?.centered,
+        }),
       focus: (id) => dispatch({ type: 'focus', id }),
       minimize: (id) => dispatch({ type: 'minimize', id }),
       toggleMaximize: (id) => dispatch({ type: 'toggleMaximize', id }),

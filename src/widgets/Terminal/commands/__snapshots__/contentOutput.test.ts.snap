@@ -4,7 +4,7 @@ exports[`content commands output > about in en-US prints the same Markdown 1`] =
 "
 ## Hello,
 
-my name is **Fernando Cortes**, I'm 42 years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
+my name is **Fernando Côrtes**, I'm 42 years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
 
 I hold a postgraduate degree in Software Systems Architecture from FIAP and specializations in Clinical Engineering from Albert Einstein Institute of Higher Education and an MBA in Project Management from FGV-SP.
 
@@ -26,7 +26,7 @@ exports[`content commands output > about in pt-BR prints the same Markdown 1`] =
 "
 ## Olá,
 
-meu nome é **Fernando Cortes**, tenho 42 anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
+meu nome é **Fernando Côrtes**, tenho 42 anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
 
 Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.
 
@@ -46,7 +46,7 @@ Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida 
 
 exports[`content commands output > contact in en-US prints the same Markdown 1`] = `
 "
-| Get in touch with me: |
+| Get in touch: |
 |:---|
 | **Email:** [carvalhocortes@gmail.com](mailto:carvalhocortes@gmail.com) |
 | **LinkedIn:** [linkedin.com/in/carvalhocortes](https://www.linkedin.com/in/carvalhocortes/) |
@@ -55,7 +55,7 @@ exports[`content commands output > contact in en-US prints the same Markdown 1`]
 
 exports[`content commands output > contact in pt-BR prints the same Markdown 1`] = `
 "
-| Entre em contato comigo: |
+| Entre em contato: |
 |:---|
 | **Email:** [carvalhocortes@gmail.com](mailto:carvalhocortes@gmail.com) |
 | **LinkedIn:** [linkedin.com/in/carvalhocortes](https://www.linkedin.com/in/carvalhocortes/) |
