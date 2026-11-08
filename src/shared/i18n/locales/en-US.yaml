@@ -125,7 +125,7 @@ abertura:
 
     Press DEL to enter SETUP (it won't help)
   dos: |
-    Starting CC 84...
+    Starting CarvalhoCortes 84...
 
     Brewing coffee............... ok
     Untangling cables............ ok
@@ -255,7 +255,7 @@ taskbar:
   openWindows: Open windows
   switchLanguage: EN, switch language to Português
   languageCode: EN
-  languageItem: 'Language: Português'
+  language: Language
 landing:
   skipToContent: Skip to content
   menu: Menu

@@ -8,7 +8,7 @@ import {
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
 import { StartLogo } from '../../../shared/ui/icons';
 import { Clock } from './Clock';
-import { StartMenu } from './StartMenu';
+import { StartMenu, type Language } from './StartMenu';
 import styles from './Taskbar.module.css';
 
 interface TaskbarProps {
@@ -56,7 +56,10 @@ export const Taskbar: React.FC<TaskbarProps> = ({
           id={START_MENU_ID}
           programs={programs}
           onOpenProgram={onOpenProgram}
-          onToggleLanguage={toggleLanguage}
+          language={i18n.language}
+          onSetLanguage={(language: Language) =>
+            void i18n.changeLanguage(language)
+          }
           onClose={closeMenu}
           ignoreRef={startRef}
         />

@@ -4,11 +4,22 @@ import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
 import styles from './Taskbar.module.css';
 
+const LANGUAGES = ['pt-BR', 'en-US'] as const;
+export type Language = (typeof LANGUAGES)[number];
+
+// Each language named in itself, so anyone finds theirs.
+const LANGUAGE_NAMES: Record<Language, string> = {
+  'pt-BR': 'Português',
+  'en-US': 'English',
+};
+
 interface StartMenuProps {
   id: string;
   programs: ProgramDefinition[];
   onOpenProgram: (program: ProgramDefinition) => void;
-  onToggleLanguage: () => void;
+  /** Current i18next language: 'pt-BR' or 'en-US'. */
+  language: string;
+  onSetLanguage: (language: Language) => void;
   onClose: (returnFocus: boolean) => void;
   /** Elements whose clicks do not count as "outside" (the Start button). */
   ignoreRef: React.RefObject<HTMLElement | null>;
@@ -18,7 +29,8 @@ export const StartMenu: React.FC<StartMenuProps> = ({
   id,
   programs,
   onOpenProgram,
-  onToggleLanguage,
+  language,
+  onSetLanguage,
   onClose,
   ignoreRef,
 }) => {
@@ -29,7 +41,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
   const items = () =>
     Array.from(
       menuRef.current?.querySelectorAll<HTMLButtonElement>(
-        '[role="menuitem"]'
+        '[role="menuitem"], [role="menuitemradio"]'
       ) ?? []
     );
 
@@ -82,7 +94,9 @@ export const StartMenu: React.FC<StartMenuProps> = ({
       onKeyDown={onKeyDown}
     >
       <div className={styles.banner} aria-hidden="true">
-        <span>CC 84</span>
+        <span>
+          <b>CarvalhoCortes</b> 84
+        </span>
       </div>
       <div className={styles.menuItems}>
         {programs.map((program) => (
@@ -101,20 +115,31 @@ export const StartMenu: React.FC<StartMenuProps> = ({
           </button>
         ))}
         <div className={styles.separator} role="separator" />
-        <button
-          type="button"
-          role="menuitem"
-          className={styles.menuItem}
-          onClick={() => {
-            onToggleLanguage();
-            onClose(true);
-          }}
+        {/* Two buttons, like a radio group: the current language stays pressed.
+            The menu stays open, so the change shows right away. */}
+        <div
+          className={styles.languageRow}
+          role="group"
+          aria-label={t('taskbar.language')}
         >
-          <span className={styles.menuGlyph} aria-hidden="true">
-            {t('taskbar.languageCode')}
-          </span>
-          <span>{t('taskbar.languageItem')}</span>
-        </button>
+          {LANGUAGES.map((code) => {
+            const current = language === code;
+            return (
+              <button
+                key={code}
+                type="button"
+                role="menuitemradio"
+                aria-checked={current}
+                aria-label={`${LANGUAGE_NAMES[code]} (${code})`}
+                lang={code}
+                className={`${styles.button} ${styles.languageButton} ${current ? styles.pressed : ''}`}
+                onClick={() => onSetLanguage(code)}
+              >
+                {code}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

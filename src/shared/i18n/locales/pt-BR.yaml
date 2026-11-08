@@ -125,7 +125,7 @@ abertura:
 
     Pressione DEL para entrar no SETUP (não adianta)
   dos: |
-    Iniciando CC 84...
+    Iniciando CarvalhoCortes 84...
 
     Carregando café.............. ok
     Desembaraçando cabos......... ok
@@ -259,7 +259,7 @@ taskbar:
   openWindows: Janelas abertas
   switchLanguage: PT, mudar o idioma para English
   languageCode: PT
-  languageItem: 'Idioma: English'
+  language: Idioma
 landing:
   skipToContent: Pular para o conteúdo
   menu: Menu
