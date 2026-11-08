@@ -28,6 +28,7 @@ versões: cada entrega na `main` vira uma seção com a data.
 - Em inglês, o `clear` volta a limpar a tela.
 - Num comando longo, que quebra de linha, o clique cai no caractere mostrado.
 - E-mail de contato atualizado para carvalhocortes@gmail.com.
+- Depois de clicar num comando, o teclado volta para o prompt: as setas ↑/↓ trazem os comandos em vez de rolar a página.
 
 ## 2026-11-07
 

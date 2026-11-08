@@ -98,4 +98,37 @@ describe('Terminal (DOS) integration', () => {
       .map((a) => a.getAttribute('aria-label'));
     expect(labels.filter((l) => l === 'Command: sobre')).toHaveLength(2);
   });
+
+  it('puts the keyboard back on the prompt after a clicked command (mouse)', async () => {
+    const user = userEvent.setup();
+    const matchMedia = window.matchMedia;
+    window.matchMedia = vi.fn((query: string) => ({
+      matches: query === '(pointer: fine)',
+    })) as unknown as typeof window.matchMedia;
+
+    render(<Terminal />);
+    await user.click(await screen.findByRole('button', { name: 'AJUDA' }));
+    const prompt = screen.getByLabelText('Terminal command input');
+    expect(prompt).toHaveFocus();
+
+    // ArrowUp now recalls the clicked command instead of scrolling the page.
+    await user.keyboard('{ArrowUp}');
+    expect(prompt).toHaveValue('ajuda');
+
+    window.matchMedia = matchMedia;
+  });
+
+  it('does not move focus on touch screens, so the keyboard stays closed', async () => {
+    const user = userEvent.setup();
+    const matchMedia = window.matchMedia;
+    window.matchMedia = vi.fn(() => ({
+      matches: false,
+    })) as unknown as typeof window.matchMedia;
+
+    render(<Terminal />);
+    await user.click(await screen.findByRole('button', { name: 'AJUDA' }));
+    expect(screen.getByLabelText('Terminal command input')).not.toHaveFocus();
+
+    window.matchMedia = matchMedia;
+  });
 });
