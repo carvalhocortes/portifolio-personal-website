@@ -6,6 +6,12 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Changed
+- A landing page abre mais rápido no celular: o celular não baixa mais o código do desktop e do Terminal, e a fonte,
+  a foto e a assinatura começam a baixar logo no início, em vez de esperar a página montar.
+
+## 2026-11-08 (easter eggs)
+
 ### Added
 - Easter eggs espalhados pelo desktop e pelo Terminal, como o Leia-me promete. Não vamos contar quais são.
 - **Reiniciar** e **Desligar** no menu Iniciar: Reiniciar roda a abertura de novo; Desligar mostra a tela de
