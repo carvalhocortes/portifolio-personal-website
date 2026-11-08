@@ -1,0 +1,166 @@
+/* Old Windows Explorer: a toolbar with Back and the address, the items in a
+   white panel and a status bar at the bottom. */
+.bin {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--w95-face);
+  color: var(--w95-dark);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+}
+
+.button {
+  min-width: 26px;
+  height: 24px;
+  padding: 0 8px;
+  border: none;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button:active:not(:disabled) {
+  box-shadow: var(--w95-pressed);
+}
+
+.button:disabled {
+  color: var(--w95-shadow);
+  text-shadow: 1px 1px var(--w95-light);
+  cursor: default;
+}
+
+.button:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+  outline-offset: -4px;
+}
+
+.address {
+  flex: 1;
+  min-width: 0;
+  height: 22px;
+  padding: 0 4px;
+  border: none;
+  box-shadow: var(--w95-sunken);
+  background: var(--w95-light);
+  font: inherit;
+  color: inherit;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  margin: 0 4px;
+  overflow: auto;
+  box-shadow: var(--w95-sunken);
+  background: var(--w95-light);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 12px;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 88px;
+  padding: 4px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.thumb {
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--w95-shadow);
+}
+
+.label {
+  padding: 0 2px 0 3px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.item:hover .label,
+.item:focus-visible .label {
+  background: var(--w95-selection);
+  color: var(--w95-light);
+}
+
+.item:focus-visible {
+  outline: none;
+}
+
+.item:focus-visible .label {
+  outline: 1px dotted var(--w95-light);
+}
+
+.file {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+
+.photo {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  background: var(--w95-dark);
+}
+
+.text {
+  flex: 1;
+  min-height: 0;
+  padding: 4px 6px;
+  border: none;
+  resize: none;
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--w95-dark);
+  background: var(--w95-light);
+}
+
+.text:focus-visible {
+  outline: none;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  background: var(--w95-face);
+}
+
+.fileName {
+  flex: 1;
+  text-align: center;
+}
+
+.status {
+  margin: 4px;
+  padding: 2px 6px;
+  box-shadow: var(--w95-sunken);
+}

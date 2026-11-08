@@ -63,7 +63,7 @@ describe('i18n files (pt-BR.yaml and en-US.yaml)', () => {
     expect(empty).toEqual([]);
   });
 
-  it('have the texts of every hobby, photo and volunteer work in the data', () => {
+  it('have the texts of every hobby, photo, volunteer work and Recycle Bin file', () => {
     const missing: string[] = [];
     const need = (key: string) => {
       for (const [lang, tree] of [
@@ -86,6 +86,14 @@ describe('i18n files (pt-BR.yaml and en-US.yaml)', () => {
       need(`${key}.nome`);
       need(`${key}.logo.alt`);
       need(`${key}.descricao`);
+    }
+    for (const folder of content.lixeira.pastas) {
+      const key = `lixeira.pastas.${folder.id}`;
+      need(`${key}.nome`);
+      for (const file of folder.arquivos) {
+        need(`${key}.arquivos.${file.id}.nome`);
+        if (file.tipo === 'texto') need(`${key}.arquivos.${file.id}.texto`);
+      }
     }
     expect(missing).toEqual([]);
   });

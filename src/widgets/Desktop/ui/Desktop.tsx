@@ -16,18 +16,21 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
   const { state, activeId, open, minimize, desktopRef } = useWindowManager();
 
   const openProgram = (program: ProgramDefinition) =>
-    open(program.id, program.defaultSize, { centered: program.centered });
+    open(program.id, program.defaultSize, {
+      placement: program.placement,
+    });
 
-  // Each program says how it starts. Minimized ones open first, so the ones
-  // that start open end up in front, and the last of them is active.
+  // Each program says how it starts. Minimized ones open first, then the open
+  // ones, and last the 'front' one, which ends up on top and active.
   useEffect(() => {
-    const minimized = programs.filter((p) => p.startup === 'minimized');
-    const opened = programs.filter((p) => p.startup === 'open');
-    minimized.forEach((program) => {
+    const starting = (startup: ProgramDefinition['startup']) =>
+      programs.filter((p) => p.startup === startup);
+    starting('minimized').forEach((program) => {
       openProgram(program);
       minimize(program.id);
     });
-    opened.forEach(openProgram);
+    starting('open').forEach(openProgram);
+    starting('front').forEach(openProgram);
     // Only on first mount: later opens come from the visitor.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

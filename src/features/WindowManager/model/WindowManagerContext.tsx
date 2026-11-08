@@ -52,7 +52,7 @@ export const WindowManagerProvider: React.FC<{
           id,
           size,
           viewport: viewport(),
-          centered: options?.centered,
+          placement: options?.placement,
         }),
       focus: (id) => dispatch({ type: 'focus', id }),
       minimize: (id) => dispatch({ type: 'minimize', id }),

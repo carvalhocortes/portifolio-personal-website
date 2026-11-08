@@ -131,6 +131,24 @@ abertura:
     Untangling cables............ ok
     Looking for bugs............. 3 found, ignoring
 
+lixeira:
+  pastas:
+    exemplo:
+      nome: Sample project
+      arquivos:
+        leia-me:
+          nome: readme.txt
+          texto: |
+            SAMPLE PROJECT
+            ==============
+
+            This folder is a placeholder.
+
+            Photos and notes of old projects will go here: things that
+            almost made it to the site, but ended up in the Recycle Bin.
+        foto:
+          nome: placeholder-photo.svg
+
 # Interface
 
 terminal:
@@ -238,6 +256,7 @@ dir:
 ver:
   text: CARVALHO-CORTES Version {{version}}
 programs:
+  clock: Clock
   terminal: Terminal
   browser: Browser
   notepadWindow: '{{name}} - Notepad'
@@ -250,6 +269,7 @@ window:
   restore: Restore
   close: Close
 taskbar:
+  openClock: Open the Clock
   start: Start
   startMenu: Start menu
   openWindows: Open windows
@@ -303,3 +323,16 @@ notepad:
     help: Help
 boot:
   skip: Press any key to skip
+clock:
+  now: 'It is {{time}}'
+  mode: Clock mode
+  analog: Analog
+  digital: Digital
+recycleBin:
+  name: Recycle Bin
+  back: Back
+  address: Address
+  previous: Previous file
+  next: Next file
+  objects_one: '{{count}} object'
+  objects_other: '{{count}} objects'
