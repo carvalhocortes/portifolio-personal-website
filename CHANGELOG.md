@@ -7,6 +7,13 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Added
+- Easter eggs espalhados pelo desktop e pelo Terminal, como o Leia-me promete. Não vamos contar quais são.
+- **Reiniciar** e **Desligar** no menu Iniciar: Reiniciar roda a abertura de novo; Desligar mostra a tela de
+  "Agora é seguro desligar o computador." por alguns segundos e depois religa.
+
+## 2026-11-08 (relógio e lixeira)
+
+### Added
 - **Relógio** no desktop, aberto no canto superior direito quando o site carrega: analógico (no estilo do relógio
   dos anos 90) ou digital com a data por extenso, escolhidos por dois botões embaixo. A escolha fica guardada.
   Clicar nas horas da barra de tarefas também abre o Relógio.
