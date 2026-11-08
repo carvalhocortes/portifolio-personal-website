@@ -1,0 +1,276 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Dot grid fading out from the top, plus a soft accent glow. */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      600px circle at 78% 38%,
+      color-mix(in srgb, var(--lp-accent) 18%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--lp-text) 14%, transparent) 1px,
+      transparent 1.2px
+    );
+  background-size:
+    100% 100%,
+    22px 22px;
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  max-width: var(--lp-max);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5.5rem) var(--lp-gutter) clamp(2.5rem, 5vw, 4rem);
+}
+
+.role {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--lp-accent) 35%, transparent);
+  border-radius: 999px;
+  background: var(--lp-accent-soft);
+  color: var(--lp-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.title {
+  margin-top: 1.25rem;
+  font-size: clamp(3rem, 7.5vw, 5.75rem);
+  font-weight: 750;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.summary {
+  max-width: 34ch;
+  margin-top: 1.5rem;
+  font-size: clamp(1.125rem, 2vw, 1.3125rem);
+  line-height: 1.5;
+  color: var(--lp-muted);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 48px;
+  padding: 0 1.375rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 160ms var(--lp-ease),
+    background-color 160ms var(--lp-ease),
+    border-color 160ms var(--lp-ease),
+    box-shadow 160ms var(--lp-ease);
+}
+
+.primary {
+  background: var(--lp-accent);
+  color: var(--lp-on-accent);
+  box-shadow: 0 8px 24px -10px var(--lp-accent);
+}
+
+.primary:hover {
+  background: var(--lp-accent-hover);
+}
+
+.primary svg {
+  transition: transform 160ms var(--lp-ease);
+}
+
+.primary:hover svg {
+  transform: translateX(3px);
+}
+
+.secondary {
+  border: 1px solid var(--lp-border);
+  color: var(--lp-text);
+  background: var(--lp-surface);
+}
+
+.secondary:hover {
+  border-color: var(--lp-accent);
+}
+
+.primary:active,
+.secondary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.portrait {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 440px);
+}
+
+.halo {
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--lp-accent) 45%, transparent);
+}
+
+.portrait img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 24px 40px rgb(0 0 0 / 0.18));
+}
+
+.stripWrap {
+  position: relative;
+}
+
+.pause {
+  position: absolute;
+  right: var(--lp-gutter);
+  bottom: calc(clamp(3rem, 6vw, 4.5rem) - 3.25rem);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--lp-border);
+  border-radius: 999px;
+  background: var(--lp-surface);
+  color: var(--lp-text);
+  cursor: pointer;
+  transition: border-color 160ms var(--lp-ease);
+}
+
+.pause:hover {
+  border-color: var(--lp-accent);
+}
+
+/* Nothing moves with reduced motion, so the button has nothing to do. */
+@media (prefers-reduced-motion: reduce) {
+  .pause {
+    display: none;
+  }
+}
+
+.strip {
+  overflow: hidden;
+  padding: 0 0 clamp(3rem, 6vw, 4.5rem);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+}
+
+.track img {
+  width: 160px;
+  height: 160px;
+  flex: none;
+  object-fit: cover;
+  border-radius: var(--lp-radius);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .copy > * {
+    animation: rise 700ms var(--lp-ease) both;
+  }
+
+  .copy > :nth-child(2) {
+    animation-delay: 70ms;
+  }
+
+  .copy > :nth-child(3) {
+    animation-delay: 140ms;
+  }
+
+  .copy > :nth-child(4) {
+    animation-delay: 210ms;
+  }
+
+  .portrait {
+    animation: appear 900ms var(--lp-ease) 120ms both;
+  }
+
+  .track {
+    animation: slide 70s linear infinite;
+  }
+
+  .strip:hover .track,
+  .strip[data-paused='true'] .track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* The track holds the photos twice; moving half its width loops seamlessly. */
+@keyframes slide {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .portrait {
+    order: -1;
+    justify-self: start;
+    width: 200px;
+  }
+
+  .track img {
+    width: 112px;
+    height: 112px;
+  }
+}
