@@ -7,7 +7,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-ui);
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
   background-color: var(--color-bg-primary);

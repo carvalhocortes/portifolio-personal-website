@@ -1,17 +1,21 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { CommandHistory } from '../../../features/CommandHistory/ui/CommandHistory';
 import { CommandInput } from '../../../features/CommandInput/ui/CommandInput';
+import type { ProgramProps } from '../../../entities/Program/model/types';
 import { useTerminal } from '../model/useTerminal';
+import { useTerminalSize } from '../model/useTerminalSize';
 import styles from './Terminal.module.css';
 
 // The command prompt field rendered by CommandInput (a textarea).
 const PROMPT_SELECTOR = '[name="command"]';
 
-export const Terminal = () => {
-  const { commands, handleCommand, inputHistory } = useTerminal();
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+export const Terminal: React.FC<Partial<ProgramProps>> = ({
+  isActive = true,
+}) => {
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const terminalSize = useTerminalSize(terminalRef);
+  const { commands, handleCommand, inputHistory } = useTerminal(terminalSize);
   const lastCommandRef = useRef<HTMLDivElement | null>(null);
-  const terminalRef = useRef<HTMLElement>(null);
 
   // Clicked commands run like typed ones; with a mouse, typing can continue
   // right away. On touch screens we skip this so the keyboard stays closed.
@@ -33,40 +37,45 @@ export const Terminal = () => {
 
   // Clicking anywhere on the screen (except a link or the prompt itself)
   // puts the keyboard back on the prompt, as in a real terminal.
-  const focusInput = (e: React.MouseEvent<HTMLElement>) => {
+  const focusInput = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
     if (!target.closest(`a, button, ${PROMPT_SELECTOR}`)) {
       focusPrompt();
     }
   };
 
+  // When the window comes to the front (desktop, mouse), typing goes to the prompt.
+  useEffect(() => {
+    if (isActive && window.matchMedia?.('(pointer: fine)').matches) {
+      focusPrompt();
+    }
+    // focusPrompt only reads a ref.
+  }, [isActive]);
+
+  // Scroll only this terminal (never the page or the desktop): to the start
+  // of a long output, otherwise to the bottom.
   useEffect(() => {
     if (commands.length === 0) return;
 
     requestAnimationFrame(() => {
-      if (lastCommandRef.current) {
-        const commandElement = lastCommandRef.current;
-        const terminalWidget = commandElement.closest(`.${styles.terminal}`);
+      const terminal = terminalRef.current;
+      const commandElement = lastCommandRef.current;
+      if (!terminal || !commandElement) return;
 
-        if (terminalWidget) {
-          const commandHeight = commandElement.offsetHeight;
-          const viewportHeight = terminalWidget.clientHeight;
-
-          if (commandHeight > viewportHeight) {
-            commandElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-          } else {
-            terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      }
+      const commandTop =
+        commandElement.getBoundingClientRect().top -
+        terminal.getBoundingClientRect().top +
+        terminal.scrollTop;
+      const top =
+        commandElement.offsetHeight > terminal.clientHeight
+          ? commandTop
+          : terminal.scrollHeight;
+      terminal.scrollTo?.({ top, behavior: 'smooth' });
     });
   }, [commands]);
 
   return (
-    <main
+    <div
       ref={terminalRef}
       className={styles.terminal}
       onClick={focusInput}
@@ -81,11 +90,6 @@ export const Terminal = () => {
         />
       </section>
       <CommandInput onEnter={handleCommand} history={inputHistory} />
-      <div
-        ref={terminalEndRef}
-        className={styles.scrollAnchor}
-        aria-hidden="true"
-      />
-    </main>
+    </div>
   );
 };

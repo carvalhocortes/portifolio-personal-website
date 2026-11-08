@@ -7,6 +7,28 @@
 }
 
 :root {
+  /* Windows 95 look */
+  --w95-face: #c0c0c0;
+  --w95-light: #ffffff;
+  --w95-highlight-edge: #dfdfdf;
+  --w95-shadow: #808080;
+  --w95-dark: #000000;
+  --w95-title: #000080;
+  /* Slightly darker than the 1995 #808080 so white text meets AA (4.5:1). */
+  --w95-title-inactive: #767676;
+  --w95-title-text: #ffffff;
+  --w95-desktop: #008080;
+  --w95-selection: #000080;
+  --w95-taskbar-height: 32px;
+  --w95-raised:
+    inset -1px -1px var(--w95-dark), inset 1px 1px var(--w95-light),
+    inset -2px -2px var(--w95-shadow), inset 2px 2px var(--w95-highlight-edge);
+  --w95-pressed:
+    inset -1px -1px var(--w95-light), inset 1px 1px var(--w95-dark),
+    inset -2px -2px var(--w95-highlight-edge), inset 2px 2px var(--w95-shadow);
+  --w95-sunken:
+    inset -1px -1px var(--w95-light), inset 1px 1px var(--w95-shadow);
+
   --color-bg-primary: #000000;
   --color-bg-secondary: #000000;
   --color-bg-tertiary: #555555;
@@ -28,6 +50,11 @@
   --color-syntax-error: #e06c75;
   --color-syntax-warning: #e5c07b;
 
+  /* Tahoma: the Windows 9x/2000 successor of MS Sans Serif. It is a system
+     font (Windows and macOS), so nothing is downloaded. Bitmap re-creations
+     of MS Sans Serif were tried and were hard to read. */
+  --font-family-ui: Tahoma, 'Segoe UI', Verdana, Geneva, sans-serif;
+  --font-size-ui: 13px;
   --font-family-mono: 'Px437 IBM VGA 8x16', 'Courier New', monospace;
   --font-family-sans:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',

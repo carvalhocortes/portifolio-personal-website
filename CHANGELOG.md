@@ -7,6 +7,21 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Added
+- Desktop no estilo Windows 95 no computador: fundo verde-azulado, ícone do Terminal e barra de
+  tarefas com o botão Iniciar, um botão por janela, seletor PT/EN e relógio.
+- Menu Iniciar com a faixa "CC 84", que funciona com o mouse e com o teclado.
+- Janelas que podem ser arrastadas, redimensionadas pelas bordas e cantos, minimizadas,
+  maximizadas e fechadas. O Terminal já abre numa janela quando o site carrega.
+- Logo próprio do botão Iniciar: uma bandeira de quatro cores num mastro, em pixel art.
+
+### Changed
+- O programa "MS-DOS" passa a se chamar "Terminal".
+- O banner das boas-vindas se ajusta à largura da janela do Terminal e muda de idioma junto com o site.
+- No celular, o Terminal continua em tela cheia, sem desktop.
+
+## 2026-11-07 (terminal MS-DOS)
+
+### Added
 - Visual de MS-DOS no terminal: fundo preto, fonte bitmap Px437 IBM VGA, prompt
   `C:\CARVALHO-CORTES\>` e cursor `_` piscando, parado se o sistema pedir menos movimento.
 - Comandos clicáveis nas boas-vindas, no `ajuda` e no `dir`: um clique executa o comando, sem precisar digitar.
@@ -31,7 +46,7 @@ versões: cada entrega na `main` vira uma seção com a data.
 - E-mail de contato atualizado para carvalhocortes@gmail.com.
 - Depois de clicar num comando, o teclado volta para o prompt: as setas ↑/↓ trazem os comandos em vez de rolar a página.
 
-## 2026-11-07
+## 2026-11-07 (GitHub Pages)
 
 ### Changed
 - Site publicado no GitHub Pages, em https://carvalhocortes.com.br, com HTTPS. Antes ficava num servidor FTP.

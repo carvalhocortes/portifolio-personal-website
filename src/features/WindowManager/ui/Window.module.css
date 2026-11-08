@@ -1,0 +1,176 @@
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+  min-width: 320px;
+  min-height: 200px;
+  box-sizing: border-box;
+}
+
+.maximized {
+  inset: 0;
+  width: auto;
+  height: auto;
+}
+
+.minimized {
+  display: none;
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 2px 0 3px;
+  background: var(--w95-title);
+  color: var(--w95-title-text);
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-ui);
+  user-select: none;
+  touch-action: none;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.inactive {
+  background: var(--w95-title-inactive);
+  color: var(--w95-title-text);
+}
+
+.titleIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: none;
+}
+
+.controls {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: var(--w95-face);
+  color: var(--w95-dark);
+  box-shadow: var(--w95-raised);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.closeControl {
+  margin-left: 2px;
+}
+
+.control:active {
+  box-shadow: var(--w95-pressed);
+}
+
+.control:active svg {
+  transform: translate(1px, 1px);
+}
+
+.control:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+  outline-offset: -4px;
+}
+
+.body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-top: 2px;
+  overflow: hidden;
+}
+
+/* Resize handles: invisible strips on the edges and squares on the corners. */
+.handle {
+  position: absolute;
+  z-index: 1;
+  touch-action: none;
+}
+
+.handle-n,
+.handle-s {
+  left: 8px;
+  right: 8px;
+  height: 6px;
+  cursor: ns-resize;
+}
+
+.handle-n {
+  top: -3px;
+}
+
+.handle-s {
+  bottom: -3px;
+}
+
+.handle-e,
+.handle-w {
+  top: 8px;
+  bottom: 8px;
+  width: 6px;
+  cursor: ew-resize;
+}
+
+.handle-e {
+  right: -3px;
+}
+
+.handle-w {
+  left: -3px;
+}
+
+.handle-ne,
+.handle-nw,
+.handle-se,
+.handle-sw {
+  width: 12px;
+  height: 12px;
+}
+
+.handle-ne {
+  top: -3px;
+  right: -3px;
+  cursor: nesw-resize;
+}
+
+.handle-sw {
+  bottom: -3px;
+  left: -3px;
+  cursor: nesw-resize;
+}
+
+.handle-nw {
+  top: -3px;
+  left: -3px;
+  cursor: nwse-resize;
+}
+
+.handle-se {
+  bottom: -3px;
+  right: -3px;
+  cursor: nwse-resize;
+}

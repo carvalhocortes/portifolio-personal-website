@@ -145,6 +145,27 @@
     },
     "ver": {
       "text": "CARVALHO-CORTES Version {{version}}"
+    },
+    "programs": {
+      "terminal": "Terminal"
+    },
+    "desktop": {
+      "label": "Desktop",
+      "programs": "Programs"
+    },
+    "window": {
+      "minimize": "Minimize",
+      "maximize": "Maximize",
+      "restore": "Restore",
+      "close": "Close"
+    },
+    "taskbar": {
+      "start": "Start",
+      "startMenu": "Start menu",
+      "openWindows": "Open windows",
+      "switchLanguage": "EN, switch language to Português",
+      "languageCode": "EN",
+      "languageItem": "Language: Português"
     }
   }
 }
