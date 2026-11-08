@@ -59,9 +59,65 @@ describe('DesktopPage', () => {
     expect(
       within(icons).getByRole('button', { name: 'Leia-me.txt' })
     ).toBeInTheDocument();
+    // The Clock is open too, behind the Leia-me; the Recycle Bin is closed.
+    expect(screen.getByRole('region', { name: 'Relógio' })).toBeInTheDocument();
+    expect(
+      within(tasks).getByRole('button', { name: 'Relógio' })
+    ).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.queryByRole('region', { name: 'Lixeira' })).toBeNull();
+    expect(
+      within(icons)
+        .getAllByRole('button')
+        .map((icon) => icon.textContent)
+    ).toEqual(['Navegador', 'Terminal', 'Leia-me.txt', 'Relógio', 'Lixeira']);
     // The landing page loads only when the browser shows up.
     expect(document.querySelector('.lp-root')).toBeNull();
     expect(document.documentElement.dataset.route).toBe('desktop');
+  });
+
+  it('opens the Clock from the time in the taskbar', async () => {
+    setWidth(1280);
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    const tasks = screen.getByRole('navigation', { name: 'Janelas abertas' });
+    await user.click(
+      within(screen.getByRole('region', { name: 'Relógio' })).getByRole(
+        'button',
+        { name: 'Fechar' }
+      )
+    );
+    expect(screen.queryByRole('region', { name: 'Relógio' })).toBeNull();
+    await user.click(screen.getByRole('button', { name: 'Abrir o Relógio' }));
+    expect(screen.getByRole('region', { name: 'Relógio' })).toBeInTheDocument();
+    expect(
+      within(tasks).getByRole('button', { name: 'Relógio' })
+    ).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('brings a window to the front without moving it in the page', async () => {
+    setWidth(1280);
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    const clock = screen.getByRole('region', { name: 'Relógio' });
+    const notepad = screen.getByRole('region', {
+      name: 'Leia-me.txt - Bloco de Notas',
+    });
+    const pageOrder = () =>
+      screen
+        .getAllByRole('region')
+        .map((region) => region.getAttribute('aria-label'))
+        .filter((name) => name === 'Relógio' || name?.startsWith('Leia-me'));
+    const before = pageOrder();
+    // One click on a control of a window behind: it works and the window
+    // comes to the front by its layer, not by moving in the page.
+    await user.click(within(clock).getByRole('radio', { name: 'Digital' }));
+    expect(
+      within(clock).getByRole('radio', { name: 'Digital' })
+    ).toHaveAttribute('aria-checked', 'true');
+    expect(pageOrder()).toEqual(before);
+    expect(Number(clock.style.zIndex)).toBeGreaterThan(
+      Number(notepad.style.zIndex)
+    );
   });
 
   it('keeps the taskbar order when another window gets the focus', async () => {
@@ -76,7 +132,12 @@ describe('DesktopPage', () => {
     await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
     await user.click(within(tasks).getByRole('button', { name: 'Navegador' }));
     await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
-    expect(order()).toEqual(['Navegador', 'Terminal', 'Leia-me.txt']);
+    expect(order()).toEqual([
+      'Navegador',
+      'Terminal',
+      'Relógio',
+      'Leia-me.txt',
+    ]);
     expect(
       within(tasks).getByRole('button', { name: 'Terminal' })
     ).toHaveAttribute('aria-pressed', 'true');

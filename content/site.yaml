@@ -56,3 +56,15 @@ voluntario:
 abertura:
   imagem:
     arquivo: abertura.webp
+# Lixeira do desktop: uma pasta por projeto antigo. Cada arquivo é uma foto
+# (imagem em public/resources/lixeira/<pasta>/) ou um texto (só nos arquivos de
+# idioma). Nomes e textos ficam em lixeira.pastas.<id> nos arquivos de idioma.
+lixeira:
+  pastas:
+    - id: exemplo
+      arquivos:
+        - id: leia-me
+          tipo: texto
+        - id: foto
+          tipo: foto
+          arquivo: lixeira/exemplo/placeholder.svg

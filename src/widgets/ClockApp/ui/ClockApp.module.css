@@ -1,0 +1,71 @@
+/* The clock fills its window: the face grows and shrinks with it, the mode
+   buttons stay at the bottom. */
+.clock {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--w95-face);
+  color: var(--w95-dark);
+}
+
+.face {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  container-type: size;
+}
+
+.analog {
+  width: 100%;
+  height: 100%;
+}
+
+.digital {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.time {
+  font-family: var(--font-family-mono);
+  font-size: min(16cqw, 34cqh);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.date {
+  font-size: max(12px, min(6cqw, 10cqh));
+}
+
+.modes {
+  display: flex;
+  gap: 6px;
+  padding: 6px 8px 8px;
+}
+
+.modeButton {
+  flex: 1;
+  height: 26px;
+  border: none;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* The current mode stays pressed in, like a toggled Windows 95 button. */
+.modeButton[aria-checked='true'] {
+  background: var(--w95-highlight-edge);
+  box-shadow: var(--w95-pressed);
+}
+
+.modeButton:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+  outline-offset: -5px;
+}
