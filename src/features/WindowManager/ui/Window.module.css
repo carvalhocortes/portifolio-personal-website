@@ -59,6 +59,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: none;
+  /* A dragged window can sit at a fractional x; keep the first letter's stem
+     inside the clip (see .taskLabel in the taskbar). */
+  padding-left: 1px;
 }
 
 .controls {
