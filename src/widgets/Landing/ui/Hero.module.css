@@ -30,10 +30,10 @@
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
+  gap: clamp(2rem, 6cqi, 5rem);
   max-width: var(--lp-max);
   margin: 0 auto;
-  padding: clamp(3rem, 7vw, 5.5rem) var(--lp-gutter) clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(3rem, 7cqi, 5.5rem) var(--lp-gutter) clamp(2.5rem, 5cqi, 4rem);
 }
 
 .role {
@@ -51,7 +51,7 @@
 
 .title {
   margin-top: 1.25rem;
-  font-size: clamp(3rem, 7.5vw, 5.75rem);
+  font-size: clamp(3rem, 7.5cqi, 5.75rem);
   font-weight: 750;
   line-height: 0.98;
   letter-spacing: -0.05em;
@@ -61,7 +61,7 @@
 .summary {
   max-width: 34ch;
   margin-top: 1.5rem;
-  font-size: clamp(1.125rem, 2vw, 1.3125rem);
+  font-size: clamp(1.125rem, 2cqi, 1.3125rem);
   line-height: 1.5;
   color: var(--lp-muted);
   text-wrap: pretty;
@@ -154,7 +154,7 @@
 .pause {
   position: absolute;
   right: var(--lp-gutter);
-  bottom: calc(clamp(3rem, 6vw, 4.5rem) - 3.25rem);
+  bottom: calc(clamp(3rem, 6cqi, 4.5rem) - 3.25rem);
   display: grid;
   place-items: center;
   width: 36px;
@@ -180,7 +180,7 @@
 
 .strip {
   overflow: hidden;
-  padding: 0 0 clamp(3rem, 6vw, 4.5rem);
+  padding: 0 0 clamp(3rem, 6cqi, 4.5rem);
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -256,7 +256,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@container landing (max-width: 767px) {
   .inner {
     grid-template-columns: 1fr;
     gap: 2rem;

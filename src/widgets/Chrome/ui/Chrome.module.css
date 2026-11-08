@@ -1,0 +1,66 @@
+.chrome {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--w95-face);
+}
+
+/* Decorative browser bar: nothing here navigates. */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 4px 5px;
+  border-bottom: 1px solid var(--w95-shadow);
+  box-shadow: 0 1px var(--w95-light);
+  color: var(--w95-dark);
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+  color: var(--w95-shadow);
+}
+
+.address {
+  flex: 1;
+  min-width: 0;
+  height: 22px;
+  padding: 0 6px;
+  border: none;
+  background: var(--w95-light);
+  box-shadow:
+    inset -1px -1px var(--w95-light),
+    inset 1px 1px var(--w95-shadow),
+    inset -2px -2px var(--w95-highlight-edge),
+    inset 2px 2px var(--w95-dark);
+  color: var(--w95-dark);
+  font: inherit;
+  text-overflow: ellipsis;
+}
+
+.address:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+  outline-offset: -4px;
+}
+
+.viewport {
+  flex: 1;
+  min-height: 0;
+  margin: 2px;
+  box-shadow:
+    inset -1px -1px var(--w95-light),
+    inset 1px 1px var(--w95-shadow);
+  padding: 2px;
+}
+
+.page {
+  height: 100%;
+}

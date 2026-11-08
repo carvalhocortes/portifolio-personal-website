@@ -1,11 +1,11 @@
 .inner {
   max-width: var(--lp-max);
   margin: 0 auto;
-  padding: clamp(4rem, 10vw, 7.5rem) var(--lp-gutter);
+  padding: clamp(4rem, 10cqi, 7.5rem) var(--lp-gutter);
 }
 
 .title {
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-size: clamp(2rem, 4.5cqi, 3.25rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;

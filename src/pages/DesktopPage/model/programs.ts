@@ -1,11 +1,17 @@
-import type {
-  ProgramDefinition,
-  ProgramId,
-} from '../../../entities/Program/model/types';
-import { MsDosIcon } from '../../../shared/ui/icons';
+import type { ProgramDefinition } from '../../../entities/Program/model/types';
+import { ChromeIcon, MsDosIcon } from '../../../shared/ui/icons';
+import { Chrome } from '../../../widgets/Chrome/ui/Chrome';
 import { Terminal } from '../../../widgets/Terminal/ui/Terminal';
 
 export const PROGRAMS: ProgramDefinition[] = [
+  {
+    id: 'chrome',
+    titleKey: 'programs.chrome',
+    Icon: ChromeIcon,
+    Component: Chrome,
+    // Larger than any screen: it opens beside the icons, filling the rest.
+    defaultSize: { width: 1600, height: 1200 },
+  },
   {
     id: 'terminal',
     titleKey: 'programs.terminal',
@@ -16,6 +22,3 @@ export const PROGRAMS: ProgramDefinition[] = [
     defaultSize: { width: 780, height: 500 },
   },
 ];
-
-/** Opened when the site loads; on phones it is the only screen. */
-export const MAIN_PROGRAM: ProgramId = 'terminal';

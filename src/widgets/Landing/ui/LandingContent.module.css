@@ -1,0 +1,39 @@
+.frame[data-embedded] {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Inside a window the frame scrolls on its own; as a page, the page scrolls. */
+.frame[data-embedded] .scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-top: calc(var(--lp-header-height) + 16px);
+}
+
+/* The sections adapt to this box, so a narrow window gets the phone layout. */
+.content {
+  container: landing / inline-size;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 20;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: var(--lp-accent);
+  color: var(--lp-on-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+.main {
+  outline: none;
+}

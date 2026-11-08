@@ -1,5 +1,8 @@
 .window {
   position: absolute;
+  /* Each window is its own layer: nothing inside (like the landing page's
+     sticky header) can show above another window. Stacking follows DOM order. */
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   padding: 3px;

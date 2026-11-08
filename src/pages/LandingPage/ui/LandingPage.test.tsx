@@ -1,14 +1,6 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 import LandingPage from './LandingPage';
@@ -36,17 +28,6 @@ vi.mock('@hcaptcha/react-hcaptcha', async () => {
         </>
       );
     }),
-  };
-});
-
-beforeAll(() => {
-  // jsdom has <dialog> but not its modal methods.
-  HTMLDialogElement.prototype.showModal = function showModal() {
-    this.open = true;
-  };
-  HTMLDialogElement.prototype.close = function close() {
-    this.open = false;
-    this.dispatchEvent(new Event('close'));
   };
 });
 
@@ -120,7 +101,7 @@ describe('LandingPage', () => {
       screen.getByRole('heading', { level: 2, name: 'About' })
     ).toBeInTheDocument();
     expect(screen.getByText(content.pessoa.resumo.en)).toBeInTheDocument();
-    expect(document.documentElement.lang).toBe('en');
+    expect(document.title).toBe('Fernando Cortes - Software engineer');
 
     await user.click(
       screen.getByRole('button', { name: /switch the language/i })
@@ -128,7 +109,7 @@ describe('LandingPage', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: 'Sobre' })
     ).toBeInTheDocument();
-    expect(document.documentElement.lang).toBe('pt-BR');
+    expect(document.title).toBe('Fernando Cortes - Engenheiro de software');
   });
 
   it('opens and closes the mobile menu, also with Escape', async () => {
@@ -192,7 +173,14 @@ describe('Hobbies', () => {
       })
     );
     const dialog = screen.getByRole('dialog');
-    expect(dialog).toHaveAttribute('open');
+    expect(dialog).toHaveAttribute('aria-modal', 'true');
+    expect(
+      within(dialog).getByRole('button', { name: 'Fechar' })
+    ).toHaveFocus();
+    // The page behind the photo is out of reach.
+    expect(
+      document.getElementById('conteudo')!.closest('[inert]')
+    ).not.toBeNull();
     expect(
       within(dialog).getByText(`Foto 1 de ${wood.fotos.length}`)
     ).toBeInTheDocument();
@@ -209,6 +197,32 @@ describe('Hobbies', () => {
     ).toBeInTheDocument();
 
     await user.click(within(dialog).getByRole('button', { name: 'Fechar' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(document.querySelector('[inert]')).toBeNull();
+    expect(
+      screen.getByRole('button', {
+        name: `Ampliar a foto: ${wood.fotos[0].legenda.pt}`,
+      })
+    ).toHaveFocus();
+  });
+
+  it('closes the photo with Escape and keeps Tab inside it', async () => {
+    const user = renderPage();
+    const wood = content.hobbies.itens[0];
+    await user.click(
+      screen.getByRole('button', {
+        name: `Ampliar a foto: ${wood.fotos[0].legenda.pt}`,
+      })
+    );
+    const dialog = screen.getByRole('dialog');
+    const buttons = within(dialog).getAllByRole('button');
+    buttons[buttons.length - 1].focus();
+    await user.tab();
+    expect(buttons[0]).toHaveFocus();
+    await user.tab({ shift: true });
+    expect(buttons[buttons.length - 1]).toHaveFocus();
+
+    await user.keyboard('{Escape}');
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 });
