@@ -116,6 +116,11 @@
   white-space: nowrap;
 }
 
+.trayIcon {
+  display: inline-flex;
+  padding: 1px;
+}
+
 /* Start menu */
 .startMenu {
   position: absolute;

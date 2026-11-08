@@ -6,6 +6,13 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Added
+- **ICQ** no desktop, minimizado na barra de tarefas e com a flor ao lado do relógio: a lista de contatos tem só o
+  Fernando online (os outros, de piada, ficam offline e não recebem mensagens). Uma mensagem para ele pede nome,
+  e-mail e o captcha, chega por e-mail e recebe uma resposta automática no chat.
+
+## 2026-11-08 (velocidade no celular)
+
 ### Changed
 - A landing page abre mais rápido no celular: o celular não baixa mais o código do desktop e do Terminal, e a fonte,
   a foto e a assinatura começam a baixar logo no início, em vez de esperar a página montar.

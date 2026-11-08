@@ -72,3 +72,14 @@ lixeira:
         - id: foto
           tipo: foto
           arquivo: lixeira/exemplo/placeholder.svg
+
+# ICQ do desktop: os contatos de piada, todos offline (só o Fernando fica
+# online). Os nomes ficam em icq.contatos.<id> nos arquivos de idioma.
+icq:
+  contatos:
+    - id: bug
+    - id: cafe
+    - id: deploy
+    - id: recrutador
+    - id: wifi
+    - id: mae

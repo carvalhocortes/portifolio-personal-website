@@ -2,12 +2,14 @@ import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import {
   BrowserIcon,
   ClockIcon,
+  IcqIcon,
   MsDosIcon,
   NotepadIcon,
   RecycleBinIcon,
 } from '../../../shared/ui/icons';
 import { Browser } from '../../../widgets/Browser/ui/Browser';
 import { ClockApp } from '../../../widgets/ClockApp';
+import { Icq } from '../../../widgets/Icq';
 import { RecycleBin } from '../../../widgets/RecycleBin';
 import { Notepad } from '../../../widgets/Notepad/ui/Notepad';
 import { Terminal } from '../../../widgets/Terminal/ui/Terminal';
@@ -64,5 +66,14 @@ export const PROGRAMS: ProgramDefinition[] = [
     Icon: RecycleBinIcon,
     Component: RecycleBin,
     defaultSize: { width: 560, height: 420 },
+  },
+  {
+    id: 'icq',
+    titleKey: 'icq.name',
+    Icon: IcqIcon,
+    Component: Icq,
+    // Tall and narrow like the contact list, wide enough for the captcha.
+    defaultSize: { width: 380, height: 560 },
+    startup: 'minimized',
   },
 ];

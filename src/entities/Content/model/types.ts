@@ -43,4 +43,6 @@ export interface SiteContent {
   abertura: { imagem: { arquivo: string } };
   /** Loose files at the top of the Recycle Bin, then one folder per project. */
   lixeira: { arquivos: TrashFile[]; pastas: TrashFolder[] };
+  /** ICQ: the joke contacts, all offline. */
+  icq: { contatos: { id: string }[] };
 }
