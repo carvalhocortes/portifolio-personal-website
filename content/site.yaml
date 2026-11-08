@@ -263,3 +263,42 @@ leiame:
         carvalhocortes.com.br/terminal   just the Terminal
 
       Feel free to type here: nothing is saved.
+
+# Abertura do desktop (só no computador, uma vez por aba). Texto puro, uma linha
+# por linha da tela. Na BIOS, {memoria} vira a contagem de memória que sobe.
+# A imagem é a tela com logo, mostrada depois do DOS.
+abertura:
+  imagem:
+    arquivo: abertura.webp
+  bios:
+    pt: |
+      Processador: Cérebro 486 DX @ 66 MHz (com café)
+      Memória: {memoria} OK
+
+      Detectando discos...  C: 540 MB  OK
+      Detectando teclado...  OK
+      Detectando mouse...  OK (com bolinha)
+
+      Pressione DEL para entrar no SETUP (não adianta)
+    en: |
+      Processor: Brain 486 DX @ 66 MHz (with coffee)
+      Memory: {memoria} OK
+
+      Detecting drives...  C: 540 MB  OK
+      Detecting keyboard...  OK
+      Detecting mouse...  OK (ball included)
+
+      Press DEL to enter SETUP (it won't help)
+  dos:
+    pt: |
+      Iniciando CC 84...
+
+      Carregando café.............. ok
+      Desembaraçando cabos......... ok
+      Procurando bugs.............. 3 encontrados, ignorando
+    en: |
+      Starting CC 84...
+
+      Brewing coffee............... ok
+      Untangling cables............ ok
+      Looking for bugs............. 3 found, ignoring

@@ -259,6 +259,38 @@ describe('Contact form', () => {
     expect(document.querySelector('a[href^="mailto:"]')).toBeNull();
   });
 
+  it('loads the captcha only near the form or when someone starts filling it', async () => {
+    let notify: (entries: { isIntersecting: boolean }[]) => void = () => {};
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        constructor(callback: typeof notify) {
+          notify = callback;
+        }
+        observe() {}
+        disconnect() {}
+      }
+    );
+    try {
+      const user = renderPage();
+      expect(
+        screen.queryByRole('button', { name: 'solve captcha' })
+      ).toBeNull();
+      // Still far from the screen: nothing loads.
+      act(() => notify([{ isIntersecting: false }]));
+      expect(
+        screen.queryByRole('button', { name: 'solve captcha' })
+      ).toBeNull();
+      // Starting to fill the form loads it.
+      await user.click(screen.getByLabelText('Nome'));
+      expect(
+        await screen.findByRole('button', { name: 'solve captcha' })
+      ).toBeInTheDocument();
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+
   it('asks for every field and the captcha before sending', async () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
     const user = renderPage();

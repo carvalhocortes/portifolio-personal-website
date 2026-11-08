@@ -1,0 +1,105 @@
+/* Boot screen over the whole desktop: BIOS and DOS on black, then the logo. */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  background: #000;
+  color: #aaa;
+  cursor: default;
+  user-select: none;
+}
+
+.text {
+  position: relative;
+  height: 100%;
+  padding: 24px 32px;
+  font-family: var(--font-family-mono);
+  font-size: 20px;
+  line-height: 1.25;
+  white-space: pre;
+}
+
+.text p {
+  margin: 0;
+}
+
+.bright {
+  color: #fff;
+}
+
+.biosLogo {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+}
+
+.cursor {
+  animation: blink 0.5s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.skip {
+  position: absolute;
+  bottom: 16px;
+  left: 32px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  color: #777;
+}
+
+/* Logo screen: the picture covering the screen (it has sky to spare around
+   the logo) and the loading band at the bottom. */
+.splash {
+  position: relative;
+  height: 100%;
+  background: #7fb3e6;
+}
+
+.splashImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.band {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 16px;
+  background: linear-gradient(
+    90deg,
+    #9db4d6,
+    #3d6bb3 25%,
+    #9db4d6 50%,
+    #3d6bb3 75%,
+    #9db4d6
+  );
+  background-size: 200% 100%;
+  animation: run 1.2s linear infinite;
+}
+
+.still {
+  animation: none;
+}
+
+@keyframes run {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .band {
+    animation: none;
+  }
+}

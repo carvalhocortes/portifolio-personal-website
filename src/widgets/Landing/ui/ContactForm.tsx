@@ -1,10 +1,18 @@
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import type HCaptchaType from '@hcaptcha/react-hcaptcha';
 import {
   CheckCircle,
   PaperPlaneTilt,
   WarningCircle,
 } from '@phosphor-icons/react';
-import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FormEvent,
+} from 'react';
 import { content } from '../../../entities/Content';
 import { CONTACT_FORM } from '../../../shared/config/contactForm';
 import { useContentLanguage } from '../lib/useContentLanguage';
@@ -15,14 +23,39 @@ type Status = 'idle' | 'sending' | 'sent' | 'failed';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// The captcha (its code and hCaptcha's own script and frames) loads only when
+// the form comes near the screen or someone starts filling it, so it doesn't
+// compete with the rest of the page on the first load.
+const HCaptcha = lazy(() => import('@hcaptcha/react-hcaptcha'));
+const NEAR_SCREEN = '400px';
+
 export const ContactForm = () => {
   const { t, language } = useContentLanguage();
   const id = useId();
-  const captchaRef = useRef<HCaptcha>(null);
+  const captchaRef = useRef<HCaptchaType>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  // Without IntersectionObserver (old browsers, tests), load it right away.
+  const [captchaWanted, setCaptchaWanted] = useState(
+    () => typeof IntersectionObserver === 'undefined'
+  );
   const [token, setToken] = useState('');
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [status, setStatus] = useState<Status>('idle');
   const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const form = formRef.current;
+    if (captchaWanted || !form) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting))
+          setCaptchaWanted(true);
+      },
+      { rootMargin: NEAR_SCREEN }
+    );
+    observer.observe(form);
+    return () => observer.disconnect();
+  }, [captchaWanted]);
 
   // The form is replaced by the thank-you note; keep the keyboard focus there.
   useEffect(() => {
@@ -126,7 +159,13 @@ export const ContactForm = () => {
     );
 
   return (
-    <form className={styles.form} onSubmit={onSubmit} noValidate>
+    <form
+      ref={formRef}
+      className={styles.form}
+      onSubmit={onSubmit}
+      onFocus={() => setCaptchaWanted(true)}
+      noValidate
+    >
       <h3 className={styles.title}>{t('landing.form.title')}</h3>
 
       <div className={styles.row}>
@@ -164,18 +203,22 @@ export const ContactForm = () => {
       />
 
       <div className={styles.captcha}>
-        <HCaptcha
-          ref={captchaRef}
-          sitekey={CONTACT_FORM.hcaptchaSiteKey}
-          reCaptchaCompat={false}
-          languageOverride={language.startsWith('en') ? 'en' : 'pt-BR'}
-          theme="dark"
-          onVerify={(value) => {
-            setToken(value);
-            setErrors((prev) => ({ ...prev, captcha: undefined }));
-          }}
-          onExpire={() => setToken('')}
-        />
+        {captchaWanted && (
+          <Suspense fallback={null}>
+            <HCaptcha
+              ref={captchaRef}
+              sitekey={CONTACT_FORM.hcaptchaSiteKey}
+              reCaptchaCompat={false}
+              languageOverride={language.startsWith('en') ? 'en' : 'pt-BR'}
+              theme="dark"
+              onVerify={(value) => {
+                setToken(value);
+                setErrors((prev) => ({ ...prev, captcha: undefined }));
+              }}
+              onExpire={() => setToken('')}
+            />
+          </Suspense>
+        )}
         {errors.captcha && (
           <p className={styles.error} role="alert">
             {errors.captcha}
