@@ -3,3 +3,7 @@ export { MsDosIcon } from './MsDosIcon';
 export { NotepadIcon } from './NotepadIcon';
 export { PixelIcon } from './PixelIcon';
 export { StartLogo } from './StartLogo';
+export { ClockIcon } from './ClockIcon';
+export { FolderIcon } from './FolderIcon';
+export { RecycleBinIcon } from './RecycleBinIcon';
+export { TextFileIcon } from './TextFileIcon';

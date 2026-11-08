@@ -131,6 +131,24 @@ abertura:
     Desembaraçando cabos......... ok
     Procurando bugs.............. 3 encontrados, ignorando
 
+lixeira:
+  pastas:
+    exemplo:
+      nome: Projeto exemplo
+      arquivos:
+        leia-me:
+          nome: leia-me.txt
+          texto: |
+            PROJETO EXEMPLO
+            ===============
+
+            Esta pasta é provisória.
+
+            Aqui vão entrar fotos e anotações de projetos antigos:
+            coisas que quase foram para o site, mas acabaram na Lixeira.
+        foto:
+          nome: foto-provisoria.svg
+
 # Interface
 
 terminal:
@@ -242,6 +260,7 @@ dir:
 ver:
   text: CARVALHO-CORTES Versão {{version}}
 programs:
+  clock: Relógio
   terminal: Terminal
   browser: Navegador
   notepadWindow: '{{name}} - Bloco de Notas'
@@ -254,6 +273,7 @@ window:
   restore: Restaurar
   close: Fechar
 taskbar:
+  openClock: Abrir o Relógio
   start: Iniciar
   startMenu: Menu Iniciar
   openWindows: Janelas abertas
@@ -307,3 +327,16 @@ notepad:
     help: Ajuda
 boot:
   skip: Pressione qualquer tecla para pular
+clock:
+  now: 'Agora são {{time}}'
+  mode: Modo do relógio
+  analog: Analógico
+  digital: Digital
+recycleBin:
+  name: Lixeira
+  back: Voltar
+  address: Endereço
+  previous: Arquivo anterior
+  next: Próximo arquivo
+  objects_one: '{{count}} objeto'
+  objects_other: '{{count}} objetos'

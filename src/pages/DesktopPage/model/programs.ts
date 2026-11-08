@@ -1,12 +1,21 @@
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
-import { BrowserIcon, MsDosIcon, NotepadIcon } from '../../../shared/ui/icons';
+import {
+  BrowserIcon,
+  ClockIcon,
+  MsDosIcon,
+  NotepadIcon,
+  RecycleBinIcon,
+} from '../../../shared/ui/icons';
 import { Browser } from '../../../widgets/Browser/ui/Browser';
+import { ClockApp } from '../../../widgets/ClockApp';
+import { RecycleBin } from '../../../widgets/RecycleBin';
 import { Notepad } from '../../../widgets/Notepad/ui/Notepad';
 import { Terminal } from '../../../widgets/Terminal/ui/Terminal';
 
 /**
  * Desktop programs, in icon order. The desktop starts with the browser and the
- * Terminal minimized and the Leia-me.txt open in front.
+ * Terminal minimized, the Clock open in the top-right corner and the
+ * Leia-me.txt open in front. The Recycle Bin starts closed.
  */
 export const PROGRAMS: ProgramDefinition[] = [
   {
@@ -36,7 +45,24 @@ export const PROGRAMS: ProgramDefinition[] = [
     Component: Notepad,
     // Fits the whole text without scrolling on a 1024 × 768 screen.
     defaultSize: { width: 600, height: 650 },
+    startup: 'front',
+    placement: 'center',
+  },
+  {
+    id: 'clock',
+    titleKey: 'programs.clock',
+    Icon: ClockIcon,
+    Component: ClockApp,
+    // Small: the smallest window size (320 px wide), face and mode buttons.
+    defaultSize: { width: 320, height: 340 },
     startup: 'open',
-    centered: true,
+    placement: 'top-right',
+  },
+  {
+    id: 'recycleBin',
+    titleKey: 'recycleBin.name',
+    Icon: RecycleBinIcon,
+    Component: RecycleBin,
+    defaultSize: { width: 560, height: 420 },
   },
 ];
