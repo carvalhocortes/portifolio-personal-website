@@ -185,21 +185,24 @@ A aplicação estará disponível em `http://localhost:5173`
 
 ### Iniciando a Aplicação
 
-1. Em `/`, no computador, aparece um desktop no estilo Windows 95 com três programas:
+1. Em `/`, no computador, o site primeiro "liga": uma tela de BIOS, algumas linhas de DOS terminando em
+   `C:\> win` e uma tela com o logo, em cerca de 4 s. Aparece uma vez por aba, e um clique ou qualquer tecla
+   pula direto para o desktop. Com movimento reduzido no sistema, mostra só o logo, parado
+2. Depois aparece um desktop no estilo Windows 95 com três programas:
    - **Leia-me.txt**: um Bloco de Notas, aberto na frente, que explica o site. Dá para digitar, mas nada é salvo
    - **Navegador** e **Terminal**: abertos e minimizados na barra de tarefas
 
    Um clique no botão da barra, no ícone ou no menu Iniciar mostra o programa numa janela, que dá para
    arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o
    relógio
-2. O Navegador mostra a landing page (abertura, Sobre, Hobbies com galeria de fotos, Voluntário e Contato, com
+3. O Navegador mostra a landing page (abertura, Sobre, Hobbies com galeria de fotos, Voluntário e Contato, com
    formulário protegido por captcha). A barra de endereço é só decorativa e mostra o título da página. A
    landing se ajusta à largura da janela e segue o modo claro ou escuro do sistema
    - No celular, a landing aparece direto, sem o desktop
    - Endereços diretos: `/landing` abre só a landing e `/terminal` abre só o Terminal, em tela cheia
-3. No Terminal você vê o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
-4. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
-5. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
+4. No Terminal você vê o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
+5. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
+6. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
 
 ### Editando o conteúdo
 
@@ -211,6 +214,8 @@ edite esse arquivo:
 - `{idade}` vira a idade calculada a partir de `nascimento`;
 - as fotos ficam em `public/resources/`, e o YAML guarda só o nome do arquivo;
 - o texto do Leia-me.txt fica em `leiame`, como texto puro (sem Markdown);
+- as linhas da abertura (BIOS e DOS) ficam em `abertura`, também em texto puro; na BIOS, `{memoria}` vira a
+  contagem de memória;
 - os testes falham se faltar um idioma ou se uma foto citada não existir.
 
 O formulário de contato usa o [Web3Forms](https://web3forms.com) com hCaptcha. A chave de acesso,
