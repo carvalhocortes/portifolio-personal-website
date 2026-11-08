@@ -186,9 +186,10 @@ A aplicação estará disponível em `http://localhost:5173`
 ### Iniciando a Aplicação
 
 1. Acesse a aplicação no navegador
-2. Você verá o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
-3. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
-4. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
+2. No computador, aparece um desktop no estilo Windows 95 com o Terminal aberto numa janela, que dá para arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o relógio. No celular, o Terminal abre em tela cheia
+3. No Terminal você vê o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
+4. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
+5. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
 
 ### Atalhos de Teclado
 
