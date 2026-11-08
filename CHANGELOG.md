@@ -12,7 +12,8 @@ versões: cada entrega na `main` vira uma seção com a data.
 - Endereços diretos: `/landing` abre só a landing page e `/terminal` só o Terminal.
 
 ### Changed
-- O desktop volta a ser a página principal e abre com o Chrome e o Terminal fechados.
+- O desktop volta a ser a página principal e abre com o Chrome e o Terminal minimizados na barra de
+  tarefas.
 - No celular, a página principal mostra a landing page direto.
 - A landing page se ajusta à largura da janela do Chrome; a foto ampliada cobre só a janela.
 
