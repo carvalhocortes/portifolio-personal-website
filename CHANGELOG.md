@@ -7,6 +7,18 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Added
+- Abertura em estilo anos 90 antes do desktop: uma tela de BIOS, linhas de DOS com piadas terminando em
+  `C:\> win` e uma tela com o logo "Cortes84", em cerca de 4 s. Aparece uma vez por aba, um clique ou tecla pula,
+  e com movimento reduzido mostra só o logo. No celular, em `/terminal` e em `/landing` nada muda.
+
+### Changed
+- A landing page carrega mais leve: o captcha do formulário de contato só é baixado quando o formulário chega perto
+  da tela ou quando alguém começa a preenchê-lo.
+- No celular, a tela não fica mais preta enquanto a landing carrega, e recarregar o desktop não pisca em preto.
+
+## 2026-11-08 (leia-me)
+
+### Added
 - Bloco de Notas **Leia-me.txt** no desktop, aberto na frente quando o site carrega: explica o que é o site e
   como usar. Dá para digitar nele, mas nada é salvo; o texto fica no `content/site.yaml`, em PT e EN.
 

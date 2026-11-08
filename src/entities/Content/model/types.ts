@@ -51,4 +51,6 @@ export interface SiteContent {
   voluntario: { titulo: Localized; itens: VolunteerWork[] };
   /** The desktop Notepad file: plain text, line breaks kept. */
   leiame: { nome: Localized; texto: Localized };
+  /** Desktop boot screen lines: plain text, one screen line per line. */
+  abertura: { imagem: { arquivo: string }; bios: Localized; dos: Localized };
 }
