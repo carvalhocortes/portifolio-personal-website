@@ -123,3 +123,6 @@ domínio `carvalhocortes.com.br` (arquivo `public/CNAME`). O histórico de mudan
 A fonte **Px437 IBM VGA 8x16** vem do [Ultimate Oldschool PC Font Pack](https://int10h.org/oldschool-pc-fonts/), de
 VileR, sob a licença [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 (`public/fonts/LICENSE-oldschool-pc-fonts.txt`). Logos e ícones são desenhos próprios, sem marcas de terceiros.
+
+O código está sob a licença MIT ([LICENSE](LICENSE)). O conteúdo pessoal (textos e fotos) e as imagens próprias não
+entram nessa licença.
