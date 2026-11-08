@@ -4,7 +4,7 @@ import {
   PaperPlaneTilt,
   WarningCircle,
 } from '@phosphor-icons/react';
-import { useId, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { content } from '../../../entities/Content';
 import { CONTACT_FORM } from '../../../shared/config/contactForm';
 import { useContentLanguage } from '../lib/useContentLanguage';
@@ -22,6 +22,12 @@ export const ContactForm = () => {
   const [token, setToken] = useState('');
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [status, setStatus] = useState<Status>('idle');
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // The form is replaced by the thank-you note; keep the keyboard focus there.
+  useEffect(() => {
+    if (status === 'sent') successRef.current?.focus();
+  }, [status]);
 
   if (!CONTACT_FORM.accessKey) {
     return (
@@ -93,7 +99,12 @@ export const ContactForm = () => {
 
   if (status === 'sent') {
     return (
-      <div className={styles.success} role="status">
+      <div
+        ref={successRef}
+        className={styles.success}
+        role="status"
+        tabIndex={-1}
+      >
         <CheckCircle size={28} weight="duotone" aria-hidden="true" />
         <p>{t('landing.form.success')}</p>
       </div>
