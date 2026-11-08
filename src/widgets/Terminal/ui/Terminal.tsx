@@ -4,6 +4,9 @@ import { CommandInput } from '../../../features/CommandInput/ui/CommandInput';
 import { useTerminal } from '../model/useTerminal';
 import styles from './Terminal.module.css';
 
+// The command prompt field rendered by CommandInput (a textarea).
+const PROMPT_SELECTOR = '[name="command"]';
+
 export const Terminal = () => {
   const { commands, handleCommand, inputHistory } = useTerminal();
   const terminalEndRef = useRef<HTMLDivElement>(null);
@@ -12,23 +15,28 @@ export const Terminal = () => {
 
   // Clicked commands run like typed ones; with a mouse, typing can continue
   // right away. On touch screens we skip this so the keyboard stays closed.
+  const focusPrompt = () => {
+    terminalRef.current
+      ?.querySelector<HTMLTextAreaElement>(PROMPT_SELECTOR)
+      ?.focus({ preventScroll: true });
+  };
+
   const runClickedCommand = useCallback(
     (command: string) => {
       handleCommand(command);
       if (window.matchMedia?.('(pointer: fine)').matches) {
-        terminalRef.current?.querySelector('input')?.focus();
+        focusPrompt();
       }
     },
     [handleCommand]
   );
 
-  const focusInput = (e: React.MouseEvent<HTMLDivElement>) => {
+  // Clicking anywhere on the screen (except a link or the prompt itself)
+  // puts the keyboard back on the prompt, as in a real terminal.
+  const focusInput = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
-    if (target.tagName !== 'INPUT') {
-      const input = e.currentTarget.querySelector('input');
-      if (input) {
-        input.focus();
-      }
+    if (!target.closest(`a, button, ${PROMPT_SELECTOR}`)) {
+      focusPrompt();
     }
   };
 
