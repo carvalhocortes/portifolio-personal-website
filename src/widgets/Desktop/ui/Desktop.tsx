@@ -12,14 +12,17 @@ interface DesktopProps {
   programs: ProgramDefinition[];
   /** Programs opened when the desktop first appears. */
   startupPrograms?: ProgramId[];
+  /** Start those programs minimized: only their taskbar buttons show. */
+  startMinimized?: boolean;
 }
 
 export const Desktop: React.FC<DesktopProps> = ({
   programs,
   startupPrograms = [],
+  startMinimized = false,
 }) => {
   const { t } = useTranslation();
-  const { state, activeId, open, desktopRef } = useWindowManager();
+  const { state, activeId, open, minimize, desktopRef } = useWindowManager();
 
   const openProgram = (program: ProgramDefinition) =>
     open(program.id, program.defaultSize);
@@ -27,7 +30,9 @@ export const Desktop: React.FC<DesktopProps> = ({
   useEffect(() => {
     startupPrograms.forEach((id) => {
       const program = programs.find((p) => p.id === id);
-      if (program) open(program.id, program.defaultSize);
+      if (!program) return;
+      open(program.id, program.defaultSize);
+      if (startMinimized) minimize(program.id);
     });
     // Only on first mount: later opens come from the visitor.
     // eslint-disable-next-line react-hooks/exhaustive-deps

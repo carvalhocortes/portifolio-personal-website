@@ -1,9 +1,12 @@
-/* Landing page tokens and globals. Scoped to html[data-route='landing'] so the
-   /desktop page keeps its Windows 95 look.
+/* Landing page tokens and base styles. Scoped to .lp-root (the landing frame,
+   full screen or inside the browser window) so the desktop keeps its Windows 95
+   look. The page itself (html[data-route='landing']) gets the same tokens for
+   the body background.
    Shape rule: buttons and chips are pills; photos and panels use --lp-radius. */
 @import '@fontsource-variable/geist/wght.css';
 
-html[data-route='landing'] {
+html[data-route='landing'],
+.lp-root {
   color-scheme: light dark;
   --lp-font:
     'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
@@ -22,13 +25,17 @@ html[data-route='landing'] {
   --lp-radius: 16px;
   --lp-header-height: 64px;
   --lp-max: 1120px;
-  --lp-gutter: clamp(1rem, 4vw, 2rem);
+  --lp-gutter: clamp(1rem, 4cqi, 2rem);
   --lp-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-route='landing'] {
   scroll-padding-top: calc(var(--lp-header-height) + 16px);
 }
 
 @media (prefers-color-scheme: dark) {
-  html[data-route='landing'] {
+  html[data-route='landing'],
+  .lp-root {
     --lp-bg: #0c0c0e;
     --lp-surface: #161619;
     --lp-text: #f4f4f5;
@@ -44,6 +51,10 @@ html[data-route='landing'] {
 
 html[data-route='landing'] body {
   background: var(--lp-bg);
+}
+
+.lp-root {
+  background: var(--lp-bg);
   color: var(--lp-text);
   font-family: var(--lp-font);
   font-size: 1rem;
@@ -52,18 +63,19 @@ html[data-route='landing'] body {
   text-rendering: optimizeLegibility;
 }
 
-html[data-route='landing'] ::selection {
+/* Doubled class: wins over the desktop selection and focus ring inside the browser. */
+.lp-root.lp-root ::selection {
   background: var(--lp-accent);
   color: var(--lp-on-accent);
 }
 
-html[data-route='landing'] :focus-visible {
+.lp-root.lp-root :focus-visible {
   outline: 2px solid var(--lp-accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-html[data-route='landing'] :is(a, button, input, textarea, label) {
+.lp-root :is(a, button, input, textarea, label) {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }

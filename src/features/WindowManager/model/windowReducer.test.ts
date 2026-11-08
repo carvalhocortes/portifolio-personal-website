@@ -5,6 +5,7 @@ import {
   MIN_WINDOW,
   clampBounds,
   getActiveWindowId,
+  getTaskbarWindows,
   initialWindowState,
   windowReducer,
   type WindowManagerState,
@@ -27,9 +28,26 @@ describe('windowReducer', () => {
         ...SIZE,
         minimized: false,
         maximized: false,
+        openOrder: 0,
       },
     ]);
     expect(getActiveWindowId(state)).toBe('terminal');
+  });
+
+  it('keeps the taskbar in opening order when the focus changes', () => {
+    let state = windowReducer(initialWindowState, {
+      type: 'open',
+      id: 'browser',
+      size: SIZE,
+      viewport: VIEWPORT,
+    });
+    state = open(state);
+    state = windowReducer(state, { type: 'focus', id: 'browser' });
+    expect(state.windows.map((w) => w.id)).toEqual(['terminal', 'browser']);
+    expect(getTaskbarWindows(state).map((w) => w.id)).toEqual([
+      'browser',
+      'terminal',
+    ]);
   });
 
   it('opening an open window restores and focuses it instead of duplicating', () => {

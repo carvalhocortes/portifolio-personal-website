@@ -22,23 +22,27 @@ const yamlContent = (): Plugin => ({
   },
 });
 
-// GitHub Pages has no rewrites, so /desktop gets its own copy of the page.
 // The app picks the page from the path (see src/app/routes.ts).
-const desktopEntry = (): Plugin => ({
-  name: 'desktop-entry',
+// GitHub Pages has no rewrites: give each direct route its own index.html.
+const ROUTE_ENTRIES = ['terminal', 'landing'];
+
+const routeEntries = (): Plugin => ({
+  name: 'route-entries',
   apply: 'build',
   closeBundle() {
     const outDir = resolve(__dirname, 'dist');
-    mkdirSync(resolve(outDir, 'desktop'), { recursive: true });
-    copyFileSync(
-      resolve(outDir, 'index.html'),
-      resolve(outDir, 'desktop/index.html')
-    );
+    for (const route of ROUTE_ENTRIES) {
+      mkdirSync(resolve(outDir, route), { recursive: true });
+      copyFileSync(
+        resolve(outDir, 'index.html'),
+        resolve(outDir, `${route}/index.html`)
+      );
+    }
   },
 });
 
 export default defineConfig({
-  plugins: [react(), yamlContent(), desktopEntry()],
+  plugins: [react(), yamlContent(), routeEntries()],
   test: {
     globals: true,
     environment: 'jsdom',

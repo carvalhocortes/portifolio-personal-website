@@ -1,28 +1,21 @@
-.dialog {
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  max-height: none;
-  margin: 0;
-  padding: clamp(1rem, 4vw, 3rem);
-  border: 0;
-  background: transparent;
+/* Covers the landing frame: the screen as a page (fixed), the window inside
+   browser (absolute). It is a size container, so the photo fits either one. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  container: viewer / size;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4cqi, 3rem);
+  background: rgb(9 9 11 / 0.88);
+  backdrop-filter: blur(6px);
   color: #f4f4f5;
   overscroll-behavior: contain;
 }
 
-.dialog:not([open]) {
-  display: none;
-}
-
-.dialog[open] {
-  display: grid;
-  place-items: center;
-}
-
-.dialog::backdrop {
-  background: rgb(9 9 11 / 0.88);
-  backdrop-filter: blur(6px);
+:global(.lp-root[data-embedded]) .overlay {
+  position: absolute;
 }
 
 .figure {
@@ -33,7 +26,7 @@
 
 .figure img {
   width: 100%;
-  max-height: calc(100dvh - 9rem);
+  max-height: calc(100cqh - 9rem);
   object-fit: contain;
   border-radius: var(--lp-radius);
 }
@@ -51,7 +44,7 @@
 }
 
 .button {
-  position: fixed;
+  position: absolute;
   display: grid;
   place-items: center;
   width: 48px;
@@ -87,7 +80,7 @@
   right: 1rem;
 }
 
-@media (max-width: 767px) {
+@container viewer (max-width: 767px) {
   .prev,
   .next {
     top: auto;
@@ -97,7 +90,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .dialog[open] .figure {
+  .figure {
     animation: zoom 260ms var(--lp-ease);
   }
 }

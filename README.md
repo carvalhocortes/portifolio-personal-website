@@ -185,9 +185,16 @@ A aplicação estará disponível em `http://localhost:5173`
 
 ### Iniciando a Aplicação
 
-1. Em `/` fica a landing page: abertura, Sobre, Hobbies (com galeria de fotos), Voluntário e Contato,
-   com formulário protegido por captcha. Segue o modo claro ou escuro do sistema e tem PT/EN no topo
-2. Em `/desktop`, no computador, aparece um desktop no estilo Windows 95 com o Terminal aberto numa janela, que dá para arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o relógio. No celular, o Terminal abre em tela cheia
+1. Em `/`, no computador, aparece um desktop no estilo Windows 95 com dois programas, o **Navegador** e o
+   **Terminal**, os dois abertos e minimizados na barra de tarefas. Um clique no botão da barra, no ícone ou
+   no menu Iniciar mostra o programa numa janela, que dá para arrastar, redimensionar, minimizar e
+   maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN
+   e o relógio
+2. O Navegador mostra a landing page (abertura, Sobre, Hobbies com galeria de fotos, Voluntário e Contato, com
+   formulário protegido por captcha). A barra de endereço é só decorativa e mostra o título da página. A
+   landing se ajusta à largura da janela e segue o modo claro ou escuro do sistema
+   - No celular, a landing aparece direto, sem o desktop
+   - Endereços diretos: `/landing` abre só a landing e `/terminal` abre só o Terminal, em tela cheia
 3. No Terminal você vê o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
 4. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
 5. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis

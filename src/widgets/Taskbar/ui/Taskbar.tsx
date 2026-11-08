@@ -1,7 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
-import { useWindowManager } from '../../../features/WindowManager';
+import {
+  getTaskbarWindows,
+  useWindowManager,
+} from '../../../features/WindowManager';
 import { StartLogo } from '../../../shared/ui/icons';
 import { Clock } from './Clock';
 import { StartMenu } from './StartMenu';
@@ -60,7 +63,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
       <div className={styles.divider} aria-hidden="true" />
 
       <nav className={styles.tasks} aria-label={t('taskbar.openWindows')}>
-        {state.windows.map((win) => {
+        {getTaskbarWindows(state).map((win) => {
           const program = programs.find((p) => p.id === win.id);
           if (!program) return null;
           const isActive = activeId === win.id;

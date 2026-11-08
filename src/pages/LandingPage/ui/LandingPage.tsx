@@ -1,40 +1,17 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { About } from '../../../widgets/Landing/ui/About';
-import { Contact } from '../../../widgets/Landing/ui/Contact';
-import { Footer } from '../../../widgets/Landing/ui/Footer';
-import { Header } from '../../../widgets/Landing/ui/Header';
-import { Hero } from '../../../widgets/Landing/ui/Hero';
-import { Hobbies } from '../../../widgets/Landing/ui/Hobbies';
-import { Volunteer } from '../../../widgets/Landing/ui/Volunteer';
-import styles from './LandingPage.module.css';
-import './landing.css';
+import { LandingContent } from '../../../widgets/Landing/ui/LandingContent';
 
+/** /landing (and phones): the landing page alone, full screen. */
 const LandingPage = () => {
-  const { t, i18n } = useTranslation();
-  const language = i18n.language;
+  const { t } = useTranslation();
+  const title = t('landing.pageTitle');
 
-  // Screen readers and translators read <html lang>; keep it with the site.
   useEffect(() => {
-    document.documentElement.lang = language.startsWith('en') ? 'en' : 'pt-BR';
-  }, [language]);
+    document.title = title;
+  }, [title]);
 
-  return (
-    <>
-      <a className={styles.skip} href="#conteudo">
-        {t('landing.skipToContent')}
-      </a>
-      <Header />
-      <main id="conteudo" tabIndex={-1} className={styles.main}>
-        <Hero />
-        <About />
-        <Hobbies />
-        <Volunteer />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  );
+  return <LandingContent />;
 };
 
 export default LandingPage;

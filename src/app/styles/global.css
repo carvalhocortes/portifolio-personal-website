@@ -1,10 +1,10 @@
-/* Desktop (Windows 95 + DOS) globals. They only apply on /desktop: the landing
-   page brings its own look (pages/LandingPage). main.tsx sets data-route. */
-html[data-route='desktop'] {
+/* Desktop (Windows 95 + DOS) globals, for the desktop and /terminal. The landing
+   page brings its own look (widgets/Landing). main.tsx sets data-route. */
+html:is([data-route='desktop'], [data-route='terminal']) {
   color-scheme: dark;
 }
 
-html[data-route='desktop'] body {
+html:is([data-route='desktop'], [data-route='terminal']) body {
   margin: 0;
   font-family: var(--font-family-ui);
   -webkit-font-smoothing: none;
@@ -14,30 +14,36 @@ html[data-route='desktop'] body {
   overflow: hidden;
 }
 
-html[data-route='desktop'] ::selection {
+html:is([data-route='desktop'], [data-route='terminal']) ::selection {
   background-color: var(--color-selection);
   color: var(--color-bg-primary);
 }
 
-html[data-route='desktop'] ::-webkit-scrollbar {
+html:is([data-route='desktop'], [data-route='terminal']) ::-webkit-scrollbar {
   width: var(--spacing-sm);
   height: var(--spacing-sm);
 }
 
-html[data-route='desktop'] ::-webkit-scrollbar-track {
+html:is([data-route='desktop'], [data-route='terminal'])
+  ::-webkit-scrollbar-track {
   background: var(--color-bg-secondary);
 }
 
-html[data-route='desktop'] ::-webkit-scrollbar-thumb {
+html:is([data-route='desktop'], [data-route='terminal'])
+  ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: var(--radius-md);
 }
 
-html[data-route='desktop'] ::-webkit-scrollbar-thumb:hover {
+html:is([data-route='desktop'], [data-route='terminal'])
+  ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-secondary);
 }
 
-html[data-route='desktop'] *:focus-visible {
+/* Default focus ring with low specificity (:where), so components can
+   replace it, like the Terminal prompt that shows its own blinking cursor. */
+:where(html:is([data-route='desktop'], [data-route='terminal']))
+  :focus-visible {
   outline: 1px dotted var(--color-text-strong);
   outline-offset: 1px;
 }

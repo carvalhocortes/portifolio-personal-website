@@ -60,6 +60,11 @@
   cursor: text;
 }
 
+/* The blinking "_" cursor already shows the focus; no dotted ring. */
+.input:focus-visible {
+  outline: none;
+}
+
 .input::selection {
   background: transparent;
 }
