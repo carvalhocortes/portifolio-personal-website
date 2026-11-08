@@ -38,4 +38,15 @@ describe('MarkdownRenderer', () => {
     const img = await screen.findByRole('img', { name: 'Banco' });
     expect(img).toHaveAttribute('src', './resources/banco.png');
   });
+
+  it('renders images titled "small" with a size hint and no tooltip', async () => {
+    render(
+      <MarkdownRenderer>
+        {'![Logo](./resources/demolay.png "small")'}
+      </MarkdownRenderer>
+    );
+    const img = await screen.findByRole('img', { name: 'Logo' });
+    expect(img).toHaveAttribute('data-size', 'small');
+    expect(img).not.toHaveAttribute('title');
+  });
 });

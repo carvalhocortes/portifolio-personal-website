@@ -47,8 +47,16 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
           </a>
         );
       },
-      img: ({ node: _node, alt, ...rest }) => (
-        <img alt={alt ?? ''} loading="lazy" decoding="async" {...rest} />
+      // `![alt](src "small")` renders a smaller image; the title is used only
+      // as a size hint, so it does not become a tooltip.
+      img: ({ node: _node, alt, title, ...rest }) => (
+        <img
+          alt={alt ?? ''}
+          loading="lazy"
+          decoding="async"
+          {...(title === 'small' ? { 'data-size': 'small' } : { title })}
+          {...rest}
+        />
       ),
     }),
     [onCommand]

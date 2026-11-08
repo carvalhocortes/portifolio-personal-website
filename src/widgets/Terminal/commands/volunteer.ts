@@ -3,15 +3,15 @@ import i18n from '../../../shared/i18n';
 export const volunteer = (): string => {
   const vText1 = i18n.t('volunteer.demolay.description');
   const vLabel1 = i18n.t('volunteer.demolay.logoAlt');
-  const vImg1 = `![${vLabel1}](./resources/demolay.png)`;
+  const vImg1 = `![${vLabel1}](./resources/demolay.png "small")`;
 
   const vText2 = i18n.t('volunteer.vivo.description');
   const vLabel2_1 = i18n.t('volunteer.vivo.logoAlt');
-  const vImg2_1 = `![${vLabel2_1}](./resources/fundacao-telefonica-vivo.png)`;
+  const vImg2_1 = `![${vLabel2_1}](./resources/fundacao-telefonica-vivo.png "small")`;
 
   const vText3 = i18n.t('volunteer.minhacena.description');
   const vLabel3 = i18n.t('volunteer.minhacena.logoAlt');
-  const vImg3 = `![${vLabel3}](./resources/minha-cena.jpeg)`;
+  const vImg3 = `![${vLabel3}](./resources/minha-cena.jpeg "small")`;
 
   return `## ${i18n.t('volunteer.title')}
 
