@@ -22,10 +22,18 @@ vi.mock('@hcaptcha/react-hcaptcha', async () => {
       ref
     ) {
       useImperativeHandle(ref, () => ({ resetCaptcha: () => undefined }));
+      // Like the real widget, it adds its own h-captcha-response field.
       return (
-        <button type="button" onClick={() => props.onVerify('captcha-token')}>
-          solve captcha
-        </button>
+        <>
+          <textarea
+            name="h-captcha-response"
+            defaultValue="captcha-token"
+            hidden
+          />
+          <button type="button" onClick={() => props.onVerify('captcha-token')}>
+            solve captcha
+          </button>
+        </>
       );
     }),
   };
@@ -262,7 +270,7 @@ describe('Contact form', () => {
     const [url, init] = fetchSpy.mock.calls[0];
     expect(url).toBe('https://api.web3forms.com/submit');
     const body = init!.body as FormData;
-    expect(body.get('h-captcha-response')).toBe('captcha-token');
+    expect(body.getAll('h-captcha-response')).toEqual(['captcha-token']);
     expect(body.get('access_key')).toBeTruthy();
     expect(body.get('message')).toBe('Olá!');
   });
