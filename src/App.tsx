@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { routeFor, type Route } from './app/routes';
+import { pageFor, type Route } from './app/routes';
 import { useDocumentLanguage } from './shared/lib/useDocumentLanguage';
 import './app/styles/index.css';
 
@@ -11,7 +11,8 @@ const PAGES: Record<Route, ReturnType<typeof lazy>> = {
 
 function App() {
   useDocumentLanguage();
-  const Page = PAGES[routeFor(window.location.pathname)];
+  // Chosen once, on load: phones at / go straight to the landing page.
+  const Page = PAGES[pageFor(window.location.pathname, window.innerWidth)];
   return (
     // While a page chunk loads, keep the screen blank instead of flashing text.
     <Suspense fallback={<div className="loading-screen" aria-busy="true" />}>
