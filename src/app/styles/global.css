@@ -20,6 +20,23 @@ html[data-route='desktop']:not([data-boot]) body {
   background-color: var(--w95-desktop);
 }
 
+/* The landing page's background while its styles load (the same colours as
+   --lp-bg in widgets/Landing/ui/landing.css), so phones don't see black first. */
+html[data-route='landing'] {
+  color-scheme: light dark;
+}
+
+html[data-route='landing'] body {
+  margin: 0;
+  background: #fafafa;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-route='landing'] body {
+    background: #0c0c0e;
+  }
+}
+
 html:is([data-route='desktop'], [data-route='terminal']) ::selection {
   background-color: var(--color-selection);
   color: var(--color-bg-primary);
