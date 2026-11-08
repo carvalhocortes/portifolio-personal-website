@@ -251,3 +251,24 @@
   margin: 0 var(--spacing-sm) var(--spacing-sm) 0;
   border-radius: 0;
 }
+
+/* Images marked "small" (volunteer logos): 64% of the photo size (two 20% cuts). */
+.output img[data-size='small'] {
+  width: 64%;
+  max-height: 192px;
+}
+
+@media (min-width: 768px) {
+  .output table img[data-size='small'] {
+    width: 64%;
+    max-width: 160px;
+    max-height: 160px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .output table img[data-size='small'] {
+    max-width: 192px;
+    max-height: 192px;
+  }
+}

@@ -20,6 +20,7 @@ versões: cada entrega na `main` vira uma seção com a data.
 - `ajuda` virou uma lista com os comandos clicáveis.
 - Fotos sem moldura e com cantos arredondados. As tabelas só organizam as fotos e não têm linhas.
 - Selos de contato menores na seção "sobre".
+- Imagens do trabalho voluntário menores: 64% do tamanho das fotos.
 - As setas ↑/↓ também trazem os comandos clicados. O `cls` limpa a tela, mas não o histórico.
 
 ### Fixed

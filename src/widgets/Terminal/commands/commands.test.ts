@@ -11,7 +11,7 @@ import { volunteer } from './volunteer';
 import { welcome } from './welcome';
 
 const PUBLIC_DIR = resolve(__dirname, '../../../../public');
-const IMAGE_PATTERN = /!\[([^\]]+)\]\(\.\/(resources\/[^)]+)\)/g;
+const IMAGE_PATTERN = /!\[([^\]]+)\]\(\.\/(resources\/[^)\s]+)(?: "[^"]*")?\)/g;
 
 const images = (markdown: string) =>
   [...markdown.matchAll(IMAGE_PATTERN)].map(([, alt, path]) => ({ alt, path }));
@@ -162,5 +162,12 @@ describe('images keep working', () => {
 
   it('command links use the shared prefix', () => {
     expect(help()).toContain(COMMAND_LINK_PREFIX);
+  });
+});
+
+describe('volunteer images', () => {
+  it('are marked small (smaller than photos)', () => {
+    expect(volunteer().match(/ "small"\)/g)).toHaveLength(3);
+    expect(hobbies()).not.toContain('"small"');
   });
 });
