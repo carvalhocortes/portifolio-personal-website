@@ -42,7 +42,8 @@ html:is([data-route='desktop'], [data-route='terminal'])
 
 /* Default focus ring with low specificity (:where), so components can
    replace it, like the Terminal prompt that shows its own blinking cursor. */
-:where(html:is([data-route='desktop'], [data-route='terminal'])) :focus-visible {
+:where(html:is([data-route='desktop'], [data-route='terminal']))
+  :focus-visible {
   outline: 1px dotted var(--color-text-strong);
   outline-offset: 1px;
 }

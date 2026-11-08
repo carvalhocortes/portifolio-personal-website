@@ -186,8 +186,9 @@ A aplicação estará disponível em `http://localhost:5173`
 ### Iniciando a Aplicação
 
 1. Em `/`, no computador, aparece um desktop no estilo Windows 95 com dois programas, o **Chrome** e o
-   **Terminal**, ambos fechados. Um clique no ícone (ou no menu Iniciar) abre o programa numa janela, que dá
-   para arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN
+   **Terminal**, os dois abertos e minimizados na barra de tarefas. Um clique no botão da barra, no ícone ou
+   no menu Iniciar mostra o programa numa janela, que dá para arrastar, redimensionar, minimizar e
+   maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN
    e o relógio
 2. O Chrome mostra a landing page (abertura, Sobre, Hobbies com galeria de fotos, Voluntário e Contato, com
    formulário protegido por captcha). A barra de endereço é só decorativa e mostra o título da página. A

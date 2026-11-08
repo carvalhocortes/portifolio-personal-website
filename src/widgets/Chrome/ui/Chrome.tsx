@@ -1,5 +1,5 @@
 import { ArrowClockwise, ArrowLeft, ArrowRight } from '@phosphor-icons/react';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramProps } from '../../../entities/Program/model/types';
 import styles from './Chrome.module.css';
@@ -18,8 +18,13 @@ const NAV_BUTTONS = [
 ] as const;
 
 /** A browser-looking window that shows the landing page. */
-export const Chrome = (_props: ProgramProps) => {
+export const Chrome = ({ isActive }: ProgramProps) => {
   const { t } = useTranslation();
+  // Chrome starts minimized: load the page the first time it shows up.
+  const [shown, setShown] = useState(isActive);
+  useEffect(() => {
+    if (isActive) setShown(true);
+  }, [isActive]);
 
   return (
     <div className={styles.chrome}>
@@ -43,9 +48,11 @@ export const Chrome = (_props: ProgramProps) => {
         />
       </div>
       <div className={styles.viewport}>
-        <Suspense fallback={<div className={styles.page} aria-busy="true" />}>
-          <LandingContent embedded />
-        </Suspense>
+        {shown && (
+          <Suspense fallback={<div className={styles.page} aria-busy="true" />}>
+            <LandingContent embedded />
+          </Suspense>
+        )}
       </div>
     </div>
   );
