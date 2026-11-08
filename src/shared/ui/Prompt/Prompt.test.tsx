@@ -3,11 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { Prompt } from './Prompt';
 
 describe('Prompt Component', () => {
-  it('should render the prompt symbol', () => {
+  it('should render the DOS prompt', () => {
     render(<Prompt />);
     const promptElement = screen.getByRole('img');
     expect(promptElement).toBeInTheDocument();
-    expect(promptElement).toHaveTextContent('❯');
+    expect(promptElement).toHaveTextContent('C:\\CARVALHO-CORTES\\>');
   });
 
   it('should apply "current" variant by default', () => {

@@ -34,7 +34,7 @@ ${i18n.t('about.skills')}
 ${i18n.t('about.goal')}
 
 ### ${i18n.t('about.contactTitle')}
-[![fernando@carvalhocortes.com.br](https://img.shields.io/badge/fernando%40carvalhocortes.com.br-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:fernando@carvalhocortes.com.br)
+[![carvalhocortes@gmail.com](https://img.shields.io/badge/carvalhocortes%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:carvalhocortes@gmail.com)
 [![linkedin.com/in/carvalhocortes](https://img.shields.io/badge/linkedin.com%2Fin%2Fcarvalhocortes-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carvalhocortes/)
 `;
 };

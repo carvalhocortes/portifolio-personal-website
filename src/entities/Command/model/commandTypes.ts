@@ -9,6 +9,8 @@ export interface Command {
 export type CommandFn = (screenSize?: ScreenSize) => string;
 
 export interface CommandDefinition {
+  /** i18n key under `commands.` (e.g. 'about'). */
+  key: string;
   classification: string;
   acceptedCommands: string[];
   description: string;

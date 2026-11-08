@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type { Command } from '../../../entities/Command/model/types';
 import { useScreenSize } from '../../../shared/lib/useScreenSize';
 import {
@@ -9,7 +9,6 @@ import {
 
 const INITIAL_COMMAND_ID = 0;
 const WELCOME_COMMANDS = getWelcomeCommands();
-const CLEAR_COMMANDS = getClearCommands();
 
 export const useTerminal = () => {
   const screenSize = useScreenSize();
@@ -24,26 +23,33 @@ export const useTerminal = () => {
   );
 
   const [commands, setCommands] = useState<Command[]>([createWelcomeCommand()]);
+  // Everything run in this session (typed or clicked), for ArrowUp/ArrowDown.
+  // Kept apart from `commands` so that `cls` clears the screen, not the history.
+  const [inputHistory, setInputHistory] = useState<string[]>([]);
+  // Monotonic ids: unique even if several commands run before a re-render.
+  const nextIdRef = useRef(INITIAL_COMMAND_ID + 1);
 
   const handleCommand = useCallback(
     (text: string) => {
       const normalizedText = text.toLowerCase().trim();
+      setInputHistory((prev) => [...prev, text]);
 
-      if (CLEAR_COMMANDS.includes(normalizedText)) {
+      // Read per call: aliases depend on the language, which `idioma` changes.
+      if (getClearCommands().includes(normalizedText)) {
         setCommands([createWelcomeCommand()]);
         return;
       }
 
       const newCommand: Command = {
-        id: commands.length,
+        id: nextIdRef.current++,
         text,
         output: executeCommand(text, screenSize),
       };
 
       setCommands((prevCommands) => [...prevCommands, newCommand]);
     },
-    [commands.length, screenSize, createWelcomeCommand]
+    [screenSize, createWelcomeCommand]
   );
 
-  return { commands, handleCommand };
+  return { commands, handleCommand, inputHistory };
 };

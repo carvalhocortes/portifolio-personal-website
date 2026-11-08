@@ -1,14 +1,14 @@
 {
   "translation": {
     "terminal": {
-      "commandNotFound": "Comando não encontrado: {{command}}",
+      "commandNotFound": "Comando ou nome de arquivo inválido",
       "clearing": "limpando...",
       "helpHeader": "Comandos disponíveis:",
-      "helpFooter": "Digite o nome do comando para executá-lo."
+      "helpFooter": "Clique num comando ou digite o nome dele e tecle Enter."
     },
     "welcome": {
       "title": "Bem vindo a minha pagina!",
-      "helpText": "Digite 'ajuda' para ver os comandos.",
+      "helpText": "Digite {{help}} e tecle Enter para ver os comandos, ou clique numa opção:",
       "ascii": {
         "xlarge": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█",
         "medium": "\n  █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗\n ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗\n ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║\n ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║\n ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝\n  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝\n  █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀\n  █▄▄ █▄█ █▀▄  █  ██▄ ▄█"
@@ -120,7 +120,31 @@
       "clear": {
         "aliases": ["limpar", "cls"],
         "description": "Limpa o terminal"
+      },
+      "dir": {
+        "aliases": ["dir", "ls"],
+        "description": "Lista os arquivos da pasta atual"
+      },
+      "ver": {
+        "aliases": ["ver", "versao"],
+        "description": "Mostra a versão do sistema"
       }
+    },
+    "dir": {
+      "folder": "Pasta de C:\\CARVALHO-CORTES",
+      "summary": "{{count}} arquivo(s)",
+      "date": "07/02/84",
+      "files": {
+        "about": "SOBRE.TXT",
+        "hobbies": "HOBBIES.TXT",
+        "volunteer": "VOLUNTAR.TXT",
+        "contact": "CONTATO.TXT",
+        "help": "AJUDA.EXE",
+        "language": "IDIOMA.EXE"
+      }
+    },
+    "ver": {
+      "text": "CARVALHO-CORTES Versão {{version}}"
     }
   }
 }

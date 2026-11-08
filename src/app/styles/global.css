@@ -1,11 +1,15 @@
 @import './variables.css';
 @import './reset.css';
 
+html {
+  color-scheme: dark;
+}
+
 body {
   margin: 0;
-  font-family: var(--font-family-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-mono);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   overflow: hidden;
@@ -13,7 +17,7 @@ body {
 
 ::selection {
   background-color: var(--color-selection);
-  color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 ::-webkit-scrollbar {
@@ -35,7 +39,8 @@ body {
 }
 
 *:focus-visible {
-  outline: none;
+  outline: 1px dotted var(--color-text-strong);
+  outline-offset: 1px;
 }
 
 code {
@@ -56,15 +61,4 @@ pre {
   color: var(--color-text-accent);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-xl);
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
 }
