@@ -2,9 +2,9 @@ import { ArrowClockwise, ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramProps } from '../../../entities/Program/model/types';
-import styles from './Chrome.module.css';
+import styles from './Browser.module.css';
 
-// The landing page (and its photos and font) loads only when Chrome opens.
+// The landing page (and its photos and font) loads only when the browser opens.
 const LandingContent = lazy(() =>
   import('../../Landing/ui/LandingContent').then((m) => ({
     default: m.LandingContent,
@@ -12,22 +12,22 @@ const LandingContent = lazy(() =>
 );
 
 const NAV_BUTTONS = [
-  { key: 'chrome.back', Icon: ArrowLeft },
-  { key: 'chrome.forward', Icon: ArrowRight },
-  { key: 'chrome.reload', Icon: ArrowClockwise },
+  { key: 'browser.back', Icon: ArrowLeft },
+  { key: 'browser.forward', Icon: ArrowRight },
+  { key: 'browser.reload', Icon: ArrowClockwise },
 ] as const;
 
 /** A browser-looking window that shows the landing page. */
-export const Chrome = ({ isActive }: ProgramProps) => {
+export const Browser = ({ isActive }: ProgramProps) => {
   const { t } = useTranslation();
-  // Chrome starts minimized: load the page the first time it shows up.
+  // The browser starts minimized: load the page the first time it shows up.
   const [shown, setShown] = useState(isActive);
   useEffect(() => {
     if (isActive) setShown(true);
   }, [isActive]);
 
   return (
-    <div className={styles.chrome}>
+    <div className={styles.browser}>
       <div className={styles.toolbar}>
         {NAV_BUTTONS.map(({ key, Icon }) => (
           <button
@@ -42,7 +42,7 @@ export const Chrome = ({ isActive }: ProgramProps) => {
         ))}
         <input
           className={styles.address}
-          aria-label={t('chrome.address')}
+          aria-label={t('browser.address')}
           value={t('landing.pageTitle')}
           readOnly
         />

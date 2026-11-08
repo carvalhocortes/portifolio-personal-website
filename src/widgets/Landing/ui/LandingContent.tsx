@@ -18,7 +18,7 @@ interface LandingContentProps {
 
 const HEADER_GAP = 16;
 
-/** The landing page itself, used full screen (/landing, phones) and in Chrome. */
+/** The landing page itself, used full screen (/landing, phones) and in the browser window. */
 export const LandingContent = ({ embedded = false }: LandingContentProps) => {
   const { t } = useTranslation();
   const [frame, setFrame] = useState<HTMLDivElement | null>(null);

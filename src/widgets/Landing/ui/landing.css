@@ -1,5 +1,5 @@
 /* Landing page tokens and base styles. Scoped to .lp-root (the landing frame,
-   full screen or inside the Chrome window) so the desktop keeps its Windows 95
+   full screen or inside the browser window) so the desktop keeps its Windows 95
    look. The page itself (html[data-route='landing']) gets the same tokens for
    the body background.
    Shape rule: buttons and chips are pills; photos and panels use --lp-radius. */
@@ -63,7 +63,7 @@ html[data-route='landing'] body {
   text-rendering: optimizeLegibility;
 }
 
-/* Doubled class: wins over the desktop selection and focus ring inside Chrome. */
+/* Doubled class: wins over the desktop selection and focus ring inside the browser. */
 .lp-root.lp-root ::selection {
   background: var(--lp-accent);
   color: var(--lp-on-accent);

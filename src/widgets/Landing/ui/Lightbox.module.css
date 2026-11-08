@@ -1,5 +1,5 @@
 /* Covers the landing frame: the screen as a page (fixed), the window inside
-   Chrome (absolute). It is a size container, so the photo fits either one. */
+   browser (absolute). It is a size container, so the photo fits either one. */
 .overlay {
   position: fixed;
   inset: 0;

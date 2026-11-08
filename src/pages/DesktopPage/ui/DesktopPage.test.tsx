@@ -10,13 +10,13 @@ const setWidth = (width: number) =>
     configurable: true,
   });
 
-const openChrome = async () => {
+const openBrowser = async () => {
   const user = userEvent.setup();
   render(<DesktopPage />);
   const icons = screen.getByRole('list', { name: 'Programas' });
-  await user.click(within(icons).getByRole('button', { name: 'Chrome' }));
-  const chrome = await screen.findByRole('region', { name: 'Chrome' });
-  return { user, chrome };
+  await user.click(within(icons).getByRole('button', { name: 'Navegador' }));
+  const browser = await screen.findByRole('region', { name: 'Navegador' });
+  return { user, browser };
 };
 
 describe('DesktopPage', () => {
@@ -27,29 +27,50 @@ describe('DesktopPage', () => {
 
   afterEach(() => setWidth(1024));
 
-  it('opens with Chrome and the Terminal minimized on the taskbar', () => {
+  it('opens with the browser and the Terminal minimized on the taskbar', () => {
     setWidth(1280);
     render(<DesktopPage />);
     const icons = screen.getByRole('list', { name: 'Programas' });
     expect(
-      within(icons).getByRole('button', { name: 'Chrome' })
+      within(icons).getByRole('button', { name: 'Navegador' })
     ).toBeInTheDocument();
     expect(
       within(icons).getByRole('button', { name: 'Terminal' })
     ).toBeInTheDocument();
     // Minimized: no window shows, each one has its taskbar button.
-    expect(screen.queryByRole('region', { name: 'Chrome' })).toBeNull();
+    expect(screen.queryByRole('region', { name: 'Navegador' })).toBeNull();
     expect(screen.queryByRole('region', { name: 'Terminal' })).toBeNull();
     const tasks = screen.getByRole('navigation', { name: 'Janelas abertas' });
-    for (const name of ['Chrome', 'Terminal']) {
+    for (const name of ['Navegador', 'Terminal']) {
       expect(within(tasks).getByRole('button', { name })).toHaveAttribute(
         'aria-pressed',
         'false'
       );
     }
-    // The landing page loads only when Chrome shows up.
+    // The landing page loads only when the browser shows up.
     expect(document.querySelector('.lp-root')).toBeNull();
     expect(document.documentElement.dataset.route).toBe('desktop');
+  });
+
+  it('keeps the taskbar order when another window gets the focus', async () => {
+    setWidth(1280);
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    const tasks = screen.getByRole('navigation', { name: 'Janelas abertas' });
+    const order = () =>
+      within(tasks)
+        .getAllByRole('button')
+        .map((b) => b.textContent);
+    await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
+    await user.click(within(tasks).getByRole('button', { name: 'Navegador' }));
+    await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
+    expect(order()).toEqual(['Navegador', 'Terminal']);
+    expect(
+      within(tasks).getByRole('button', { name: 'Terminal' })
+    ).toHaveAttribute('aria-pressed', 'true');
+    expect(
+      within(tasks).getByRole('button', { name: 'Navegador' })
+    ).toHaveAttribute('aria-pressed', 'false');
   });
 
   it('shows a minimized program with one click on its taskbar button', async () => {
@@ -61,46 +82,46 @@ describe('DesktopPage', () => {
     expect(
       screen.getByRole('region', { name: 'Terminal' })
     ).toBeInTheDocument();
-    expect(screen.queryByRole('region', { name: 'Chrome' })).toBeNull();
+    expect(screen.queryByRole('region', { name: 'Navegador' })).toBeNull();
   });
 
-  it('opens the landing page inside Chrome, with a read-only address bar', async () => {
+  it('opens the landing page inside the browser, with a read-only address bar', async () => {
     setWidth(1280);
-    const { chrome } = await openChrome();
-    const address = within(chrome).getByRole('textbox', { name: 'Endereço' });
+    const { browser } = await openBrowser();
+    const address = within(browser).getByRole('textbox', { name: 'Endereço' });
     expect(address).toHaveValue('Fernando Cortes - Engenheiro de software');
     expect(address).toHaveAttribute('readonly');
     for (const name of ['Voltar', 'Avançar', 'Recarregar']) {
-      expect(within(chrome).getByRole('button', { name })).toBeDisabled();
+      expect(within(browser).getByRole('button', { name })).toBeDisabled();
     }
     expect(
-      await within(chrome).findByRole('heading', {
+      await within(browser).findByRole('heading', {
         level: 1,
         name: 'Fernando Cortes',
       })
     ).toBeInTheDocument();
   });
 
-  it('keeps the photo viewer inside the Chrome window', async () => {
+  it('keeps the photo viewer inside the browser window', async () => {
     setWidth(1280);
-    const { user, chrome } = await openChrome();
-    const photo = await within(chrome).findAllByRole('button', {
+    const { user, browser } = await openBrowser();
+    const photo = await within(browser).findAllByRole('button', {
       name: /Ampliar a foto/,
     });
     await user.click(photo[0]);
-    const dialog = within(chrome).getByRole('dialog');
+    const dialog = within(browser).getByRole('dialog');
     expect(dialog.closest('.lp-root')).toHaveAttribute('data-embedded');
   });
 
-  it('switches Chrome and the desktop language together', async () => {
+  it('switches the browser and the desktop language together', async () => {
     setWidth(1280);
-    const { user, chrome } = await openChrome();
-    await within(chrome).findByRole('heading', { level: 2, name: 'Sobre' });
+    const { user, browser } = await openBrowser();
+    await within(browser).findByRole('heading', { level: 2, name: 'Sobre' });
     await user.click(
-      within(chrome).getByRole('button', { name: /mudar o idioma/i })
+      within(browser).getByRole('button', { name: /mudar o idioma/i })
     );
     expect(
-      within(chrome).getByRole('textbox', { name: 'Address' })
+      within(browser).getByRole('textbox', { name: 'Address' })
     ).toHaveValue('Fernando Cortes - Software engineer');
     expect(screen.getByRole('button', { name: /Start/ })).toBeInTheDocument();
   });

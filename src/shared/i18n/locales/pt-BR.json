@@ -91,7 +91,7 @@
     },
     "programs": {
       "terminal": "Terminal",
-      "chrome": "Chrome"
+      "browser": "Navegador"
     },
     "desktop": {
       "label": "Área de trabalho",
@@ -147,7 +147,7 @@
       "playPhotos": "Continuar as fotos",
       "pageTitle": "Fernando Cortes - Engenheiro de software"
     },
-    "chrome": {
+    "browser": {
       "back": "Voltar",
       "forward": "Avançar",
       "reload": "Recarregar",
