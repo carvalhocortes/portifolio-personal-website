@@ -72,4 +72,22 @@ describe('ClockApp', () => {
     renderClock();
     expect(screen.getByRole('radio', { name: 'Analog' })).toBeInTheDocument();
   });
+
+  it('spins the hands after 5 quick clicks and comes back', () => {
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+    renderClock();
+    const face = screen.getByRole('img');
+    const before = hand('minute');
+    for (let i = 0; i < 5; i++) fireEvent.click(face);
+    act(() => vi.advanceTimersByTime(1500));
+    expect(hand('minute')).not.toBe(before);
+    act(() => vi.advanceTimersByTime(1600));
+    // Back to the time, which moved 3 s meanwhile.
+    expect(Number(hand('minute'))).toBeCloseTo(180 + 0.3, 0);
+  });
 });

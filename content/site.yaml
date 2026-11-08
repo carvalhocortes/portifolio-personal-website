@@ -60,6 +60,10 @@ abertura:
 # (imagem em public/resources/lixeira/<pasta>/) ou um texto (só nos arquivos de
 # idioma). Nomes e textos ficam em lixeira.pastas.<id> nos arquivos de idioma.
 lixeira:
+  # Arquivos soltos na raiz da Lixeira, ao lado das pastas.
+  arquivos:
+    - id: nao-abra
+      tipo: texto
   pastas:
     - id: exemplo
       arquivos:

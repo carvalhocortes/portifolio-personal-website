@@ -7,3 +7,5 @@ export { ClockIcon } from './ClockIcon';
 export { FolderIcon } from './FolderIcon';
 export { RecycleBinIcon } from './RecycleBinIcon';
 export { TextFileIcon } from './TextFileIcon';
+export { PowerIcon } from './PowerIcon';
+export { RestartIcon } from './RestartIcon';

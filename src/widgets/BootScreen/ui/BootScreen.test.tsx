@@ -89,4 +89,16 @@ describe('BootScreen', () => {
     advance(100);
     expect(onFinish).toHaveBeenCalledTimes(1);
   });
+
+  it('opens a fake setup on DEL during the BIOS, and any key leaves', () => {
+    const onFinish = vi.fn();
+    render(<BootScreen onFinish={onFinish} />);
+    fireEvent.keyDown(window, { key: 'Delete' });
+    expect(screen.getByRole('dialog')).toHaveTextContent('CMOS SETUP');
+    // The boot waits behind it until a key or click.
+    advance(BIOS_MS + DOS_MS + SPLASH_MS);
+    expect(onFinish).not.toHaveBeenCalled();
+    fireEvent.keyDown(window, { key: 'Enter' });
+    expect(onFinish).toHaveBeenCalledTimes(1);
+  });
 });

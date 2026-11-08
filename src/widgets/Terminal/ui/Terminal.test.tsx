@@ -111,6 +111,8 @@ describe('Terminal Component', () => {
       ],
       handleCommand: vi.fn(),
       inputHistory: [],
+      effect: null,
+      endEffect: vi.fn(),
     });
 
     render(<Terminal />);
@@ -128,6 +130,8 @@ describe('Terminal Component', () => {
       commands: [{ id: 0, text: 'welcome', output: 'Welcome!' }],
       handleCommand: mockHandleCommand,
       inputHistory: [],
+      effect: null,
+      endEffect: vi.fn(),
     });
 
     const user = userEvent.setup();
@@ -148,6 +152,8 @@ describe('Terminal Component', () => {
       commands: [],
       handleCommand: vi.fn(),
       inputHistory: [],
+      effect: null,
+      endEffect: vi.fn(),
     });
 
     render(<Terminal />);
@@ -183,6 +189,8 @@ describe('Terminal Component', () => {
       ],
       handleCommand: vi.fn(),
       inputHistory: [],
+      effect: null,
+      endEffect: vi.fn(),
     });
 
     render(<Terminal />);
@@ -204,6 +212,8 @@ describe('Terminal Component', () => {
       commands: [],
       handleCommand: vi.fn(),
       inputHistory: [],
+      effect: null,
+      endEffect: vi.fn(),
     });
 
     render(<Terminal />);

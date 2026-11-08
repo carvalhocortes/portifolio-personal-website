@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
+import { PowerIcon, RestartIcon } from '../../../shared/ui/icons';
 import styles from './Taskbar.module.css';
 
 const LANGUAGES = ['pt-BR', 'en-US'] as const;
@@ -21,6 +22,10 @@ interface StartMenuProps {
   language: string;
   onSetLanguage: (language: Language) => void;
   onClose: (returnFocus: boolean) => void;
+  onRestart?: () => void;
+  onShutdown?: () => void;
+  /** The "Plus!" easter egg on the banner. */
+  plus?: boolean;
   /** Elements whose clicks do not count as "outside" (the Start button). */
   ignoreRef: React.RefObject<HTMLElement | null>;
 }
@@ -32,6 +37,9 @@ export const StartMenu: React.FC<StartMenuProps> = ({
   language,
   onSetLanguage,
   onClose,
+  onRestart,
+  onShutdown,
+  plus = false,
   ignoreRef,
 }) => {
   const { t } = useTranslation();
@@ -96,6 +104,7 @@ export const StartMenu: React.FC<StartMenuProps> = ({
       <div className={styles.banner} aria-hidden="true">
         <span>
           <b>CarvalhoCortes</b> 84
+          {plus && <i className={styles.plus}> {t('secrets.plus')}</i>}
         </span>
       </div>
       <div className={styles.menuItems}>
@@ -140,6 +149,41 @@ export const StartMenu: React.FC<StartMenuProps> = ({
             );
           })}
         </div>
+        {(onRestart || onShutdown) && (
+          <div className={styles.separator} role="separator" />
+        )}
+        {onRestart && (
+          <button
+            type="button"
+            role="menuitem"
+            className={styles.menuItem}
+            onClick={() => {
+              onClose(false);
+              onRestart();
+            }}
+          >
+            <span className={styles.menuIcon}>
+              <RestartIcon size={21} />
+            </span>
+            <span>{t('secrets.shutdown.restart')}</span>
+          </button>
+        )}
+        {onShutdown && (
+          <button
+            type="button"
+            role="menuitem"
+            className={styles.menuItem}
+            onClick={() => {
+              onClose(false);
+              onShutdown();
+            }}
+          >
+            <span className={styles.menuIcon}>
+              <PowerIcon size={23} />
+            </span>
+            <span>{t('secrets.shutdown.menu')}</span>
+          </button>
+        )}
       </div>
     </div>
   );
