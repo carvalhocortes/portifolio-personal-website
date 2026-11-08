@@ -6,6 +6,9 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Fixed
+- No visualizador de fotos da landing, Esc e as setas continuam funcionando depois de clicar na foto ampliada.
+
 ### Added
 - **ICQ** no desktop, minimizado na barra de tarefas e com a flor ao lado do relógio: a lista de contatos tem só o
   Fernando online (os outros, de piada, ficam offline e não recebem mensagens). Uma mensagem para ele pede nome,
