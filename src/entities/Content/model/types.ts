@@ -49,4 +49,6 @@ export interface SiteContent {
   sobre: { titulo: Localized; saudacao: Localized; paragrafos: Localized[] };
   hobbies: { titulo: Localized; itens: Hobby[] };
   voluntario: { titulo: Localized; itens: VolunteerWork[] };
+  /** The desktop Notepad file: plain text, line breaks kept. */
+  leiame: { nome: Localized; texto: Localized };
 }

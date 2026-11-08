@@ -10,7 +10,7 @@ import type {
 export interface WindowManagerApi {
   state: WindowManagerState;
   activeId: ProgramId | null;
-  open: (id: ProgramId, size: Size) => void;
+  open: (id: ProgramId, size: Size, options?: { centered?: boolean }) => void;
   focus: (id: ProgramId) => void;
   minimize: (id: ProgramId) => void;
   toggleMaximize: (id: ProgramId) => void;

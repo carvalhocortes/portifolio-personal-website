@@ -25,7 +25,14 @@ export interface WindowManagerState {
 }
 
 export type WindowAction =
-  | { type: 'open'; id: ProgramId; size: Size; viewport: Size }
+  | {
+      type: 'open';
+      id: ProgramId;
+      size: Size;
+      viewport: Size;
+      /** Middle of the desktop instead of the cascade. */
+      centered?: boolean;
+    }
   | { type: 'focus'; id: ProgramId }
   | { type: 'minimize'; id: ProgramId }
   | { type: 'toggleMaximize'; id: ProgramId }
@@ -105,6 +112,27 @@ export const windowReducer = (
     case 'open': {
       if (state.windows.some((w) => w.id === action.id)) {
         return { ...state, windows: bringToFront(state.windows, action.id) };
+      }
+      if (action.centered) {
+        const size = fitSize(action.size, action.viewport);
+        const position = clampPosition(
+          Math.round((action.viewport.width - size.width) / 2),
+          Math.round((action.viewport.height - size.height) / 2),
+          size,
+          action.viewport
+        );
+        const window: WindowState = {
+          id: action.id,
+          ...position,
+          ...size,
+          minimized: false,
+          maximized: false,
+          openOrder: state.opened,
+        };
+        return {
+          windows: [...state.windows, window],
+          opened: state.opened + 1,
+        };
       }
       const step = (state.opened % CASCADE_LENGTH) * CASCADE_STEP;
       const desired = {

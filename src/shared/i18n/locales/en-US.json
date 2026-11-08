@@ -91,7 +91,8 @@
     },
     "programs": {
       "terminal": "Terminal",
-      "browser": "Browser"
+      "browser": "Browser",
+      "notepadWindow": "{{name}} - Notepad"
     },
     "desktop": {
       "label": "Desktop",
@@ -152,6 +153,14 @@
       "forward": "Forward",
       "reload": "Reload",
       "address": "Address"
+    },
+    "notepad": {
+      "menu": {
+        "file": "File",
+        "edit": "Edit",
+        "search": "Search",
+        "help": "Help"
+      }
     }
   }
 }

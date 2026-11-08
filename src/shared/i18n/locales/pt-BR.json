@@ -91,7 +91,8 @@
     },
     "programs": {
       "terminal": "Terminal",
-      "browser": "Navegador"
+      "browser": "Navegador",
+      "notepadWindow": "{{name}} - Bloco de Notas"
     },
     "desktop": {
       "label": "Área de trabalho",
@@ -152,6 +153,14 @@
       "forward": "Avançar",
       "reload": "Recarregar",
       "address": "Endereço"
+    },
+    "notepad": {
+      "menu": {
+        "file": "Arquivo",
+        "edit": "Editar",
+        "search": "Pesquisar",
+        "help": "Ajuda"
+      }
     }
   }
 }
