@@ -1,0 +1,71 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--w95-desktop);
+  font-family: var(--font-family-ui);
+  font-size: var(--font-size-ui);
+  line-height: 1;
+  color: var(--w95-dark);
+}
+
+.desktop {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 12px 8px;
+  list-style: none;
+  width: 96px;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 80px;
+  padding: 2px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--w95-light);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.iconLabel {
+  padding: 1px 2px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.icon:hover .iconLabel,
+.icon:focus-visible .iconLabel {
+  background: var(--w95-selection);
+  color: var(--w95-light);
+}
+
+.icon:focus-visible {
+  outline: none;
+}
+
+.icon:focus-visible .iconLabel {
+  outline: 1px dotted var(--w95-light);
+  outline-offset: 0;
+}
+
+.icon:hover svg,
+.icon:focus-visible svg {
+  filter: drop-shadow(0 0 0 var(--w95-selection)) brightness(0.85);
+}
