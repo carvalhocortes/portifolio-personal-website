@@ -10,7 +10,7 @@
 # - Para mudar a ordem, basta mudar a ordem dos itens nas listas.
 
 pessoa:
-  nome: Fernando Cortes
+  nome: Fernando Côrtes
   # Assinatura do topo da landing page (PNG/WebP com fundo transparente).
   assinatura:
     arquivo: assinatura.webp
@@ -26,8 +26,8 @@ pessoa:
     arquivo: avatar-480.webp
     arquivo2x: avatar-960.webp
     alt:
-      pt: Foto de Fernando Cortes
-      en: Photo of Fernando Cortes
+      pt: Foto de Fernando Côrtes
+      en: Photo of Fernando Côrtes
 
 contato:
   # Nome curto, usado no menu e no botão da abertura.
@@ -35,8 +35,8 @@ contato:
     pt: Contato
     en: Contact
   titulo:
-    pt: 'Entre em contato comigo:'
-    en: 'Get in touch with me:'
+    pt: 'Entre em contato:'
+    en: 'Get in touch:'
   email: carvalhocortes@gmail.com
   linkedin: https://www.linkedin.com/in/carvalhocortes/
 
@@ -48,8 +48,8 @@ sobre:
     pt: Olá,
     en: Hello,
   paragrafos:
-    - pt: meu nome é **Fernando Cortes**, tenho {idade} anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
-      en: my name is **Fernando Cortes**, I'm {idade} years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
+    - pt: meu nome é **Fernando Côrtes**, tenho {idade} anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
+      en: my name is **Fernando Côrtes**, I'm {idade} years old and I'm from the interior of Minas Gerais, Brazil. In 2003, I moved to São Paulo to study Electrical Engineering at Mackenzie Presbyterian University, where I graduated in 2008.
     - pt: Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.
       en: I hold a postgraduate degree in Software Systems Architecture from FIAP and specializations in Clinical Engineering from Albert Einstein Institute of Higher Education and an MBA in Project Management from FGV-SP.
     - pt: Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos.
