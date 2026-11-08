@@ -91,7 +91,7 @@
     },
     "programs": {
       "terminal": "Terminal",
-      "chrome": "Chrome"
+      "browser": "Browser"
     },
     "desktop": {
       "label": "Desktop",
@@ -147,7 +147,7 @@
       "playPhotos": "Play the photos",
       "pageTitle": "Fernando Cortes - Software engineer"
     },
-    "chrome": {
+    "browser": {
       "back": "Back",
       "forward": "Forward",
       "reload": "Reload",

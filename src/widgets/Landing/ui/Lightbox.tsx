@@ -19,7 +19,7 @@ interface LightboxProps {
 
 /**
  * Enlarged photo over the landing frame: the whole screen as a page, only the
- * window inside Chrome. Arrows, Esc, focus kept inside, focus back on close.
+ * window inside the browser. Arrows, Esc, focus kept inside, focus back on close.
  */
 export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
   const { t } = useTranslation();

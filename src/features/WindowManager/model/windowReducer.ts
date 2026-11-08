@@ -13,6 +13,8 @@ export interface WindowState {
   height: number;
   minimized: boolean;
   maximized: boolean;
+  /** When it was opened; the taskbar keeps this order, whatever has focus. */
+  openOrder: number;
 }
 
 export interface WindowManagerState {
@@ -138,6 +140,7 @@ export const windowReducer = (
         ...size,
         minimized: false,
         maximized: false,
+        openOrder: state.opened,
       };
       return { windows: [...state.windows, window], opened: state.opened + 1 };
     }
@@ -238,3 +241,7 @@ export const clampBounds = (
 /** The front-most window that is not minimized, if any. */
 export const getActiveWindowId = (state: WindowManagerState) =>
   [...state.windows].reverse().find((w) => !w.minimized)?.id ?? null;
+
+/** Windows in the order they were opened, for the taskbar. */
+export const getTaskbarWindows = (state: WindowManagerState) =>
+  [...state.windows].sort((a, b) => a.openOrder - b.openOrder);
