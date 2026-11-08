@@ -35,6 +35,7 @@ abre com um clique, com links e rolagem normais. No celular, o site abre direto 
 | Leia-me.txt | O que é o site e como usar; dá para digitar, mas nada é salvo |
 | Relógio | A hora em modo analógico ou digital, com a data no idioma do site |
 | Lixeira | Projetos que quase entraram no site, uma pasta por projeto |
+| ICQ | Mensagens para o Fernando, o único online; a mensagem chega por e-mail (com captcha). Também abre pela flor ao lado do relógio |
 
 | Endereço | Abre |
 | --- | --- |
