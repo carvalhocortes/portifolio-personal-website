@@ -102,6 +102,13 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
     new Image().src = SPLASH_IMAGE;
   }, []);
 
+  // Leaving the setup reboots, like a real BIOS: the boot starts over.
+  const restartBoot = () => {
+    elapsedRef.current = 0;
+    setElapsed(0);
+    setSetup(false);
+  };
+
   const phase: Phase = reduced
     ? 'splash'
     : elapsed < BIOS_MS
@@ -148,7 +155,7 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
           <p className={styles.skip}>{t('boot.skip')}</p>
         )}
       </div>
-      {setup && <FunScreen variant="setup" onExit={finish} />}
+      {setup && <FunScreen variant="setup" onExit={restartBoot} />}
     </>
   );
 };
