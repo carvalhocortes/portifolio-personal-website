@@ -6,7 +6,7 @@ import {
   useWindowManager,
 } from '../../../features/WindowManager';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
-import { StartLogo } from '../../../shared/ui/icons';
+import { IcqIcon, StartLogo } from '../../../shared/ui/icons';
 import { Clock } from './Clock';
 import { StartMenu, type Language } from './StartMenu';
 import styles from './Taskbar.module.css';
@@ -40,6 +40,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
   }, []);
 
   const clockProgram = programs.find((program) => program.id === 'clock');
+  const icqProgram = programs.find((program) => program.id === 'icq');
 
   // 10 clicks on Start within a few seconds: the menu banner gets a "Plus!".
   const [plus, setPlus] = useState(false);
@@ -114,6 +115,18 @@ export const Taskbar: React.FC<TaskbarProps> = ({
       </nav>
 
       <div className={styles.tray}>
+        {icqProgram && (
+          // Like ICQ in the Windows tray: the flower opens the messenger.
+          <button
+            type="button"
+            className={`${styles.trayButton} ${styles.trayIcon}`}
+            aria-label={t('taskbar.openIcq')}
+            title={t('taskbar.openIcq')}
+            onClick={() => onOpenProgram(icqProgram)}
+          >
+            <IcqIcon size={16} />
+          </button>
+        )}
         <button
           type="button"
           className={styles.trayButton}

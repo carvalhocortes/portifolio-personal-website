@@ -5,7 +5,8 @@ export type ProgramId =
   | 'terminal'
   | 'notepad'
   | 'clock'
-  | 'recycleBin';
+  | 'recycleBin'
+  | 'icq';
 
 export interface ProgramProps {
   /** True while this program's window is the active (front) one. */

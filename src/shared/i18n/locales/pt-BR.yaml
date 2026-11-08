@@ -161,6 +161,39 @@ lixeira:
         foto:
           nome: foto-provisoria.svg
 
+icq:
+  contatos:
+    bug:
+      nome: Bug em Produção
+    cafe:
+      nome: Café
+    deploy:
+      nome: Deploy de Sexta
+    recrutador:
+      nome: Recrutador
+    wifi:
+      nome: Wi-Fi do Vizinho
+    mae:
+      nome: Mãe
+  name: ICQ
+  online: Online
+  groupOnline: Online
+  groupOffline: Offline
+  offlineContact: '{{name}} (offline)'
+  offlineNotice: '{{name}} está offline e não pode receber mensagens.'
+  history: 'Conversa com {{name}}'
+  hint: 'Mande uma mensagem para o {{name}}. Ele responde por e-mail.'
+  you: Você
+  placeholder: Escreva uma mensagem...
+  send: Enviar
+  messageTo: 'Mensagem para {{name}}'
+  identifyTitle: Seus dados
+  identify: 'Para o {{name}} responder, informe seu nome e e-mail:'
+  captchaOnly: 'Confirme que você não é um robô para enviar:'
+  sendTo: 'Enviar para o {{name}}'
+  subject: 'Mensagem pelo ICQ do site - {{name}}'
+  reply: 'Oi, {{name}}! Recebi sua mensagem. Já te respondo no {{email}}. :)'
+
 # Interface
 
 terminal:
@@ -316,6 +349,7 @@ window:
   close: Fechar
 taskbar:
   openClock: Abrir o Relógio
+  openIcq: Abrir o ICQ
   start: Iniciar
   startMenu: Menu Iniciar
   openWindows: Janelas abertas

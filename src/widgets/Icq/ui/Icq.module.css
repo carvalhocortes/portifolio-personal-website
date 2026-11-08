@@ -1,0 +1,210 @@
+/* A tall, narrow contact list in the Windows 95 look; the chat in the same
+   window, with the history in a white panel and the box to type below. */
+.icq {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--w95-face);
+  color: var(--w95-dark);
+}
+
+.header,
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.status {
+  margin-left: auto;
+  padding: 1px 6px;
+  box-shadow: var(--w95-sunken);
+  color: #1a7f1a;
+}
+
+.list,
+.log {
+  flex: 1;
+  min-height: 0;
+  margin: 0 4px;
+  overflow: auto;
+  box-shadow: var(--w95-sunken);
+  background: var(--w95-light);
+}
+
+.group {
+  margin: 6px 6px 2px;
+  font-weight: bold;
+  color: var(--w95-title);
+}
+
+.contacts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 3px 8px 3px 14px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.contact:hover,
+.contact:focus-visible {
+  background: var(--w95-selection);
+  color: var(--w95-light);
+  outline: none;
+}
+
+.offline {
+  color: var(--w95-shadow);
+}
+
+.statusBar {
+  min-height: 18px;
+  margin: 4px;
+  padding: 2px 6px;
+  box-shadow: var(--w95-sunken);
+}
+
+.button {
+  min-width: 26px;
+  height: 24px;
+  padding: 0 8px;
+  border: none;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button:active:not(:disabled) {
+  box-shadow: var(--w95-pressed);
+}
+
+.button:disabled {
+  color: var(--w95-shadow);
+  text-shadow: 1px 1px var(--w95-light);
+  cursor: default;
+}
+
+.button:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+  outline-offset: -4px;
+}
+
+.chatTitle {
+  font-weight: bold;
+}
+
+.log {
+  padding: 6px 8px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--w95-shadow);
+}
+
+.message {
+  margin: 0 0 6px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.you {
+  color: #a01010;
+}
+
+.them {
+  color: #1040a0;
+}
+
+.identify {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0;
+  padding: 8px;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+}
+
+.identifyTitle {
+  margin: 0;
+}
+
+.field {
+  display: grid;
+  gap: 2px;
+}
+
+.field input {
+  height: 22px;
+  padding: 0 4px;
+  border: none;
+  box-shadow: var(--w95-sunken);
+  background: var(--w95-light);
+  font: inherit;
+  /* Fields don't inherit the colour; the desktop's default text is light. */
+  color: var(--w95-dark);
+}
+
+.captcha {
+  display: grid;
+  gap: 4px;
+  min-height: 78px;
+  overflow: hidden;
+}
+
+.error {
+  margin: 0;
+  color: #a01010;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+.compose {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 4px;
+}
+
+.draft {
+  flex: 1;
+  min-width: 0;
+  padding: 4px;
+  border: none;
+  box-shadow: var(--w95-sunken);
+  background: var(--w95-light);
+  font: inherit;
+  color: var(--w95-dark);
+  resize: none;
+}
+
+.draft::placeholder {
+  color: var(--w95-shadow);
+}
+
+.draft:disabled {
+  background: var(--w95-face);
+}

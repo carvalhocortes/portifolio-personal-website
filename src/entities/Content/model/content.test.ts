@@ -87,6 +87,9 @@ describe('i18n files (pt-BR.yaml and en-US.yaml)', () => {
       need(`${key}.logo.alt`);
       need(`${key}.descricao`);
     }
+    for (const contact of content.icq.contatos) {
+      need(`icq.contatos.${contact.id}.nome`);
+    }
     for (const folder of content.lixeira.pastas) {
       const key = `lixeira.pastas.${folder.id}`;
       need(`${key}.nome`);

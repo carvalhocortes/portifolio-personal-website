@@ -161,6 +161,39 @@ lixeira:
         foto:
           nome: placeholder-photo.svg
 
+icq:
+  contatos:
+    bug:
+      nome: Bug in Production
+    cafe:
+      nome: Coffee
+    deploy:
+      nome: Friday Deploy
+    recrutador:
+      nome: Recruiter
+    wifi:
+      nome: Neighbor's Wi-Fi
+    mae:
+      nome: Mom
+  name: ICQ
+  online: Online
+  groupOnline: Online
+  groupOffline: Offline
+  offlineContact: '{{name}} (offline)'
+  offlineNotice: "{{name}} is offline and can't receive messages."
+  history: 'Chat with {{name}}'
+  hint: 'Send {{name}} a message. He replies by e-mail.'
+  you: You
+  placeholder: Type a message...
+  send: Send
+  messageTo: 'Message to {{name}}'
+  identifyTitle: Your details
+  identify: 'So {{name}} can reply, tell us your name and e-mail:'
+  captchaOnly: "Confirm you're not a robot to send:"
+  sendTo: 'Send to {{name}}'
+  subject: 'Message from the site ICQ - {{name}}'
+  reply: "Hi, {{name}}! Got your message. I'll reply to {{email}} soon. :)"
+
 # Interface
 
 terminal:
@@ -311,6 +344,7 @@ window:
   close: Close
 taskbar:
   openClock: Open the Clock
+  openIcq: Open ICQ
   start: Start
   startMenu: Start menu
   openWindows: Open windows

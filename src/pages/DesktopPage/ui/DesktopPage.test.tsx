@@ -69,10 +69,26 @@ describe('DesktopPage', () => {
       within(icons)
         .getAllByRole('button')
         .map((icon) => icon.textContent)
-    ).toEqual(['Navegador', 'Terminal', 'Leia-me.txt', 'Relógio', 'Lixeira']);
+    ).toEqual([
+      'Navegador',
+      'Terminal',
+      'Leia-me.txt',
+      'Relógio',
+      'Lixeira',
+      'ICQ',
+    ]);
     // The landing page loads only when the browser shows up.
     expect(document.querySelector('.lp-root')).toBeNull();
     expect(document.documentElement.dataset.route).toBe('desktop');
+  });
+
+  it('opens ICQ from the flower next to the clock', async () => {
+    setWidth(1280);
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    expect(screen.queryByRole('region', { name: 'ICQ' })).toBeNull();
+    await user.click(screen.getByRole('button', { name: 'Abrir o ICQ' }));
+    expect(screen.getByRole('region', { name: 'ICQ' })).toBeInTheDocument();
   });
 
   it('opens the Clock from the time in the taskbar', async () => {
@@ -135,6 +151,7 @@ describe('DesktopPage', () => {
     expect(order()).toEqual([
       'Navegador',
       'Terminal',
+      'ICQ',
       'Relógio',
       'Leia-me.txt',
     ]);
