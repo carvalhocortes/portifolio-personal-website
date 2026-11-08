@@ -1,6 +1,7 @@
 import { ArrowClockwise, ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { content } from '../../../entities/Content';
 import type { ProgramProps } from '../../../entities/Program/model/types';
 import styles from './Browser.module.css';
 
@@ -43,7 +44,7 @@ export const Browser = ({ isActive }: ProgramProps) => {
         <input
           className={styles.address}
           aria-label={t('browser.address')}
-          value={t('landing.pageTitle')}
+          value={t('landing.pageTitle', { name: content.pessoa.nome })}
           readOnly
         />
       </div>

@@ -145,7 +145,7 @@
       },
       "pausePhotos": "Pause the photos",
       "playPhotos": "Play the photos",
-      "pageTitle": "Fernando Cortes - Software engineer"
+      "pageTitle": "{{name}} - Software engineer"
     },
     "browser": {
       "back": "Back",

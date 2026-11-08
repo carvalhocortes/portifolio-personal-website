@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import App from './App';
+import { content } from './entities/Content';
 import i18n from './shared/i18n';
 
 const goTo = (path: string) => window.history.pushState({}, '', path);
@@ -40,7 +41,10 @@ describe('App', () => {
     goTo('/landing');
     render(<App />);
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Fernando Cortes' })
+      await screen.findByRole('heading', {
+        level: 1,
+        name: content.pessoa.nome,
+      })
     ).toBeInTheDocument();
     expect(screen.queryByRole('application')).not.toBeInTheDocument();
   });
