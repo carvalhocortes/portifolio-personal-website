@@ -185,11 +185,26 @@ A aplicação estará disponível em `http://localhost:5173`
 
 ### Iniciando a Aplicação
 
-1. Acesse a aplicação no navegador
-2. No computador, aparece um desktop no estilo Windows 95 com o Terminal aberto numa janela, que dá para arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o relógio. No celular, o Terminal abre em tela cheia
+1. Em `/` fica a landing page: abertura, Sobre, Hobbies (com galeria de fotos), Voluntário e Contato,
+   com formulário protegido por captcha. Segue o modo claro ou escuro do sistema e tem PT/EN no topo
+2. Em `/desktop`, no computador, aparece um desktop no estilo Windows 95 com o Terminal aberto numa janela, que dá para arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o relógio. No celular, o Terminal abre em tela cheia
 3. No Terminal você vê o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
 4. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
 5. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
+
+### Editando o conteúdo
+
+Todo o conteúdo (textos em PT e EN, fotos, legendas, links e contato) fica em um só arquivo,
+[`content/site.yaml`](content/site.yaml), lido pela landing page e pelo Terminal. Para mudar o site,
+edite esse arquivo:
+
+- cada texto tem `pt` e `en` lado a lado, e os textos aceitam Markdown (`**negrito**`, `[link](https://…)`);
+- `{idade}` vira a idade calculada a partir de `nascimento`;
+- as fotos ficam em `public/resources/`, e o YAML guarda só o nome do arquivo;
+- os testes falham se faltar um idioma ou se uma foto citada não existir.
+
+O formulário de contato usa o [Web3Forms](https://web3forms.com) com hCaptcha. A chave de acesso,
+pública por design, fica em `src/shared/config/contactForm.ts`.
 
 ### Atalhos de Teclado
 
