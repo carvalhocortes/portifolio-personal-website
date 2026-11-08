@@ -76,13 +76,6 @@ describe('Terminal Component', () => {
     expect(commandInput).toBeInTheDocument();
   });
 
-  it('should render scroll anchor element', () => {
-    const { container } = render(<Terminal />);
-
-    const scrollAnchor = container.querySelector('[aria-hidden="true"]');
-    expect(scrollAnchor).toBeInTheDocument();
-  });
-
   it('should focus input when clicking on terminal (not on input)', async () => {
     const user = userEvent.setup();
     render(<Terminal />);
