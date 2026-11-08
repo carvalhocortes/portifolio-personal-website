@@ -1,38 +1,30 @@
-import type HCaptchaType from '@hcaptcha/react-hcaptcha';
 import {
   CheckCircle,
   PaperPlaneTilt,
   WarningCircle,
 } from '@phosphor-icons/react';
-import {
-  lazy,
-  Suspense,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type FormEvent,
-} from 'react';
+import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { content } from '../../../entities/Content';
+import {
+  EMAIL_PATTERN,
+  sendContactMessage,
+} from '../../../shared/api/contactMessage';
 import { CONTACT_FORM } from '../../../shared/config/contactForm';
+import { Captcha, type CaptchaHandle } from '../../../shared/ui/Captcha';
 import { useContentLanguage } from '../lib/useContentLanguage';
 import styles from './ContactForm.module.css';
 
 type Field = 'name' | 'email' | 'message' | 'captcha';
 type Status = 'idle' | 'sending' | 'sent' | 'failed';
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// The captcha (its code and hCaptcha's own script and frames) loads only when
-// the form comes near the screen or someone starts filling it, so it doesn't
-// compete with the rest of the page on the first load.
-const HCaptcha = lazy(() => import('@hcaptcha/react-hcaptcha'));
+// The captcha loads only when the form comes near the screen or someone starts
+// filling it, so it doesn't compete with the rest of the page on first load.
 const NEAR_SCREEN = '400px';
 
 export const ContactForm = () => {
   const { t, language } = useContentLanguage();
   const id = useId();
-  const captchaRef = useRef<HCaptchaType>(null);
+  const captchaRef = useRef<CaptchaHandle>(null);
   const formRef = useRef<HTMLFormElement>(null);
   // Without IntersectionObserver (old browsers, tests), load it right away.
   const [captchaWanted, setCaptchaWanted] = useState(
@@ -103,22 +95,16 @@ export const ContactForm = () => {
     }
 
     setStatus('sending');
-    data.append('access_key', CONTACT_FORM.accessKey);
-    data.set('h-captcha-response', token);
-    data.append(
-      'subject',
-      t('landing.form.subject', { name: String(data.get('name')).trim() })
-    );
-    data.append('from_name', String(data.get('name')).trim());
-
+    const name = String(data.get('name')).trim();
     try {
-      const response = await fetch(CONTACT_FORM.endpoint, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data,
+      await sendContactMessage({
+        name,
+        email: String(data.get('email')).trim(),
+        message: String(data.get('message')).trim(),
+        subject: t('landing.form.subject', { name }),
+        token,
+        extra: data,
       });
-      const result = (await response.json()) as { success?: boolean };
-      if (!response.ok || !result.success) throw new Error('not sent');
       setStatus('sent');
       form.reset();
     } catch {
@@ -204,20 +190,16 @@ export const ContactForm = () => {
 
       <div className={styles.captcha}>
         {captchaWanted && (
-          <Suspense fallback={null}>
-            <HCaptcha
-              ref={captchaRef}
-              sitekey={CONTACT_FORM.hcaptchaSiteKey}
-              reCaptchaCompat={false}
-              languageOverride={language.startsWith('en') ? 'en' : 'pt-BR'}
-              theme="dark"
-              onVerify={(value) => {
-                setToken(value);
-                setErrors((prev) => ({ ...prev, captcha: undefined }));
-              }}
-              onExpire={() => setToken('')}
-            />
-          </Suspense>
+          <Captcha
+            captchaRef={captchaRef}
+            language={language}
+            theme="dark"
+            onVerify={(value) => {
+              setToken(value);
+              setErrors((prev) => ({ ...prev, captcha: undefined }));
+            }}
+            onExpire={() => setToken('')}
+          />
         )}
         {errors.captcha && (
           <p className={styles.error} role="alert">
