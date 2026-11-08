@@ -132,3 +132,57 @@ describe('Terminal (DOS) integration', () => {
     window.matchMedia = matchMedia;
   });
 });
+
+describe('Terminal easter eggs', () => {
+  beforeAll(async () => {
+    await i18n.changeLanguage('pt-BR');
+  });
+
+  beforeEach(() => {
+    Element.prototype.scrollIntoView = vi.fn();
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+  });
+
+  const type = async (text: string) => {
+    const user = userEvent.setup();
+    await user.type(screen.getByRole('textbox'), `${text}{Enter}`);
+    return user;
+  };
+
+  it('plays matrix over the terminal, and a key ends it', async () => {
+    render(<Terminal />);
+    const user = await type('matrix');
+    expect(screen.getByTestId('terminal-effect')).toHaveAttribute(
+      'data-effect',
+      'matrix'
+    );
+    expect(lastArticle()).toHaveTextContent('pílula vermelha');
+    await user.keyboard('x');
+    expect(screen.queryByTestId('terminal-effect')).toBeNull();
+  });
+
+  it('skips the effect with reduced motion', async () => {
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query.includes('reduce'),
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+    render(<Terminal />);
+    await type('hackear');
+    expect(screen.queryByTestId('terminal-effect')).toBeNull();
+    expect(lastArticle()).toHaveTextContent('Acesso concedido');
+  });
+
+  it('closes the window with sair, when there is one', async () => {
+    const onClose = vi.fn();
+    render(<Terminal onClose={onClose} />);
+    await type('sair');
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+});

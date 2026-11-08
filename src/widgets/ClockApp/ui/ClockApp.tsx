@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramProps } from '../../../entities/Program/model/types';
+import { prefersReducedMotion } from '../../../shared/lib/reducedMotion';
 import { handAngles, longDate } from '../lib/time';
 import styles from './ClockApp.module.css';
 
 export type ClockMode = 'analog' | 'digital';
 const MODES: ClockMode[] = ['analog', 'digital'];
 export const CLOCK_MODE_KEY = 'cc84.clockMode';
+export const SPIN_CLICKS = 5;
+const SPIN_CLICK_WINDOW_MS = 2000;
+export const SPIN_MS = 3000;
 
 // The last mode the visitor picked; analog the first time. Storage can throw
 // (blocked site data), so it falls back quietly.
@@ -42,6 +46,33 @@ export const ClockApp = (_props: ProgramProps) => {
     return () => window.clearInterval(id);
   }, []);
 
+  // 5 quick clicks on the face: the hands spin for a while ("time travel")
+  // and come back to the right time. Nothing happens with reduced motion.
+  const [spin, setSpin] = useState(0);
+  const clicks = useRef<number[]>([]);
+  const spinning = useRef(false);
+  const onFaceClick = () => {
+    if (spinning.current || prefersReducedMotion()) return;
+    const at = Date.now();
+    clicks.current = [
+      ...clicks.current.filter((t) => at - t < SPIN_CLICK_WINDOW_MS),
+      at,
+    ];
+    if (clicks.current.length < SPIN_CLICKS) return;
+    clicks.current = [];
+    spinning.current = true;
+    const start = Date.now();
+    const id = window.setInterval(() => {
+      const p = Math.min(1, (Date.now() - start) / SPIN_MS);
+      // Extra minutes: up to 12 hours away and back, easing in and out.
+      setSpin(((1 - Math.cos(2 * Math.PI * p)) / 2) * 720);
+      if (p === 1) {
+        window.clearInterval(id);
+        spinning.current = false;
+      }
+    }, 30);
+  };
+
   const pick = (next: ClockMode) => {
     setMode(next);
     saveMode(next);
@@ -58,9 +89,14 @@ export const ClockApp = (_props: ProgramProps) => {
 
   return (
     <div className={styles.clock}>
-      <div className={styles.face} role="img" aria-label={spoken}>
+      <div
+        className={styles.face}
+        role="img"
+        aria-label={spoken}
+        onClick={onFaceClick}
+      >
         {mode === 'analog' ? (
-          <AnalogFace date={now} />
+          <AnalogFace date={now} spinMinutes={spin} />
         ) : (
           <DigitalFace date={now} language={i18n.language} />
         )}
@@ -120,8 +156,18 @@ const Hand = ({
   );
 };
 
-const AnalogFace = ({ date }: { date: Date }) => {
-  const { hour, minute, second } = handAngles(date);
+const AnalogFace = ({
+  date,
+  spinMinutes = 0,
+}: {
+  date: Date;
+  spinMinutes?: number;
+}) => {
+  const angles = handAngles(date);
+  // The time-travel spin adds minutes to the hour and minute hands.
+  const hour = angles.hour + spinMinutes / 2;
+  const minute = angles.minute + spinMinutes * 6;
+  const { second } = angles;
   return (
     <svg
       viewBox="-100 -100 200 200"

@@ -15,6 +15,12 @@ type View =
   | { level: 'folder'; folder: TrashFolder }
   | { level: 'file'; folder: TrashFolder; index: number };
 
+// The top of the Recycle Bin also holds loose files: treat it as a folder
+// with no id, whose texts live right under `lixeira`.
+const ROOT: TrashFolder = { id: '', arquivos: content.lixeira.arquivos };
+const keyOf = (folder: TrashFolder) =>
+  folder.id ? `lixeira.pastas.${folder.id}` : 'lixeira';
+
 /**
  * Recycle Bin: old projects that almost made it to the site, one folder per
  * project. Folders open their files; photos open enlarged, texts like the
@@ -29,7 +35,7 @@ export const RecycleBin = (_props: ProgramProps) => {
   const folderName = (folder: TrashFolder) =>
     t(`lixeira.pastas.${folder.id}.nome`);
   const fileKey = (folder: TrashFolder, file: TrashFile) =>
-    `lixeira.pastas.${folder.id}.arquivos.${file.id}`;
+    `${keyOf(folder)}.arquivos.${file.id}`;
   const fileName = (folder: TrashFolder, file: TrashFile) =>
     t(`${fileKey(folder, file)}.nome`);
 
@@ -42,7 +48,7 @@ export const RecycleBin = (_props: ProgramProps) => {
 
   const up = () =>
     setView((current) =>
-      current.level === 'file'
+      current.level === 'file' && current.folder !== ROOT
         ? { level: 'folder', folder: current.folder }
         : { level: 'root' }
     );
@@ -63,10 +69,36 @@ export const RecycleBin = (_props: ProgramProps) => {
     if (view.level === 'file' && e.key === 'ArrowLeft') step(-1);
   };
 
+  const fileItem = (folder: TrashFolder, file: TrashFile, index: number) => (
+    <li key={file.id}>
+      <button
+        type="button"
+        className={styles.item}
+        onClick={() => setView({ level: 'file', folder, index })}
+      >
+        {file.tipo === 'foto' ? (
+          <img
+            className={styles.thumb}
+            src={resource(file.arquivo)}
+            alt=""
+            width={64}
+            height={48}
+            loading="lazy"
+          />
+        ) : (
+          <TextFileIcon size={32} />
+        )}
+        <span className={styles.label}>{fileName(folder, file)}</span>
+      </button>
+    </li>
+  );
+
   const trashName = t('recycleBin.name');
   const address = [
     trashName,
-    view.level !== 'root' ? folderName(view.folder) : null,
+    view.level !== 'root' && view.folder !== ROOT
+      ? folderName(view.folder)
+      : null,
     view.level === 'file'
       ? fileName(view.folder, view.folder.arquivos[view.index])
       : null,
@@ -76,7 +108,7 @@ export const RecycleBin = (_props: ProgramProps) => {
 
   const count =
     view.level === 'root'
-      ? content.lixeira.pastas.length
+      ? content.lixeira.pastas.length + ROOT.arquivos.length
       : view.folder.arquivos.length;
 
   return (
@@ -114,38 +146,15 @@ export const RecycleBin = (_props: ProgramProps) => {
                 </button>
               </li>
             ))}
+            {ROOT.arquivos.map((file, index) => fileItem(ROOT, file, index))}
           </ul>
         )}
 
         {view.level === 'folder' && (
           <ul className={styles.grid} aria-label={folderName(view.folder)}>
-            {view.folder.arquivos.map((file, index) => (
-              <li key={file.id}>
-                <button
-                  type="button"
-                  className={styles.item}
-                  onClick={() =>
-                    setView({ level: 'file', folder: view.folder, index })
-                  }
-                >
-                  {file.tipo === 'foto' ? (
-                    <img
-                      className={styles.thumb}
-                      src={resource(file.arquivo)}
-                      alt=""
-                      width={64}
-                      height={48}
-                      loading="lazy"
-                    />
-                  ) : (
-                    <TextFileIcon size={32} />
-                  )}
-                  <span className={styles.label}>
-                    {fileName(view.folder, file)}
-                  </span>
-                </button>
-              </li>
-            ))}
+            {view.folder.arquivos.map((file, index) =>
+              fileItem(view.folder, file, index)
+            )}
           </ul>
         )}
 

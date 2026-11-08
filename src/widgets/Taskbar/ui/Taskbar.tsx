@@ -14,13 +14,19 @@ import styles from './Taskbar.module.css';
 interface TaskbarProps {
   programs: ProgramDefinition[];
   onOpenProgram: (program: ProgramDefinition) => void;
+  onRestart?: () => void;
+  onShutdown?: () => void;
 }
 
 const START_MENU_ID = 'start-menu';
+export const PLUS_CLICKS = 10;
+const PLUS_WINDOW_MS = 5000;
 
 export const Taskbar: React.FC<TaskbarProps> = ({
   programs,
   onOpenProgram,
+  onRestart,
+  onShutdown,
 }) => {
   const { t, i18n } = useTranslation();
   const { state, activeId, focus, minimize } = useWindowManager();
@@ -35,6 +41,18 @@ export const Taskbar: React.FC<TaskbarProps> = ({
 
   const clockProgram = programs.find((program) => program.id === 'clock');
 
+  // 10 clicks on Start within a few seconds: the menu banner gets a "Plus!".
+  const [plus, setPlus] = useState(false);
+  const startClicks = useRef<number[]>([]);
+  const countStartClick = () => {
+    const now = Date.now();
+    startClicks.current = [
+      ...startClicks.current.filter((at) => now - at < PLUS_WINDOW_MS),
+      now,
+    ];
+    if (startClicks.current.length >= PLUS_CLICKS) setPlus(true);
+  };
+
   const toggleLanguage = () =>
     i18n.changeLanguage(i18n.language === 'pt-BR' ? 'en-US' : 'pt-BR');
 
@@ -47,7 +65,10 @@ export const Taskbar: React.FC<TaskbarProps> = ({
         aria-haspopup="menu"
         aria-expanded={menuOpen}
         aria-controls={menuOpen ? START_MENU_ID : undefined}
-        onClick={() => setMenuOpen((open) => !open)}
+        onClick={() => {
+          countStartClick();
+          setMenuOpen((open) => !open);
+        }}
       >
         <StartLogo size={16} />
         <span>{t('taskbar.start')}</span>
@@ -63,6 +84,9 @@ export const Taskbar: React.FC<TaskbarProps> = ({
             void i18n.changeLanguage(language)
           }
           onClose={closeMenu}
+          onRestart={onRestart}
+          onShutdown={onShutdown}
+          plus={plus}
           ignoreRef={startRef}
         />
       )}

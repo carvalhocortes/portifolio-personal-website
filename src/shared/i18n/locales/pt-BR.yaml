@@ -132,6 +132,18 @@ abertura:
     Procurando bugs.............. 3 encontrados, ignorando
 
 lixeira:
+  arquivos:
+    nao-abra:
+      nome: nao_abra.txt
+      texto: |
+        Eu disse para não abrir...
+
+        Já que abriu, umas dicas:
+        - experimente "sudo ajuda" no Terminal;
+        - no desktop, digite: cima, cima, baixo, baixo, esquerda,
+          direita, esquerda, direita, B, A;
+        - aperte DEL bem no começo, quando o computador liga;
+        - e o Relógio não gosta de muitos cliques.
   pastas:
     exemplo:
       nome: Projeto exemplo
@@ -192,6 +204,36 @@ commands:
   classifications:
     navigation: Navegação e utilidades
     personal: Informações pessoais
+    secret: Comandos do administrador
+  coffee:
+    aliases:
+      - cafe
+      - café
+    description: Hora do café
+  matrix:
+    aliases:
+      - matrix
+    description: Entra na Matrix
+  fortune:
+    aliases:
+      - sorte
+    description: Uma frase de sorte
+  hack:
+    aliases:
+      - hackear
+    description: Invade o mainframe
+  exit:
+    aliases:
+      - sair
+    description: Tenta sair
+  sudo:
+    aliases:
+      - sudo
+    description: Pede permissão de administrador
+  sudoHelp:
+    aliases:
+      - sudo ajuda
+    description: Lista os comandos do administrador
   welcome:
     aliases:
       - start
@@ -340,3 +382,59 @@ recycleBin:
   next: Próximo arquivo
   objects_one: '{{count}} objeto'
   objects_other: '{{count}} objetos'
+secrets:
+  coffee:
+    art: |2
+            ( (
+             ) )
+          ........
+          |      |]
+          \      /
+           `----'
+    text: |-
+      Pausa para o café. Volto em 5 minutos.
+      (Já são 4 xícaras hoje. Não conte para ninguém.)
+  matrix:
+    end: Você tomou a pílula vermelha. Mas aqui só tem portfólio mesmo.
+  fortune:
+    - Funciona na minha máquina.
+    - Todo código legado já foi o código novo de alguém.
+    - 'Engenheiro eletricista: quando o problema é de software, desliga e liga de novo.'
+    - Não existe bug, existe funcionalidade não documentada.
+    - Medir duas vezes, cortar uma. Na marcenaria e no deploy.
+    - O café é a dependência que nunca dá conflito.
+  hack:
+    lines:
+      - Conectando ao mainframe...
+      - Quebrando a criptografia de 4096 bits...
+      - Contornando o firewall do síndico...
+      - Baixando a internet... 37%
+      - Baixando a internet... 100%
+    end: 'Acesso concedido. Brincadeira: este site é aberto, o código está no GitHub.'
+  exit:
+    home: 'Não dá para sair: você já está em casa.'
+  sudo:
+    denied: Permissão negada. Este incidente será reportado ao Fernando.
+    helpHeader: 'Comandos do administrador (não conte para ninguém):'
+  shutdown:
+    menu: Desligar...
+    restart: Reiniciar
+    safe: Agora é seguro desligar o computador.
+  bsod:
+    title: CarvalhoCortes 84
+    text: |-
+      Ocorreu um erro fatal 0E: O CAFÉ ACABOU em 0028:C0FFEE.
+      O programa atual será encerrado até alguém passar mais café.
+
+      *  Pressione qualquer tecla para continuar.
+      *  Pressione CTRL+ALT+DEL para pedir mais café.
+  setup:
+    title: CMOS SETUP - CC BIOS v1.984
+    options:
+      - Velocidade do café ........ [Turbo]
+      - Bugs ...................... [Ignorar]
+      - Memória do Fernando ....... [640K, o suficiente]
+      - Modo sono ................. [Depois do deploy]
+      - 'Disquete de boot .......... [A: 1.44MB]'
+    footer: 'Qualquer tecla: sair sem salvar (nada é salvo mesmo)'
+  plus: Plus!
