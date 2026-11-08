@@ -15,8 +15,10 @@ const resources = {
 
 export const I18N_OPTIONS: InitOptions = {
   resources,
+  // No fixed `lng`: it would override the detector, so the browser language
+  // and the PT/EN choice saved in localStorage would be ignored.
   fallbackLng: 'pt-BR',
-  lng: 'pt-BR',
+  supportedLngs: ['pt-BR', 'en-US'],
   interpolation: {
     escapeValue: false,
     // {{idade}} in any text: the age from pessoa.nascimento in site.yaml.
