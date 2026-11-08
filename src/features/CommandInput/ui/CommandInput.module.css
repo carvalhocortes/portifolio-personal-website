@@ -1,12 +1,80 @@
 .container {
   display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
+  align-items: flex-start;
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .container {
-    gap: var(--spacing-sm);
+.field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.mirror {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: var(--color-text-primary);
+  pointer-events: none;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  height: 1em;
+  vertical-align: text-bottom;
+  /* DOS-style underline cursor: the bottom 2px of the character cell. */
+  background: linear-gradient(
+    to top,
+    var(--color-text-primary) 2px,
+    transparent 2px
+  );
+  animation: dos-blink 1.06s steps(1) infinite;
+  margin-right: -1ch;
+}
+
+/* The real textarea sits on top of the mirror with the same font and wrapping
+   rules, so typing, selection, clicks and the mobile keyboard line up with what
+   is shown. Only its own text and caret are hidden. */
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow: hidden;
+  resize: none;
+  outline: none;
+  color: transparent;
+  caret-color: transparent;
+  -webkit-text-fill-color: transparent;
+  cursor: text;
+}
+
+.input::selection {
+  background: transparent;
+}
+
+@keyframes dos-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
   }
 }

@@ -1,18 +1,8 @@
 import i18n from '../i18n';
 
-export const TERMINAL_COLORS = {
-  PROMPT_CURRENT: '#61afef',
-  PROMPT_HISTORY: '#c71616',
-  TEXT_INPUT: '#98c379',
-  TEXT_OUTPUT: '#98c379',
-  BACKGROUND: '#282c34',
-} as const;
+export const DOS_PROMPT = 'C:\\CARVALHO-CORTES\\>';
 
-export const TERMINAL_SYMBOLS = {
-  PROMPT: '❯',
-  SEPARATOR: '─',
-  CORNER: '└',
-} as const;
+export const DOS_VERSION = '1984.02.07';
 
 export const BREAKPOINTS = {
   MOBILE: 0,

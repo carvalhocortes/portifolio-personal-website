@@ -7,11 +7,13 @@ import styles from './CommandHistory.module.css';
 interface CommandHistoryProps {
   commands: Command[];
   lastCommandRef?: React.RefObject<HTMLDivElement | null>;
+  onCommand?: (command: string) => void;
 }
 
 export const CommandHistory: React.FC<CommandHistoryProps> = ({
   commands,
   lastCommandRef,
+  onCommand,
 }) => {
   return (
     <div className={styles.commandHistory} role="log" aria-live="polite">
@@ -31,7 +33,9 @@ export const CommandHistory: React.FC<CommandHistoryProps> = ({
             role="region"
             aria-label="Command output"
           >
-            <MarkdownRenderer>{cmd.output}</MarkdownRenderer>
+            <MarkdownRenderer onCommand={onCommand}>
+              {cmd.output}
+            </MarkdownRenderer>
           </div>
         </article>
       ))}

@@ -186,8 +186,9 @@ A aplicação estará disponível em `http://localhost:5173`
 ### Iniciando a Aplicação
 
 1. Acesse a aplicação no navegador
-2. Você verá uma tela de boas-vindas com o logo ASCII
-3. Digite `ajuda` ou `help` para ver todos os comandos disponíveis
+2. Você verá o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
+3. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
+4. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
 
 ### Atalhos de Teclado
 
@@ -212,6 +213,8 @@ A aplicação estará disponível em `http://localhost:5173`
 | Comando  | Aliases               | Descrição                                        |
 | -------- | --------------------- | ------------------------------------------------ |
 | `ajuda`  | `help`, `h`           | Mostra lista completa de comandos disponíveis    |
+| `dir`    | `ls`                  | Lista as seções como arquivos (clicáveis)        |
+| `ver`    | `versao`, `version`   | Mostra a versão do sistema (1984.02.07)          |
 | `idioma` | `language`, `lang`    | Alterna entre Português (PT-BR) e Inglês (EN-US) |
 | `limpar` | `cls`                 | Limpa o histórico do terminal                    |
 | `start`  | `bem-vindo`, `inicio` | Exibe novamente a mensagem de boas-vindas        |
@@ -430,6 +433,13 @@ Este projeto segue a [Conventional Commits](https://www.conventionalcommits.org/
 ## 📄 Licença
 
 Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+### Fonte
+
+A fonte **Px437 IBM VGA 8x16** (arquivo `public/fonts/WebPlus_IBM_VGA_8x16.woff`) vem do
+[Ultimate Oldschool PC Font Pack](https://int10h.org/oldschool-pc-fonts/), de VileR, e é
+distribuída sob a licença [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+O texto da licença está em `public/fonts/LICENSE-oldschool-pc-fonts.txt`.
 
 ```
 MIT License
