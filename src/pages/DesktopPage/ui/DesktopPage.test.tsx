@@ -1,6 +1,7 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 import DesktopPage from './DesktopPage';
 
@@ -89,7 +90,9 @@ describe('DesktopPage', () => {
     setWidth(1280);
     const { browser } = await openBrowser();
     const address = within(browser).getByRole('textbox', { name: 'Endereço' });
-    expect(address).toHaveValue('Fernando Cortes - Engenheiro de software');
+    expect(address).toHaveValue(
+      `${content.pessoa.nome} - Engenheiro de software`
+    );
     expect(address).toHaveAttribute('readonly');
     for (const name of ['Voltar', 'Avançar', 'Recarregar']) {
       expect(within(browser).getByRole('button', { name })).toBeDisabled();
@@ -97,7 +100,7 @@ describe('DesktopPage', () => {
     expect(
       await within(browser).findByRole('heading', {
         level: 1,
-        name: 'Fernando Cortes',
+        name: content.pessoa.nome,
       })
     ).toBeInTheDocument();
   });
@@ -122,7 +125,7 @@ describe('DesktopPage', () => {
     );
     expect(
       within(browser).getByRole('textbox', { name: 'Address' })
-    ).toHaveValue('Fernando Cortes - Software engineer');
+    ).toHaveValue(`${content.pessoa.nome} - Software engineer`);
     expect(screen.getByRole('button', { name: /Start/ })).toBeInTheDocument();
   });
 
@@ -130,7 +133,10 @@ describe('DesktopPage', () => {
     setWidth(375);
     render(<DesktopPage />);
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Fernando Cortes' })
+      await screen.findByRole('heading', {
+        level: 1,
+        name: content.pessoa.nome,
+      })
     ).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Iniciar/ })).toBeNull();
     expect(screen.queryByRole('list', { name: 'Programas' })).toBeNull();

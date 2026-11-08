@@ -145,7 +145,7 @@
       },
       "pausePhotos": "Pausar as fotos",
       "playPhotos": "Continuar as fotos",
-      "pageTitle": "Fernando Cortes - Engenheiro de software"
+      "pageTitle": "{{name}} - Engenheiro de software"
     },
     "browser": {
       "back": "Voltar",

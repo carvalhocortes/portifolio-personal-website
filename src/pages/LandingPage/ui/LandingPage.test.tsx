@@ -72,7 +72,10 @@ describe('LandingPage', () => {
       ).toBeInTheDocument();
     }
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Entre em contato comigo' })
+      screen.getByRole('heading', {
+        level: 2,
+        name: content.contato.titulo.pt.replace(/:\s*$/, ''),
+      })
     ).toBeInTheDocument();
   });
 
@@ -101,7 +104,7 @@ describe('LandingPage', () => {
       screen.getByRole('heading', { level: 2, name: 'About' })
     ).toBeInTheDocument();
     expect(screen.getByText(content.pessoa.resumo.en)).toBeInTheDocument();
-    expect(document.title).toBe('Fernando Cortes - Software engineer');
+    expect(document.title).toBe(`${content.pessoa.nome} - Software engineer`);
 
     await user.click(
       screen.getByRole('button', { name: /switch the language/i })
@@ -109,7 +112,9 @@ describe('LandingPage', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: 'Sobre' })
     ).toBeInTheDocument();
-    expect(document.title).toBe('Fernando Cortes - Engenheiro de software');
+    expect(document.title).toBe(
+      `${content.pessoa.nome} - Engenheiro de software`
+    );
   });
 
   it('opens and closes the mobile menu, also with Escape', async () => {
@@ -140,7 +145,7 @@ describe('LandingPage', () => {
     renderPage();
     const about = document.getElementById('sobre')!;
     expect(about.textContent).toMatch(
-      /Olá, meu nome é Fernando Cortes, tenho \d+ anos/
+      new RegExp(`Olá, meu nome é ${content.pessoa.nome}, tenho \\d+ anos`)
     );
     expect(about.textContent).not.toContain('{idade}');
   });
