@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
-import { Window, useWindowManager } from '../../../features/WindowManager';
+import {
+  Window,
+  getTaskbarWindows,
+  useWindowManager,
+} from '../../../features/WindowManager';
 import { Taskbar } from '../../Taskbar/ui/Taskbar';
 import styles from './Desktop.module.css';
 
@@ -58,7 +62,10 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
           ))}
         </ul>
 
-        {state.windows.map((win) => {
+        {/* Windows stay in opening order in the page and stack by z-index:
+            moving a window in the page mid-click (to bring it to the front)
+            would make the browser drop that first click. */}
+        {getTaskbarWindows(state).map((win) => {
           const program = programs.find((p) => p.id === win.id);
           if (!program) return null;
           const isActive = activeId === win.id;
@@ -69,6 +76,7 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
               title={windowTitleOf(program)}
               icon={<program.Icon size={16} />}
               isActive={isActive}
+              layer={state.windows.indexOf(win) + 1}
             >
               <program.Component isActive={isActive} />
             </Window>

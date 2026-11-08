@@ -94,6 +94,32 @@ describe('DesktopPage', () => {
     ).toHaveAttribute('aria-pressed', 'true');
   });
 
+  it('brings a window to the front without moving it in the page', async () => {
+    setWidth(1280);
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    const clock = screen.getByRole('region', { name: 'Relógio' });
+    const notepad = screen.getByRole('region', {
+      name: 'Leia-me.txt - Bloco de Notas',
+    });
+    const pageOrder = () =>
+      screen
+        .getAllByRole('region')
+        .map((region) => region.getAttribute('aria-label'))
+        .filter((name) => name === 'Relógio' || name?.startsWith('Leia-me'));
+    const before = pageOrder();
+    // One click on a control of a window behind: it works and the window
+    // comes to the front by its layer, not by moving in the page.
+    await user.click(within(clock).getByRole('radio', { name: 'Digital' }));
+    expect(
+      within(clock).getByRole('radio', { name: 'Digital' })
+    ).toHaveAttribute('aria-checked', 'true');
+    expect(pageOrder()).toEqual(before);
+    expect(Number(clock.style.zIndex)).toBeGreaterThan(
+      Number(notepad.style.zIndex)
+    );
+  });
+
   it('keeps the taskbar order when another window gets the focus', async () => {
     setWidth(1280);
     const user = userEvent.setup();

@@ -9,6 +9,8 @@ interface WindowProps {
   title: string;
   icon: React.ReactNode;
   isActive: boolean;
+  /** Stacking layer: higher is in front. */
+  layer: number;
   children: React.ReactNode;
 }
 
@@ -55,6 +57,7 @@ export const Window: React.FC<WindowProps> = ({
   title,
   icon,
   isActive,
+  layer,
   children,
 }) => {
   const { t } = useTranslation();
@@ -131,8 +134,14 @@ export const Window: React.FC<WindowProps> = ({
   };
 
   const frameStyle: React.CSSProperties = win.maximized
-    ? {}
-    : { left: win.x, top: win.y, width: win.width, height: win.height };
+    ? { zIndex: layer }
+    : {
+        left: win.x,
+        top: win.y,
+        width: win.width,
+        height: win.height,
+        zIndex: layer,
+      };
 
   return (
     <section
