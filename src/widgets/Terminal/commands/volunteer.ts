@@ -1,19 +1,20 @@
-import { content, pick, resource } from '../../../entities/Content';
+import { content, resource } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 
 export const volunteer = (): string => {
-  const lang = i18n.language;
+  const { t } = i18n;
   const { voluntario } = content;
 
   const items = voluntario.itens.map((item) => {
-    const logo = `![${pick(item.logo.alt, lang)}](${resource(item.logo.arquivo)} "small")`;
-    return `### [${pick(item.nome, lang)}](${item.url})
+    const key = `voluntario.itens.${item.id}`;
+    const logo = `![${t(`${key}.logo.alt`)}](${resource(item.logo.arquivo)} "small")`;
+    return `### [${t(`${key}.nome`)}](${item.url})
 
 |     |   |
 | --- | :--- |
-| ${logo} | ${pick(item.descricao, lang)} |
+| ${logo} | ${t(`${key}.descricao`)} |
 `;
   });
 
-  return `## ${pick(voluntario.titulo, lang)}\n\n${items.join('\n\n')}`;
+  return `## ${t('voluntario.titulo')}\n\n${items.join('\n\n')}`;
 };

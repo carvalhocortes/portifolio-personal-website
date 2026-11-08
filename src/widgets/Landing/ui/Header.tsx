@@ -12,15 +12,15 @@ export const SECTION_IDS = {
 } as const;
 
 export const Header = () => {
-  const { t, text, toggleLanguage } = useContentLanguage();
+  const { t, toggleLanguage } = useContentLanguage();
   const [open, setOpen] = useState(false);
   const navId = useId();
 
   const links = [
-    { id: SECTION_IDS.about, label: text(content.sobre.titulo) },
-    { id: SECTION_IDS.hobbies, label: text(content.hobbies.titulo) },
-    { id: SECTION_IDS.volunteer, label: text(content.voluntario.titulo) },
-    { id: SECTION_IDS.contact, label: text(content.contato.menu) },
+    { id: SECTION_IDS.about, label: t('sobre.titulo') },
+    { id: SECTION_IDS.hobbies, label: t('hobbies.titulo') },
+    { id: SECTION_IDS.volunteer, label: t('voluntario.titulo') },
+    { id: SECTION_IDS.contact, label: t('contato.menu') },
   ];
 
   useEffect(() => {

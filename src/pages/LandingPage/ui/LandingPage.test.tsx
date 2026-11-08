@@ -39,6 +39,11 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
+// Texts by key, in a fixed language, straight from the i18n files.
+const pt = i18n.getFixedT('pt-BR');
+const en = i18n.getFixedT('en-US');
+const hobbyKey = (id: string) => `hobbies.itens.${id}`;
+
 const renderPage = () => {
   const user = userEvent.setup();
   render(<LandingPage />);
@@ -61,11 +66,11 @@ describe('LandingPage', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: content.pessoa.nome })
     ).toBeInTheDocument();
-    expect(screen.getByText(content.pessoa.titulo.pt)).toBeInTheDocument();
+    expect(screen.getByText(pt('pessoa.titulo'))).toBeInTheDocument();
     for (const title of [
-      content.sobre.titulo.pt,
-      content.hobbies.titulo.pt,
-      content.voluntario.titulo.pt,
+      pt('sobre.titulo'),
+      pt('hobbies.titulo'),
+      pt('voluntario.titulo'),
     ]) {
       expect(
         screen.getByRole('heading', { level: 2, name: title })
@@ -74,7 +79,7 @@ describe('LandingPage', () => {
     expect(
       screen.getByRole('heading', {
         level: 2,
-        name: content.contato.titulo.pt.replace(/:\s*$/, ''),
+        name: pt('contato.titulo').replace(/:\s*$/, ''),
       })
     ).toBeInTheDocument();
   });
@@ -103,7 +108,7 @@ describe('LandingPage', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: 'About' })
     ).toBeInTheDocument();
-    expect(screen.getByText(content.pessoa.resumo.en)).toBeInTheDocument();
+    expect(screen.getByText(en('pessoa.resumo'))).toBeInTheDocument();
     expect(document.title).toBe(`${content.pessoa.nome} - Software engineer`);
 
     await user.click(
@@ -155,16 +160,25 @@ describe('Hobbies', () => {
   it('switches hobbies with clicks and arrow keys', async () => {
     const user = renderPage();
     const [wood, photo] = content.hobbies.itens;
-    const tab = screen.getByRole('tab', { name: photo.titulo.pt });
+    const tab = screen.getByRole('tab', {
+      name: pt(`${hobbyKey(photo.id)}.titulo`),
+    });
     await user.click(tab);
     expect(tab).toHaveAttribute('aria-selected', 'true');
     expect(
-      screen.getByRole('heading', { level: 3, name: photo.titulo.pt })
+      screen.getByRole('heading', {
+        level: 3,
+        name: pt(`${hobbyKey(photo.id)}.titulo`),
+      })
     ).toBeInTheDocument();
-    expect(screen.getByText(photo.curiosidade!.texto.pt)).toBeInTheDocument();
+    expect(
+      screen.getByText(pt(`${hobbyKey(photo.id)}.curiosidade.texto`))
+    ).toBeInTheDocument();
 
     await user.keyboard('{ArrowLeft}');
-    const woodTab = screen.getByRole('tab', { name: wood.titulo.pt });
+    const woodTab = screen.getByRole('tab', {
+      name: pt(`${hobbyKey(wood.id)}.titulo`),
+    });
     expect(woodTab).toHaveAttribute('aria-selected', 'true');
     expect(woodTab).toHaveFocus();
   });
@@ -174,7 +188,7 @@ describe('Hobbies', () => {
     const [wood] = content.hobbies.itens;
     await user.click(
       screen.getByRole('button', {
-        name: `Ampliar a foto: ${wood.fotos[0].legenda.pt}`,
+        name: `Ampliar a foto: ${pt(`${hobbyKey(wood.id)}.fotos.0.legenda`)}`,
       })
     );
     const dialog = screen.getByRole('dialog');
@@ -194,7 +208,7 @@ describe('Hobbies', () => {
       within(dialog).getByRole('button', { name: 'Próxima foto' })
     );
     expect(
-      within(dialog).getByText(wood.fotos[1].legenda.pt)
+      within(dialog).getByText(pt(`${hobbyKey(wood.id)}.fotos.1.legenda`))
     ).toBeInTheDocument();
     await user.keyboard('{ArrowLeft}');
     expect(
@@ -206,7 +220,7 @@ describe('Hobbies', () => {
     expect(document.querySelector('[inert]')).toBeNull();
     expect(
       screen.getByRole('button', {
-        name: `Ampliar a foto: ${wood.fotos[0].legenda.pt}`,
+        name: `Ampliar a foto: ${pt(`${hobbyKey(wood.id)}.fotos.0.legenda`)}`,
       })
     ).toHaveFocus();
   });
@@ -216,7 +230,7 @@ describe('Hobbies', () => {
     const wood = content.hobbies.itens[0];
     await user.click(
       screen.getByRole('button', {
-        name: `Ampliar a foto: ${wood.fotos[0].legenda.pt}`,
+        name: `Ampliar a foto: ${pt(`${hobbyKey(wood.id)}.fotos.0.legenda`)}`,
       })
     );
     const dialog = screen.getByRole('dialog');
@@ -236,9 +250,11 @@ describe('Volunteer', () => {
   it('lists every volunteer work with its logo and link', () => {
     renderPage();
     for (const item of content.voluntario.itens) {
-      expect(screen.getByAltText(item.logo.alt.pt)).toBeInTheDocument();
+      expect(
+        screen.getByAltText(pt(`voluntario.itens.${item.id}.logo.alt`))
+      ).toBeInTheDocument();
       const link = screen.getByRole('link', {
-        name: `${item.nome.pt} (abre em outra aba)`,
+        name: `${pt(`voluntario.itens.${item.id}.nome`)} (abre em outra aba)`,
       });
       expect(link).toHaveAttribute('href', item.url);
       expect(link).toHaveAttribute('target', '_blank');

@@ -1,2 +1,2 @@
-export { ageOn, content, pick, resource } from './model/content';
+export { content, resource, textList } from './model/content';
 export type * from './model/types';

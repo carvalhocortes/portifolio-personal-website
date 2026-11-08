@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { content, pick, resource } from '../../../entities/Content';
+import { content, resource } from '../../../entities/Content';
 import { StartLogo } from '../../../shared/ui/icons';
 import styles from './BootScreen.module.css';
 
@@ -43,7 +43,7 @@ interface BootScreenProps {
  * decoration, so screen readers skip it too.
  */
 export const BootScreen = ({ onFinish }: BootScreenProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [reduced] = useState(prefersReducedMotion);
   const [elapsed, setElapsed] = useState(0);
   // Wait (briefly) for the DOS font, so the BIOS doesn't flash in another one.
@@ -116,17 +116,9 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
       data-phase={phase}
       onClick={finish}
     >
-      {fontReady && phase === 'bios' && (
-        <BiosScreen
-          elapsed={elapsed}
-          text={pick(content.abertura.bios, i18n.language)}
-        />
-      )}
+      {fontReady && phase === 'bios' && <BiosScreen elapsed={elapsed} />}
       {phase === 'dos' && (
-        <DosScreen
-          elapsed={elapsed - BIOS_MS}
-          text={pick(content.abertura.dos, i18n.language)}
-        />
+        <DosScreen elapsed={elapsed - BIOS_MS} text={t('abertura.dos')} />
       )}
       {phase === 'splash' && <Splash still={reduced} />}
       {fontReady && phase !== 'splash' && (
@@ -136,12 +128,14 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
   );
 };
 
-const BiosScreen = ({ elapsed, text }: { elapsed: number; text: string }) => {
+const BiosScreen = ({ elapsed }: { elapsed: number }) => {
+  const { t } = useTranslation();
   // The memory counts up in 1 MB steps, like the old memory test.
   const kb = Math.min(
     MEMORY_KB,
     Math.floor((elapsed / MEMORY_MS) * (MEMORY_KB / 1024)) * 1024
   );
+  const text = t('abertura.bios', { memoria: `${kb}K` });
   const shown = lines(text).slice(0, Math.floor(elapsed / LINE_MS) + 1);
   return (
     <div className={styles.text}>
@@ -151,7 +145,7 @@ const BiosScreen = ({ elapsed, text }: { elapsed: number; text: string }) => {
       <p className={styles.bright}>{BIOS_HEADER}</p>
       <p>&nbsp;</p>
       {shown.map((line, i) => (
-        <p key={i}>{line.replace('{memoria}', `${kb}K`) || '\u00a0'}</p>
+        <p key={i}>{line || '\u00a0'}</p>
       ))}
     </div>
   );
