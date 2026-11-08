@@ -14,6 +14,12 @@ html:is([data-route='desktop'], [data-route='terminal']) body {
   overflow: hidden;
 }
 
+/* The desktop's colour while it loads, so a reload doesn't flash black. Black
+   only when the boot screen is about to play (main.tsx sets data-boot). */
+html[data-route='desktop']:not([data-boot]) body {
+  background-color: var(--w95-desktop);
+}
+
 html:is([data-route='desktop'], [data-route='terminal']) ::selection {
   background-color: var(--color-selection);
   color: var(--color-bg-primary);

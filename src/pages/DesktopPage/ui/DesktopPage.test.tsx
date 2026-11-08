@@ -1,8 +1,9 @@
-import { act, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
+import { BOOTED_KEY } from '../../../shared/lib/bootMark';
 import DesktopPage from './DesktopPage';
 
 const setWidth = (width: number) =>
@@ -151,5 +152,49 @@ describe('DesktopPage', () => {
     expect(screen.queryByRole('button', { name: /Iniciar/ })).toBeNull();
     expect(screen.queryByRole('list', { name: 'Programas' })).toBeNull();
     expect(document.documentElement.dataset.route).toBe('landing');
+  });
+
+  describe('boot screen', () => {
+    beforeEach(() => {
+      sessionStorage.removeItem(BOOTED_KEY);
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => vi.useRealTimers());
+
+    it('plays over the desktop on the first visit, then marks the tab', () => {
+      setWidth(1280);
+      render(<DesktopPage />);
+      expect(screen.getByTestId('boot-screen')).toBeInTheDocument();
+      // The desktop is already there, out of reach until the boot ends.
+      expect(screen.getByRole('main', { hidden: true })).toHaveAttribute(
+        'inert'
+      );
+      act(() => vi.advanceTimersByTime(4000));
+      expect(screen.queryByTestId('boot-screen')).toBeNull();
+      expect(screen.getByRole('main')).not.toHaveAttribute('inert');
+      expect(sessionStorage.getItem(BOOTED_KEY)).toBe('1');
+    });
+
+    it('a key skips straight to the desktop', () => {
+      setWidth(1280);
+      render(<DesktopPage />);
+      fireEvent.keyDown(window, { key: ' ' });
+      expect(screen.queryByTestId('boot-screen')).toBeNull();
+      expect(sessionStorage.getItem(BOOTED_KEY)).toBe('1');
+    });
+
+    it('is skipped when the tab has already seen it', () => {
+      setWidth(1280);
+      sessionStorage.setItem(BOOTED_KEY, '1');
+      render(<DesktopPage />);
+      expect(screen.queryByTestId('boot-screen')).toBeNull();
+    });
+
+    it('does not show on phones', () => {
+      setWidth(375);
+      render(<DesktopPage />);
+      expect(screen.queryByTestId('boot-screen')).toBeNull();
+    });
   });
 });
