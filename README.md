@@ -1,526 +1,125 @@
 <div align="center">
 
-# 💻 Terminal Portfolio - Fernando Cortes
+<img src="public/apple-touch-icon.png" width="72" height="72" alt="" />
 
-<img src="https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React" />
-<img src="https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-<img src="https://img.shields.io/badge/Vite-6.3.5-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-<img src="https://img.shields.io/badge/i18next-25.6.0-26A69A?style=for-the-badge&logo=i18next&logoColor=white" alt="i18next" />
-<img src="https://img.shields.io/badge/Vitest-3.2.4-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
-<img src="https://img.shields.io/badge/Coverage-95%25-brightgreen?style=for-the-badge" alt="Coverage" />
-[<img alt="Deployed on GitHub Pages" src="https://img.shields.io/badge/Deployed on-GitHub Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white">](https://carvalhocortes.com.br)
+# CarvalhoCortes 84
 
-**Um portfólio interativo inspirado em terminal Unix/Linux, construído com React e TypeScript**
+**O portfólio do Fernando Côrtes, num computador dos anos 90 que roda no navegador.**
 
-[🐛 Reportar Bug / ✨ Solicitar Feature](https://github.com/carvalhocortes/portifolio-personal-website/issues)
+[carvalhocortes.com.br](https://carvalhocortes.com.br)
+
+[![Deploy](https://github.com/carvalhocortes/portifolio-personal-website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/carvalhocortes/portifolio-personal-website/actions/workflows/deploy-pages.yml)
+
+<img src="docs/desktop.png" alt="Desktop do CarvalhoCortes 84 com o Leia-me.txt aberto no centro, o Relógio no canto e a barra de tarefas embaixo" width="800" />
 
 </div>
 
----
+O site liga como um PC antigo (BIOS, DOS e tela com logo) e abre um desktop com janelas, ícones, menu Iniciar e
+barra de tarefas. Cada programa mostra uma parte do portfólio. O visual é dos anos 90, mas o uso é de hoje: tudo
+abre com um clique, com links e rolagem normais. No celular, o site abre direto numa landing page moderna.
 
-## 📋 Índice
+| Abertura | Tela com logo | Celular |
+| :---: | :---: | :---: |
+| <img src="docs/abertura-bios.png" alt="Tela de BIOS com as linhas da abertura" width="260" /> | <img src="docs/abertura-logo.jpg" alt="Tela com o logo Carvalho Côrtes84 sobre um céu com nuvens" width="260" /> | <img src="docs/landing-celular.jpg" alt="Landing page no celular, com a foto e o título Fernando Côrtes" width="150" /> |
 
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Status do Projeto](#-status-do-projeto)
-- [Demonstração](#-demonstração)
-- [Funcionalidades](#-funcionalidades)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Pré-requisitos](#-pré-requisitos)
-- [Instalação](#-instalação)
-- [Como Usar](#-como-usar)
-- [Comandos Disponíveis](#-comandos-disponíveis)
-- [Scripts Disponíveis](#-scripts-disponíveis)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Testes](#-testes)
-- [Deploy](#-deploy)
-- [Contribuindo](#-contribuindo)
-- [Licença](#-licença)
-- [Autor](#-autor)
-- [Agradecimentos](#-agradecimentos)
+## Status
 
----
+> [!NOTE]
+> O projeto evolui em fases curtas: cada uma tem a sua branch e entra na `main` (e no ar) ao terminar.
 
-## 🎯 Sobre o Projeto
+**No ar**
+- [x] Desktop com janelas: abrir, arrastar, redimensionar, minimizar, maximizar e focar
+- [x] Menu Iniciar e barra de tarefas, com relógio e troca de idioma (pt-BR e en-US)
+- [x] **Navegador** com a landing page (sobre, hobbies, voluntariado e formulário de contato)
+- [x] **Terminal** no estilo MS-DOS, com comandos clicáveis
+- [x] **Leia-me.txt** no Bloco de Notas, explicando o site
+- [x] Abertura com BIOS, DOS e tela com logo (uma vez por aba, dá para pular)
+- [x] **Relógio** analógico ou digital e **Lixeira** com pastas de projetos antigos
+- [x] Celular abre direto na landing page
 
-Este é um **portfólio pessoal interativo** que simula um terminal de linha de comando Unix/Linux. Desenvolvido com foco em **experiência do usuário**, **performance** e **boas práticas de engenharia de software**, o projeto oferece uma forma única e moderna de apresentar informações profissionais.
+**Próximos passos**
+- [ ] Easter eggs espalhados pelo desktop
+- [ ] Fotos e anotações dos projetos antigos na Lixeira
+- [ ] Carregamento mais rápido no celular
+- [ ] Foto nova no lugar do avatar provisório
 
-### Por que um Terminal?
+## Programas e endereços
 
-- **🎨 Diferenciação**: Uma abordagem criativa e memorável para um portfólio
-- **💡 Demonstração de Habilidades**: Mostra conhecimento em desenvolvimento front-end e UX
-- **🎮 Interatividade**: Engaja o visitante de forma lúdica e interativa
-- **⚡ Performance**: Construído com tecnologias modernas e otimizado para velocidade
+| Programa | O que mostra |
+| --- | --- |
+| Navegador | A landing page, numa janela com barra de endereço decorativa |
+| Terminal | O mesmo conteúdo em modo texto; digite `ajuda` (ou `help`) para ver os comandos |
+| Leia-me.txt | O que é o site e como usar; dá para digitar, mas nada é salvo |
+| Relógio | A hora em modo analógico ou digital, com a data no idioma do site |
+| Lixeira | Projetos que quase entraram no site, uma pasta por projeto |
 
----
+| Endereço | Abre |
+| --- | --- |
+| [`/`](https://carvalhocortes.com.br) | O desktop (no celular, a landing page) |
+| [`/landing`](https://carvalhocortes.com.br/landing) | Só a landing page |
+| [`/terminal`](https://carvalhocortes.com.br/terminal) | Só o Terminal, em tela cheia |
 
-## 🚦 Status do Projeto
+## Editar o conteúdo
 
-<div align="center">
+Textos e dados ficam separados, com um arquivo de textos por idioma:
 
-### ✅ Versão 2.0 - Em Produção
+- **Textos** (conteúdo e interface): [`src/shared/i18n/locales/pt-BR.yaml`](src/shared/i18n/locales/pt-BR.yaml) e
+  [`en-US.yaml`](src/shared/i18n/locales/en-US.yaml), com as mesmas chaves nos dois.
+- **Dados que não mudam com o idioma** (nome, datas, contato, fotos, links e ordem dos itens):
+  [`content/site.yaml`](content/site.yaml).
 
-![Build](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)
-![Tests](https://img.shields.io/badge/tests-passing-brightgreen?style=flat-square)
-![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen?style=flat-square)
-![Version](https://img.shields.io/badge/version-2.0.0-blue?style=flat-square)
+O texto fica no mesmo caminho do dado: o título do hobby `marcenaria` é `hobbies.itens.marcenaria.titulo`, e o
+nome da pasta `exemplo` da Lixeira é `lixeira.pastas.exemplo.nome`. As imagens ficam em `public/resources/`.
 
-</div>
+> [!TIP]
+> Os testes falham se uma chave faltar num idioma, se um texto ficar vazio, se faltar o texto de algum item dos
+> dados ou se uma imagem citada não existir. Rode `npm test` depois de editar.
 
-### ✨ Funcionalidades Implementadas
+O site abre no idioma do navegador (português para quem não usa inglês) e lembra a escolha feita no PT/EN.
 
-- ✅ Interface de terminal interativa
-- ✅ Sistema de comandos customizados
-- ✅ Internacionalização (PT-BR e EN-US)
-- ✅ Renderização de Markdown
-- ✅ Histórico de comandos
-- ✅ Responsividade completa
-- ✅ Testes unitários com >95% de cobertura
-- ✅ CI/CD com GitHub Actions
-- ✅ Deploy automatizado no GitHub Pages
+## Para desenvolver
 
----
-
-## ⚡ Funcionalidades
-
-### 🎯 Funcionalidades Principais
-
-- **Terminal Interativo**: Interface de linha de comando totalmente funcional
-- **Sistema de Comandos**: Conjunto completo de comandos customizados para navegação
-- **Histórico de Comandos**: Navegação por comandos anteriores com setas ↑/↓
-- **Auto-complete**: Sugestões inteligentes de comandos (Tab)
-- **Markdown Support**: Renderização de conteúdo Markdown com suporte a GFM
-- **Internacionalização**: Suporte completo para PT-BR e EN-US
-- **Tema Customizado**: Visual inspirado em terminais clássicos com cores modernas
-- **Responsivo**: Adaptado para desktop, tablet e mobile
-
-### 🛠️ Funcionalidades Técnicas
-
-- **Feature-Sliced Design**: Arquitetura escalável e manutenível
-- **Type Safety**: TypeScript estrito para maior confiabilidade
-- **Code Quality**: ESLint + Prettier para código consistente
-- **Testing**: Vitest com alta cobertura de testes
-- **Performance**: Lazy loading e otimizações de bundle
-- **Acessibilidade**: Suporte a navegação por teclado
-
----
-
-## 🚀 Tecnologias Utilizadas
-
-### Core
-
-- **[React 19.1.0](https://react.dev/)** - Biblioteca para construção de interfaces
-- **[TypeScript 5.8.3](https://www.typescriptlang.org/)** - Superset JavaScript com tipagem estática
-- **[Vite 6.3.5](https://vite.dev/)** - Build tool e dev server de alta performance
-
-### Bibliotecas e Frameworks
-
-- **[i18next 25.6.0](https://www.i18next.com/)** - Framework de internacionalização
-- **[react-i18next 16.1.0](https://react.i18next.com/)** - Integração do i18next com React
-- **[react-markdown 10.1.0](https://github.com/remarkjs/react-markdown)** - Renderizador Markdown para React
-- **[remark-gfm 4.0.1](https://github.com/remarkjs/remark-gfm)** - Plugin para GitHub Flavored Markdown
-
-### Testes
-
-- **[Vitest 3.2.4](https://vitest.dev/)** - Framework de testes unitários
-- **[@testing-library/react 16.3.0](https://testing-library.com/react)** - Utilitários para testes de componentes
-- **[@vitest/coverage-v8 3.2.4](https://vitest.dev/guide/coverage.html)** - Relatórios de cobertura de código
-
-### Qualidade de Código
-
-- **[ESLint 9.25.0](https://eslint.org/)** - Linter para JavaScript/TypeScript
-- **[Prettier 3.6.2](https://prettier.io/)** - Formatador de código
-- **[TypeScript ESLint 8.30.1](https://typescript-eslint.io/)** - Regras ESLint para TypeScript
-
-### DevOps
-
-- **GitHub Actions** - CI/CD pipeline
-- **GitHub Pages** - Hospedagem com domínio próprio (carvalhocortes.com.br)
-
----
-
-## 📦 Pré-requisitos
-
-Antes de começar, você precisará ter instalado em sua máquina:
-
-- **[Node.js](https://nodejs.org/)** - Versão 18.x ou superior
-- **[npm](https://www.npmjs.com/)** - Versão 9.x ou superior (incluso no Node.js)
-- **[Git](https://git-scm.com/)** - Para clonar o repositório
-
-### Verificando as versões instaladas:
-
-```bash
-node --version  # Deve retornar v18.x.x ou superior
-npm --version   # Deve retornar 9.x.x ou superior
-git --version   # Deve retornar 2.x.x ou superior
-```
-
----
-
-## 🔧 Instalação
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/carvalhocortes/portifolio-personal-website.git
-cd portifolio-personal-website
-```
-
-### 2. Instale as dependências
+Precisa de Node.js 20 ou mais novo.
 
 ```bash
 npm install
+npm run dev        # http://localhost:5173
 ```
 
-### 3. Execute o projeto em modo de desenvolvimento
+| Comando | Faz |
+| --- | --- |
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm test` | Testes (Vitest e Testing Library) |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier |
+| `npm run build` | Checagem de tipos e build de produção em `dist/` |
+| `npm run preview` | Serve o build localmente |
 
-```bash
-npm run dev
-```
+**Tecnologias:** React, TypeScript, Vite, i18next, Vitest e Testing Library. A landing page usa a fonte Geist e
+ícones Phosphor; o formulário de contato envia pelo [Web3Forms](https://web3forms.com) com hCaptcha.
 
-A aplicação estará disponível em `http://localhost:5173`
-
----
-
-## 💻 Como Usar
-
-### Iniciando a Aplicação
-
-1. Em `/`, no computador, o site primeiro "liga": uma tela de BIOS, algumas linhas de DOS terminando em
-   `C:\> win` e uma tela com o logo, em cerca de 4 s. Aparece uma vez por aba, e um clique ou qualquer tecla
-   pula direto para o desktop. Com movimento reduzido no sistema, mostra só o logo, parado
-2. Depois aparece um desktop no estilo Windows 95 com três programas:
-   - **Leia-me.txt**: um Bloco de Notas, aberto na frente, que explica o site. Dá para digitar, mas nada é salvo
-   - **Navegador** e **Terminal**: abertos e minimizados na barra de tarefas
-
-   Um clique no botão da barra, no ícone ou no menu Iniciar mostra o programa numa janela, que dá para
-   arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o
-   relógio
-3. O Navegador mostra a landing page (abertura, Sobre, Hobbies com galeria de fotos, Voluntário e Contato, com
-   formulário protegido por captcha). A barra de endereço é só decorativa e mostra o título da página. A
-   landing se ajusta à largura da janela e segue o modo claro ou escuro do sistema
-   - No celular, a landing aparece direto, sem o desktop
-   - Endereços diretos: `/landing` abre só a landing e `/terminal` abre só o Terminal, em tela cheia
-4. No Terminal você vê o prompt `C:\CARVALHO-CORTES\>`, no visual do MS-DOS, e o logo ASCII
-5. Clique num dos atalhos ou digite `ajuda` ou `help` para ver todos os comandos
-6. Na saída do `ajuda`, das boas-vindas e do `dir`, os comandos são clicáveis
-
-### Editando o conteúdo
-
-Os textos e os dados ficam separados, no padrão de internacionalização (um arquivo de textos por idioma):
-
-- **Textos**, de conteúdo e de interface: [`src/shared/i18n/locales/pt-BR.yaml`](src/shared/i18n/locales/pt-BR.yaml)
-  e [`en-US.yaml`](src/shared/i18n/locales/en-US.yaml), com as mesmas chaves nos dois. A primeira parte é o conteúdo
-  (quem eu sou, hobbies, voluntariado, Leia-me e abertura); a segunda, a interface (botões, menus, mensagens do
-  Terminal e do desktop).
-- **Dados que não mudam com o idioma**: [`content/site.yaml`](content/site.yaml), com nome, data de nascimento,
-  contato, fotos, links e a ordem dos itens.
-
-O texto fica no mesmo caminho do dado: o título do hobby `marcenaria` é `hobbies.itens.marcenaria.titulo`, e as
-legendas das fotos seguem a ordem das fotos no `site.yaml`. A landing page e o Terminal leem os mesmos arquivos.
-
-- os textos do conteúdo aceitam Markdown (`**negrito**`, `[link](https://…)`); o Leia-me e a abertura são texto puro;
-- `{{idade}}` vira a idade calculada a partir de `nascimento`; na BIOS, `{{memoria}}` vira a contagem de memória;
-- as fotos ficam em `public/resources/`, e o `site.yaml` guarda só o nome do arquivo;
-- os testes falham se uma chave faltar num idioma, se um texto ficar vazio, se faltar o texto de um hobby, foto ou
-  trabalho voluntário, ou se uma foto citada não existir.
-
-O site abre no idioma do navegador (português para qualquer idioma que não seja inglês) e lembra a escolha feita no
-botão PT/EN.
-
-O formulário de contato usa o [Web3Forms](https://web3forms.com) com hCaptcha. A chave de acesso,
-pública por design, fica em `src/shared/config/contactForm.ts`.
-
-### Atalhos de Teclado
-
-- `↑` / `↓` - Navegar pelo histórico de comandos
-- `Enter` - Executar comando
-
----
-
-## 📟 Comandos Disponíveis
-
-### Informações Pessoais
-
-| Comando      | Aliases                     | Descrição                                                                  |
-| ------------ | --------------------------- | -------------------------------------------------------------------------- |
-| `sobre`      | `info`                      | Exibe informações sobre mim, incluindo formação, experiência e habilidades |
-| `hobbies`    | `interesses`                | Lista meus hobbies: marcenaria, fotografia e DIY                           |
-| `voluntario` | `trabalho-voluntario`, `tv` | Mostra projetos de trabalho voluntário                                     |
-| `contato`    | `email`                     | Exibe informações de contato (email, LinkedIn)                             |
-
-### Navegação e Utilidades
-
-| Comando  | Aliases               | Descrição                                        |
-| -------- | --------------------- | ------------------------------------------------ |
-| `ajuda`  | `help`, `h`           | Mostra lista completa de comandos disponíveis    |
-| `dir`    | `ls`                  | Lista as seções como arquivos (clicáveis)        |
-| `ver`    | `versao`, `version`   | Mostra a versão do sistema (1984.02.07)          |
-| `idioma` | `language`, `lang`    | Alterna entre Português (PT-BR) e Inglês (EN-US) |
-| `limpar` | `cls`                 | Limpa o histórico do terminal                    |
-| `start`  | `bem-vindo`, `inicio` | Exibe novamente a mensagem de boas-vindas        |
-
----
-
-## 🎯 Scripts Disponíveis
-
-### Desenvolvimento
-
-```bash
-# Inicia servidor de desenvolvimento
-npm run dev
-
-# Inicia servidor com preview da build de produção
-npm run preview
-```
-
-### Build e Produção
-
-```bash
-# Compila TypeScript e gera build de produção
-npm run build
-
-# Apenas compila TypeScript (verificação de tipos)
-npm run build:types
-```
-
-### Testes
-
-```bash
-# Executa todos os testes
-npm test
-
-# Executa testes em modo watch
-npm run test:watch
-
-# Executa testes com interface UI
-npm run test:ui
-
-# Gera relatório de cobertura
-npm run test:coverage
-```
-
-### Qualidade de Código
-
-```bash
-# Executa linter (ESLint)
-npm run lint
-
-# Corrige automaticamente problemas de lint
-npm run lint:fix
-
-# Verifica formatação (Prettier)
-npm run format:check
-
-# Formata automaticamente o código
-npm run format
-```
-
----
-
-## 📁 Estrutura do Projeto
-
-O projeto segue a arquitetura **Feature-Sliced Design (FSD)** para melhor organização e escalabilidade:
+**Estrutura** ([Feature-Sliced Design](https://feature-sliced.design)):
 
 ```
-personal-website/
-├── public/                    # Arquivos estáticos
-│   └── resources/            # Imagens e recursos
-├── src/
-│   ├── app/                  # Configurações globais da aplicação
-│   │   └── styles/          # Estilos globais (CSS)
-│   ├── entities/             # Entidades de negócio
-│   │   └── Command/         # Definições de tipos de comandos
-│   ├── features/             # Funcionalidades da aplicação
-│   │   ├── CommandHistory/  # Histórico de comandos
-│   │   └── CommandInput/    # Input de comandos
-│   ├── pages/                # Páginas da aplicação
-│   │   └── TerminalPage/    # Página principal do terminal
-│   ├── shared/               # Código compartilhado
-│   │   ├── config/          # Constantes e configurações
-│   │   ├── i18n/            # Internacionalização
-│   │   ├── lib/             # Utilitários e hooks
-│   │   └── ui/              # Componentes UI reutilizáveis
-│   ├── test/                 # Configurações de teste
-│   ├── widgets/              # Widgets complexos
-│   │   └── Terminal/        # Widget principal do terminal
-│   │       ├── commands/    # Implementação dos comandos
-│   │       ├── model/       # Lógica de negócio do terminal
-│   │       └── ui/          # Interface do terminal
-│   ├── App.tsx               # Componente raiz
-│   └── main.tsx              # Entry point
-├── coverage/                  # Relatórios de cobertura de testes
-├── .github/                   # GitHub Actions workflows
-├── eslint.config.js          # Configuração ESLint
-├── vite.config.ts            # Configuração Vite
-├── tsconfig.json             # Configuração TypeScript
-└── package.json              # Dependências e scripts
-
-```
-
-### Princípios Arquiteturais
-
-- **Feature-Sliced Design**: Organização por funcionalidades
-- **Separation of Concerns**: Separação clara de responsabilidades
-- **DRY (Don't Repeat Yourself)**: Reutilização de código
-- **SOLID Principles**: Aplicados em toda a base de código
-- **Clean Code**: Código limpo e legível
-
----
-
-## 🧪 Testes
-
-O projeto possui uma suíte completa de testes com **>95% de cobertura**.
-
-### Executar Testes
-
-```bash
-# Todos os testes
-npm test
-
-# Modo watch (reexecuta ao salvar)
-npm run test:watch
-
-# Com interface visual
-npm run test:ui
-
-# Gerar relatório de cobertura
-npm run test:coverage
-```
-
-### Visualizar Cobertura
-
-Após executar `npm run test:coverage`, abra o arquivo `coverage/index.html` no navegador.
-
-### Estrutura de Testes
-
-```
+content/site.yaml        dados do site (fotos, links, datas)
 src/
-├── features/
-│   ├── CommandHistory/
-│   │   └── ui/
-│   │       ├── CommandHistory.tsx
-│   │       └── CommandHistory.test.tsx  ✓
-│   └── CommandInput/
-│       └── ui/
-│           ├── CommandInput.tsx
-│           └── CommandInput.test.tsx    ✓
-├── shared/
-│   └── lib/
-│       ├── terminalUtils.ts
-│       ├── terminalUtils.test.ts        ✓
-│       ├── useScreenSize.ts
-│       └── useScreenSize.test.ts        ✓
-└── widgets/
-    └── Terminal/
-        ├── commands/
-        │   └── language.test.ts          ✓
-        └── model/
-            └── useTerminal.ts
+  app/                   estilos globais e rotas
+  pages/                 DesktopPage, LandingPage e TerminalPage
+  widgets/               Desktop, Taskbar, Browser, Terminal, Notepad, ClockApp, RecycleBin, BootScreen, Landing
+  features/              WindowManager e entrada de comandos
+  entities/              Content (dados) e Program (definição dos programas)
+  shared/                i18n (textos), ícones em pixel art e utilitários
+public/resources/        imagens
+docs/                    capturas de tela deste README
 ```
 
----
+**Deploy:** cada push na `main` roda o workflow
+[`deploy-pages.yml`](.github/workflows/deploy-pages.yml), que testa, gera o build e publica no GitHub Pages, no
+domínio `carvalhocortes.com.br` (arquivo `public/CNAME`). O histórico de mudanças está no
+[CHANGELOG](CHANGELOG.md).
 
-## 🚀 Deploy
+## Créditos
 
-O site é publicado no **GitHub Pages**, no domínio **[carvalhocortes.com.br](https://carvalhocortes.com.br)**.
-
-### Workflow de Deploy
-
-A cada push na branch `main`, o workflow `.github/workflows/deploy-pages.yml` roda os testes, gera o build (`dist/`) e publica no GitHub Pages. Também dá para rodar manualmente pela aba **Actions** (`workflow_dispatch`).
-
-### Domínio
-
-- O arquivo `public/CNAME` contém `carvalhocortes.com.br` e vai junto no build.
-- DNS no Registro.br: quatro registros `A` no domínio raiz (185.199.108.153, 185.199.109.153, 185.199.110.153 e 185.199.111.153) e um `CNAME` de `www` para `carvalhocortes.github.io`.
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são sempre bem-vindas! Se você tem alguma sugestão para melhorar este projeto, sinta-se à vontade para criar um fork e abrir um Pull Request.
-
-### Como Contribuir
-
-1. **Fork o projeto**
-2. **Crie sua Feature Branch**
-   ```bash
-   git checkout -b feature/MinhaNovaFuncionalidade
-   ```
-3. **Commit suas mudanças**
-   ```bash
-   git commit -m 'feat: Adiciona nova funcionalidade X'
-   ```
-4. **Push para a Branch**
-   ```bash
-   git push origin feature/MinhaNovaFuncionalidade
-   ```
-5. **Abra um Pull Request**
-
-### Convenção de Commits
-
-Este projeto segue a [Conventional Commits](https://www.conventionalcommits.org/):
-
-- `feat:` - Nova funcionalidade
-- `fix:` - Correção de bug
-- `docs:` - Alterações na documentação
-- `style:` - Formatação, ponto e vírgula faltando, etc
-- `refactor:` - Refatoração de código
-- `test:` - Adição ou correção de testes
-- `chore:` - Tarefas de manutenção
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-### Fonte
-
-A fonte **Px437 IBM VGA 8x16** (arquivo `public/fonts/WebPlus_IBM_VGA_8x16.woff`) vem do
-[Ultimate Oldschool PC Font Pack](https://int10h.org/oldschool-pc-fonts/), de VileR, e é
-distribuída sob a licença [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-O texto da licença está em `public/fonts/LICENSE-oldschool-pc-fonts.txt`.
-
-```
-MIT License
-
-Copyright (c) 2025 Fernando Cortes
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
-## 👨‍💻 Autor
-
-<div align="center">
-
-### **Fernando Cortes**
-
-Engenheiro Eletricista | Desenvolvedor Full Stack | Entusiasta de Cloud Computing
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carvalhocortes)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/carvalhocortes)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:carvalhocortes@gmail.com)
-
-**"A engenharia me ensinou que posso construir qualquer coisa."**
-
-</div>
-
-### ⭐ Se este projeto foi útil para você, considere dar uma estrela!
+A fonte **Px437 IBM VGA 8x16** vem do [Ultimate Oldschool PC Font Pack](https://int10h.org/oldschool-pc-fonts/), de
+VileR, sob a licença [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+(`public/fonts/LICENSE-oldschool-pc-fonts.txt`). Logos e ícones são desenhos próprios, sem marcas de terceiros.
