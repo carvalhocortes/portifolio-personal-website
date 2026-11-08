@@ -33,77 +33,43 @@
         "personal": "Informações pessoais"
       },
       "welcome": {
-        "aliases": [
-          "start",
-          "bem-vindo",
-          "inicio"
-        ],
+        "aliases": ["start", "bem-vindo", "inicio"],
         "description": "Mostra a mensagem de boas-vindas"
       },
       "about": {
-        "aliases": [
-          "sobre",
-          "info"
-        ],
+        "aliases": ["sobre", "info"],
         "description": "Exibe informações sobre mim"
       },
       "hobbies": {
-        "aliases": [
-          "hobbies",
-          "interesses"
-        ],
+        "aliases": ["hobbies", "interesses"],
         "description": "Lista meus hobbies e interesses"
       },
       "volunteer": {
-        "aliases": [
-          "trabalho-voluntario",
-          "voluntario",
-          "tv"
-        ],
+        "aliases": ["trabalho-voluntario", "voluntario", "tv"],
         "description": "Mostra meu trabalho voluntário"
       },
       "contact": {
-        "aliases": [
-          "contato",
-          "email"
-        ],
+        "aliases": ["contato", "email"],
         "description": "Exibe informações de contato"
       },
       "help": {
-        "aliases": [
-          "ajuda",
-          "help",
-          "h"
-        ],
+        "aliases": ["ajuda", "help", "h"],
         "description": "Mostra esta mensagem de ajuda"
       },
       "language": {
-        "aliases": [
-          "idioma",
-          "language",
-          "lang"
-        ],
+        "aliases": ["idioma", "language", "lang"],
         "description": "Alterna entre português e inglês / Switches between Portuguese and English"
       },
       "clear": {
-        "aliases": [
-          "limpar",
-          "cls"
-        ],
+        "aliases": ["limpar", "cls"],
         "description": "Limpa o terminal"
       },
       "dir": {
-        "aliases": [
-          "dir",
-          "ls"
-        ],
+        "aliases": ["dir", "ls"],
         "description": "Lista os arquivos da pasta atual"
       },
       "ver": {
-        "aliases": [
-          "ver",
-          "versao"
-        ],
+        "aliases": ["ver", "versao"],
         "description": "Mostra a versão do sistema"
       }
     },
@@ -124,7 +90,8 @@
       "text": "CARVALHO-CORTES Versão {{version}}"
     },
     "programs": {
-      "terminal": "Terminal"
+      "terminal": "Terminal",
+      "chrome": "Chrome"
     },
     "desktop": {
       "label": "Área de trabalho",
@@ -177,7 +144,14 @@
         "subject": "Mensagem pelo site de {{name}}"
       },
       "pausePhotos": "Pausar as fotos",
-      "playPhotos": "Continuar as fotos"
+      "playPhotos": "Continuar as fotos",
+      "pageTitle": "Fernando Cortes - Engenheiro de software"
+    },
+    "chrome": {
+      "back": "Voltar",
+      "forward": "Avançar",
+      "reload": "Recarregar",
+      "address": "Endereço"
     }
   }
 }

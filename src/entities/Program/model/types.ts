@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react';
 
-export type ProgramId = 'terminal';
+export type ProgramId = 'chrome' | 'terminal';
 
 export interface ProgramProps {
   /** True while this program's window is the active (front) one. */

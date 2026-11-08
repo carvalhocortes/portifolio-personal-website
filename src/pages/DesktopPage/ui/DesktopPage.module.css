@@ -3,10 +3,3 @@
   height: 100vh;
   height: 100dvh;
 }
-
-.phone {
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  background: var(--color-bg-primary);
-}

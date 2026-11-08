@@ -1,15 +1,15 @@
 .list {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.25rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1rem, 2cqi, 1.25rem);
+  margin-top: clamp(2rem, 4cqi, 3rem);
 }
 
 .item {
   display: grid;
   grid-template-columns: 112px minmax(0, 1fr);
-  gap: clamp(1.25rem, 3vw, 2rem);
+  gap: clamp(1.25rem, 3cqi, 2rem);
   align-items: start;
-  padding: clamp(1.25rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 3cqi, 2rem);
   border: 1px solid var(--lp-border);
   border-radius: var(--lp-radius);
   background: var(--lp-surface);
@@ -66,7 +66,7 @@
   text-wrap: pretty;
 }
 
-@media (max-width: 599px) {
+@container landing (max-width: 599px) {
   .item {
     grid-template-columns: 1fr;
   }
