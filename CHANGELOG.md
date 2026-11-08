@@ -6,6 +6,21 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Added
+- Programa **Chrome** no desktop, com ícone próprio: uma janela de navegador que mostra a landing page. A
+  barra de endereço é decorativa e mostra o título da página.
+- Endereços diretos: `/landing` abre só a landing page e `/terminal` só o Terminal.
+
+### Changed
+- O desktop volta a ser a página principal e abre com o Chrome e o Terminal fechados.
+- No celular, a página principal mostra a landing page direto.
+- A landing page se ajusta à largura da janela do Chrome; a foto ampliada cobre só a janela.
+
+### Removed
+- O endereço `/desktop`.
+
+## 2026-11-08 (formulário de contato)
+
 ### Fixed
 - O formulário de contato volta a enviar: o captcha era recusado porque o token ia em dobro.
 
