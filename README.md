@@ -14,6 +14,10 @@
 
 </div>
 
+> [!NOTE]
+> **Versão 2 pronta** (novembro de 2026): o desktop dos anos 90, com todos os programas, está no ar. A versão
+> anterior, só com o terminal, está na branch [`v1`](https://github.com/carvalhocortes/portifolio-personal-website/tree/v1).
+
 O site liga como um PC antigo (BIOS, DOS e tela com logo) e abre um desktop com janelas, ícones, menu Iniciar e
 barra de tarefas. Cada programa mostra uma parte do portfólio. O visual é dos anos 90, mas o uso é de hoje: tudo
 abre com um clique, com links e rolagem normais. No celular, o site abre direto numa landing page moderna.
@@ -21,27 +25,6 @@ abre com um clique, com links e rolagem normais. No celular, o site abre direto 
 | Abertura | Tela com logo | Celular |
 | :---: | :---: | :---: |
 | <img src="docs/abertura-bios.png" alt="Tela de BIOS com as linhas da abertura" width="260" /> | <img src="docs/abertura-logo.jpg" alt="Tela com o logo Carvalho Côrtes84 sobre um céu com nuvens" width="260" /> | <img src="docs/landing-celular.jpg" alt="Landing page no celular, com a foto e o título Fernando Côrtes" width="150" /> |
-
-## Status
-
-> [!NOTE]
-> O projeto evolui em fases curtas: cada uma tem a sua branch e entra na `main` (e no ar) ao terminar.
-
-**No ar**
-- [x] Desktop com janelas: abrir, arrastar, redimensionar, minimizar, maximizar e focar
-- [x] Menu Iniciar e barra de tarefas, com relógio e troca de idioma (pt-BR e en-US)
-- [x] **Navegador** com a landing page (sobre, hobbies, voluntariado e formulário de contato)
-- [x] **Terminal** no estilo MS-DOS, com comandos clicáveis
-- [x] **Leia-me.txt** no Bloco de Notas, explicando o site
-- [x] Abertura com BIOS, DOS e tela com logo (uma vez por aba, dá para pular)
-- [x] **Relógio** analógico ou digital e **Lixeira** com pastas de projetos antigos
-- [x] Celular abre direto na landing page, sem baixar o desktop
-- [x] Easter eggs espalhados pelo desktop e pelo Terminal (o Leia-me dá a primeira pista)
-- [x] Reiniciar e Desligar no menu Iniciar
-
-**Próximos passos**
-- [ ] Fotos e anotações dos projetos antigos na Lixeira
-- [ ] Foto nova no lugar do avatar provisório
 
 ## Programas e endereços
 
