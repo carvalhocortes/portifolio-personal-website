@@ -71,7 +71,7 @@ export const ContactForm = () => {
 
     setStatus('sending');
     data.append('access_key', CONTACT_FORM.accessKey);
-    data.append('h-captcha-response', token);
+    data.set('h-captcha-response', token);
     data.append(
       'subject',
       t('landing.form.subject', { name: String(data.get('name')).trim() })

@@ -6,6 +6,11 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Fixed
+- O formulário de contato volta a enviar: o captcha era recusado porque o token ia em dobro.
+
+## 2026-11-08 (landing page)
+
 ### Added
 - Landing page na página principal: abertura com avatar e faixa de fotos, Sobre, Hobbies com galeria
   ampliável, Voluntário e Contato. Modo claro e escuro, PT/EN e layout para celular.
