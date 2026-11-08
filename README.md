@@ -185,11 +185,13 @@ A aplicação estará disponível em `http://localhost:5173`
 
 ### Iniciando a Aplicação
 
-1. Em `/`, no computador, aparece um desktop no estilo Windows 95 com dois programas, o **Navegador** e o
-   **Terminal**, os dois abertos e minimizados na barra de tarefas. Um clique no botão da barra, no ícone ou
-   no menu Iniciar mostra o programa numa janela, que dá para arrastar, redimensionar, minimizar e
-   maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN
-   e o relógio
+1. Em `/`, no computador, aparece um desktop no estilo Windows 95 com três programas:
+   - **Leia-me.txt**: um Bloco de Notas, aberto na frente, que explica o site. Dá para digitar, mas nada é salvo
+   - **Navegador** e **Terminal**: abertos e minimizados na barra de tarefas
+
+   Um clique no botão da barra, no ícone ou no menu Iniciar mostra o programa numa janela, que dá para
+   arrastar, redimensionar, minimizar e maximizar. A barra de tarefas tem o menu Iniciar, o seletor PT/EN e o
+   relógio
 2. O Navegador mostra a landing page (abertura, Sobre, Hobbies com galeria de fotos, Voluntário e Contato, com
    formulário protegido por captcha). A barra de endereço é só decorativa e mostra o título da página. A
    landing se ajusta à largura da janela e segue o modo claro ou escuro do sistema
@@ -208,6 +210,7 @@ edite esse arquivo:
 - cada texto tem `pt` e `en` lado a lado, e os textos aceitam Markdown (`**negrito**`, `[link](https://…)`);
 - `{idade}` vira a idade calculada a partir de `nascimento`;
 - as fotos ficam em `public/resources/`, e o YAML guarda só o nome do arquivo;
+- o texto do Leia-me.txt fica em `leiame`, como texto puro (sem Markdown);
 - os testes falham se faltar um idioma ou se uma foto citada não existir.
 
 O formulário de contato usa o [Web3Forms](https://web3forms.com) com hCaptcha. A chave de acesso,
