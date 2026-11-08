@@ -6,7 +6,7 @@ import { SECTION_IDS } from './Header';
 import styles from './Hero.module.css';
 
 export const Hero = () => {
-  const { t, text } = useContentLanguage();
+  const { t } = useContentLanguage();
   const { pessoa, contato, hobbies } = content;
   const photos = hobbies.itens.flatMap((hobby) => hobby.fotos);
   const [paused, setPaused] = useState(false);
@@ -16,14 +16,14 @@ export const Hero = () => {
       <div className={styles.backdrop} aria-hidden="true" />
       <div className={styles.inner}>
         <div className={styles.copy}>
-          <p className={styles.role}>{text(pessoa.titulo)}</p>
+          <p className={styles.role}>{t('pessoa.titulo')}</p>
           <h1 id="hero-title" className={styles.title}>
             {pessoa.nome}
           </h1>
-          <p className={styles.summary}>{text(pessoa.resumo)}</p>
+          <p className={styles.summary}>{t('pessoa.resumo')}</p>
           <div className={styles.actions}>
             <a className={styles.primary} href={`#${SECTION_IDS.contact}`}>
-              {text(contato.menu)}
+              {t('contato.menu')}
               <ArrowRight size={18} weight="bold" aria-hidden="true" />
             </a>
             <a
@@ -46,7 +46,7 @@ export const Hero = () => {
             sizes="(max-width: 767px) 220px, 440px"
             width={480}
             height={480}
-            alt={text(pessoa.avatar.alt)}
+            alt={t('pessoa.avatar.alt')}
             fetchPriority="high"
           />
         </div>

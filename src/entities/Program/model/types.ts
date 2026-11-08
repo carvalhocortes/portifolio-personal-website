@@ -1,5 +1,4 @@
 import type { ComponentType } from 'react';
-import type { Localized } from '../../Content';
 
 export type ProgramId = 'browser' | 'terminal' | 'notepad';
 
@@ -12,8 +11,6 @@ export interface ProgramDefinition {
   id: ProgramId;
   /** i18n key of the program name (icon, Start menu, taskbar). */
   titleKey?: string;
-  /** Name from content/site.yaml instead of titleKey. */
-  name?: Localized;
   /** i18n key of a longer window title; gets the name as {{name}}. */
   windowTitleKey?: string;
   Icon: ComponentType<{ size?: number }>;

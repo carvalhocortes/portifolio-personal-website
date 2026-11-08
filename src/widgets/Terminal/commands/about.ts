@@ -1,19 +1,18 @@
-import { content, pick } from '../../../entities/Content';
+import { content, textList } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 
 const badge = (label: string, color: string, logo: string) =>
   `https://img.shields.io/badge/${encodeURIComponent(label).replace(/-/g, '--')}-${color}?style=for-the-badge&logo=${logo}&logoColor=white`;
 
 export const about = (): string => {
-  const lang = i18n.language;
-  const { sobre, contato } = content;
+  const { contato } = content;
   const linkedinLabel = contato.linkedin
     .replace(/^https?:\/\/(www\.)?/, '')
     .replace(/\/$/, '');
-  const paragraphs = sobre.paragrafos.map((p) => pick(p, lang)).join('\n\n');
+  const paragraphs = textList(i18n.t, 'sobre.paragrafos').join('\n\n');
 
   return `
-## ${pick(sobre.saudacao, lang)}
+## ${i18n.t('sobre.saudacao')}
 
 ${paragraphs}
 

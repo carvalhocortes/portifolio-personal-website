@@ -253,10 +253,17 @@ describe('Desktop', () => {
     ).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: /Start/ }));
-    await user.click(
-      screen.getByRole('menuitem', { name: /Language: Português/ })
-    );
+    const english = screen.getByRole('menuitemradio', { name: /en-US/ });
+    expect(english).toHaveAttribute('aria-checked', 'true');
+    await user.click(screen.getByRole('menuitemradio', { name: /pt-BR/ }));
     expect(screen.getByRole('button', { name: /Iniciar/ })).toBeInTheDocument();
+    // The menu stays open, now with pt-BR pressed and en-US raised.
+    expect(
+      screen.getByRole('menuitemradio', { name: /pt-BR/ })
+    ).toHaveAttribute('aria-checked', 'true');
+    expect(
+      screen.getByRole('menuitemradio', { name: /en-US/ })
+    ).toHaveAttribute('aria-checked', 'false');
   });
 
   it('keeps the clock ticking', () => {
