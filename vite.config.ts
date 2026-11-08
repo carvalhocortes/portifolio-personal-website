@@ -1,13 +1,44 @@
 import react from '@vitejs/plugin-react';
+import { copyFileSync, mkdirSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { parse } from 'yaml';
+import type { Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Turns .yaml files into JS modules at build time, so content/site.yaml ships
+// inside the bundle and nothing is fetched at runtime.
+const yamlContent = (): Plugin => ({
+  name: 'yaml-content',
+  transform(code, id) {
+    if (!id.endsWith('.yaml')) return null;
+    return {
+      code: `export default ${JSON.stringify(parse(code))};`,
+      map: null,
+    };
+  },
+});
+
+// GitHub Pages has no rewrites, so /desktop gets its own copy of the page.
+// The app picks the page from the path (see src/app/routes.ts).
+const desktopEntry = (): Plugin => ({
+  name: 'desktop-entry',
+  apply: 'build',
+  closeBundle() {
+    const outDir = resolve(__dirname, 'dist');
+    mkdirSync(resolve(outDir, 'desktop'), { recursive: true });
+    copyFileSync(
+      resolve(outDir, 'index.html'),
+      resolve(outDir, 'desktop/index.html')
+    );
+  },
+});
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), yamlContent(), desktopEntry()],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -31,7 +62,7 @@ export default defineConfig({
       ],
     },
   },
-  base: './',
+  base: '/',
   build: {
     outDir: './dist',
     // Code splitting optimization
