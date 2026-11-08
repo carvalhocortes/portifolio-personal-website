@@ -206,17 +206,26 @@ A aplicação estará disponível em `http://localhost:5173`
 
 ### Editando o conteúdo
 
-Todo o conteúdo (textos em PT e EN, fotos, legendas, links e contato) fica em um só arquivo,
-[`content/site.yaml`](content/site.yaml), lido pela landing page e pelo Terminal. Para mudar o site,
-edite esse arquivo:
+Os textos e os dados ficam separados, no padrão de internacionalização (um arquivo de textos por idioma):
 
-- cada texto tem `pt` e `en` lado a lado, e os textos aceitam Markdown (`**negrito**`, `[link](https://…)`);
-- `{idade}` vira a idade calculada a partir de `nascimento`;
-- as fotos ficam em `public/resources/`, e o YAML guarda só o nome do arquivo;
-- o texto do Leia-me.txt fica em `leiame`, como texto puro (sem Markdown);
-- as linhas da abertura (BIOS e DOS) ficam em `abertura`, também em texto puro; na BIOS, `{memoria}` vira a
-  contagem de memória;
-- os testes falham se faltar um idioma ou se uma foto citada não existir.
+- **Textos**, de conteúdo e de interface: [`src/shared/i18n/locales/pt-BR.yaml`](src/shared/i18n/locales/pt-BR.yaml)
+  e [`en-US.yaml`](src/shared/i18n/locales/en-US.yaml), com as mesmas chaves nos dois. A primeira parte é o conteúdo
+  (quem eu sou, hobbies, voluntariado, Leia-me e abertura); a segunda, a interface (botões, menus, mensagens do
+  Terminal e do desktop).
+- **Dados que não mudam com o idioma**: [`content/site.yaml`](content/site.yaml), com nome, data de nascimento,
+  contato, fotos, links e a ordem dos itens.
+
+O texto fica no mesmo caminho do dado: o título do hobby `marcenaria` é `hobbies.itens.marcenaria.titulo`, e as
+legendas das fotos seguem a ordem das fotos no `site.yaml`. A landing page e o Terminal leem os mesmos arquivos.
+
+- os textos do conteúdo aceitam Markdown (`**negrito**`, `[link](https://…)`); o Leia-me e a abertura são texto puro;
+- `{{idade}}` vira a idade calculada a partir de `nascimento`; na BIOS, `{{memoria}}` vira a contagem de memória;
+- as fotos ficam em `public/resources/`, e o `site.yaml` guarda só o nome do arquivo;
+- os testes falham se uma chave faltar num idioma, se um texto ficar vazio, se faltar o texto de um hobby, foto ou
+  trabalho voluntário, ou se uma foto citada não existir.
+
+O site abre no idioma do navegador (português para qualquer idioma que não seja inglês) e lembra a escolha feita no
+botão PT/EN.
 
 O formulário de contato usa o [Web3Forms](https://web3forms.com) com hCaptcha. A chave de acesso,
 pública por design, fica em `src/shared/config/contactForm.ts`.

@@ -1,0 +1,309 @@
+# Textos do site em português (pt-BR). O arquivo en-US.yaml tem as mesmas chaves
+# em inglês; os testes falham se uma chave faltar num deles ou ficar vazia.
+#
+# - Conteúdo (primeira parte): quem eu sou, hobbies, voluntariado, Leia-me e
+#   abertura. Fica no mesmo caminho dos dados em content/site.yaml (fotos,
+#   links, datas), que não mudam com o idioma.
+# - Os textos do conteúdo aceitam Markdown: **negrito**, *itálico*, [links](https://…).
+# - {{idade}} vira a idade calculada a partir de pessoa.nascimento; {{memoria}},
+#   a contagem de memória da abertura.
+# - Interface (segunda parte): botões, menus, mensagens do Terminal e do desktop.
+
+# Conteúdo / Content
+
+pessoa:
+  titulo: Engenheiro de software
+  resumo: Engenheiro eletricista que virou desenvolvedor. Gosto de construir coisas, seja em código, em madeira ou numa impressora 3D.
+  avatar:
+    alt: Foto de Fernando Côrtes
+contato:
+  menu: Contato
+  titulo: 'Entre em contato:'
+sobre:
+  titulo: Sobre
+  saudacao: Olá,
+  paragrafos:
+    - meu nome é **Fernando Côrtes**, tenho {{idade}} anos e sou natural do interior de Minas Gerais. Em 2003, mudei-me para São Paulo para cursar Engenharia Elétrica na Universidade Presbiteriana Mackenzie, onde me formei em 2008.
+    - Sou pós-graduado em Arquitetura de Sistemas de Software pela FIAP e possuo especializações em Engenharia Clínica pelo Instituto de Ensino Superior Albert Einstein e MBA em Gerenciamento de Projetos pela FGV-SP.
+    - Por quase uma década atuei no setor de telecomunicações, adquirindo ampla experiência em gestão de equipes descentralizadas, coordenação de projetos e relacionamento com clientes internos e externos.
+    - Em 2022, decidi redirecionar minha carreira para a área de desenvolvimento de software, onde encontrei minha verdadeira paixão. Desde então, atuei como desenvolvedor em empresas como Ewally (fintech), Hospital Israelita Albert Einstein e, atualmente, Banco XP.
+    - Tenho experiência prática com Node.js, .NET, React.js, AWS, Azure, Dynatrace, DataDog, Git, além de bancos de dados SQL e NoSQL e soluções de cache. Sou entusiasta de boas práticas de engenharia de software, aplicando princípios como SOLID, DRY, KISS, CQRS e Clean Code em todos os meus projetos.
+    - Meu objetivo é continuar evoluindo como engenheiro de software, unindo sólida base técnica, mentalidade colaborativa e visão sistêmica para contribuir com times e produtos de alta performance.
+hobbies:
+  titulo: Hobbies
+  itens:
+    marcenaria:
+      titulo: Marcenaria
+      paragrafos:
+        - Meu avô materno era incrivelmente habilidoso. Lembro dele consertando gavetas e criando brinquedos como carrinhos e casinhas de boneca. O cheiro da madeira e seu armário de ferramentas ainda são vívidos na minha memória.
+        - Outro mentor foi o Taboca, amigo marceneiro do meu pai. Juntos, criaram alguns dos brinquedos mais legais da minha infância.
+        - 'Nas fotos abaixo, algumas peças que já construí: um banco para o hall de entrada feito com madeira recuperada dos batentes das portas na reforma do apartamento; um porta-chaves e bolsas também para a entrada; e uma escrivaninha de mais de 2 metros onde minha esposa e eu trabalhamos frente a frente.'
+      fotos:
+        - legenda: Banco do hall do apartamento
+        - legenda: Porta chaves e bolsas no hall do apartamento
+        - legenda: Escrivaninha para duas pessoas
+    fotografia:
+      titulo: Fotografia
+      paragrafos:
+        - Só se vive uma vez, certo? Adoro viajar e conhecer lugares, pessoas e culturas novas. Mas as lembranças se desvanecem com o tempo.
+        - Comecei a fotografar incentivado por um colega de trabalho para participar de concursos fotográficos. O que era um hobby virou paixão. Hoje fotografo para guardar as memórias dos lugares incríveis que visitei.
+      fotos:
+        - legenda: Arara Azul - Nobres - MT
+        - legenda: Casal de Araras Vermelhas - Belem - PA
+        - legenda: Pássaro Preto - São Paulo - SP
+        - legenda: Lagoa - Rio de Janeiro - RJ
+      curiosidade:
+        rotulo: 'Curiosidade:'
+        texto: Você sabia que as araras formam casais para a vida toda? Quando uma morre, a outra permanece solitária até o fim.
+        link:
+          texto: Saiba mais aqui
+    diy:
+      titulo: DIY e Impressão 3D
+      paragrafos:
+        - 'Muitas pessoas me perguntam por que gosto tanto de engenharia. A resposta é simples: ela me ensinou que posso construir qualquer coisa.'
+        - Minha cabeça fervilha de ideias. Estou sempre inventando algo — para casa ou só por diversão. Sou apaixonado por criar. Já fiz mesas, facas, luminárias, esculturas em 3D e arte com sucata. Também me divirto programando bots e criando filtros para fotos e vídeos. Coisa de maluco mesmo!
+      fotos:
+        - legenda: Cranio em estilo voronoy. Impressão 3D
+        - legenda: Mesa de jantar com oito lugares
+        - legenda: Luminária inteligente
+voluntario:
+  titulo: Trabalho Voluntário
+  itens:
+    demolay:
+      nome: Ordem DeMolay
+      logo:
+        alt: Logo da Ordem DeMolay
+      descricao: A Ordem DeMolay é um grupo de jovens apoiado pela maçonaria desde 1919, criado nos Estados Unidos com o objetivo de formar bons cidadãos que respeitam as leis e contribuem positivamente para a sociedade. Faço parte desde os 13 anos e lá tive a oportunidade de organizar e participar ativamente de campanhas de doação de alimentos e roupas, jantares beneficentes e distribuição de cestas básicas para famílias em situação de vulnerabilidade.
+    vivo:
+      nome: Fundação Telefonica VIVO
+      logo:
+        alt: Logo Fundação Telefônica Vivo
+      descricao: A Fundação Telefônica VIVO tem a educação como pilar de transformação social, contribuindo com o desenvolvimento e inclusão digital de estudantes e educadores. O "Dia dos Voluntários" é um projeto global que reúne colaboradores de todas as empresas do Grupo Telefônica para reformar sedes de instituições educacionais, enquanto outro time promove atividades de lazer com os beneficiados. Participei ativamente deste projeto entre 2008 e 2010, contribuindo com reformas e interação com jovens.
+    minhacena:
+      nome: Minha Cena
+      logo:
+        alt: Logo Minha Cena Org
+      descricao: O MinhaCena.Org é uma plataforma de impacto social e educacional que estimula a melhora na escrita e leitura através da produção de ilustrações personalizadas para redações de alunos de escolas públicas, privadas e ONGs. Trabalhei como voluntário no time de desenvolvimento back-end, ajudando a criar a plataforma online que conecta estudantes e ilustradores voluntários para transformar textos em arte.
+leiame:
+  nome: Leia-me.txt
+  texto: |
+    LEIA-ME
+    =======
+
+    PT/EN: o botão ao lado do relógio troca o idioma.
+           The button next to the clock switches the language.
+
+    Olá! Este é o site do Fernando Côrtes, engenheiro de software.
+
+    Ele imita um computador dos anos 90, mas funciona como um site
+    de hoje: tudo abre com um clique.
+
+      Navegador   Quem eu sou, meus hobbies, o trabalho voluntário
+                  e um formulário para falar comigo.
+      Terminal    O mesmo conteúdo em modo texto, no estilo MS-DOS.
+                  Clique nos comandos ou digite "ajuda".
+
+    Os programas ficam na barra de tarefas, lá embaixo. As janelas
+    podem ser arrastadas, redimensionadas, minimizadas e maximizadas.
+
+    Há alguns segredos (easter eggs) escondidos por aqui.
+    Fuce, clique, digite... e veja o que acontece. Boa caçada!
+
+    Atalhos diretos:
+      carvalhocortes.com.br/landing    só a página
+      carvalhocortes.com.br/terminal   só o Terminal
+
+    Pode digitar aqui à vontade: nada é salvo.
+abertura:
+  bios: |
+    Processador: Cérebro 486 DX @ 66 MHz (com café)
+    Memória: {{memoria}} OK
+
+    Detectando discos...  C: 540 MB  OK
+    Detectando teclado...  OK
+    Detectando mouse...  OK (com bolinha)
+
+    Pressione DEL para entrar no SETUP (não adianta)
+  dos: |
+    Iniciando CarvalhoCortes 84...
+
+    Carregando café.............. ok
+    Desembaraçando cabos......... ok
+    Procurando bugs.............. 3 encontrados, ignorando
+
+# Interface
+
+terminal:
+  commandNotFound: Comando ou nome de arquivo inválido
+  clearing: limpando...
+  helpHeader: 'Comandos disponíveis:'
+  helpFooter: Clique num comando ou digite o nome dele e tecle Enter.
+welcome:
+  title: Bem vindo a minha pagina!
+  helpText: 'Digite {{help}} e tecle Enter para ver os comandos, ou clique numa opção:'
+  ascii:
+    xlarge: |2-
+      
+        █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
+       ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
+       ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
+       ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
+       ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝ █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀
+        ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝  █▄▄ █▄█ █▀▄  █  ██▄ ▄█
+    medium: |2-
+      
+        █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ██╗     ██╗  ██╗ █████╗
+       ██╔══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗██║     ██║  ██║██╔══██╗
+       ██║  ╚═╝███████║██████╔╝╚██╗ ██╔╝███████║██║     ███████║██║  ██║
+       ██║  ██╗██╔══██║██╔══██╗ ╚████╔╝ ██╔══██║██║     ██╔══██║██║  ██║
+       ╚█████╔╝██║  ██║██║  ██║  ╚██╔╝  ██║  ██║███████╗██║  ██║╚█████╔╝
+        ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚════╝
+        █▀▀ █▀█ █▀█ ▀█▀ █▀▀ █▀
+        █▄▄ █▄█ █▀▄  █  ██▄ ▄█
+about:
+  contactTitle: 'Contato:'
+contact:
+  email: 'Email:'
+  linkedin: 'LinkedIn:'
+language:
+  changed: 'Idioma alterado para: {{language}}'
+  current: 'Idioma atual: {{language}}'
+  available: 'Idiomas disponíveis: pt-BR, en-US'
+  usage: 'Use: idioma <pt-BR|en-US>'
+commands:
+  classifications:
+    navigation: Navegação e utilidades
+    personal: Informações pessoais
+  welcome:
+    aliases:
+      - start
+      - bem-vindo
+      - inicio
+    description: Mostra a mensagem de boas-vindas
+  about:
+    aliases:
+      - sobre
+      - info
+    description: Exibe informações sobre mim
+  hobbies:
+    aliases:
+      - hobbies
+      - interesses
+    description: Lista meus hobbies e interesses
+  volunteer:
+    aliases:
+      - trabalho-voluntario
+      - voluntario
+      - tv
+    description: Mostra meu trabalho voluntário
+  contact:
+    aliases:
+      - contato
+      - email
+    description: Exibe informações de contato
+  help:
+    aliases:
+      - ajuda
+      - help
+      - h
+    description: Mostra esta mensagem de ajuda
+  language:
+    aliases:
+      - idioma
+      - language
+      - lang
+    description: Alterna entre português e inglês / Switches between Portuguese and English
+  clear:
+    aliases:
+      - limpar
+      - cls
+    description: Limpa o terminal
+  dir:
+    aliases:
+      - dir
+      - ls
+    description: Lista os arquivos da pasta atual
+  ver:
+    aliases:
+      - ver
+      - versao
+    description: Mostra a versão do sistema
+dir:
+  folder: Pasta de C:\CARVALHO-CORTES
+  summary: '{{count}} arquivo(s)'
+  date: 07/02/84
+  files:
+    about: SOBRE.TXT
+    hobbies: HOBBIES.TXT
+    volunteer: VOLUNTAR.TXT
+    contact: CONTATO.TXT
+    help: AJUDA.EXE
+    language: IDIOMA.EXE
+ver:
+  text: CARVALHO-CORTES Versão {{version}}
+programs:
+  terminal: Terminal
+  browser: Navegador
+  notepadWindow: '{{name}} - Bloco de Notas'
+desktop:
+  label: Área de trabalho
+  programs: Programas
+window:
+  minimize: Minimizar
+  maximize: Maximizar
+  restore: Restaurar
+  close: Fechar
+taskbar:
+  start: Iniciar
+  startMenu: Menu Iniciar
+  openWindows: Janelas abertas
+  switchLanguage: PT, mudar o idioma para English
+  languageCode: PT
+  language: Idioma
+landing:
+  skipToContent: Pular para o conteúdo
+  menu: Menu
+  closeMenu: Fechar o menu
+  mainNav: Seções
+  switchLanguage: EN, mudar o idioma para English
+  languageShort: EN
+  linkedin: LinkedIn
+  sendEmail: Enviar e-mail
+  photoGallery: Fotos de {{title}}
+  openPhoto: 'Ampliar a foto: {{caption}}'
+  closePhoto: Fechar
+  previousPhoto: Foto anterior
+  nextPhoto: Próxima foto
+  photoCount: Foto {{current}} de {{total}}
+  visitSite: '{{name}} (abre em outra aba)'
+  footer: © {{year}} {{name}}
+  form:
+    title: Ou mande uma mensagem
+    name: Nome
+    email: Seu e-mail
+    message: Mensagem
+    send: Enviar mensagem
+    sending: Enviando…
+    success: Mensagem enviada. Obrigado! Respondo assim que puder.
+    error: Não foi possível enviar agora. Tente de novo ou fale comigo pelo
+    required: Preencha este campo.
+    invalidEmail: Digite um e-mail válido, como nome@exemplo.com.
+    captcha: Confirme que você não é um robô.
+    notConfigured: O formulário ainda não está ativo. Fale comigo pelo
+    subject: Mensagem pelo site de {{name}}
+  pausePhotos: Pausar as fotos
+  playPhotos: Continuar as fotos
+  pageTitle: '{{name}} - Engenheiro de software'
+browser:
+  back: Voltar
+  forward: Avançar
+  reload: Recarregar
+  address: Endereço
+notepad:
+  menu:
+    file: Arquivo
+    edit: Editar
+    search: Pesquisar
+    help: Ajuda
+boot:
+  skip: Pressione qualquer tecla para pular

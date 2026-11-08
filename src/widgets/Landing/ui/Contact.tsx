@@ -8,11 +8,11 @@ import reveal from './Reveal.module.css';
 import styles from './Contact.module.css';
 
 export const Contact = () => {
-  const { t, text } = useContentLanguage();
+  const { t } = useContentLanguage();
   const { contato } = content;
   const ref = useReveal<HTMLDivElement>();
   // The content title ends with a colon for the Terminal table.
-  const title = text(contato.titulo).replace(/:\s*$/, '');
+  const title = t('contato.titulo').replace(/:\s*$/, '');
 
   return (
     <section

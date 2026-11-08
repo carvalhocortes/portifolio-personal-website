@@ -1,7 +1,6 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 import DesktopPage from '../../../pages/DesktopPage/ui/DesktopPage';
 
@@ -17,13 +16,13 @@ describe('Notepad (Leia-me.txt)', () => {
     await act(() => i18n.changeLanguage('pt-BR'));
   });
 
-  it('shows the Leia-me text from content/site.yaml, without saving edits', async () => {
+  it('shows the Leia-me text from the i18n files, without saving edits', async () => {
     const user = userEvent.setup();
     render(<DesktopPage />);
     const text = within(notepad()).getByRole('textbox', {
       name: 'Leia-me.txt',
     });
-    expect(text).toHaveValue(content.leiame.texto.pt);
+    expect(text).toHaveValue(i18n.getFixedT('pt-BR')('leiame.texto'));
     // It doesn't grab the focus on its own.
     expect(text).not.toHaveFocus();
 
@@ -39,7 +38,7 @@ describe('Notepad (Leia-me.txt)', () => {
     );
     expect(
       within(notepad()).getByRole('textbox', { name: 'Leia-me.txt' })
-    ).toHaveValue(content.leiame.texto.pt);
+    ).toHaveValue(i18n.getFixedT('pt-BR')('leiame.texto'));
   });
 
   it('switches the text and the window title with the language', async () => {
@@ -50,7 +49,7 @@ describe('Notepad (Leia-me.txt)', () => {
     });
     expect(
       within(window).getByRole('textbox', { name: 'Readme.txt' })
-    ).toHaveValue(content.leiame.texto.en);
+    ).toHaveValue(i18n.getFixedT('en-US')('leiame.texto'));
   });
 
   it('shows a decorative menu that is out of the keyboard and screen readers', () => {

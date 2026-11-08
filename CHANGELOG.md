@@ -6,6 +6,19 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Fixed
+- O site abre no idioma do navegador (inglês para quem usa o navegador em inglês) e lembra a escolha feita no botão
+  PT/EN depois de recarregar. Antes, sempre abria em português.
+
+### Changed
+- O "sistema" passa a se chamar **CarvalhoCortes 84** (antes "CC 84"), na faixa do menu Iniciar e na abertura em DOS.
+- No menu Iniciar, o idioma virou dois botões, pt-BR e en-US: o do idioma atual fica afundado, e clicar no outro
+  troca o idioma na hora, com o menu aberto.
+- Os textos do site ficam num arquivo por idioma (`src/shared/i18n/locales/`), com conteúdo e interface juntos; o
+  `content/site.yaml` guarda só dados (fotos, links, datas). Nenhum texto mudou.
+
+## 2026-11-08 (abertura)
+
 ### Added
 - Abertura em estilo anos 90 antes do desktop: uma tela de BIOS, linhas de DOS com piadas terminando em
   `C:\> win` e uma tela com o logo "Cortes84", em cerca de 4 s. Aparece uma vez por aba, um clique ou tecla pula,

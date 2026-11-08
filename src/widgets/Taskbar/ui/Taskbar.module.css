@@ -141,10 +141,15 @@
 .banner span {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: normal;
+  white-space: nowrap;
   color: var(--w95-light);
+}
+
+/* "CarvalhoCortes" bold and "84" light, like the old banner. */
+.banner b {
+  font-weight: bold;
 }
 
 .menuItems {
@@ -188,6 +193,24 @@
 .menuItem:hover .menuGlyph,
 .menuItem:focus-visible .menuGlyph {
   color: var(--w95-dark);
+}
+
+.languageRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 2px 6px;
+}
+
+.languageButton {
+  flex: 1;
+  justify-content: center;
+}
+
+/* The current language: pressed in, like a toggled Windows 95 button. */
+.languageButton[aria-checked='true'] {
+  background: var(--w95-highlight-edge);
 }
 
 .separator {
