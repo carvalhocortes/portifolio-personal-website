@@ -6,6 +6,10 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Changed
+- O site carrega menos código na primeira visita: as bibliotecas de Markdown (~45 KB comprimidos) só são baixadas com
+  a página que as usa.
+
 ### Added
 - **ICQ** no desktop, minimizado na barra de tarefas e com a flor ao lado do relógio: a lista de contatos tem só o
   Fernando online (os outros, de piada, ficam offline e não recebem mensagens). Uma mensagem para ele pede nome,
