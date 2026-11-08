@@ -1,7 +1,7 @@
 .terminal {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -12,27 +12,10 @@
   /* The 8x16 bitmap font is only crisp at multiples of 16px. */
   font-size: 16px;
   line-height: 1;
-  padding: var(--spacing-md);
+  /* Fixed padding: the terminal measures its columns from its own width. */
+  padding: 16px;
   cursor: text;
   user-select: text;
-}
-
-.scrollAnchor {
-  height: var(--border-width-thin);
-  width: var(--border-width-thin);
-  visibility: hidden;
-}
-
-@media (min-width: 768px) {
-  .terminal {
-    padding: var(--spacing-lg);
-  }
-}
-
-@media (min-width: 1024px) {
-  .terminal {
-    padding: var(--spacing-xl);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
