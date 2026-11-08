@@ -23,11 +23,15 @@ const DesktopPage = () => {
     );
   }
 
-  // The desktop opens with every program closed.
+  // Every program starts open but minimized: one click on the taskbar shows it.
   return (
     <main className={styles.page}>
       <WindowManagerProvider>
-        <Desktop programs={PROGRAMS} />
+        <Desktop
+          programs={PROGRAMS}
+          startupPrograms={PROGRAMS.map((p) => p.id)}
+          startMinimized
+        />
       </WindowManagerProvider>
     </main>
   );

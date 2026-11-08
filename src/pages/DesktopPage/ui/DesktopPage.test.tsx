@@ -27,7 +27,7 @@ describe('DesktopPage', () => {
 
   afterEach(() => setWidth(1024));
 
-  it('opens the desktop with Chrome and the Terminal, both closed', () => {
+  it('opens with Chrome and the Terminal minimized on the taskbar', () => {
     setWidth(1280);
     render(<DesktopPage />);
     const icons = screen.getByRole('list', { name: 'Programas' });
@@ -37,10 +37,31 @@ describe('DesktopPage', () => {
     expect(
       within(icons).getByRole('button', { name: 'Terminal' })
     ).toBeInTheDocument();
+    // Minimized: no window shows, each one has its taskbar button.
     expect(screen.queryByRole('region', { name: 'Chrome' })).toBeNull();
     expect(screen.queryByRole('region', { name: 'Terminal' })).toBeNull();
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument(); // taskbar
+    const tasks = screen.getByRole('navigation', { name: 'Janelas abertas' });
+    for (const name of ['Chrome', 'Terminal']) {
+      expect(within(tasks).getByRole('button', { name })).toHaveAttribute(
+        'aria-pressed',
+        'false'
+      );
+    }
+    // The landing page loads only when Chrome shows up.
+    expect(document.querySelector('.lp-root')).toBeNull();
     expect(document.documentElement.dataset.route).toBe('desktop');
+  });
+
+  it('shows a minimized program with one click on its taskbar button', async () => {
+    setWidth(1280);
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    const tasks = screen.getByRole('navigation', { name: 'Janelas abertas' });
+    await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
+    expect(
+      screen.getByRole('region', { name: 'Terminal' })
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Chrome' })).toBeNull();
   });
 
   it('opens the landing page inside Chrome, with a read-only address bar', async () => {
