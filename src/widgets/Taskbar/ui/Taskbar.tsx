@@ -5,6 +5,7 @@ import {
   getTaskbarWindows,
   useWindowManager,
 } from '../../../features/WindowManager';
+import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
 import { StartLogo } from '../../../shared/ui/icons';
 import { Clock } from './Clock';
 import { StartMenu } from './StartMenu';
@@ -23,6 +24,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const { state, activeId, focus, minimize } = useWindowManager();
+  const { nameOf } = useProgramTitles();
   const [menuOpen, setMenuOpen] = useState(false);
   const startRef = useRef<HTMLButtonElement>(null);
 
@@ -76,7 +78,7 @@ export const Taskbar: React.FC<TaskbarProps> = ({
               onClick={() => (isActive ? minimize(win.id) : focus(win.id))}
             >
               <program.Icon size={16} />
-              <span className={styles.taskLabel}>{t(program.titleKey)}</span>
+              <span className={styles.taskLabel}>{nameOf(program)}</span>
             </button>
           );
         })}

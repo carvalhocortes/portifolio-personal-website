@@ -28,7 +28,7 @@ describe('DesktopPage', () => {
 
   afterEach(() => setWidth(1024));
 
-  it('opens with the browser and the Terminal minimized on the taskbar', () => {
+  it('opens with the Leia-me.txt in front and the others minimized', () => {
     setWidth(1280);
     render(<DesktopPage />);
     const icons = screen.getByRole('list', { name: 'Programas' });
@@ -48,6 +48,16 @@ describe('DesktopPage', () => {
         'false'
       );
     }
+    // The Leia-me.txt is the open, active window.
+    expect(
+      screen.getByRole('region', { name: 'Leia-me.txt - Bloco de Notas' })
+    ).toBeInTheDocument();
+    expect(
+      within(tasks).getByRole('button', { name: 'Leia-me.txt' })
+    ).toHaveAttribute('aria-pressed', 'true');
+    expect(
+      within(icons).getByRole('button', { name: 'Leia-me.txt' })
+    ).toBeInTheDocument();
     // The landing page loads only when the browser shows up.
     expect(document.querySelector('.lp-root')).toBeNull();
     expect(document.documentElement.dataset.route).toBe('desktop');
@@ -65,7 +75,7 @@ describe('DesktopPage', () => {
     await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
     await user.click(within(tasks).getByRole('button', { name: 'Navegador' }));
     await user.click(within(tasks).getByRole('button', { name: 'Terminal' }));
-    expect(order()).toEqual(['Navegador', 'Terminal']);
+    expect(order()).toEqual(['Navegador', 'Terminal', 'Leia-me.txt']);
     expect(
       within(tasks).getByRole('button', { name: 'Terminal' })
     ).toHaveAttribute('aria-pressed', 'true');

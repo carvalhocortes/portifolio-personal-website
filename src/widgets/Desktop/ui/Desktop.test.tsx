@@ -41,12 +41,16 @@ const PROGRAMS = [
   },
 ] as unknown as ProgramDefinition[];
 
+/** Renders the desktop with the given programs set to start open. */
 const renderDesktop = (startup: string[] = []) =>
   render(
     <WindowManagerProvider>
       <Desktop
-        programs={PROGRAMS}
-        startupPrograms={startup as ProgramDefinition['id'][]}
+        programs={PROGRAMS.map((program) =>
+          startup.includes(program.id)
+            ? { ...program, startup: 'open' as const }
+            : program
+        )}
       />
     </WindowManagerProvider>
   );

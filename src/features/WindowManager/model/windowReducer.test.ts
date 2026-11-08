@@ -34,6 +34,33 @@ describe('windowReducer', () => {
     expect(getActiveWindowId(state)).toBe('terminal');
   });
 
+  it('opens a centered window in the middle of the desktop, fitted to it', () => {
+    const state = windowReducer(initialWindowState, {
+      type: 'open',
+      id: 'notepad',
+      size: { width: 560, height: 440 },
+      viewport: VIEWPORT,
+      centered: true,
+    });
+    expect(state.windows[0]).toMatchObject({
+      x: (VIEWPORT.width - 560) / 2,
+      y: (VIEWPORT.height - 440) / 2,
+      width: 560,
+      height: 440,
+    });
+
+    const small = windowReducer(initialWindowState, {
+      type: 'open',
+      id: 'notepad',
+      size: { width: 2000, height: 2000 },
+      viewport: VIEWPORT,
+      centered: true,
+    });
+    expect(small.windows[0].x).toBeGreaterThanOrEqual(0);
+    expect(small.windows[0].width).toBeLessThan(VIEWPORT.width);
+    expect(small.windows[0].height).toBeLessThan(VIEWPORT.height);
+  });
+
   it('keeps the taskbar in opening order when the focus changes', () => {
     let state = windowReducer(initialWindowState, {
       type: 'open',
