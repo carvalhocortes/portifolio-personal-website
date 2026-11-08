@@ -6,6 +6,10 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Changed
+- A faixa de fotos do topo da landing usa miniaturas: cerca de 190 KB em vez de 560 KB. O logo do Minha Cena também
+  ficou no tamanho em que aparece, e saíram dois arquivos que não eram usados.
+
 ### Added
 - **ICQ** no desktop, minimizado na barra de tarefas e com a flor ao lado do relógio: a lista de contatos tem só o
   Fernando online (os outros, de piada, ficam offline e não recebem mensagens). Uma mensagem para ele pede nome,
