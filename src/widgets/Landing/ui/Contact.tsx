@@ -3,7 +3,7 @@ import { content } from '../../../entities/Content';
 import { useContentLanguage } from '../lib/useContentLanguage';
 import { useReveal } from '../lib/useReveal';
 import { ContactForm } from './ContactForm';
-import { SECTION_IDS } from './Header';
+import { SECTION_IDS } from '../lib/sections';
 import reveal from './Reveal.module.css';
 import styles from './Contact.module.css';
 
