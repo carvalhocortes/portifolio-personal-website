@@ -132,6 +132,18 @@ abertura:
     Looking for bugs............. 3 found, ignoring
 
 lixeira:
+  arquivos:
+    nao-abra:
+      nome: dont_open.txt
+      texto: |
+        I told you not to open it...
+
+        Since you did, a few tips:
+        - try "sudo help" in the Terminal;
+        - on the desktop, type: up, up, down, down, left, right,
+          left, right, B, A;
+        - press DEL right at the start, when the computer boots;
+        - and the Clock doesn't like too many clicks.
   pastas:
     exemplo:
       nome: Sample project
@@ -192,6 +204,35 @@ commands:
   classifications:
     navigation: Navigation and utilities
     personal: Personal information
+    secret: Administrator commands
+  coffee:
+    aliases:
+      - coffee
+    description: Coffee time
+  matrix:
+    aliases:
+      - matrix
+    description: Enters the Matrix
+  fortune:
+    aliases:
+      - fortune
+    description: A fortune cookie
+  hack:
+    aliases:
+      - hack
+    description: Hacks the mainframe
+  exit:
+    aliases:
+      - exit
+    description: Tries to leave
+  sudo:
+    aliases:
+      - sudo
+    description: Asks for administrator rights
+  sudoHelp:
+    aliases:
+      - sudo help
+    description: Lists the administrator commands
   welcome:
     aliases:
       - start
@@ -336,3 +377,59 @@ recycleBin:
   next: Next file
   objects_one: '{{count}} object'
   objects_other: '{{count}} objects'
+secrets:
+  coffee:
+    art: |2
+            ( (
+             ) )
+          ........
+          |      |]
+          \      /
+           `----'
+    text: |-
+      Coffee break. Back in 5 minutes.
+      (That's cup number 4 today. Don't tell anyone.)
+  matrix:
+    end: You took the red pill. Turns out it's just a portfolio.
+  fortune:
+    - It works on my machine.
+    - All legacy code was once someone's new code.
+    - "Electrical engineer: when it's a software problem, turn it off and on again."
+    - There are no bugs, only undocumented features.
+    - Measure twice, cut once. In woodworking and in deploys.
+    - Coffee is the one dependency that never conflicts.
+  hack:
+    lines:
+      - Connecting to the mainframe...
+      - Cracking 4096-bit encryption...
+      - Bypassing the building manager's firewall...
+      - Downloading the internet... 37%
+      - Downloading the internet... 100%
+    end: 'Access granted. Just kidding: this site is open, the code is on GitHub.'
+  exit:
+    home: "There's no way out: you're already home."
+  sudo:
+    denied: Permission denied. This incident will be reported to Fernando.
+    helpHeader: "Administrator commands (don't tell anyone):"
+  shutdown:
+    menu: Shut Down...
+    restart: Restart
+    safe: It's now safe to turn off your computer.
+  bsod:
+    title: CarvalhoCortes 84
+    text: |-
+      A fatal exception 0E has occurred: OUT OF COFFEE at 0028:C0FFEE.
+      The current application will be terminated until someone makes more coffee.
+
+      *  Press any key to continue.
+      *  Press CTRL+ALT+DEL to ask for more coffee.
+  setup:
+    title: CMOS SETUP - CC BIOS v1.984
+    options:
+      - Coffee speed .............. [Turbo]
+      - Bugs ...................... [Ignore]
+      - Fernando's memory ......... [640K, ought to be enough]
+      - Sleep mode ................ [After the deploy]
+      - 'Boot floppy ............... [A: 1.44MB]'
+    footer: 'Any key: exit without saving (nothing is saved anyway)'
+  plus: Plus!

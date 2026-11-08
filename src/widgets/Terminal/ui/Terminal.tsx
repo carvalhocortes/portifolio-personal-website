@@ -4,6 +4,7 @@ import { CommandInput } from '../../../features/CommandInput/ui/CommandInput';
 import type { ProgramProps } from '../../../entities/Program/model/types';
 import { useTerminal } from '../model/useTerminal';
 import { useTerminalSize } from '../model/useTerminalSize';
+import { TerminalEffect } from './TerminalEffect';
 import styles from './Terminal.module.css';
 
 // The command prompt field rendered by CommandInput (a textarea).
@@ -11,10 +12,12 @@ const PROMPT_SELECTOR = '[name="command"]';
 
 export const Terminal: React.FC<Partial<ProgramProps>> = ({
   isActive = true,
+  onClose,
 }) => {
   const terminalRef = useRef<HTMLDivElement>(null);
   const terminalSize = useTerminalSize(terminalRef);
-  const { commands, handleCommand, inputHistory } = useTerminal(terminalSize);
+  const { commands, handleCommand, inputHistory, effect, endEffect } =
+    useTerminal(terminalSize, { onExit: onClose });
   const lastCommandRef = useRef<HTMLDivElement | null>(null);
 
   // Clicked commands run like typed ones; with a mouse, typing can continue
@@ -75,21 +78,32 @@ export const Terminal: React.FC<Partial<ProgramProps>> = ({
   }, [commands]);
 
   return (
-    <div
-      ref={terminalRef}
-      className={styles.terminal}
-      onClick={focusInput}
-      role="application"
-      aria-label="Interactive terminal interface"
-    >
-      <section aria-label="Command history output">
-        <CommandHistory
-          commands={commands}
-          lastCommandRef={lastCommandRef}
-          onCommand={runClickedCommand}
+    <div className={styles.frame}>
+      <div
+        ref={terminalRef}
+        className={styles.terminal}
+        onClick={focusInput}
+        role="application"
+        aria-label="Interactive terminal interface"
+      >
+        <section aria-label="Command history output">
+          <CommandHistory
+            commands={commands}
+            lastCommandRef={lastCommandRef}
+            onCommand={runClickedCommand}
+          />
+        </section>
+        <CommandInput onEnter={handleCommand} history={inputHistory} />
+      </div>
+      {effect && (
+        <TerminalEffect
+          effect={effect}
+          onDone={() => {
+            endEffect();
+            focusPrompt();
+          }}
         />
-      </section>
-      <CommandInput onEnter={handleCommand} history={inputHistory} />
+      )}
     </div>
   );
 };

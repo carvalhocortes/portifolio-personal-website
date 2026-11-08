@@ -23,7 +23,10 @@ describe('RecycleBin', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Voltar' })).toBeDisabled();
     expect(address()).toHaveValue('Lixeira');
-    expect(screen.getByText('1 objeto')).toBeInTheDocument();
+    expect(screen.getByText('2 objetos')).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'nao_abra.txt' })
+    ).toBeInTheDocument();
   });
 
   it('opens a folder, a text and a photo, and goes back with Back and Esc', async () => {

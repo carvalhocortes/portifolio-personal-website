@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { content, resource } from '../../../entities/Content';
 import { StartLogo } from '../../../shared/ui/icons';
+import { FunScreen } from '../../FunScreens';
 import styles from './BootScreen.module.css';
 
 // How long each screen stays, in ms. About 3.8 s in all.
@@ -46,6 +47,10 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
   const { t } = useTranslation();
   const [reduced] = useState(prefersReducedMotion);
   const [elapsed, setElapsed] = useState(0);
+  const elapsedRef = useRef(0);
+  useEffect(() => {
+    elapsedRef.current = elapsed;
+  });
   // Wait (briefly) for the DOS font, so the BIOS doesn't flash in another one.
   const [fontReady, setFontReady] = useState(() => !document.fonts);
   const finished = useRef(false);
@@ -74,31 +79,35 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
     return () => window.clearTimeout(timer);
   }, [fontReady]);
 
+  // DEL during the BIOS opens a fake setup screen; the boot waits behind it.
+  const [setup, setSetup] = useState(false);
+
   useEffect(() => {
-    if (!fontReady) return;
-    const start = Date.now();
+    if (!fontReady || setup) return;
+    const start = Date.now() - elapsedRef.current;
     const id = window.setInterval(
       () => setElapsed(Date.now() - start),
       TICK_MS
     );
     return () => window.clearInterval(id);
-  }, [fontReady]);
+    // elapsedRef keeps the time already shown when the clock restarts.
+  }, [fontReady, setup]);
 
   useEffect(() => {
-    if (elapsed >= total) finish();
-  }, [elapsed, total, finish]);
+    if (!setup && elapsed >= total) finish();
+  }, [elapsed, total, finish, setup]);
 
   // Fetch the logo picture during the BIOS, so it's ready when its turn comes.
   useEffect(() => {
     new Image().src = SPLASH_IMAGE;
   }, []);
 
-  // Any key skips.
-  useEffect(() => {
-    const onKey = () => finish();
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [finish]);
+  // Leaving the setup reboots, like a real BIOS: the boot starts over.
+  const restartBoot = () => {
+    elapsedRef.current = 0;
+    setElapsed(0);
+    setSetup(false);
+  };
 
   const phase: Phase = reduced
     ? 'splash'
@@ -107,24 +116,47 @@ export const BootScreen = ({ onFinish }: BootScreenProps) => {
       : elapsed < BIOS_MS + DOS_MS
         ? 'dos'
         : 'splash';
+  const phaseRef = useRef(phase);
+  useEffect(() => {
+    phaseRef.current = phase;
+  });
+
+  // Any key skips, except DEL during the BIOS, which opens the setup. While
+  // the setup is open, it handles the keys itself (Esc leaves).
+  useEffect(() => {
+    if (setup) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Delete' && phaseRef.current === 'bios') {
+        e.preventDefault();
+        setSetup(true);
+        return;
+      }
+      finish();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [finish, setup]);
 
   return (
-    <div
-      className={styles.boot}
-      aria-hidden="true"
-      data-testid="boot-screen"
-      data-phase={phase}
-      onClick={finish}
-    >
-      {fontReady && phase === 'bios' && <BiosScreen elapsed={elapsed} />}
-      {phase === 'dos' && (
-        <DosScreen elapsed={elapsed - BIOS_MS} text={t('abertura.dos')} />
-      )}
-      {phase === 'splash' && <Splash still={reduced} />}
-      {fontReady && phase !== 'splash' && (
-        <p className={styles.skip}>{t('boot.skip')}</p>
-      )}
-    </div>
+    <>
+      <div
+        className={styles.boot}
+        aria-hidden="true"
+        data-testid="boot-screen"
+        data-phase={phase}
+        onClick={finish}
+      >
+        {fontReady && phase === 'bios' && <BiosScreen elapsed={elapsed} />}
+        {phase === 'dos' && (
+          <DosScreen elapsed={elapsed - BIOS_MS} text={t('abertura.dos')} />
+        )}
+        {phase === 'splash' && <Splash still={reduced} />}
+        {fontReady && phase !== 'splash' && (
+          <p className={styles.skip}>{t('boot.skip')}</p>
+        )}
+      </div>
+      {setup && <FunScreen variant="setup" onExit={restartBoot} />}
+    </>
   );
 };
 

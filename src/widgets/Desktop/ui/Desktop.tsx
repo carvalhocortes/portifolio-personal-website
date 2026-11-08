@@ -12,12 +12,21 @@ import styles from './Desktop.module.css';
 
 interface DesktopProps {
   programs: ProgramDefinition[];
+  /** Start menu: run the boot again. */
+  onRestart?: () => void;
+  /** Start menu: show the shutdown screen. */
+  onShutdown?: () => void;
 }
 
-export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
+export const Desktop: React.FC<DesktopProps> = ({
+  programs,
+  onRestart,
+  onShutdown,
+}) => {
   const { t } = useTranslation();
   const { nameOf, windowTitleOf } = useProgramTitles();
-  const { state, activeId, open, minimize, desktopRef } = useWindowManager();
+  const { state, activeId, open, minimize, close, desktopRef } =
+    useWindowManager();
 
   const openProgram = (program: ProgramDefinition) =>
     open(program.id, program.defaultSize, {
@@ -78,12 +87,20 @@ export const Desktop: React.FC<DesktopProps> = ({ programs }) => {
               isActive={isActive}
               layer={state.windows.indexOf(win) + 1}
             >
-              <program.Component isActive={isActive} />
+              <program.Component
+                isActive={isActive}
+                onClose={() => close(win.id)}
+              />
             </Window>
           );
         })}
       </div>
-      <Taskbar programs={programs} onOpenProgram={openProgram} />
+      <Taskbar
+        programs={programs}
+        onOpenProgram={openProgram}
+        onRestart={onRestart}
+        onShutdown={onShutdown}
+      />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 import { BOOTED_KEY } from '../../../shared/lib/bootMark';
-import DesktopPage from './DesktopPage';
+import DesktopPage, { SCREENSAVER_MS, SHUTDOWN_MS } from './DesktopPage';
 
 const setWidth = (width: number) =>
   Object.defineProperty(window, 'innerWidth', {
@@ -256,6 +256,102 @@ describe('DesktopPage', () => {
       setWidth(375);
       render(<DesktopPage />);
       expect(screen.queryByTestId('boot-screen')).toBeNull();
+    });
+  });
+
+  describe('easter eggs', () => {
+    const konami = () =>
+      [
+        'ArrowUp',
+        'ArrowUp',
+        'ArrowDown',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
+        'ArrowLeft',
+        'ArrowRight',
+        'b',
+        'a',
+      ].forEach((key) => fireEvent.keyDown(document.body, { key }));
+
+    it('shuts down, then boots again after 3 seconds', () => {
+      vi.useFakeTimers();
+      setWidth(1280);
+      render(<DesktopPage />);
+      fireEvent.click(screen.getByRole('button', { name: /Iniciar/ }));
+      fireEvent.click(screen.getByRole('menuitem', { name: /Desligar/ }));
+      expect(
+        screen.getByRole('dialog', {
+          name: 'Agora é seguro desligar o computador.',
+        })
+      ).toBeInTheDocument();
+      expect(screen.getByRole('main', { hidden: true })).toHaveAttribute(
+        'inert'
+      );
+      act(() => vi.advanceTimersByTime(SHUTDOWN_MS));
+      expect(screen.queryByRole('dialog')).toBeNull();
+      expect(screen.getByTestId('boot-screen')).toBeInTheDocument();
+      vi.useRealTimers();
+    });
+
+    it('restarts straight into the boot screen', () => {
+      setWidth(1280);
+      render(<DesktopPage />);
+      fireEvent.click(screen.getByRole('button', { name: /Iniciar/ }));
+      fireEvent.click(screen.getByRole('menuitem', { name: 'Reiniciar' }));
+      expect(screen.getByTestId('boot-screen')).toBeInTheDocument();
+      expect(screen.queryByRole('dialog')).toBeNull();
+    });
+
+    it('shows the blue screen on the Konami code, and a key goes back', () => {
+      setWidth(1280);
+      render(<DesktopPage />);
+      konami();
+      expect(screen.getByRole('dialog')).toHaveTextContent('O CAFÉ ACABOU');
+      fireEvent.keyDown(window, { key: 'x' });
+      expect(screen.queryByRole('dialog')).toBeNull();
+    });
+
+    it('ignores the Konami letters typed in a text field', () => {
+      setWidth(1280);
+      render(<DesktopPage />);
+      const text = screen.getByRole('textbox', { name: 'Leia-me.txt' });
+      [
+        'ArrowUp',
+        'ArrowUp',
+        'ArrowDown',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
+        'ArrowLeft',
+        'ArrowRight',
+        'b',
+        'a',
+      ].forEach((key) => fireEvent.keyDown(text, { key }));
+      expect(screen.queryByRole('dialog')).toBeNull();
+    });
+
+    it('shows the screensaver after 2 idle minutes, until the mouse moves', () => {
+      vi.useFakeTimers();
+      setWidth(1280);
+      render(<DesktopPage />);
+      act(() => vi.advanceTimersByTime(SCREENSAVER_MS - 1000));
+      expect(screen.queryByTestId('screensaver')).toBeNull();
+      act(() => vi.advanceTimersByTime(1000));
+      expect(screen.getByTestId('screensaver')).toBeInTheDocument();
+      fireEvent.pointerMove(window);
+      expect(screen.queryByTestId('screensaver')).toBeNull();
+      vi.useRealTimers();
+    });
+
+    it('adds Plus! to the Start menu after 10 clicks', () => {
+      setWidth(1280);
+      render(<DesktopPage />);
+      const start = screen.getByRole('button', { name: /Iniciar/ });
+      for (let i = 0; i < 10; i++) fireEvent.click(start);
+      // An even number of clicks leaves the menu closed: open it once more.
+      fireEvent.click(start);
+      expect(screen.getByRole('menu')).toHaveTextContent('Plus!');
     });
   });
 });

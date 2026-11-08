@@ -12,6 +12,17 @@ import { contact } from './contact';
 import { dir } from './dir';
 import { hobbies } from './hobbies';
 import { language } from './language';
+import {
+  coffee,
+  exitHome,
+  fortune,
+  hack,
+  matrix,
+  sudo,
+  sudoHelp,
+  EFFECT_COMMANDS,
+  type TerminalEffect,
+} from './secrets';
 import { ver } from './ver';
 import { volunteer } from './volunteer';
 import { welcome } from './welcome';
@@ -88,6 +99,27 @@ const getCommandDefinitions = (): CommandDefinition[] => [
     description: i18n.t('commands.clear.description'),
     fn: () => TERMINAL_MESSAGES.CLEARING(),
   },
+  // Hidden: not in `ajuda`, only in `sudo ajuda`.
+  ...(
+    [
+      ['coffee', coffee],
+      ['matrix', matrix],
+      ['fortune', () => fortune()],
+      ['hack', hack],
+      ['exit', exitHome],
+      ['sudo', sudo],
+      ['sudoHelp', sudoHelp],
+    ] as const
+  ).map(
+    ([key, fn]): CommandDefinition => ({
+      key,
+      classification: i18n.t('commands.classifications.secret'),
+      acceptedCommands: getAliases(key),
+      description: i18n.t(`commands.${key}.description`),
+      fn,
+      shouldShowInHelp: false,
+    })
+  ),
 ];
 
 export function help(): string {
@@ -157,5 +189,17 @@ export const executeCommand = (
 };
 
 export const getClearCommands = (): string[] => getAllAliases('clear');
+
+/** The effect a command plays over the terminal, if any (`matrix`, `hackear`). */
+export const getEffect = (command: string): TerminalEffect | null => {
+  const text = command.toLowerCase().trim();
+  return (
+    EFFECT_COMMANDS.find((key) => getAllAliases(key).includes(text)) ?? null
+  );
+};
+
+/** True for `sair`/`exit`. */
+export const isExitCommand = (command: string): boolean =>
+  getAllAliases('exit').includes(command.toLowerCase().trim());
 
 export const getWelcomeCommands = (): string[] => getAliases('welcome');
