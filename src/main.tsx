@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import { routeFor } from './app/routes';
-import { BREAKPOINTS } from './shared/config/constants';
+import { preloadLanding } from './app/preloadLanding';
+import { pageFor } from './app/routes';
 import { hasBooted } from './shared/lib/bootMark';
 import './shared/i18n';
 
 // Scopes the global styles of each page (see app/styles/global.css). Phones get
-// the landing page at /, so they take its look right away instead of the
-// desktop's while the page loads (DesktopPage keeps it in sync after).
-const path = routeFor(window.location.pathname);
-const isPhone = window.innerWidth < BREAKPOINTS.TABLET;
-const route = path === 'desktop' && isPhone ? 'landing' : path;
+// the landing page at /, and its look right away.
+const route = pageFor(window.location.pathname, window.innerWidth);
 document.documentElement.dataset.route = route;
+
+// The landing page's first images and font start downloading now.
+if (route === 'landing') preloadLanding();
 
 // While the desktop loads, the page shows the colour of what comes next: black
 // if the boot screen will play, the desktop teal otherwise (no black flash).
