@@ -1,6 +1,8 @@
 import { CaretLeft, CaretRight, X } from '@phosphor-icons/react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type KeyboardEvent } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
+import { useLandingFrame } from '../lib/landingFrame';
 import styles from './Lightbox.module.css';
 
 export interface LightboxPhoto {
@@ -15,49 +17,69 @@ interface LightboxProps {
   onChange: (index: number | null) => void;
 }
 
-/** Enlarged photo in a native modal <dialog>: arrows, Esc and focus trap. */
+/**
+ * Enlarged photo over the landing frame: the whole screen as a page, only the
+ * window inside the browser. Arrows, Esc, focus kept inside, focus back on close.
+ */
 export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
   const { t } = useTranslation();
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const { overlayHost, contentRef } = useLandingFrame();
   const open = index !== null;
-
-  const returnFocusRef = useRef<HTMLElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (open && !dialog.open) {
-      returnFocusRef.current = document.activeElement as HTMLElement | null;
-      dialog.showModal?.();
-    }
-    if (!open) {
-      if (dialog.open) dialog.close?.();
-      // Back to the photo that opened the viewer.
-      returnFocusRef.current?.focus();
-      returnFocusRef.current = null;
-    }
-  }, [open]);
+    if (!open) return;
+    // The photo button that opened the viewer gets the focus back on close.
+    const returnFocus = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    // Behind the photo, the page can't be reached by keyboard or screen reader.
+    const content = contentRef.current;
+    content?.setAttribute('inert', '');
+    return () => {
+      content?.removeAttribute('inert');
+      returnFocus?.focus();
+    };
+  }, [open, contentRef]);
 
-  if (index === null) {
-    return <dialog ref={dialogRef} className={styles.dialog} />;
-  }
+  if (index === null) return null;
 
   const photo = photos[index];
   const go = (step: number) =>
     onChange((index + step + photos.length) % photos.length);
 
-  return (
-    <dialog
-      ref={dialogRef}
-      className={styles.dialog}
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape') {
+      e.stopPropagation();
+      onChange(null);
+    }
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'Tab') {
+      // Keep Tab cycling through the viewer's buttons.
+      const buttons = [
+        ...e.currentTarget.querySelectorAll<HTMLButtonElement>('button'),
+      ];
+      const first = buttons[0];
+      const last = buttons[buttons.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  };
+
+  return createPortal(
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
       aria-label={photo.caption}
-      onClose={() => onChange(null)}
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowRight') go(1);
-        if (e.key === 'ArrowLeft') go(-1);
-      }}
+      onKeyDown={onKeyDown}
       onClick={(e) => {
-        // A click on the backdrop (the dialog itself) closes it.
+        // A click on the backdrop (outside the photo and buttons) closes it.
         if (e.target === e.currentTarget) onChange(null);
       }}
     >
@@ -78,7 +100,7 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
         className={`${styles.button} ${styles.close}`}
         aria-label={t('landing.closePhoto')}
         onClick={() => onChange(null)}
-        autoFocus
+        ref={closeRef}
       >
         <X size={20} weight="bold" />
       </button>
@@ -102,6 +124,7 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
           </button>
         </>
       )}
-    </dialog>
+    </div>,
+    overlayHost ?? document.body
   );
 };

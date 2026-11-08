@@ -31,7 +31,7 @@
 /* The signature is a mask, so it takes the text color in light and dark mode. */
 .signature {
   display: block;
-  width: clamp(9.5rem, 30vw, 12.5rem);
+  width: clamp(9.5rem, 30cqi, 12.5rem);
   aspect-ratio: 720 / 98;
   background: currentColor;
   -webkit-mask: var(--signature) center / contain no-repeat;
@@ -101,7 +101,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 767px) {
+@container landing (max-width: 767px) {
   .menuButton {
     display: inline-flex;
   }

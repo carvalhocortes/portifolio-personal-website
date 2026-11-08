@@ -144,7 +144,7 @@
   color: #5eead4;
 }
 
-@media (max-width: 599px) {
+@container landing (max-width: 599px) {
   .row {
     grid-template-columns: 1fr;
   }

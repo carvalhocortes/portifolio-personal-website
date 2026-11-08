@@ -1,5 +1,11 @@
-export type Route = 'landing' | 'desktop';
+export type Route = 'desktop' | 'terminal' | 'landing';
 
-/** The Windows 95 desktop lives at /desktop; every other path is the landing page. */
-export const routeFor = (pathname: string): Route =>
-  /^\/desktop\/?$/.test(pathname) ? 'desktop' : 'landing';
+/**
+ * /terminal and /landing open one program on its own, full screen; every
+ * other path is the Windows 95 desktop. The trailing slash is optional.
+ */
+export const routeFor = (pathname: string): Route => {
+  if (/^\/terminal\/?$/.test(pathname)) return 'terminal';
+  if (/^\/landing\/?$/.test(pathname)) return 'landing';
+  return 'desktop';
+};
