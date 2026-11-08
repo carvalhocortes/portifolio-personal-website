@@ -257,6 +257,7 @@ describe('Contact form', () => {
     await user.click(screen.getByRole('button', { name: 'solve captcha' }));
     await user.click(screen.getByRole('button', { name: /enviar mensagem/i }));
 
+    expect(await screen.findByRole('status')).toHaveFocus();
     expect(await screen.findByText(/Mensagem enviada/)).toBeInTheDocument();
     const [url, init] = fetchSpy.mock.calls[0];
     expect(url).toBe('https://api.web3forms.com/submit');

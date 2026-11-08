@@ -63,6 +63,11 @@ html[data-route='landing'] :focus-visible {
   border-radius: 4px;
 }
 
+html[data-route='landing'] :is(a, button, input, textarea, label) {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html[data-route='landing'] {
     scroll-behavior: auto;
