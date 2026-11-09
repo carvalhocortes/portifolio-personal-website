@@ -1,15 +1,9 @@
 import { List, X } from '@phosphor-icons/react';
 import { useEffect, useId, useState } from 'react';
 import { content, resource } from '../../../entities/Content';
+import { SECTION_IDS } from '../lib/sections';
 import { useContentLanguage } from '../lib/useContentLanguage';
 import styles from './Header.module.css';
-
-export const SECTION_IDS = {
-  about: 'sobre',
-  hobbies: 'hobbies',
-  volunteer: 'voluntario',
-  contact: 'contato',
-} as const;
 
 export const Header = () => {
   const { t, toggleLanguage } = useContentLanguage();
