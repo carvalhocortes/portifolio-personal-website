@@ -1,7 +1,7 @@
 import { ArrowUpRight } from '@phosphor-icons/react';
 import { content, resource } from '../../../entities/Content';
 import { useContentLanguage } from '../lib/useContentLanguage';
-import { SECTION_IDS } from './Header';
+import { SECTION_IDS } from '../lib/sections';
 import { Rich } from './Rich';
 import { Section } from './Section';
 import styles from './Volunteer.module.css';
