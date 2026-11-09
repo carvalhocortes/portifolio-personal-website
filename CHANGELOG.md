@@ -6,12 +6,18 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
-### Changed
-- A faixa de fotos do topo da landing usa miniaturas: cerca de 190 KB em vez de 560 KB. O logo do Minha Cena também
-  ficou no tamanho em que aparece, e saíram dois arquivos que não eram usados.
+## 2026-11-08 (manutenção)
 
+### Added
+- Prévia de link ao compartilhar o site (LinkedIn, WhatsApp, X): título, descrição e a imagem com o logo
+  Carvalho Côrtes84. Também entram `robots.txt`, `sitemap.xml` e o endereço canônico; `/landing` e `/terminal`
+  apontam para a página principal.
+
+### Changed
 - O site carrega menos código na primeira visita: as bibliotecas de Markdown (~45 KB comprimidos) só são baixadas com
   a página que as usa.
+- A faixa de fotos do topo da landing usa miniaturas: cerca de 190 KB em vez de 560 KB. O logo do Minha Cena também
+  ficou no tamanho em que aparece, e saíram dois arquivos que não eram usados.
 
 ### Fixed
 - No visualizador de fotos da landing, Esc e as setas continuam funcionando depois de clicar na foto ampliada.
@@ -21,10 +27,7 @@ versões: cada entrega na `main` vira uma seção com a data.
   nas ferramentas de teste e build (Vite 6.4, Vitest 4) e uma no Markdown do site. Atualizações semanais pelo
   Dependabot.
 
-### Added
-- Prévia de link ao compartilhar o site (LinkedIn, WhatsApp, X): título, descrição e a imagem com o logo
-  Carvalho Côrtes84. Também entram `robots.txt`, `sitemap.xml` e o endereço canônico; `/landing` e `/terminal`
-  apontam para a página principal.
+## 2026-11-08 (icq)
 
 ### Added
 - **ICQ** no desktop, minimizado na barra de tarefas e com a flor ao lado do relógio: a lista de contatos tem só o
