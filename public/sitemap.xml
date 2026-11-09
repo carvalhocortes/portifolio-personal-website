@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Only the main address: /landing and /terminal show the same content and
+     point their canonical link to it. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://carvalhocortes.com.br/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+</urlset>
