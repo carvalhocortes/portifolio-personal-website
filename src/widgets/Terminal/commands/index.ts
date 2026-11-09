@@ -110,16 +110,14 @@ const getCommandDefinitions = (): CommandDefinition[] => [
       ['sudo', sudo],
       ['sudoHelp', sudoHelp],
     ] as const
-  ).map(
-    ([key, fn]): CommandDefinition => ({
-      key,
-      classification: i18n.t('commands.classifications.secret'),
-      acceptedCommands: getAliases(key),
-      description: i18n.t(`commands.${key}.description`),
-      fn,
-      shouldShowInHelp: false,
-    })
-  ),
+  ).map(([key, fn]): CommandDefinition => ({
+    key,
+    classification: i18n.t('commands.classifications.secret'),
+    acceptedCommands: getAliases(key),
+    description: i18n.t(`commands.${key}.description`),
+    fn,
+    shouldShowInHelp: false,
+  })),
 ];
 
 export function help(): string {

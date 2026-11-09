@@ -21,8 +21,7 @@ export interface VolunteerWork {
 
 /** A file in a Recycle Bin folder: a photo, or a text kept in the i18n files. */
 export type TrashFile =
-  | { id: string; tipo: 'foto'; arquivo: string }
-  | { id: string; tipo: 'texto' };
+  { id: string; tipo: 'foto'; arquivo: string } | { id: string; tipo: 'texto' };
 
 export interface TrashFolder {
   id: string;
