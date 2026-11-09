@@ -1,10 +1,11 @@
 import react from '@vitejs/plugin-react';
-import { copyFileSync, mkdirSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { parse } from 'yaml';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
+import { htmlForRoute } from './src/app/routeHtml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,18 +25,24 @@ const yamlContent = (): Plugin => ({
 
 // The app picks the page from the path (see src/app/routes.ts).
 // GitHub Pages has no rewrites: give each direct route its own index.html.
-const ROUTE_ENTRIES = ['terminal', 'landing'];
+// Each direct route gets its own title and og:url; the canonical stays on /,
+// where the same content lives, so search engines don't see duplicates.
+const ROUTE_ENTRIES: Record<string, { title: string }> = {
+  terminal: { title: 'Fernando Côrtes - Terminal' },
+  landing: { title: 'Fernando Côrtes - Engenheiro de software' },
+};
 
 const routeEntries = (): Plugin => ({
   name: 'route-entries',
   apply: 'build',
   closeBundle() {
     const outDir = resolve(__dirname, 'dist');
-    for (const route of ROUTE_ENTRIES) {
+    const html = readFileSync(resolve(outDir, 'index.html'), 'utf8');
+    for (const [route, { title }] of Object.entries(ROUTE_ENTRIES)) {
       mkdirSync(resolve(outDir, route), { recursive: true });
-      copyFileSync(
-        resolve(outDir, 'index.html'),
-        resolve(outDir, `${route}/index.html`)
+      writeFileSync(
+        resolve(outDir, `${route}/index.html`),
+        htmlForRoute(html, route, title)
       );
     }
   },
