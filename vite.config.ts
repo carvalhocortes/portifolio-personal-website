@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import { parse } from 'yaml';
 import type { Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
-import { htmlForRoute } from './src/app/routeHtml';
+import { htmlForRoute } from './src/app/routeHtml.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
