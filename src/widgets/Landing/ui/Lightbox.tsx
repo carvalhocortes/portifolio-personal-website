@@ -77,6 +77,9 @@ export const Lightbox = ({ photos, index, onChange }: LightboxProps) => {
       role="dialog"
       aria-modal="true"
       aria-label={photo.caption}
+      // Focusable, so a click on the photo or caption keeps the focus here and
+      // Esc, the arrows and the Tab loop go on working.
+      tabIndex={-1}
       onKeyDown={onKeyDown}
       onClick={(e) => {
         // A click on the backdrop (outside the photo and buttons) closes it.

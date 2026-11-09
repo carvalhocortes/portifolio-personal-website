@@ -10,6 +10,14 @@ versões: cada entrega na `main` vira uma seção com a data.
 - O site carrega menos código na primeira visita: as bibliotecas de Markdown (~45 KB comprimidos) só são baixadas com
   a página que as usa.
 
+### Fixed
+- No visualizador de fotos da landing, Esc e as setas continuam funcionando depois de clicar na foto ampliada.
+
+### Security
+- Dependências atualizadas: corrigidas as vulnerabilidades críticas e altas apontadas pelo `npm audit`, quase todas
+  nas ferramentas de teste e build (Vite 6.4, Vitest 4) e uma no Markdown do site. Atualizações semanais pelo
+  Dependabot.
+
 ### Added
 - **ICQ** no desktop, minimizado na barra de tarefas e com a flor ao lado do relógio: a lista de contatos tem só o
   Fernando online (os outros, de piada, ficam offline e não recebem mensagens). Uma mensagem para ele pede nome,
