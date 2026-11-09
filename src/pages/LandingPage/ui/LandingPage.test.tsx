@@ -225,6 +225,26 @@ describe('Hobbies', () => {
     ).toHaveFocus();
   });
 
+  it('keeps Esc and the arrows working after a click on the photo', async () => {
+    const user = renderPage();
+    const [wood] = content.hobbies.itens;
+    await user.click(
+      screen.getByRole('button', {
+        name: `Ampliar a foto: ${pt(`${hobbyKey(wood.id)}.fotos.0.legenda`)}`,
+      })
+    );
+    const dialog = screen.getByRole('dialog');
+    await user.click(within(dialog).getByRole('img'));
+    expect(dialog.contains(document.activeElement)).toBe(true);
+    await user.keyboard('{ArrowRight}');
+    expect(
+      within(dialog).getByText(`Foto 2 de ${wood.fotos.length}`)
+    ).toBeInTheDocument();
+    await user.click(within(dialog).getByRole('img'));
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
   it('closes the photo with Escape and keeps Tab inside it', async () => {
     const user = renderPage();
     const wood = content.hobbies.itens[0];
