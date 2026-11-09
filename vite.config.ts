@@ -72,10 +72,13 @@ export default defineConfig({
     // Code splitting optimization
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          markdown: ['react-markdown', 'remark-gfm'],
-        },
+        // React (with its JSX runtime and scheduler) in one shared chunk. The
+        // Markdown libraries are left to Rollup, so they load only with the
+        // pages that use them instead of on every first load.
+        manualChunks: (id) =>
+          /node_modules\/(react|react-dom|scheduler)\//.test(id)
+            ? 'vendor'
+            : undefined,
       },
     },
     // Optimize chunk size

@@ -6,6 +6,10 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Changed
+- O site carrega menos código na primeira visita: as bibliotecas de Markdown (~45 KB comprimidos) só são baixadas com
+  a página que as usa.
+
 ### Fixed
 - No visualizador de fotos da landing, Esc e as setas continuam funcionando depois de clicar na foto ampliada.
 
