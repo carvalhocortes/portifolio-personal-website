@@ -6,6 +6,12 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Major versions (TypeScript, Vite, ESLint...) change how the tools work
+    # and usually need code changes: they are reviewed by hand, one at a time.
+    # Security fixes still come from Dependabot alerts.
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     groups:
       npm:
         patterns:
