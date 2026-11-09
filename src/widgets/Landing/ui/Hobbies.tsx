@@ -2,7 +2,7 @@ import { ArrowUpRight, Lightbulb } from '@phosphor-icons/react';
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import { content, resource, textList } from '../../../entities/Content';
 import { useContentLanguage } from '../lib/useContentLanguage';
-import { SECTION_IDS } from './Header';
+import { SECTION_IDS } from '../lib/sections';
 import { Lightbox } from './Lightbox';
 import { Rich } from './Rich';
 import { Section } from './Section';

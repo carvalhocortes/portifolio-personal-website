@@ -2,7 +2,7 @@ import { ArrowRight, LinkedinLogo, Pause, Play } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { content, resource, thumbnail } from '../../../entities/Content';
 import { useContentLanguage } from '../lib/useContentLanguage';
-import { SECTION_IDS } from './Header';
+import { SECTION_IDS } from '../lib/sections';
 import styles from './Hero.module.css';
 
 export const Hero = () => {
