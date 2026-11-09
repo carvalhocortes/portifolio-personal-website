@@ -1,6 +1,6 @@
 import { ArrowRight, LinkedinLogo, Pause, Play } from '@phosphor-icons/react';
 import { useState } from 'react';
-import { content, resource } from '../../../entities/Content';
+import { content, resource, thumbnail } from '../../../entities/Content';
 import { useContentLanguage } from '../lib/useContentLanguage';
 import { SECTION_IDS } from '../lib/sections';
 import styles from './Hero.module.css';
@@ -60,7 +60,7 @@ export const Hero = () => {
             {[...photos, ...photos].map((photo, i) => (
               <img
                 key={`${photo.arquivo}-${i}`}
-                src={resource(photo.arquivo)}
+                src={thumbnail(photo.arquivo)}
                 alt=""
                 width={160}
                 height={160}

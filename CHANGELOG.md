@@ -7,6 +7,9 @@ versões: cada entrega na `main` vira uma seção com a data.
 ## [Unreleased]
 
 ### Changed
+- A faixa de fotos do topo da landing usa miniaturas: cerca de 190 KB em vez de 560 KB. O logo do Minha Cena também
+  ficou no tamanho em que aparece, e saíram dois arquivos que não eram usados.
+
 - O site carrega menos código na primeira visita: as bibliotecas de Markdown (~45 KB comprimidos) só são baixadas com
   a página que as usa.
 
