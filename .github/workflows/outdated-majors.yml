@@ -1,0 +1,54 @@
+name: Outdated major versions
+
+# Dependabot opens PRs only for minor and patch updates (see dependabot.yml).
+# Every week this job lists the dependencies with a new major version in one
+# issue, labelled "dependencias-principais": it opens the issue, updates it,
+# or closes it when nothing is left.
+on:
+  schedule:
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    name: List new major versions
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      LABEL: dependencias-principais
+      TITLE: Versões principais novas das dependências
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: List new major versions
+        # npm outdated exits with 1 when something is outdated.
+        run: (npm outdated --json || true) | node scripts/outdated-majors.mjs > body.md
+
+      - name: Open, update or close the issue
+        run: |
+          gh label create "$LABEL" --color FBCA04 \
+            --description "Atualizações de versão principal para revisar" 2>/dev/null || true
+          number=$(gh issue list --label "$LABEL" --state open --json number --jq '.[0].number')
+          if [ -s body.md ]; then
+            if [ -n "$number" ]; then
+              gh issue edit "$number" --body-file body.md
+            else
+              gh issue create --title "$TITLE" --label "$LABEL" --body-file body.md
+            fi
+          elif [ -n "$number" ]; then
+            gh issue close "$number" --comment "Nenhuma versão principal pendente."
+          fi
