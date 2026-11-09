@@ -80,6 +80,10 @@ describe('Desktop', () => {
   });
 
   it('opens the startup program and shows the taskbar', () => {
+    // A fixed time: otherwise the minute can turn between the render and the
+    // check of the clock text, and the test fails once in a while.
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2026, 10, 8, 10, 30, 0));
     renderDesktop(['terminal']);
     expect(windowNamed('Terminal')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Iniciar/ })).toBeInTheDocument();
@@ -89,6 +93,7 @@ describe('Desktop', () => {
     expect(
       screen.getByText(formatClock(new Date(), 'pt-BR'))
     ).toBeInTheDocument();
+    vi.useRealTimers();
   });
 
   it('opens a program with one click, and brings it to the front if already open', async () => {
