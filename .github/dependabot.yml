@@ -24,3 +24,11 @@ updates:
       actions:
         patterns:
           - '*'
+  - package-ecosystem: uv
+    directory: /e2e
+    schedule:
+      interval: weekly
+    groups:
+      e2e:
+        patterns:
+          - '*'
