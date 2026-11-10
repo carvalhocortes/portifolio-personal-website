@@ -2,7 +2,12 @@ import { lazy, Suspense, useLayoutEffect, useState } from 'react';
 import { WindowManagerProvider } from '../../../features/WindowManager';
 import { hasBooted, markBooted } from '../../../shared/lib/bootMark';
 import { useIdle } from '../../../shared/lib/useIdle';
-import { useKonami } from '../../../shared/lib/useKonami';
+import { toggleMussum } from '../../../shared/i18n/mussumMode';
+import {
+  CACILDIS,
+  useKonami,
+  useSecretSequence,
+} from '../../../shared/lib/useKonami';
 import { useScreenSize } from '../../../shared/lib/useScreenSize';
 import { BootScreen } from '../../../widgets/BootScreen';
 import { Desktop } from '../../../widgets/Desktop/ui/Desktop';
@@ -35,6 +40,7 @@ const DesktopPage = () => {
   };
 
   useKonami(() => setScreen('bsod'), onDesktop && !isPhone);
+  useSecretSequence(CACILDIS, toggleMussum, onDesktop && !isPhone);
   const idle = useIdle(SCREENSAVER_MS, onDesktop && !isPhone);
 
   // Phones get the landing page, so they take its page styles.

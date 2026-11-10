@@ -6,6 +6,7 @@ import {
   useWindowManager,
 } from '../../../features/WindowManager';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
+import { MUSSUM, turnMussumOn } from '../../../shared/i18n/mussumMode';
 import { IcqIcon, StartLogo } from '../../../shared/ui/icons';
 import { Clock } from './Clock';
 import { StartMenu, type Language } from './StartMenu';
@@ -55,7 +56,8 @@ export const Taskbar: React.FC<TaskbarProps> = ({
   };
 
   const toggleLanguage = () =>
-    i18n.changeLanguage(i18n.language === 'pt-BR' ? 'en-US' : 'pt-BR');
+    // The Mussum mode counts as Portuguese, so it goes to English.
+    i18n.changeLanguage(i18n.language.startsWith('en') ? 'pt-BR' : 'en-US');
 
   return (
     <footer className={styles.taskbar}>
@@ -82,7 +84,9 @@ export const Taskbar: React.FC<TaskbarProps> = ({
           onOpenProgram={onOpenProgram}
           language={i18n.language}
           onSetLanguage={(language: Language) =>
-            void i18n.changeLanguage(language)
+            language === MUSSUM
+              ? turnMussumOn()
+              : void i18n.changeLanguage(language)
           }
           onClose={closeMenu}
           onRestart={onRestart}

@@ -227,6 +227,8 @@
 .languageButton {
   flex: 1;
   justify-content: center;
+  /* "pt-MUSSUM" (hidden easter egg) must not wrap at the hyphen. */
+  white-space: nowrap;
 }
 
 /* The current language: pressed in, like a toggled Windows 95 button. */
