@@ -6,6 +6,11 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Added
+- Testes de ponta a ponta com Playwright (em Python, com pytest), em `e2e/`: abrem o site num navegador de verdade e
+  passam por todas as funcionalidades (desktop, janelas, programas, landing, Terminal, ICQ, easter eggs, idiomas e
+  celular). Rodam em cada PR, com captcha e envio de e-mail simulados.
+
 ### Fixed
 - No Terminal, digitar `matrix` ou `hackear` e teclar Enter volta a mostrar o efeito; antes, o próprio Enter o
   encerrava na hora (só funcionava clicando no comando).
