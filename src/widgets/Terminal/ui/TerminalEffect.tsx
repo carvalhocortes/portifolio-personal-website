@@ -22,7 +22,12 @@ export const TerminalEffect = ({ effect, onDone }: TerminalEffectProps) => {
   });
 
   useEffect(() => {
-    const end = () => doneRef.current();
+    // React may mount the effect while the Enter that ran the command is
+    // still bubbling up to the window: that key must not end it right away.
+    const startedAt = performance.now();
+    const end = (e: KeyboardEvent) => {
+      if (e.timeStamp > startedAt) doneRef.current();
+    };
     window.addEventListener('keydown', end);
     return () => window.removeEventListener('keydown', end);
   }, []);

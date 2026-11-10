@@ -6,6 +6,10 @@ versões: cada entrega na `main` vira uma seção com a data.
 
 ## [Unreleased]
 
+### Fixed
+- No Terminal, digitar `matrix` ou `hackear` e teclar Enter volta a mostrar o efeito; antes, o próprio Enter o
+  encerrava na hora (só funcionava clicando no comando).
+
 ## 2026-11-08 (manutenção)
 
 ### Added
