@@ -1,9 +1,11 @@
-"""Hidden things on the desktop: restart, shutdown, screensaver, blue screen, Plus!."""
+"""Hidden things on the desktop: restart, shutdown, screensaver, blue screen, Plus!, Mussum mode."""
+
+import re
 
 from playwright.sync_api import Page, expect
 
 from conftest import SKIP_BOOT_SCRIPT
-from support.pages import NOTEPAD, RECYCLE_BIN, Desktop
+from support.pages import NOTEPAD, RECYCLE_BIN, TERMINAL, Desktop, Terminal
 
 KONAMI = [
     "ArrowUp",
@@ -108,3 +110,35 @@ def test_few_clicks_on_start_do_not_add_plus(desktop: Desktop):
         desktop.start.click()
     expect(desktop.start_menu).to_be_visible()
     expect(desktop.start_menu).not_to_contain_text("Plus!")
+
+
+def start_button(page: Page):
+    return page.get_by_role("button", name=re.compile(r"^Iniciar"))
+
+
+def test_mussum_mode_from_the_terminal_until_a_reload(desktop: Desktop, page: Page):
+    desktop.open(TERMINAL)
+    terminal = Terminal(page)
+    expect(terminal.run("mussum")).to_contain_text("Modis Mussum ligadis. Cacildis!")
+    expect(start_button(page)).to_have_text("Iniciarzis")
+    # The other commands keep working, and the name stays as it is.
+    expect(terminal.run("sobre")).to_contain_text("Fernando Côrtes")
+    page.reload()
+    expect(start_button(page)).to_have_text("Iniciar")
+
+
+def test_mussum_mode_by_typing_cacildis(desktop: Desktop, page: Page):
+    desktop.click_empty_desktop()
+    page.keyboard.type("cacildis")
+    expect(start_button(page)).to_have_text("Iniciarzis")
+    page.keyboard.type("cacildis")
+    expect(start_button(page)).to_have_text("Iniciar")
+
+
+def test_mussum_button_in_the_start_menu(desktop: Desktop, page: Page):
+    menu = desktop.open_start_menu()
+    expect(menu.get_by_role("menuitemradio", name=re.compile("pt-MUSSUM"))).to_have_count(0)
+    for _ in range(3):
+        menu.get_by_role("menuitemradio", name=re.compile(r"\(pt-BR\)")).click()
+    menu.get_by_role("menuitemradio", name=re.compile("pt-MUSSUM")).click()
+    expect(start_button(page)).to_have_text("Iniciarzis")
