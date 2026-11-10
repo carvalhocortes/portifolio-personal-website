@@ -266,6 +266,11 @@ commands:
     aliases:
       - sudo help
     description: Lists the administrator commands
+  mussum:
+    aliases:
+      - mussum
+      - cacildis
+    description: Turns Mussum mode on and off
   welcome:
     aliases:
       - start
@@ -467,3 +472,7 @@ secrets:
       - 'Boot floppy ............... [A: 1.44MB]'
     footer: 'Any key: exit without saving (nothing is saved anyway)'
   plus: Plus!
+  mussum:
+    on: Modis Mussum ligadis. Cacildis!
+    off: Mussum mode off.
+    language: Mussum's Portuguese

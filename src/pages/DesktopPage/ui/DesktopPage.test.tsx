@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { content } from '../../../entities/Content';
 import i18n from '../../../shared/i18n';
 import { BOOTED_KEY } from '../../../shared/lib/bootMark';
+import { resetMussumForTests } from '../../../shared/i18n/mussumMode';
 import DesktopPage, { SCREENSAVER_MS, SHUTDOWN_MS } from './DesktopPage';
 
 const setWidth = (width: number) =>
@@ -346,6 +347,76 @@ describe('DesktopPage', () => {
         'a',
       ].forEach((key) => fireEvent.keyDown(text, { key }));
       expect(screen.queryByRole('dialog')).toBeNull();
+    });
+
+    describe('Mussum mode', () => {
+      const type = (text: string, target: Element = document.body) =>
+        act(() =>
+          [...text].forEach((key) => fireEvent.keyDown(target, { key }))
+        );
+      const startButton = () =>
+        screen.getByRole('button', { name: /^Iniciar/ });
+      const languageButton = (code: string) =>
+        screen.getByRole('menuitemradio', {
+          name: new RegExp(`\\(${code}\\)`),
+        });
+
+      afterEach(() => resetMussumForTests());
+
+      it('turns on and off by typing cacildis on the desktop', () => {
+        setWidth(1280);
+        render(<DesktopPage />);
+        type('cacildis');
+        expect(i18n.language).toBe('pt-MUSSUM');
+        expect(startButton()).toHaveTextContent('Iniciarzis');
+        type('cacildis');
+        expect(i18n.language).toBe('pt-BR');
+        expect(startButton()).toHaveTextContent(/^Iniciar$/);
+      });
+
+      it('still turns on after a slip like cacacildis', () => {
+        setWidth(1280);
+        render(<DesktopPage />);
+        type('cacacildis');
+        expect(i18n.language).toBe('pt-MUSSUM');
+      });
+
+      it('ignores cacildis typed in a text field', () => {
+        setWidth(1280);
+        render(<DesktopPage />);
+        type('cacildis', screen.getByRole('textbox', { name: 'Leia-me.txt' }));
+        expect(i18n.language).toBe('pt-BR');
+      });
+
+      it('shows pt-MUSSUM in the Start menu after 3 clicks on pt-BR', () => {
+        setWidth(1280);
+        render(<DesktopPage />);
+        fireEvent.click(startButton());
+        expect(
+          screen.queryByRole('menuitemradio', { name: /pt-MUSSUM/ })
+        ).toBeNull();
+        for (let i = 0; i < 3; i += 1) fireEvent.click(languageButton('pt-BR'));
+        fireEvent.click(languageButton('pt-MUSSUM'));
+        expect(i18n.language).toBe('pt-MUSSUM');
+        expect(languageButton('pt-MUSSUM')).toHaveAttribute(
+          'aria-checked',
+          'true'
+        );
+        fireEvent.click(languageButton('en-US'));
+        expect(i18n.language).toBe('en-US');
+        // Still there until a reload.
+        expect(languageButton('pt-MUSSUM')).toBeInTheDocument();
+      });
+
+      it('goes from English to Mussum and back to English', async () => {
+        setWidth(1280);
+        await act(() => i18n.changeLanguage('en-US'));
+        render(<DesktopPage />);
+        type('cacildis');
+        expect(i18n.language).toBe('pt-MUSSUM');
+        type('cacildis');
+        expect(i18n.language).toBe('en-US');
+      });
     });
 
     it('shows the screensaver after 2 idle minutes, until the mouse moves', () => {

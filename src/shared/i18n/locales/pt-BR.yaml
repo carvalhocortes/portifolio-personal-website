@@ -267,6 +267,11 @@ commands:
     aliases:
       - sudo ajuda
     description: Lista os comandos do administrador
+  mussum:
+    aliases:
+      - mussum
+      - cacildis
+    description: Liga e desliga o modo Mussum
   welcome:
     aliases:
       - start
@@ -472,3 +477,7 @@ secrets:
       - 'Disquete de boot .......... [A: 1.44MB]'
     footer: 'Qualquer tecla: sair sem salvar (nada é salvo mesmo)'
   plus: Plus!
+  mussum:
+    on: Modis Mussum ligadis. Cacildis!
+    off: Modo Mussum desligado.
+    language: Português do Mussum

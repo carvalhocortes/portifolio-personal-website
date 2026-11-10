@@ -2,23 +2,33 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
+import {
+  MUSSUM,
+  revealMussum,
+  useMussumRevealed,
+} from '../../../shared/i18n/mussumMode';
 import { PowerIcon, RestartIcon } from '../../../shared/ui/icons';
 import styles from './Taskbar.module.css';
 
-const LANGUAGES = ['pt-BR', 'en-US'] as const;
+// pt-MUSSUM (an easter egg) shows only once revealed.
+const LANGUAGES = ['pt-BR', 'en-US', MUSSUM] as const;
 export type Language = (typeof LANGUAGES)[number];
 
 // Each language named in itself, so anyone finds theirs.
-const LANGUAGE_NAMES: Record<Language, string> = {
+const LANGUAGE_NAMES: Record<Exclude<Language, typeof MUSSUM>, string> = {
   'pt-BR': 'Português',
   'en-US': 'English',
 };
+
+/** Quick clicks on pt-BR that reveal the pt-MUSSUM button. */
+export const REVEAL_CLICKS = 3;
+export const REVEAL_WINDOW_MS = 2000;
 
 interface StartMenuProps {
   id: string;
   programs: ProgramDefinition[];
   onOpenProgram: (program: ProgramDefinition) => void;
-  /** Current i18next language: 'pt-BR' or 'en-US'. */
+  /** Current i18next language: 'pt-BR', 'en-US' or 'pt-MUSSUM'. */
   language: string;
   onSetLanguage: (language: Language) => void;
   onClose: (returnFocus: boolean) => void;
@@ -45,6 +55,16 @@ export const StartMenu: React.FC<StartMenuProps> = ({
   const { t } = useTranslation();
   const { nameOf } = useProgramTitles();
   const menuRef = useRef<HTMLDivElement>(null);
+  const mussumRevealed = useMussumRevealed();
+  const ptClicks = useRef<number[]>([]);
+  const countPtClick = () => {
+    const now = Date.now();
+    ptClicks.current = [
+      ...ptClicks.current.filter((at) => now - at < REVEAL_WINDOW_MS),
+      now,
+    ];
+    if (ptClicks.current.length >= REVEAL_CLICKS) revealMussum();
+  };
 
   const items = () =>
     Array.from(
@@ -131,23 +151,32 @@ export const StartMenu: React.FC<StartMenuProps> = ({
           role="group"
           aria-label={t('taskbar.language')}
         >
-          {LANGUAGES.map((code) => {
-            const current = language === code;
-            return (
-              <button
-                key={code}
-                type="button"
-                role="menuitemradio"
-                aria-checked={current}
-                aria-label={`${LANGUAGE_NAMES[code]} (${code})`}
-                lang={code}
-                className={`${styles.button} ${styles.languageButton} ${current ? styles.pressed : ''}`}
-                onClick={() => onSetLanguage(code)}
-              >
-                {code}
-              </button>
-            );
-          })}
+          {LANGUAGES.filter((code) => code !== MUSSUM || mussumRevealed).map(
+            (code) => {
+              const current = language === code;
+              const name =
+                code === MUSSUM
+                  ? t('secrets.mussum.language')
+                  : LANGUAGE_NAMES[code];
+              return (
+                <button
+                  key={code}
+                  type="button"
+                  role="menuitemradio"
+                  aria-checked={current}
+                  aria-label={`${name} (${code})`}
+                  lang={code === MUSSUM ? 'pt-BR' : code}
+                  className={`${styles.button} ${styles.languageButton} ${current ? styles.pressed : ''}`}
+                  onClick={() => {
+                    if (code === 'pt-BR') countPtClick();
+                    onSetLanguage(code);
+                  }}
+                >
+                  {code}
+                </button>
+              );
+            }
+          )}
         </div>
         {(onRestart || onShutdown) && (
           <div className={styles.separator} role="separator" />

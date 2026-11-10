@@ -1,6 +1,7 @@
 import { act } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import i18n from '../../../shared/i18n';
+import { resetMussumForTests } from '../../../shared/i18n/mussumMode';
 import { executeCommand, getEffect, help, isExitCommand } from './index';
 import { fortune, SECRET_COMMANDS } from './secrets';
 
@@ -56,5 +57,45 @@ describe('hidden Terminal commands', () => {
     expect(isExitCommand('sair')).toBe(true);
     expect(isExitCommand('exit ')).toBe(true);
     expect(isExitCommand('sudo')).toBe(false);
+  });
+});
+
+describe('mussum command', () => {
+  beforeEach(async () => {
+    await act(() => i18n.changeLanguage('pt-BR'));
+    resetMussumForTests();
+  });
+
+  it('turns the Mussum mode on and off, with both aliases', () => {
+    expect(executeCommand('mussum')).toBe('Modis Mussum ligadis. Cacildis!');
+    expect(i18n.language).toBe('pt-MUSSUM');
+    expect(executeCommand('cacildis')).toBe('Modo Mussum desligado.');
+    expect(i18n.language).toBe('pt-BR');
+  });
+
+  it('stays out of the help and shows in sudo ajuda', () => {
+    expect(help()).not.toContain('#cmd:mussum');
+    expect(executeCommand('sudo ajuda')).toContain('#cmd:mussum');
+  });
+
+  it('keeps every other command working in the Mussum mode', () => {
+    executeCommand('mussum');
+    expect(executeCommand('sudo')).toMatch(/Permissãozis|Permissão/);
+    expect(executeCommand('ajuda')).toContain('#cmd:sobre');
+    expect(executeCommand('cafe')).not.toMatch(/inválido/);
+    executeCommand('mussum');
+  });
+
+  it('answers in English when turned off from English', async () => {
+    await act(() => i18n.changeLanguage('en-US'));
+    expect(executeCommand('mussum')).toBe('Modis Mussum ligadis. Cacildis!');
+    expect(executeCommand('mussum')).toBe('Mussum mode off.');
+    expect(i18n.language).toBe('en-US');
+  });
+
+  it('goes to English with idioma in the Mussum mode', () => {
+    executeCommand('mussum');
+    executeCommand('idioma');
+    expect(i18n.language).toBe('en-US');
   });
 });
