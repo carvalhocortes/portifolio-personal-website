@@ -1,6 +1,11 @@
 import '@testing-library/jest-dom/vitest';
-import { cleanup } from '@testing-library/react';
+import { cleanup, configure } from '@testing-library/react';
 import { afterEach, beforeEach } from 'vitest';
+
+// findBy* waits for lazy-loaded pages (the landing in the browser window).
+// The first one in a file loads the module, which can pass the default 1 s
+// on a slow CI machine.
+configure({ asyncUtilTimeout: 5000 });
 
 // The desktop boot screen plays once per tab; most tests start past it.
 // Boot screen tests clear this mark.
