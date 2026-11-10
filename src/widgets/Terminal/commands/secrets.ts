@@ -1,5 +1,6 @@
 import { commandLink } from '../../../shared/lib/commandLink';
 import i18n from '../../../shared/i18n';
+import { MUSSUM, toggleMussum } from '../../../shared/i18n/mussumMode';
 import { firstAlias } from './aliases';
 
 /** Hidden commands: not in `ajuda`, listed only by `sudo ajuda`. */
@@ -10,6 +11,7 @@ export const SECRET_COMMANDS = [
   'hack',
   'exit',
   'sudo',
+  'mussum',
 ] as const;
 
 /** Commands that play an effect over the terminal instead of only printing. */
@@ -44,6 +46,12 @@ export const hack = (): string =>
 
 /** `sair` outside a window (the /terminal page): there's nowhere to go. */
 export const exitHome = (): string => i18n.t('secrets.exit.home');
+
+/** `mussum`/`cacildis`: turns the Mussum mode on or off. */
+export const mussum = (): string =>
+  toggleMussum()
+    ? i18n.t('secrets.mussum.on', { lng: MUSSUM })
+    : i18n.t('secrets.mussum.off');
 
 export const sudo = (): string => i18n.t('secrets.sudo.denied');
 

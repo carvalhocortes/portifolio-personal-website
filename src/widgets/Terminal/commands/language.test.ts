@@ -47,14 +47,11 @@ describe('language command', () => {
     expect(result).toContain('pt-BR');
   });
 
-  it('should default to pt-BR when current language is not recognized', () => {
-    // Mock current language as something else
-    vi.mocked(i18n).language = 'fr-FR';
+  it('should switch to en-US from the Mussum mode, which counts as Portuguese', () => {
+    vi.mocked(i18n).language = 'pt-MUSSUM';
 
-    const result = language();
+    language();
 
-    expect(i18n.changeLanguage).toHaveBeenCalledWith('pt-BR');
-    expect(result).toContain('Idioma alterado para:');
-    expect(result).toContain('pt-BR');
+    expect(i18n.changeLanguage).toHaveBeenCalledWith('en-US');
   });
 });

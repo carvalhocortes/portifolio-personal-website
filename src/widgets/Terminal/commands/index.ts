@@ -18,6 +18,7 @@ import {
   fortune,
   hack,
   matrix,
+  mussum,
   sudo,
   sudoHelp,
   EFFECT_COMMANDS,
@@ -109,6 +110,7 @@ const getCommandDefinitions = (): CommandDefinition[] => [
       ['exit', exitHome],
       ['sudo', sudo],
       ['sudoHelp', sudoHelp],
+      ['mussum', mussum],
     ] as const
   ).map(([key, fn]): CommandDefinition => ({
     key,
