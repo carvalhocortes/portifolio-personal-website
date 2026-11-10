@@ -1,0 +1,25 @@
+[project]
+name = "site-e2e"
+version = "0.1.0"
+description = "End-to-end tests for carvalhocortes.com.br (Playwright + pytest)"
+requires-python = ">=3.12"
+dependencies = [
+  "pytest>=8.3",
+  "pytest-playwright>=0.7",
+  "pytest-xdist>=3.6",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.14"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-n auto --dist loadfile"
+
+[tool.ruff]
+line-length = 110
+extend-exclude = [".venv"]

@@ -79,8 +79,10 @@ npm run dev        # http://localhost:5173
 | `npm run format` | Prettier |
 | `npm run build` | Checagem de tipos e build de produção em `dist/` |
 | `npm run preview` | Serve o build localmente |
+| `cd e2e && uv run pytest` | Testes de ponta a ponta (Playwright, em Python); veja [`e2e/README.md`](e2e/README.md) |
 
-**Tecnologias:** React, TypeScript, Vite, i18next, Vitest e Testing Library. A landing page usa a fonte Geist e
+**Tecnologias:** React, TypeScript, Vite, i18next, Vitest e Testing Library; Playwright e pytest nos testes de
+ponta a ponta. A landing page usa a fonte Geist e
 ícones Phosphor; o formulário de contato envia pelo [Web3Forms](https://web3forms.com) com hCaptcha.
 
 **Estrutura** ([Feature-Sliced Design](https://feature-sliced.design)):
@@ -95,6 +97,7 @@ src/
   entities/              Content (dados) e Program (definição dos programas)
   shared/                i18n (textos), ícones em pixel art e utilitários
 public/resources/        imagens
+e2e/                     testes de ponta a ponta (Playwright + pytest)
 docs/                    capturas de tela deste README
 ```
 
