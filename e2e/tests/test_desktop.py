@@ -12,6 +12,7 @@ from support.pages import (
     NOTEPAD,
     PROGRAMS,
     RECYCLE_BIN,
+    SOLITAIRE,
     TERMINAL,
     Desktop,
 )
@@ -23,7 +24,8 @@ def test_icons_for_every_program(desktop: Desktop):
 
 
 def test_initial_state(desktop: Desktop):
-    # Leia-me in front, the Clock open, the rest minimized; Recycle Bin closed.
+    # Leia-me in front, the Clock open, the rest minimized; Solitaire and the
+    # Recycle Bin closed.
     expect(desktop.window(NOTEPAD)).to_be_visible()
     expect(desktop.task(NOTEPAD)).to_have_attribute("aria-pressed", "true")
     expect(desktop.window(CLOCK)).to_be_visible()
@@ -31,6 +33,7 @@ def test_initial_state(desktop: Desktop):
         expect(desktop.task(program)).to_be_visible()
         expect(desktop.window(program)).to_be_hidden()
     expect(desktop.task(RECYCLE_BIN)).to_have_count(0)
+    expect(desktop.task(SOLITAIRE)).to_have_count(0)
     tasks = [b.inner_text().strip() for b in desktop.taskbar.get_by_role("button").all()]
     assert tasks == [BROWSER, TERMINAL, ICQ, CLOCK, NOTEPAD]
 

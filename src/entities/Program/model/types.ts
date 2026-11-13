@@ -1,7 +1,13 @@
 import type { ComponentType } from 'react';
 
 export type ProgramId =
-  'browser' | 'terminal' | 'notepad' | 'clock' | 'recycleBin' | 'icq';
+  | 'browser'
+  | 'terminal'
+  | 'notepad'
+  | 'clock'
+  | 'solitaire'
+  | 'recycleBin'
+  | 'icq';
 
 export interface ProgramProps {
   /** True while this program's window is the active (front) one. */

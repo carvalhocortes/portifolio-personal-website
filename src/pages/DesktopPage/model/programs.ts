@@ -6,18 +6,20 @@ import {
   MsDosIcon,
   NotepadIcon,
   RecycleBinIcon,
+  SolitaireIcon,
 } from '../../../shared/ui/icons';
 import { Browser } from '../../../widgets/Browser/ui/Browser';
 import { ClockApp } from '../../../widgets/ClockApp';
 import { Icq } from '../../../widgets/Icq';
 import { RecycleBin } from '../../../widgets/RecycleBin';
+import { Solitaire } from '../../../widgets/Solitaire';
 import { Notepad } from '../../../widgets/Notepad/ui/Notepad';
 import { Terminal } from '../../../widgets/Terminal/ui/Terminal';
 
 /**
  * Desktop programs, in icon order. The desktop starts with the browser and the
  * Terminal minimized, the Clock open in the top-right corner and the
- * Leia-me.txt open in front. The Recycle Bin starts closed.
+ * Leia-me.txt open in front. Solitaire and the Recycle Bin start closed.
  */
 export const PROGRAMS: ProgramDefinition[] = [
   {
@@ -59,6 +61,14 @@ export const PROGRAMS: ProgramDefinition[] = [
     defaultSize: { width: 320, height: 340 },
     startup: 'open',
     placement: 'top-right',
+  },
+  {
+    id: 'solitaire',
+    titleKey: 'programs.solitaire',
+    Icon: SolitaireIcon,
+    Component: Solitaire,
+    // Seven columns of cards about 80 px wide, plus the menu and status bars.
+    defaultSize: { width: 660, height: 520 },
   },
   {
     id: 'recycleBin',
