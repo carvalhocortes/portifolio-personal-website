@@ -4,6 +4,7 @@ import type { ProgramDefinition } from '../../../entities/Program/model/types';
 import { useProgramTitles } from '../../../entities/Program/model/useProgramTitles';
 import {
   Window,
+  WINDOW_FRAME,
   getTaskbarWindows,
   useWindowManager,
 } from '../../../features/WindowManager';
@@ -25,7 +26,7 @@ export const Desktop: React.FC<DesktopProps> = ({
 }) => {
   const { t } = useTranslation();
   const { nameOf, windowTitleOf } = useProgramTitles();
-  const { state, activeId, open, minimize, close, desktopRef } =
+  const { state, activeId, open, minimize, close, setSize, desktopRef } =
     useWindowManager();
 
   const openProgram = (program: ProgramDefinition) =>
@@ -90,6 +91,12 @@ export const Desktop: React.FC<DesktopProps> = ({
               <program.Component
                 isActive={isActive}
                 onClose={() => close(win.id)}
+                onFitContent={(size) =>
+                  setSize(win.id, {
+                    width: size.width + WINDOW_FRAME.width,
+                    height: size.height + WINDOW_FRAME.height,
+                  })
+                }
               />
             </Window>
           );

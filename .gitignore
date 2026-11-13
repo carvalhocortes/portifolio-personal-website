@@ -62,3 +62,6 @@ Thumbs.db
 # GitHub Secrets & FTP Credentials
 .env.ghsecrets
 
+
+# Vitest reports
+.vitest/

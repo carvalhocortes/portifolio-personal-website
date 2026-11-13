@@ -14,6 +14,10 @@ versões: cada entrega na `main` vira uma seção com a data.
 - **Paciência** no desktop e no menu Iniciar: o jogo de cartas clássico, com cartas e verso próprios. Dá para
   arrastar as cartas ou clicar numa delas para a jogada automática, desfazer, virar 1 ou 3 cartas (a escolha fica
   guardada) e jogar pelo teclado. Ao vencer, as cartas pulam pela mesa.
+- Campo Minado no desktop e no menu Iniciar: três níveis (Iniciante, Intermediário e Avançado), bandeira no clique
+  direito, contador de minas, cronômetro e a carinha que recomeça o jogo. O primeiro clique nunca é mina, a janela se
+  ajusta ao tamanho do nível, e o nível e o melhor tempo de cada um ficam guardados no navegador. Dá para jogar só pelo
+  teclado (setas, Enter e F).
 
 ### Fixed
 - No Terminal, digitar `matrix` ou `hackear` e teclar Enter volta a mostrar o efeito; antes, o próprio Enter o

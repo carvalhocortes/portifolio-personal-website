@@ -103,6 +103,8 @@ leiame:
       Terminal    O mesmo conteúdo em modo texto, no estilo MS-DOS.
                   Clique nos comandos ou digite "ajuda".
 
+    Para relaxar, jogue Campo Minado (botão direito marca a mina).
+
     Os programas ficam na barra de tarefas, lá embaixo. As janelas
     podem ser arrastadas, redimensionadas, minimizadas e maximizadas.
 
@@ -344,6 +346,7 @@ programs:
   clock: Relógio
   terminal: Terminal
   browser: Navegador
+  minesweeper: Campo Minado
   notepadWindow: '{{name}} - Bloco de Notas'
 desktop:
   label: Área de trabalho
@@ -531,3 +534,35 @@ secrets:
     on: Modis Mussum ligadis. Cacildis!
     off: Modo Mussum desligado.
     language: Português do Mussum
+minesweeper:
+  menu:
+    game: Jogo
+    new: Novo
+    records: Recordes…
+  levels:
+    beginner: Iniciante
+    intermediate: Intermediário
+    expert: Avançado
+  newGame: Novo jogo
+  minesLeft_one: '{{count}} mina restante'
+  minesLeft_other: '{{count}} minas restantes'
+  time_one: '{{count}} segundo'
+  time_other: '{{count}} segundos'
+  board: 'Campo minado, nível {{level}}'
+  cell:
+    hidden: 'Linha {{row}}, coluna {{col}}: fechada'
+    flag: 'Linha {{row}}, coluna {{col}}: bandeira'
+    wrongFlag: 'Linha {{row}}, coluna {{col}}: bandeira errada'
+    mine: 'Linha {{row}}, coluna {{col}}: mina'
+    exploded: 'Linha {{row}}, coluna {{col}}: mina explodida'
+    empty: 'Linha {{row}}, coluna {{col}}: vazia'
+    number_one: 'Linha {{row}}, coluna {{col}}: {{count}} mina vizinha'
+    number_other: 'Linha {{row}}, coluna {{col}}: {{count}} minas vizinhas'
+  won_one: 'Você venceu em {{count}} segundo!'
+  won_other: 'Você venceu em {{count}} segundos!'
+  newRecord: 'Novo recorde: {{count}} s!'
+  lost: Bum! Você achou uma mina. Clique na carinha para jogar de novo.
+  records:
+    title: Recordes
+    none: '-'
+    seconds: '{{count}} s'

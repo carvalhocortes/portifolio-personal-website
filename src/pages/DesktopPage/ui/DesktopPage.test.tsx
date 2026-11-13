@@ -60,14 +60,15 @@ describe('DesktopPage', () => {
     expect(
       within(icons).getByRole('button', { name: 'Leia-me.txt' })
     ).toBeInTheDocument();
-    // The Clock is open too, behind the Leia-me; Solitaire and the Recycle
-    // Bin are closed.
+    // The Clock is open too, behind the Leia-me; Solitaire, the Recycle Bin
+    // and the Minesweeper are closed.
     expect(screen.getByRole('region', { name: 'Relógio' })).toBeInTheDocument();
     expect(
       within(tasks).getByRole('button', { name: 'Relógio' })
     ).toHaveAttribute('aria-pressed', 'false');
     expect(screen.queryByRole('region', { name: 'Lixeira' })).toBeNull();
     expect(screen.queryByRole('region', { name: 'Paciência' })).toBeNull();
+    expect(screen.queryByRole('region', { name: 'Campo Minado' })).toBeNull();
     expect(
       within(icons)
         .getAllByRole('button')
@@ -80,6 +81,7 @@ describe('DesktopPage', () => {
       'Paciência',
       'Lixeira',
       'ICQ',
+      'Campo Minado',
     ]);
     // The landing page loads only when the browser shows up.
     expect(document.querySelector('.lp-root')).toBeNull();
@@ -93,6 +95,28 @@ describe('DesktopPage', () => {
     expect(screen.queryByRole('region', { name: 'ICQ' })).toBeNull();
     await user.click(screen.getByRole('button', { name: 'Abrir o ICQ' }));
     expect(screen.getByRole('region', { name: 'ICQ' })).toBeInTheDocument();
+  });
+
+  it('opens Minesweeper and fits its window to the level', async () => {
+    setWidth(1280);
+    localStorage.removeItem('cc84.minesweeperLevel');
+    const user = userEvent.setup();
+    render(<DesktopPage />);
+    const icons = screen.getByRole('list', { name: 'Programas' });
+    await user.click(
+      within(icons).getByRole('button', { name: 'Campo Minado' })
+    );
+    const game = screen.getByRole('region', { name: 'Campo Minado' });
+    // Beginner: 9 × 24 px cells + 18 px of borders + 6 px of window frame.
+    expect(game.style.width).toBe('320px');
+    await user.click(within(game).getByRole('button', { name: 'Jogo' }));
+    await user.click(
+      within(game).getByRole('menuitemradio', { name: /Avançado/ })
+    );
+    // Expert: 30 × 24 + 18 + 6 wide, 16 × 24 + 84 + 28 tall.
+    expect(game.style.width).toBe('744px');
+    expect(game.style.height).toBe('496px');
+    localStorage.removeItem('cc84.minesweeperLevel');
   });
 
   it('opens the Clock from the time in the taskbar', async () => {
