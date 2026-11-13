@@ -19,6 +19,10 @@ versões: cada entrega na `main` vira uma seção com a data.
   ajusta ao tamanho do nível, e o nível e o melhor tempo de cada um ficam guardados no navegador. Dá para jogar só pelo
   teclado (setas, Enter e F).
 
+### Changed
+- O ICQ passou a se chamar **Chat online** (EN: "Online chat"), com a mesma flor de ícone. O assunto do e-mail virou
+  "Mensagem pelo chat do site".
+
 ### Fixed
 - No Terminal, digitar `matrix` ou `hackear` e teclar Enter volta a mostrar o efeito; antes, o próprio Enter o
   encerrava na hora (só funcionava clicando no comando).
