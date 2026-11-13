@@ -45,7 +45,7 @@ export const Icq = (_props: ProgramProps) => {
     <div className={styles.icq}>
       <div className={styles.header}>
         <IcqIcon size={24} />
-        <span className={styles.brand}>ICQ</span>
+        <span className={styles.brand}>{t('icq.name')}</span>
         <span className={styles.status}>{t('icq.online')}</span>
       </div>
       <div className={styles.list}>
@@ -216,7 +216,7 @@ const Chat = ({ onBack }: { onBack: () => void }) => {
                 ? t('icq.you')
                 : message.from === 'fernando'
                   ? fernando
-                  : 'ICQ'}
+                  : t('icq.name')}
               :
             </strong>{' '}
             {message.text}

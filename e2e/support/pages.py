@@ -19,7 +19,7 @@ NOTEPAD_WINDOW = "Leia-me.txt - Bloco de Notas"
 CLOCK = "Relógio"
 SOLITAIRE = "Paciência"
 RECYCLE_BIN = "Lixeira"
-ICQ = "ICQ"
+ICQ = "Chat online"
 MINESWEEPER = "Campo Minado"
 
 PROGRAMS = [BROWSER, TERMINAL, NOTEPAD, CLOCK, SOLITAIRE, RECYCLE_BIN, ICQ, MINESWEEPER]

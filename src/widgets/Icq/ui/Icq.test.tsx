@@ -96,7 +96,7 @@ describe('Icq', () => {
     expect(body.get('email')).toBe('ana@exemplo.com');
     expect(body.get('message')).toBe('Oi, tudo bem?');
     expect(body.get('h-captcha-response')).toBe('captcha-token');
-    expect(body.get('subject')).toBe('Mensagem pelo ICQ do site - Ana');
+    expect(body.get('subject')).toBe('Mensagem pelo chat do site - Ana');
     expect(
       await within(log).findByText(
         /Recebi sua mensagem\. Já te respondo no ana@exemplo\.com/

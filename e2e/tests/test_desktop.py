@@ -55,7 +55,7 @@ def test_tray_clock_shows_the_time_and_opens_the_clock(desktop: Desktop, page: P
 
 
 def test_tray_flower_opens_icq(desktop: Desktop, page: Page):
-    page.get_by_role("button", name="Abrir o ICQ").click()
+    page.get_by_role("button", name="Abrir o Chat online").click()
     expect(desktop.window(ICQ)).to_be_visible()
     expect(desktop.task(ICQ)).to_have_attribute("aria-pressed", "true")
 

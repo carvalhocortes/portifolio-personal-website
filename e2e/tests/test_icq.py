@@ -108,7 +108,7 @@ def test_sends_and_gets_a_reply(icq: Locator, web3forms: Web3Forms):
     assert multipart_field(body, "name") == "Ana"
     assert multipart_field(body, "email") == "ana@exemplo.com"
     assert multipart_field(body, "message") == "Oi, Fernando!"
-    assert multipart_field(body, "subject") == "Mensagem pelo ICQ do site - Ana"
+    assert multipart_field(body, "subject") == "Mensagem pelo chat do site - Ana"
     assert multipart_field(body, "h-captcha-response") == CAPTCHA_TOKEN
 
     # The next message only asks for the captcha again.

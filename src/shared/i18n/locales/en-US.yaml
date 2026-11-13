@@ -177,7 +177,7 @@ icq:
       nome: Neighbor's Wi-Fi
     mae:
       nome: Mom
-  name: ICQ
+  name: Online chat
   online: Online
   groupOnline: Online
   groupOffline: Offline
@@ -193,7 +193,7 @@ icq:
   identify: 'So {{name}} can reply, tell us your name and e-mail:'
   captchaOnly: "Confirm you're not a robot to send:"
   sendTo: 'Send to {{name}}'
-  subject: 'Message from the site ICQ - {{name}}'
+  subject: 'Message from the site chat - {{name}}'
   reply: "Hi, {{name}}! Got your message. I'll reply to {{email}} soon. :)"
 
 # Interface
@@ -353,7 +353,7 @@ window:
   close: Close
 taskbar:
   openClock: Open the Clock
-  openIcq: Open ICQ
+  openIcq: Open Online chat
   start: Start
   startMenu: Start menu
   openWindows: Open windows
