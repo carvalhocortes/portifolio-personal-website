@@ -36,7 +36,7 @@ abre com um clique, com links e rolagem normais. No celular, o site abre direto 
 | Relógio | A hora em modo analógico ou digital, com a data no idioma do site |
 | Paciência | O jogo de cartas clássico: arraste as cartas ou clique numa delas para a jogada automática |
 | Lixeira | Projetos que quase entraram no site, uma pasta por projeto |
-| ICQ | Mensagens para o Fernando, o único online; a mensagem chega por e-mail (com captcha). Também abre pela flor ao lado do relógio |
+| Chat online | Mensagens para o Fernando, o único online; a mensagem chega por e-mail (com captcha). Também abre pela flor ao lado do relógio |
 | Campo Minado | O jogo clássico em três níveis (Iniciante, Intermediário e Avançado), com o melhor tempo de cada um guardado no navegador |
 
 | Endereço | Abre |

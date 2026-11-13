@@ -80,7 +80,7 @@ describe('DesktopPage', () => {
       'Relógio',
       'Paciência',
       'Lixeira',
-      'ICQ',
+      'Chat online',
       'Campo Minado',
     ]);
     // The landing page loads only when the browser shows up.
@@ -88,13 +88,17 @@ describe('DesktopPage', () => {
     expect(document.documentElement.dataset.route).toBe('desktop');
   });
 
-  it('opens ICQ from the flower next to the clock', async () => {
+  it('opens the online chat from the flower next to the clock', async () => {
     setWidth(1280);
     const user = userEvent.setup();
     render(<DesktopPage />);
-    expect(screen.queryByRole('region', { name: 'ICQ' })).toBeNull();
-    await user.click(screen.getByRole('button', { name: 'Abrir o ICQ' }));
-    expect(screen.getByRole('region', { name: 'ICQ' })).toBeInTheDocument();
+    expect(screen.queryByRole('region', { name: 'Chat online' })).toBeNull();
+    await user.click(
+      screen.getByRole('button', { name: 'Abrir o Chat online' })
+    );
+    expect(
+      screen.getByRole('region', { name: 'Chat online' })
+    ).toBeInTheDocument();
   });
 
   it('opens Minesweeper and fits its window to the level', async () => {
@@ -179,7 +183,7 @@ describe('DesktopPage', () => {
     expect(order()).toEqual([
       'Navegador',
       'Terminal',
-      'ICQ',
+      'Chat online',
       'Relógio',
       'Leia-me.txt',
     ]);

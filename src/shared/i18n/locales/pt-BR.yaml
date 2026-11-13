@@ -177,7 +177,7 @@ icq:
       nome: Wi-Fi do Vizinho
     mae:
       nome: Mãe
-  name: ICQ
+  name: Chat online
   online: Online
   groupOnline: Online
   groupOffline: Offline
@@ -193,7 +193,7 @@ icq:
   identify: 'Para o {{name}} responder, informe seu nome e e-mail:'
   captchaOnly: 'Confirme que você não é um robô para enviar:'
   sendTo: 'Enviar para o {{name}}'
-  subject: 'Mensagem pelo ICQ do site - {{name}}'
+  subject: 'Mensagem pelo chat do site - {{name}}'
   reply: 'Oi, {{name}}! Recebi sua mensagem. Já te respondo no {{email}}. :)'
 
 # Interface
@@ -358,7 +358,7 @@ window:
   close: Fechar
 taskbar:
   openClock: Abrir o Relógio
-  openIcq: Abrir o ICQ
+  openIcq: Abrir o Chat online
   start: Iniciar
   startMenu: Menu Iniciar
   openWindows: Janelas abertas
