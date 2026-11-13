@@ -1,8 +1,10 @@
 import type { ProgramDefinition } from '../../../entities/Program/model/types';
+import { MIN_WINDOW, WINDOW_FRAME } from '../../../features/WindowManager';
 import {
   BrowserIcon,
   ClockIcon,
   IcqIcon,
+  MinesweeperIcon,
   MsDosIcon,
   NotepadIcon,
   RecycleBinIcon,
@@ -10,6 +12,7 @@ import {
 import { Browser } from '../../../widgets/Browser/ui/Browser';
 import { ClockApp } from '../../../widgets/ClockApp';
 import { Icq } from '../../../widgets/Icq';
+import { Minesweeper, contentSize, LEVELS } from '../../../widgets/Minesweeper';
 import { RecycleBin } from '../../../widgets/RecycleBin';
 import { Notepad } from '../../../widgets/Notepad/ui/Notepad';
 import { Terminal } from '../../../widgets/Terminal/ui/Terminal';
@@ -17,7 +20,7 @@ import { Terminal } from '../../../widgets/Terminal/ui/Terminal';
 /**
  * Desktop programs, in icon order. The desktop starts with the browser and the
  * Terminal minimized, the Clock open in the top-right corner and the
- * Leia-me.txt open in front. The Recycle Bin starts closed.
+ * Leia-me.txt open in front. The Recycle Bin and Minesweeper start closed.
  */
 export const PROGRAMS: ProgramDefinition[] = [
   {
@@ -46,7 +49,7 @@ export const PROGRAMS: ProgramDefinition[] = [
     Icon: NotepadIcon,
     Component: Notepad,
     // Fits the whole text without scrolling on a 1024 × 768 screen.
-    defaultSize: { width: 600, height: 650 },
+    defaultSize: { width: 600, height: 680 },
     startup: 'front',
     placement: 'center',
   },
@@ -75,5 +78,20 @@ export const PROGRAMS: ProgramDefinition[] = [
     // Tall and narrow like the contact list, wide enough for the captcha.
     defaultSize: { width: 380, height: 560 },
     startup: 'minimized',
+  },
+  {
+    id: 'minesweeper',
+    titleKey: 'programs.minesweeper',
+    Icon: MinesweeperIcon,
+    Component: Minesweeper,
+    // The beginner board plus the window frame (at least the smallest
+    // window); the game refits the window to another saved level.
+    defaultSize: {
+      width: Math.max(
+        MIN_WINDOW.width,
+        contentSize(LEVELS.beginner).width + WINDOW_FRAME.width
+      ),
+      height: contentSize(LEVELS.beginner).height + WINDOW_FRAME.height,
+    },
   },
 ];
