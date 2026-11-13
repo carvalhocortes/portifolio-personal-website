@@ -11,6 +11,10 @@ versões: cada entrega na `main` vira uma seção com a data.
   passam por todas as funcionalidades (desktop, janelas, programas, landing, Terminal, ICQ, easter eggs, idiomas e
   celular). Rodam em cada PR, com captcha e envio de e-mail simulados.
 - Mais um segredo escondido no desktop.
+- Campo Minado no desktop e no menu Iniciar: três níveis (Iniciante, Intermediário e Avançado), bandeira no clique
+  direito, contador de minas, cronômetro e a carinha que recomeça o jogo. O primeiro clique nunca é mina, a janela se
+  ajusta ao tamanho do nível, e o nível e o melhor tempo de cada um ficam guardados no navegador. Dá para jogar só pelo
+  teclado (setas, Enter e F).
 
 ### Fixed
 - No Terminal, digitar `matrix` ou `hackear` e teclar Enter volta a mostrar o efeito; antes, o próprio Enter o
