@@ -103,6 +103,8 @@ leiame:
       Terminal    The same content as text, MS-DOS style.
                   Click the commands or type "help".
 
+    To relax, play Minesweeper (right-click flags a mine).
+
     The programs live on the taskbar, at the bottom. Windows can be
     dragged, resized, minimized and maximized.
 
@@ -338,6 +340,7 @@ programs:
   clock: Clock
   terminal: Terminal
   browser: Browser
+  minesweeper: Minesweeper
   notepadWindow: '{{name}} - Notepad'
 desktop:
   label: Desktop
@@ -476,3 +479,35 @@ secrets:
     on: Modis Mussum ligadis. Cacildis!
     off: Mussum mode off.
     language: Mussum's Portuguese
+minesweeper:
+  menu:
+    game: Game
+    new: New
+    records: Best Times…
+  levels:
+    beginner: Beginner
+    intermediate: Intermediate
+    expert: Expert
+  newGame: New game
+  minesLeft_one: '{{count}} mine left'
+  minesLeft_other: '{{count}} mines left'
+  time_one: '{{count}} second'
+  time_other: '{{count}} seconds'
+  board: 'Minefield, {{level}} level'
+  cell:
+    hidden: 'Row {{row}}, column {{col}}: closed'
+    flag: 'Row {{row}}, column {{col}}: flag'
+    wrongFlag: 'Row {{row}}, column {{col}}: wrong flag'
+    mine: 'Row {{row}}, column {{col}}: mine'
+    exploded: 'Row {{row}}, column {{col}}: exploded mine'
+    empty: 'Row {{row}}, column {{col}}: empty'
+    number_one: 'Row {{row}}, column {{col}}: {{count}} mine around'
+    number_other: 'Row {{row}}, column {{col}}: {{count}} mines around'
+  won_one: 'You won in {{count}} second!'
+  won_other: 'You won in {{count}} seconds!'
+  newRecord: 'New best time: {{count}} s!'
+  lost: Boom! You found a mine. Click the face to play again.
+  records:
+    title: Best times
+    none: '-'
+    seconds: '{{count}} s'

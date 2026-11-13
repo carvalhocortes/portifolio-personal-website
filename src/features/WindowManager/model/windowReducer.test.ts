@@ -170,6 +170,60 @@ describe('windowReducer', () => {
   });
 });
 
+describe('setSize', () => {
+  const setSize = (
+    state: WindowManagerState,
+    size: { width: number; height: number }
+  ) =>
+    windowReducer(state, {
+      type: 'setSize',
+      id: 'terminal',
+      size,
+      viewport: VIEWPORT,
+    });
+
+  it('keeps the top-left corner when the new size fits', () => {
+    const state = setSize(open(initialWindowState), {
+      width: 700,
+      height: 500,
+    });
+    expect(state.windows[0]).toMatchObject({
+      x: CASCADE_ORIGIN.x,
+      y: CASCADE_ORIGIN.y,
+      width: 700,
+      height: 500,
+    });
+  });
+
+  it('moves the window back so a bigger size stays on screen', () => {
+    const state = setSize(open(initialWindowState), {
+      width: 1000,
+      height: 600,
+    });
+    const win = state.windows[0];
+    expect(win.width).toBe(1000);
+    expect(win.x + win.width).toBeLessThanOrEqual(VIEWPORT.width);
+    expect(win.y + win.height).toBeLessThanOrEqual(VIEWPORT.height);
+  });
+
+  it('never goes under the minimum or over the desktop', () => {
+    let state = setSize(open(initialWindowState), { width: 100, height: 50 });
+    expect(state.windows[0]).toMatchObject(MIN_WINDOW);
+    state = setSize(state, { width: 5000, height: 5000 });
+    expect(state.windows[0].width).toBeLessThan(VIEWPORT.width);
+    expect(state.windows[0].height).toBeLessThan(VIEWPORT.height);
+  });
+
+  it('leaves a maximized window alone', () => {
+    let state = open(initialWindowState);
+    state = windowReducer(state, { type: 'toggleMaximize', id: 'terminal' });
+    const before = state.windows[0];
+    expect(setSize(state, { width: 400, height: 300 }).windows[0]).toEqual(
+      before
+    );
+  });
+});
+
 describe('clampBounds (resize)', () => {
   it('grows from the bottom-right up to the desktop edge', () => {
     expect(

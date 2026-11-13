@@ -1,13 +1,24 @@
 import type { ComponentType } from 'react';
 
 export type ProgramId =
-  'browser' | 'terminal' | 'notepad' | 'clock' | 'recycleBin' | 'icq';
+  | 'browser'
+  | 'terminal'
+  | 'notepad'
+  | 'clock'
+  | 'recycleBin'
+  | 'icq'
+  | 'minesweeper';
 
 export interface ProgramProps {
   /** True while this program's window is the active (front) one. */
   isActive: boolean;
   /** Closes this program's window (on the desktop only). */
   onClose?: () => void;
+  /**
+   * Asks for a window that fits this content size in px (on the desktop
+   * only). The window keeps its corner and stays on screen.
+   */
+  onFitContent?: (size: { width: number; height: number }) => void;
 }
 
 export interface ProgramDefinition {

@@ -22,6 +22,8 @@ export interface WindowManagerApi {
   close: (id: ProgramId) => void;
   move: (id: ProgramId, x: number, y: number) => void;
   resize: (id: ProgramId, bounds: Bounds, edges: ResizeEdges) => void;
+  /** Sets the window's outer size, keeping it on screen. */
+  setSize: (id: ProgramId, size: Size) => void;
   /** The element windows live in; its size is the movement limit. */
   desktopRef: RefObject<HTMLDivElement | null>;
 }
