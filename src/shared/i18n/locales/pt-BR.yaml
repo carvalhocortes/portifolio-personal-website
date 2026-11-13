@@ -342,6 +342,7 @@ dir:
 ver:
   text: CARVALHO-CORTES Versão {{version}}
 programs:
+  solitaire: Paciência
   clock: Relógio
   terminal: Terminal
   browser: Navegador
@@ -424,6 +425,55 @@ recycleBin:
   next: Próximo arquivo
   objects_one: '{{count}} objeto'
   objects_other: '{{count}} objetos'
+solitaire:
+  menuBar: Menu da Paciência
+  game: Jogo
+  help: Ajuda
+  newGame: Novo jogo
+  undo: Desfazer
+  draw1: Virar 1 carta
+  draw3: Virar 3 cartas
+  exit: Sair
+  howTo: Como jogar
+  rules: |-
+    Leve as 52 cartas para as quatro pilhas do canto superior direito, uma por naipe, do Ás ao Rei.
+    Nas sete colunas, as cartas descem em ordem e alternando a cor: um 7 vermelho vai sobre um 8 preto. Dá para mover uma sequência inteira, e só o Rei entra numa coluna vazia.
+    Clique no monte para virar cartas. Quando ele acabar, clique de novo para voltar o descarte.
+    Arraste as cartas ou clique numa delas para a jogada automática. Pelo teclado, Tab passa pelas pilhas e Enter joga a carta de cima.
+  ok: OK
+  table: Mesa
+  stock_one: 'Monte: {{count}} carta'
+  stock_other: 'Monte: {{count}} cartas'
+  stockRecycle: Monte vazio, clique para voltar o descarte
+  stockEmpty: Monte vazio
+  waste: 'Descarte: {{card}}'
+  wasteEmpty: Descarte vazio
+  foundation: 'Fundação {{n}}: {{card}}'
+  foundationEmpty: 'Fundação {{n}} vazia'
+  column: 'Coluna {{n}}: {{cards}}'
+  columnEmpty: 'Coluna {{n}} vazia'
+  hidden_one: '{{count}} carta escondida'
+  hidden_other: '{{count}} cartas escondidas'
+  card: '{{rank}} de {{suit}}'
+  ranks:
+    '1': Ás
+    '11': Valete
+    '12': Dama
+    '13': Rei
+  suits:
+    spades: espadas
+    hearts: copas
+    diamonds: ouros
+    clubs: paus
+  toFoundation: '{{card}} para a fundação'
+  toColumn: '{{card}} para a coluna {{n}}'
+  noMove: Nenhuma jogada possível
+  time: 'Tempo: {{time}}'
+  moves: 'Jogadas: {{count}}'
+  won: Você venceu!
+  wonDetails_one: 'Em {{time}} e {{count}} jogada.'
+  wonDetails_other: 'Em {{time}} e {{count}} jogadas.'
+  playAgain: Jogar de novo
 secrets:
   coffee:
     art: |2

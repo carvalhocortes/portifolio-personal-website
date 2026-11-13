@@ -17,11 +17,12 @@ TERMINAL = "Terminal"
 NOTEPAD = "Leia-me.txt"
 NOTEPAD_WINDOW = "Leia-me.txt - Bloco de Notas"
 CLOCK = "Relógio"
+SOLITAIRE = "Paciência"
 RECYCLE_BIN = "Lixeira"
 ICQ = "ICQ"
 MINESWEEPER = "Campo Minado"
 
-PROGRAMS = [BROWSER, TERMINAL, NOTEPAD, CLOCK, RECYCLE_BIN, ICQ, MINESWEEPER]
+PROGRAMS = [BROWSER, TERMINAL, NOTEPAD, CLOCK, SOLITAIRE, RECYCLE_BIN, ICQ, MINESWEEPER]
 
 
 def window_name(program: str) -> str:

@@ -5,6 +5,7 @@ export type ProgramId =
   | 'terminal'
   | 'notepad'
   | 'clock'
+  | 'solitaire'
   | 'recycleBin'
   | 'icq'
   | 'minesweeper';

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { ProgramProps } from '../../../entities/Program/model/types';
 import { prefersReducedMotion } from '../../../shared/lib/reducedMotion';
+import { readStored, writeStored } from '../../../shared/lib/storage';
 import { handAngles, longDate } from '../lib/time';
 import styles from './ClockApp.module.css';
 
@@ -12,25 +13,9 @@ export const SPIN_CLICKS = 5;
 const SPIN_CLICK_WINDOW_MS = 2000;
 export const SPIN_MS = 3000;
 
-// The last mode the visitor picked; analog the first time. Storage can throw
-// (blocked site data), so it falls back quietly.
-const savedMode = (): ClockMode => {
-  try {
-    return localStorage.getItem(CLOCK_MODE_KEY) === 'digital'
-      ? 'digital'
-      : 'analog';
-  } catch {
-    return 'analog';
-  }
-};
-
-const saveMode = (mode: ClockMode) => {
-  try {
-    localStorage.setItem(CLOCK_MODE_KEY, mode);
-  } catch {
-    // Nothing to do: the choice just isn't remembered.
-  }
-};
+// The last mode the visitor picked; analog the first time.
+const savedMode = (): ClockMode =>
+  readStored(CLOCK_MODE_KEY) === 'digital' ? 'digital' : 'analog';
 
 /**
  * Clock program: an analog face like the 90s desktop clock, or a digital
@@ -75,7 +60,7 @@ export const ClockApp = (_props: ProgramProps) => {
 
   const pick = (next: ClockMode) => {
     setMode(next);
-    saveMode(next);
+    writeStored(CLOCK_MODE_KEY, next);
   };
 
   // Screen readers get the time to the minute, so it doesn't change every

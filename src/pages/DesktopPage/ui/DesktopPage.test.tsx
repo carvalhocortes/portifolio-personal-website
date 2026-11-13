@@ -60,13 +60,14 @@ describe('DesktopPage', () => {
     expect(
       within(icons).getByRole('button', { name: 'Leia-me.txt' })
     ).toBeInTheDocument();
-    // The Clock is open too, behind the Leia-me; the Recycle Bin and the
-    // Minesweeper are closed.
+    // The Clock is open too, behind the Leia-me; Solitaire, the Recycle Bin
+    // and the Minesweeper are closed.
     expect(screen.getByRole('region', { name: 'Relógio' })).toBeInTheDocument();
     expect(
       within(tasks).getByRole('button', { name: 'Relógio' })
     ).toHaveAttribute('aria-pressed', 'false');
     expect(screen.queryByRole('region', { name: 'Lixeira' })).toBeNull();
+    expect(screen.queryByRole('region', { name: 'Paciência' })).toBeNull();
     expect(screen.queryByRole('region', { name: 'Campo Minado' })).toBeNull();
     expect(
       within(icons)
@@ -77,6 +78,7 @@ describe('DesktopPage', () => {
       'Terminal',
       'Leia-me.txt',
       'Relógio',
+      'Paciência',
       'Lixeira',
       'ICQ',
       'Campo Minado',
