@@ -10,3 +10,4 @@ export { TextFileIcon } from './TextFileIcon';
 export { PowerIcon } from './PowerIcon';
 export { RestartIcon } from './RestartIcon';
 export { IcqIcon } from './IcqIcon';
+export { SolitaireIcon } from './SolitaireIcon';

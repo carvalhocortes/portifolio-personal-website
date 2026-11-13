@@ -335,6 +335,7 @@ dir:
 ver:
   text: CARVALHO-CORTES Version {{version}}
 programs:
+  solitaire: Solitaire
   clock: Clock
   terminal: Terminal
   browser: Browser
@@ -416,6 +417,55 @@ recycleBin:
   next: Next file
   objects_one: '{{count}} object'
   objects_other: '{{count}} objects'
+solitaire:
+  menuBar: Solitaire menu
+  game: Game
+  help: Help
+  newGame: New game
+  undo: Undo
+  draw1: Draw 1 card
+  draw3: Draw 3 cards
+  exit: Exit
+  howTo: How to play
+  rules: |-
+    Move all 52 cards to the four piles in the top right corner, one per suit, from Ace to King.
+    In the seven columns, cards go down in order and alternate colours: a red 7 goes on a black 8. You can move a whole run, and only a King goes in an empty column.
+    Click the stock to turn cards over. When it runs out, click it again to bring the waste back.
+    Drag the cards, or click one for the automatic move. With the keyboard, Tab goes through the piles and Enter plays the top card.
+  ok: OK
+  table: Table
+  stock_one: 'Stock: {{count}} card'
+  stock_other: 'Stock: {{count}} cards'
+  stockRecycle: Stock empty, click to bring the waste back
+  stockEmpty: Stock empty
+  waste: 'Waste: {{card}}'
+  wasteEmpty: Waste empty
+  foundation: 'Foundation {{n}}: {{card}}'
+  foundationEmpty: 'Foundation {{n}} empty'
+  column: 'Column {{n}}: {{cards}}'
+  columnEmpty: 'Column {{n}} empty'
+  hidden_one: '{{count}} hidden card'
+  hidden_other: '{{count}} hidden cards'
+  card: '{{rank}} of {{suit}}'
+  ranks:
+    '1': Ace
+    '11': Jack
+    '12': Queen
+    '13': King
+  suits:
+    spades: spades
+    hearts: hearts
+    diamonds: diamonds
+    clubs: clubs
+  toFoundation: '{{card}} to the foundation'
+  toColumn: '{{card}} to column {{n}}'
+  noMove: No move possible
+  time: 'Time: {{time}}'
+  moves: 'Moves: {{count}}'
+  won: You won!
+  wonDetails_one: 'In {{time}} and {{count}} move.'
+  wonDetails_other: 'In {{time}} and {{count}} moves.'
+  playAgain: Play again
 secrets:
   coffee:
     art: |2

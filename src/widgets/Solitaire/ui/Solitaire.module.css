@@ -1,0 +1,263 @@
+/* Solitaire fills its window: menu on top, the green table, status at the bottom. */
+.solitaire {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--w95-face);
+  color: var(--w95-dark);
+}
+
+/* Menu bar */
+.menuBar {
+  display: flex;
+  gap: 2px;
+  padding: 1px 2px 3px;
+  user-select: none;
+}
+
+.menuSlot {
+  position: relative;
+}
+
+.menuTop {
+  padding: 1px 6px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.menuTop[aria-expanded='true'] {
+  background: var(--w95-selection);
+  color: var(--w95-light);
+}
+
+.menuTop:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+}
+
+.menuList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+  padding: 2px;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 3px 16px 3px 2px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.menuItem:hover:not(:disabled),
+.menuItem:focus-visible {
+  background: var(--w95-selection);
+  color: var(--w95-light);
+  outline: none;
+}
+
+.menuItem:disabled {
+  color: var(--w95-shadow);
+  text-shadow: 1px 1px var(--w95-light);
+  cursor: default;
+}
+
+.separator {
+  margin-top: 4px;
+  border-top: 1px solid var(--w95-shadow);
+  box-shadow: inset 0 1px var(--w95-light);
+  padding-top: 5px;
+}
+
+.check {
+  width: 16px;
+  text-align: center;
+}
+
+/* Table: the wrapper is the visible area (the win animation covers it), the
+   table inside scrolls when the window is too small. */
+.tableWrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.table {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 8px;
+  background: #0b7a2f;
+  box-shadow: var(--w95-sunken);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) * 1.5);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, var(--card-w));
+  gap: var(--gap);
+  justify-content: center;
+  align-items: start;
+}
+
+.pile {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  width: var(--card-w);
+  min-height: var(--card-h);
+  border-radius: 5px;
+}
+
+.pile:focus-visible {
+  outline: 2px dotted #fff;
+  outline-offset: 2px;
+}
+
+.stock {
+  cursor: pointer;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  height: var(--card-h);
+  border: 1px solid rgb(0 0 0 / 0.35);
+  border-radius: 5px;
+  background: rgb(0 0 0 / 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255 255 255 / 0.7);
+  font-size: calc(var(--card-w) * 0.5);
+}
+
+.card {
+  position: absolute;
+  z-index: var(--i);
+  width: var(--card-w);
+  height: var(--card-h);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Face-up cards can be dragged, with the mouse or a finger. */
+.movable {
+  cursor: grab;
+  touch-action: none;
+}
+
+/* Set while dragging (outside React), above everything else on the table. */
+.card[data-dragging] {
+  z-index: calc(1000 + var(--i));
+  cursor: grabbing;
+  filter: drop-shadow(2px 4px 2px rgb(0 0 0 / 0.4));
+}
+
+.cascade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1500;
+}
+
+/* Status bar */
+.status {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 3px 2px 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.status span {
+  padding: 1px 8px;
+  box-shadow: var(--w95-sunken);
+}
+
+/* Dialogs inside the window */
+.dialogLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.dialog {
+  pointer-events: auto;
+  max-width: 420px;
+  max-height: 100%;
+  overflow: auto;
+  padding: 12px 16px;
+  background: var(--w95-face);
+  box-shadow:
+    var(--w95-raised),
+    4px 4px 0 rgb(0 0 0 / 0.35);
+  text-align: center;
+}
+
+.dialog h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.dialog p {
+  margin: 0 0 8px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.button {
+  min-width: 90px;
+  height: 26px;
+  margin-top: 4px;
+  border: none;
+  background: var(--w95-face);
+  box-shadow: var(--w95-raised);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: var(--w95-pressed);
+}
+
+.button:focus-visible {
+  outline: 1px dotted var(--w95-dark);
+  outline-offset: -5px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
