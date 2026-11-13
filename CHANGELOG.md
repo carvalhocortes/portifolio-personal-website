@@ -11,6 +11,9 @@ versões: cada entrega na `main` vira uma seção com a data.
   passam por todas as funcionalidades (desktop, janelas, programas, landing, Terminal, ICQ, easter eggs, idiomas e
   celular). Rodam em cada PR, com captcha e envio de e-mail simulados.
 - Mais um segredo escondido no desktop.
+- **Paciência** no desktop e no menu Iniciar: o jogo de cartas clássico, com cartas e verso próprios. Dá para
+  arrastar as cartas ou clicar numa delas para a jogada automática, desfazer, virar 1 ou 3 cartas (a escolha fica
+  guardada) e jogar pelo teclado. Ao vencer, as cartas pulam pela mesa.
 
 ### Fixed
 - No Terminal, digitar `matrix` ou `hackear` e teclar Enter volta a mostrar o efeito; antes, o próprio Enter o
