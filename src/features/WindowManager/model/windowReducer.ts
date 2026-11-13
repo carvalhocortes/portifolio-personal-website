@@ -42,6 +42,7 @@ export type WindowAction =
   | { type: 'close'; id: ProgramId }
   | { type: 'move'; id: ProgramId; x: number; y: number; viewport: Size }
   | { type: 'fitViewport'; viewport: Size }
+  | { type: 'setSize'; id: ProgramId; size: Size; viewport: Size }
   | {
       type: 'resize';
       id: ProgramId;
@@ -69,6 +70,12 @@ const CASCADE_LENGTH = 8;
 const MARGIN = 8;
 /** Smallest window the visitor can resize to. */
 export const MIN_WINDOW: Size = { width: 320, height: 200 };
+
+/**
+ * What the window frame adds around a program: 3px padding on each side,
+ * the 20px title bar and the 2px gap below it (see Window.module.css).
+ */
+export const WINDOW_FRAME: Size = { width: 6, height: 28 };
 
 export const initialWindowState: WindowManagerState = {
   windows: [],
@@ -227,6 +234,24 @@ export const windowReducer = (
             ...size,
             ...clampPosition(w.x, w.y, size, action.viewport),
           };
+        }),
+      };
+    case 'setSize':
+      // A program asked for a new size (the Minesweeper board): keep the
+      // top-left corner, moving the window back only if it would go off
+      // screen. A maximized window stays as it is.
+      return {
+        ...state,
+        windows: update(state.windows, action.id, (w) => {
+          if (w.maximized) return {};
+          const size = fitSize(
+            {
+              width: Math.max(action.size.width, MIN_WINDOW.width),
+              height: Math.max(action.size.height, MIN_WINDOW.height),
+            },
+            action.viewport
+          );
+          return { ...size, ...clampPosition(w.x, w.y, size, action.viewport) };
         }),
       };
     case 'resize':

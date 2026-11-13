@@ -62,6 +62,8 @@ export const WindowManagerProvider: React.FC<{
         dispatch({ type: 'move', id, x, y, viewport: viewport() }),
       resize: (id, bounds, edges) =>
         dispatch({ type: 'resize', id, bounds, edges, viewport: viewport() }),
+      setSize: (id, size) =>
+        dispatch({ type: 'setSize', id, size, viewport: viewport() }),
     }),
     [state, viewport]
   );
